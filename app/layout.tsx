@@ -1,10 +1,10 @@
-import "./globals.css";
-import StyledComponentsRegistry from "@/lib/registry";
+import StyledComponentsRegistry from '@/lib/registry'
+import './globals.css'
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -12,5 +12,5 @@ export default function RootLayout({
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
-  );
+  )
 }
