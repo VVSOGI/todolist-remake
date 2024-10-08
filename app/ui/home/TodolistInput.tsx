@@ -17,13 +17,15 @@ const InputContents = styled.input`
   outline: none;
 `
 
-const InputIcon = styled.div`
+const CreateButton = styled.button`
   width: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: ${styles.mainColor.secondary};
+  background-color: transparent;
   cursor: pointer;
+
   &:hover {
     background-color: ${styles.buttons.hover};
   }
@@ -33,11 +35,22 @@ const InputIcon = styled.div`
   }
 `
 
-export function TodolistInput() {
+interface Props {
+  handleSubmit: () => void
+  onChange: (value: string) => void
+}
+
+export function TodolistInput({ handleSubmit, onChange }: Props) {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSubmit()
+    }
+  }
+
   return (
     <Input>
-      <InputContents placeholder="Make your todolist" />
-      <InputIcon>+</InputIcon>
+      <InputContents onKeyDown={handleKeyPress} onChange={(e) => onChange(e.target.value)} placeholder="Make your todolist" />
+      <CreateButton onClick={handleSubmit}>+</CreateButton>
     </Input>
   )
 }
