@@ -18,5 +18,5 @@ export const colors = {
   cloudBlue_500: '#608fe0',
 
   white: '#ffffff',
-  black: '#000000'
+  black: '#0d0d0d'
 }
