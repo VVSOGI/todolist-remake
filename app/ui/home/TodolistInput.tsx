@@ -5,6 +5,7 @@ import { styles } from '@/app/styles'
 const Input = styled.div`
   width: 100%;
   display: flex;
+  margin-bottom: 12px;
   border: 1px solid ${styles.borderColor.primary};
   border-radius: ${styles.borderRadius.small};
   overflow: hidden;
