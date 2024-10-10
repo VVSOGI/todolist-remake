@@ -1,31 +1,21 @@
-'use client'
+import { Home } from '@/app/ui'
+import { customFetch } from './utils/customFetch'
+import { Category } from './types'
 
-import { useState } from 'react'
-import { styles } from '@/app/styles'
-import { Container, CreateTodolist, Divider, Title, TodolistInput } from '@/app/ui'
+export default async function page() {
+  const response = await customFetch<{ data: Category[] }>('/api/category', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    cache: 'no-cache'
+  })
 
-export default function Home() {
-  const [createValue, setCreateValue] = useState('')
-
-  const handleSubmit = () => {
-    console.log(`${createValue} submit!`)
-  }
-
-  const onChangeCreateValue = (value: string) => {
-    setCreateValue(value)
-  }
+  const { data } = await response.json()
 
   return (
-    <Container
-      style={{
-        backgroundColor: styles.backgroundColor.primary
-      }}
-    >
-      <CreateTodolist>
-        <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
-        <TodolistInput handleSubmit={handleSubmit} onChange={onChangeCreateValue} />
-        <Divider />
-      </CreateTodolist>
-    </Container>
+    <div>
+      <Home data={data} />
+    </div>
   )
 }
