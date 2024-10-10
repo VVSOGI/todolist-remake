@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { styles } from '@/app/styles'
+import { Button } from '@/app/ui'
 
 const Input = styled.div`
   width: 100%;
   display: flex;
+  justify-content: space-between;
   margin-bottom: 12px;
   border: 1px solid ${styles.borderColor.primary};
   border-radius: ${styles.borderRadius.small};
@@ -12,28 +14,10 @@ const Input = styled.div`
 `
 
 const InputContents = styled.input`
-  width: 100%;
-  border: none;
+  flex: 1;
   padding: 12px;
+  border: none;
   outline: none;
-`
-
-const CreateButton = styled.button`
-  width: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${styles.mainColor.secondary};
-  background-color: transparent;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${styles.buttons.hover};
-  }
-
-  &:active {
-    background-color: ${styles.buttons.active};
-  }
 `
 
 interface Props {
@@ -51,7 +35,7 @@ export function TodolistInput({ handleSubmit, onChange }: Props) {
   return (
     <Input>
       <InputContents onKeyDown={handleKeyPress} onChange={(e) => onChange(e.target.value)} placeholder="Make your todolist" />
-      <CreateButton onClick={handleSubmit}>+</CreateButton>
+      <Button onClick={handleSubmit}>Add list</Button>
     </Input>
   )
 }
