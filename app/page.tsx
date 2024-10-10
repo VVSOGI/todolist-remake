@@ -15,7 +15,7 @@ export default async function page() {
 
   return (
     <div>
-      <Home data={data} />
+      <Home categories={data} />
     </div>
   )
 }

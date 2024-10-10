@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { styles } from '@/app/styles'
 import { Container, CreateTodolist, Divider, Title, TodolistInput } from '@/app/ui'
 import { Category } from '@/app/types'
+import CategoryList from './Category'
 
 interface Props {
-  data: Category[]
+  categories: Category[]
 }
 
-export function Home({ data }: Props) {
+export function Home({ categories = [] }: Props) {
   const [createValue, setCreateValue] = useState('')
 
   const handleSubmit = () => {
@@ -18,9 +19,9 @@ export function Home({ data }: Props) {
     setCreateValue(value)
   }
 
-  useEffect(() => {
-    console.log(data)
-  }, [])
+  const onClickCategory = (id: string) => {
+    console.log(id)
+  }
 
   return (
     <Container
@@ -31,7 +32,7 @@ export function Home({ data }: Props) {
       <CreateTodolist>
         <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
         <TodolistInput handleSubmit={handleSubmit} onChange={onChangeCreateValue} />
-        <Divider />
+        <CategoryList categories={categories} onClickCategory={onClickCategory} />
       </CreateTodolist>
     </Container>
   )
