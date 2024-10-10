@@ -1,13 +1,13 @@
-import { mockCategory } from '@/mock/mock'
 import { NextResponse } from 'next/server'
+import { mockCategory } from '@/mock/mock'
+import { GetResponseCategories } from '@/app/types'
 
 export async function GET(req: Request) {
-  return NextResponse.json(
-    {
-      data: mockCategory
-    },
-    {
-      status: 200
-    }
-  )
+  const response: GetResponseCategories = {
+    data: mockCategory
+  }
+
+  return NextResponse.json(response, {
+    status: 200
+  })
 }

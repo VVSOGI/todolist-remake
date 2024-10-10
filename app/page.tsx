@@ -1,9 +1,9 @@
 import { Home } from '@/app/ui'
 import { customFetch } from './utils/customFetch'
-import { Category } from './types'
+import { GetResponseCategories } from './types'
 
 export default async function page() {
-  const response = await customFetch<{ data: Category[] }>('/api/category', {
+  const response = await customFetch<GetResponseCategories>('/api/category', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
