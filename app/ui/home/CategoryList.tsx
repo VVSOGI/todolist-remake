@@ -34,6 +34,7 @@ const ContentsWrapper = styled.div`
 const CategoryTitle = styled.h2`
   font-size: 16px;
   font-weight: 500;
+  color: ${colors.black};
 `
 
 const CategoryTime = styled.div`
@@ -52,7 +53,7 @@ interface Props {
   onClickCategory: (id: string) => void
 }
 
-export default function CategoryList({ categories, onClickCategory }: Props) {
+export function CategoryList({ categories, onClickCategory }: Props) {
   return categories.map((category) => {
     const time = new Date(category.updatedAt.toString()).toLocaleString('ko')
     return (
