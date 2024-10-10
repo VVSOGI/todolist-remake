@@ -1,8 +1,8 @@
 'use client'
 
-import { styles } from '@/app/styles'
-import { Container, CreateTodolist, Title, TodolistInput } from '@/app/ui'
 import { useState } from 'react'
+import { styles } from '@/app/styles'
+import { Container, CreateTodolist, Divider, Title, TodolistInput } from '@/app/ui'
 
 export default function Home() {
   const [createValue, setCreateValue] = useState('')
@@ -24,6 +24,7 @@ export default function Home() {
       <CreateTodolist>
         <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
         <TodolistInput handleSubmit={handleSubmit} onChange={onChangeCreateValue} />
+        <Divider />
       </CreateTodolist>
     </Container>
   )
