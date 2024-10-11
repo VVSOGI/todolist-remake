@@ -1,4 +1,3 @@
-import typia from 'typia';
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 import { TypiaExceptionHandler } from 'src/common';
 import { CreateCategoryValidator } from './validator';
@@ -10,14 +9,11 @@ export interface CreateRequest {
 
 export const ValidateCreateDTO = createParamDecorator(
   (data: unknown, ctx: ExecutionContext) => {
-    const request = ctx.switchToHttp().getRequest<CreateRequest>();
-    const result = new CreateCategoryValidator(request).validate();
-
-    if (typia.is<typia.IValidation.IError>(result)) {
-      const exceptionHandler = new TypiaExceptionHandler(result);
-      return exceptionHandler.handleValidationError();
+    try {
+      const request = ctx.switchToHttp().getRequest<CreateRequest>();
+      return new CreateCategoryValidator(request).validate();
+    } catch (err) {
+      new TypiaExceptionHandler(err.response).handleValidationError();
     }
-
-    return result;
   },
 );
