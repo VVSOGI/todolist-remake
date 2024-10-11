@@ -1,7 +1,8 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Category } from '@/app/types'
 import { colors, styles } from '@/app/styles'
-import styled from 'styled-components'
+import { D2CodingBold } from '@/app/fonts'
 
 const CategoryWrapper = styled.button`
   width: 100%;
@@ -16,6 +17,10 @@ const CategoryWrapper = styled.button`
 
   &:hover {
     background-color: ${styles.buttons.hover};
+
+    h2 {
+      color: ${colors.black};
+    }
   }
 
   &:active {
@@ -29,12 +34,13 @@ const ContentsWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 8px;
+  user-select: none;
 `
 
 const CategoryTitle = styled.h2`
   font-size: 16px;
   font-weight: 500;
-  color: ${colors.black};
+  color: ${colors.gray_400};
 `
 
 const CategoryTime = styled.div`
@@ -50,16 +56,19 @@ const CategoryTime = styled.div`
 
 interface Props {
   categories: Category[]
-  onClickCategory: (id: string) => void
 }
 
-export function CategoryList({ categories, onClickCategory }: Props) {
+export function CategoryList({ categories }: Props) {
+  const onClickCategory = (id: string) => {
+    console.log(id)
+  }
+
   return categories.map((category) => {
     const time = new Date(category.updatedAt.toString()).toLocaleString('ko')
     return (
       <CategoryWrapper key={category.id} onClick={() => onClickCategory(category.id)}>
         <ContentsWrapper>
-          <CategoryTitle>{category.title}</CategoryTitle>
+          <CategoryTitle className={D2CodingBold.className}>{category.title}</CategoryTitle>
           <CategoryTime>
             <p>최종 수정일</p>
             <span>{time}</span>

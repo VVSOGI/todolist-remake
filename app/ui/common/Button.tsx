@@ -13,6 +13,7 @@ const StyledButton = styled.button`
   color: ${colors.white};
   font-weight: 700;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     background-color: ${colors.red_500};

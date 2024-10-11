@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { styles } from '@/app/styles'
+import { D2CodingBold } from '@/app/fonts'
 
 const Paragraph = styled.h1`
   width: 100%;
@@ -14,5 +15,5 @@ interface Props {
 }
 
 export function Title({ children }: Props) {
-  return <Paragraph>{children}</Paragraph>
+  return <Paragraph className={D2CodingBold.className}>{children}</Paragraph>
 }
