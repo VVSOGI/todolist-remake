@@ -7,6 +7,16 @@ export async function GET(req: Request) {
     data: mockCategory
   }
 
+  return await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(
+        NextResponse.json(response, {
+          status: 200
+        })
+      )
+    }, 2000)
+  })
+
   return NextResponse.json(response, {
     status: 200
   })
