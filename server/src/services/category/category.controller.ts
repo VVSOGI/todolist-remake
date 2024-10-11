@@ -1,12 +1,21 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CategoryService } from './category.service';
-import { GetCategoriesResponseType } from './types';
+import { CreateCategoryDto, GetCategoriesResponseType } from './types';
+import { ValidateCreateDTO } from './decorator';
+import { Category } from 'src/entities';
 
 @ApiTags('Category')
 @Controller('category')
 export class CategoryController {
   constructor(private categoryService: CategoryService) {}
+
+  @Post()
+  async createCategory(
+    @ValidateCreateDTO() createCategoryDto: CreateCategoryDto,
+  ): Promise<Category> {
+    return this.categoryService.createCategory(createCategoryDto);
+  }
 
   @Get()
   async getCategories(): Promise<GetCategoriesResponseType> {
