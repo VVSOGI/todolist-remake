@@ -48,7 +48,7 @@ export class TypiaExceptionHandler {
     }
 
     Logger.error(this.error);
-    Logger.error(`Not acceptable error [NOT ACCEPTABLE ERROR] [Create Board]`);
+    Logger.error(`Not acceptable error [NOT ACCEPTABLE ERROR]`);
     throw new NotAcceptableException();
   }
 }
