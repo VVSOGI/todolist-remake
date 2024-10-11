@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
-import { Config } from './config/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Config } from 'src/config';
+import { CategoryModule } from 'src/services';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: false,
       logging: false,
     }),
+    CategoryModule,
   ],
   controllers: [],
   providers: [],
