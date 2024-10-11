@@ -1,9 +1,9 @@
 import { Controller, Get, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { Category } from 'src/entities';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto, GetCategoriesResponseType } from './types';
 import { ValidateCreateDTO } from './decorator';
-import { Category } from 'src/entities';
 
 @ApiTags('Category')
 @Controller('category')
