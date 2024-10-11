@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { styles } from '@/app/styles'
 import { Button } from '@/app/ui'
 
 const Input = styled.div`
   width: 100%;
+  height: 40px;
+  min-height: 40px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 12px;
@@ -20,12 +22,17 @@ const InputContents = styled.input`
   outline: none;
 `
 
-interface Props {
-  handleSubmit: () => void
-  onChange: (value: string) => void
-}
+export function TodolistInput() {
+  const [createValue, setCreateValue] = useState('')
 
-export function TodolistInput({ handleSubmit, onChange }: Props) {
+  const handleSubmit = () => {
+    console.log(`${createValue} submit!`)
+  }
+
+  const onChangeCreateValue = (value: string) => {
+    setCreateValue(value)
+  }
+
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSubmit()
@@ -34,8 +41,8 @@ export function TodolistInput({ handleSubmit, onChange }: Props) {
 
   return (
     <Input>
-      <InputContents onKeyDown={handleKeyPress} onChange={(e) => onChange(e.target.value)} placeholder="Make your todolist" />
-      <Button onClick={handleSubmit}>Add list</Button>
+      <InputContents onKeyDown={handleKeyPress} onChange={(e) => onChangeCreateValue(e.target.value)} placeholder="Make your todolist" />
+      <Button onClick={handleSubmit}>+</Button>
     </Input>
   )
 }
