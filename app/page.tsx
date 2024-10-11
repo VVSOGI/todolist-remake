@@ -1,21 +1,24 @@
-import { Home } from '@/app/ui'
-import { customFetch } from './utils/customFetch'
-import { GetResponseCategories } from './types'
+import { CategoryList, Container, CreateTodolist, Title, TodolistInput } from '@/app/ui'
+import { getCategoryList } from '@/app/utils/getCategoryList'
+import { styles } from '@/app/styles'
 
 export default async function page() {
-  const response = await customFetch<GetResponseCategories>('/api/category', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    cache: 'no-cache'
-  })
-
-  const { data } = await response.json()
+  const { data } = await getCategoryList()
 
   return (
-    <div>
-      <Home categories={data} />
-    </div>
+    <Container
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: styles.backgroundColor.primary
+      }}
+    >
+      <CreateTodolist>
+        <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
+        <TodolistInput />
+        <div>{data && <CategoryList categories={data} />}</div>
+      </CreateTodolist>
+    </Container>
   )
 }
