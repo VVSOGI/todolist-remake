@@ -45,8 +45,6 @@ describe('CategoryModule', () => {
         },
       ];
 
-      // uuid가 아니어도 성공 수정 필요
-
       jest.spyOn(service, 'getCategories').mockResolvedValue({
         data: mockCategories,
         total: mockCategories.length,
