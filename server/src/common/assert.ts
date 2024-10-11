@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Logger,
   NotAcceptableException,
+  NotFoundException,
 } from '@nestjs/common';
 import typia from 'typia';
 
@@ -36,7 +37,7 @@ export class TypiaExceptionHandler {
     }
 
     if (this.isMissingData(expected, value)) {
-      throw new BadRequestException(
+      throw new NotFoundException(
         `Received unexpected data '${cleanPath}' [MISSING DATA ERROR]`,
       );
     }
