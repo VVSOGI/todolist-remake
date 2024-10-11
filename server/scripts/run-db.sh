@@ -13,19 +13,21 @@ fi
 if [ "$INIT_DB" = true ]; then
   docker run \
     --name $DB_CONTAINER_NAME \
-    --network sniff-step \
+    --network todolist \
     -e POSTGRES_PASSWORD=$DB_PASSWORD \
     -e POSTGRES_USER=$DB_USERNAME \
     -e POSTGRES_DB=$DB_DATABASE \
+    -p 5432:5432 \
     -v $DB_VOLUME_NAME:/var/lib/postgresql/data \
     -d postgres
 else
   docker run \
     --name $DB_CONTAINER_NAME \
-    --network sniff-step \
+    --network todolist \
     -e POSTGRES_PASSWORD=$DB_PASSWORD \
     -e POSTGRES_USER=$DB_USERNAME \
     -e POSTGRES_DB=$DB_DATABASE \
+    -p 5432:5432 \
     -v $DB_VOLUME_NAME:/var/lib/postgresql/data \
     -d postgres
 fi
