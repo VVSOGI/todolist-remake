@@ -5,6 +5,7 @@ import { DataSource } from 'typeorm';
 import * as fs from 'fs';
 import * as path from 'path';
 import { Config } from 'src/config/config';
+import { Category } from 'src/entities/category.entity';
 
 config({
   path: __dirname + '/../../.env',
@@ -26,7 +27,7 @@ export const dataSource = new DataSource({
   port: Number(Config.db.port),
   password: Config.db.password,
   username: Config.db.username,
-  entities: [],
+  entities: [Category],
   database: Config.db.database,
   logging: true,
   migrations,
