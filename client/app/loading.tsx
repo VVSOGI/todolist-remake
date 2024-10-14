@@ -1,4 +1,4 @@
-import { Container, CreateTodolist, Title, TodolistInput } from '@/app/ui'
+import { Container, CreateCategory, Title, CategoryInput } from '@/app/ui'
 import { styles } from '@/app/styles'
 import { Skeleton } from '@/app/ui/common/Skeleton'
 
@@ -12,9 +12,9 @@ export default function loading() {
         backgroundColor: styles.backgroundColor.primary
       }}
     >
-      <CreateTodolist>
+      <CreateCategory>
         <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
-        <TodolistInput />
+        <CategoryInput />
         <div
           style={{
             width: '100%',
@@ -30,7 +30,7 @@ export default function loading() {
           <Skeleton />
           <Skeleton />
         </div>
-      </CreateTodolist>
+      </CreateCategory>
     </Container>
   )
 }
