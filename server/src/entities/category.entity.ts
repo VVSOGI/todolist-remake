@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm'
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm'
+import { Todolist } from './todolist.entity'
 
 @Entity()
 export class Category {
@@ -13,4 +14,7 @@ export class Category {
 
   @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date
+
+  @OneToMany(() => Todolist, (todolist) => todolist.category)
+  todolist: Todolist
 }
