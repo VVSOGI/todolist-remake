@@ -16,5 +16,5 @@ export class Category {
   updatedAt: Date
 
   @OneToMany(() => Todolist, (todolist) => todolist.category)
-  todolist: Todolist
+  todolist: Todolist[]
 }
