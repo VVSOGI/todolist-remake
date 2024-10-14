@@ -24,7 +24,7 @@ const InputContents = styled.input`
   outline: none;
 `
 
-export function TodolistInput() {
+export function CategoryInput() {
   const [createValue, setCreateValue] = useState('')
   const router = useRouter()
 

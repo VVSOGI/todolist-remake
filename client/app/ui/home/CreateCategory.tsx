@@ -17,6 +17,6 @@ interface Props {
   children: React.ReactNode
 }
 
-export function CreateTodolist({ children }: Props) {
+export function CreateCategory({ children }: Props) {
   return <Main>{children}</Main>
 }
