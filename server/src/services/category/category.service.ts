@@ -1,7 +1,7 @@
 import { v4 } from 'uuid'
 import { Injectable } from '@nestjs/common'
 import { CategoryRepository } from './category.repository'
-import { CreateCategoryDto } from './types'
+import { CreateCategory, CreateCategoryDto } from './types'
 
 @Injectable()
 export class CategoryService {
@@ -12,7 +12,7 @@ export class CategoryService {
   }
 
   async createCategory(createCategoryDto: CreateCategoryDto) {
-    const category = {
+    const category: CreateCategory = {
       id: v4(),
       createdAt: new Date(),
       updatedAt: new Date(),
