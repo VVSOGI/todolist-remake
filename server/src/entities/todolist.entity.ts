@@ -10,6 +10,9 @@ export class Todolist {
   @JoinColumn({ name: 'categoryId' })
   category: Category
 
+  @Column({ type: 'uuid', length: 255 })
+  categoryId: string
+
   @Column({ type: 'varchar', length: 255 })
   title: string
 
