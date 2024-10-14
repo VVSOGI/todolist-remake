@@ -1,4 +1,4 @@
-import { CategoryList, Container, CreateTodolist, Title, TodolistInput } from '@/app/ui'
+import { CategoryList, Container, CreateCategory, Title, CategoryInput } from '@/app/ui'
 import { getCategoryList } from '@/app/utils/getCategoryList'
 import { styles } from '@/app/styles'
 
@@ -14,11 +14,11 @@ export default async function page() {
         backgroundColor: styles.backgroundColor.primary
       }}
     >
-      <CreateTodolist>
+      <CreateCategory>
         <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
-        <TodolistInput />
+        <CategoryInput />
         <div>{data && <CategoryList categories={data} />}</div>
-      </CreateTodolist>
+      </CreateCategory>
     </Container>
   )
 }
