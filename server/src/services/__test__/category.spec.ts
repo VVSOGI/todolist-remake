@@ -4,6 +4,7 @@ import { TypiaAssertError, TypiaExceptionHandler } from 'src/common'
 import { Category } from 'src/entities/category.entity'
 import { CategoryController, CategoryService } from '../category'
 import { CreateCategoryValidator } from '../category/decorator'
+import { CreateCategory } from '../category/types'
 
 describe('CategoryModule', () => {
   let controller: CategoryController
@@ -32,7 +33,7 @@ describe('CategoryModule', () => {
 
   describe('getCategories', () => {
     it('should return Category type array', async () => {
-      const mockCategories: Category[] = [
+      const mockCategories: CreateCategory[] = [
         {
           id: '1',
           title: 'Test Category 1',
@@ -47,9 +48,14 @@ describe('CategoryModule', () => {
         }
       ]
 
+      const convertedCategories: Category[] = mockCategories.map((category) => ({
+        ...category,
+        todolist: []
+      }))
+
       jest.spyOn(service, 'getCategories').mockResolvedValue({
-        data: mockCategories,
-        total: mockCategories.length
+        data: convertedCategories,
+        total: convertedCategories.length
       })
 
       const result = (await controller.getCategories()).data
