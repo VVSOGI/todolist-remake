@@ -27,4 +27,12 @@ export class TodolistRepository {
     const created = this.todolistRepository.create(todolist)
     return await this.todolistRepository.save(created)
   }
+
+  async findById(categoryId: string) {
+    const [data, total] = await this.todolistRepository.findAndCount({ where: { categoryId }, order: { createdAt: 'DESC' } })
+    return {
+      data,
+      total
+    }
+  }
 }

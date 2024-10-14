@@ -20,4 +20,8 @@ export class TodolistService {
   async getTodolists() {
     return this.todolistRepository.findAll()
   }
+
+  async getTodolistsByCategoryId(categoryId: string) {
+    return this.todolistRepository.findById(categoryId)
+  }
 }

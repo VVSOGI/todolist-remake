@@ -1,7 +1,7 @@
-import { Controller, Get, Post } from '@nestjs/common'
+import { Controller, Get, Param, Post } from '@nestjs/common'
+import { Todolist } from 'src/entities'
 import { TodolistService } from './todolist.service'
 import { CreateTodolistDto, GetTodolistsResponseType } from './types'
-import { Todolist } from 'src/entities'
 import { ValidateCreateTodolistDTO } from './decorator'
 
 @Controller('todolist')
@@ -16,5 +16,10 @@ export class TodolistController {
   @Get()
   async getTodolists(): Promise<GetTodolistsResponseType> {
     return this.todolistService.getTodolists()
+  }
+
+  @Get(':categoryId')
+  async getTodolistsByCategoryId(@Param('categoryId') categoryId: string): Promise<GetTodolistsResponseType> {
+    return this.todolistService.getTodolistsByCategoryId(categoryId)
   }
 }
