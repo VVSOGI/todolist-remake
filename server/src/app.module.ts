@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { Config } from 'src/config'
 import { CategoryModule } from 'src/services'
+import { TodolistModule } from './services/todolist/todolist.module'
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { CategoryModule } from 'src/services'
       synchronize: false,
       logging: false
     }),
-    CategoryModule
+    CategoryModule,
+    TodolistModule
   ],
   controllers: [],
   providers: []
