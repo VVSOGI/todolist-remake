@@ -42,7 +42,7 @@ describe('CategoryModule', () => {
         {
           id: '2',
           category: new Category(),
-          categoryId: '2',
+          categoryId: '1',
           title: 'mock todolist title 2',
           description: 'mock todolist description 2',
           createdAt: new Date(),
