@@ -1,35 +1,35 @@
-import { exit } from 'process';
+import { exit } from 'process'
 
 export function getString(key: string): string {
-  const value = process.env[key];
+  const value = process.env[key]
 
   if (!value) {
-    console.log(`${key} has not been configured.`);
-    exit(1);
+    console.log(`${key} has not been configured.`)
+    exit(1)
   }
 
-  return value;
+  return value
 }
 
 export function getNumber(key: string): number {
-  const value = getString(key);
+  const value = getString(key)
 
-  const number = parseInt(value);
+  const number = parseInt(value)
 
   if (isNaN(number)) {
-    console.log(`${key}  not number`);
-    exit(1);
+    console.log(`${key}  not number`)
+    exit(1)
   }
 
-  return number;
+  return number
 }
 
 export function getBoolean(key: string): boolean {
-  const value = getString(key);
+  const value = getString(key)
 
-  if (value.toLowerCase() === 'true') return true;
-  if (value.toLowerCase() === 'false') return false;
+  if (value.toLowerCase() === 'true') return true
+  if (value.toLowerCase() === 'false') return false
 
-  console.log(`${key}  not boolean`);
-  exit(1);
+  console.log(`${key}  not boolean`)
+  exit(1)
 }

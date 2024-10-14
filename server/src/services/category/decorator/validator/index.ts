@@ -1,1 +1,1 @@
-export * from './createCategory.validator';
+export * from './createCategory.validator'

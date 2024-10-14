@@ -1,7 +1,7 @@
-import typia from 'typia';
+import typia from 'typia'
 
 export interface TypiaAssertError {
-  response: typia.IValidation.IError;
-  status: number;
-  options: any;
+  response: typia.IValidation.IError
+  status: number
+  options: any
 }

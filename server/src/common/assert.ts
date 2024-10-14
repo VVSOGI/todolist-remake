@@ -1,55 +1,44 @@
-import {
-  BadRequestException,
-  Logger,
-  NotAcceptableException,
-  NotFoundException,
-} from '@nestjs/common';
-import typia from 'typia';
+import { BadRequestException, Logger, NotAcceptableException, NotFoundException } from '@nestjs/common'
+import typia from 'typia'
 
 export class TypiaExceptionHandler {
-  private readonly pattern = /\$input\./g;
-  private readonly error: typia.IValidation.IError;
+  private readonly pattern = /\$input\./g
+  private readonly error: typia.IValidation.IError
 
   constructor(error: typia.IValidation.IError) {
-    this.error = error;
+    this.error = error
   }
 
   private isNonDtoType(expected: any): boolean {
-    return expected === 'undefined';
+    return expected === 'undefined'
   }
 
   private isMissingData(expected: any, value: any): boolean {
-    return expected && !value;
+    return expected && !value
   }
 
   private isInvalidDataType(expected: any, value: any): boolean {
-    return typeof expected !== typeof value;
+    return typeof expected !== typeof value
   }
 
   handleValidationError(): never {
-    const { expected, value, path } = this.error;
-    const cleanPath = path.replace(this.pattern, '');
+    const { expected, value, path } = this.error
+    const cleanPath = path.replace(this.pattern, '')
 
     if (this.isNonDtoType(expected)) {
-      throw new BadRequestException(
-        `Received unexpected data '${cleanPath}' [WRONG DATA SENT ERROR]`,
-      );
+      throw new BadRequestException(`Received unexpected data '${cleanPath}' [WRONG DATA SENT ERROR]`)
     }
 
     if (this.isMissingData(expected, value)) {
-      throw new NotFoundException(
-        `Received unexpected data '${cleanPath}' [MISSING DATA ERROR]`,
-      );
+      throw new NotFoundException(`Received unexpected data '${cleanPath}' [MISSING DATA ERROR]`)
     }
 
     if (this.isInvalidDataType(expected, value)) {
-      throw new BadRequestException(
-        `Received unexpected data '${cleanPath}' [INVALID TYPE ERROR]`,
-      );
+      throw new BadRequestException(`Received unexpected data '${cleanPath}' [INVALID TYPE ERROR]`)
     }
 
-    Logger.error(this.error);
-    Logger.error(`Not acceptable error [NOT ACCEPTABLE ERROR]`);
-    throw new NotAcceptableException();
+    Logger.error(this.error)
+    Logger.error(`Not acceptable error [NOT ACCEPTABLE ERROR]`)
+    throw new NotAcceptableException()
   }
 }

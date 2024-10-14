@@ -1,7 +1,7 @@
-import * as dotenv from 'dotenv';
-import { getNumber, getString } from 'src/utils';
+import * as dotenv from 'dotenv'
+import { getNumber, getString } from 'src/utils'
 
-dotenv.config({ path: '.env' });
+dotenv.config({ path: '.env' })
 
 export const Config = {
   db: {
@@ -9,6 +9,6 @@ export const Config = {
     port: getNumber('DB_PORT'),
     username: getString('DB_USERNAME'),
     password: getString('DB_PASSWORD'),
-    database: getString('DB_DATABASE'),
-  },
-};
+    database: getString('DB_DATABASE')
+  }
+}

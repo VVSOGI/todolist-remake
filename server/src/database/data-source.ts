@@ -1,25 +1,23 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-import { config } from 'dotenv';
-import { DataSource } from 'typeorm';
-import * as fs from 'fs';
-import * as path from 'path';
-import { Config } from 'src/config/config';
-import { Category } from 'src/entities/category.entity';
+import { config } from 'dotenv'
+import { DataSource } from 'typeorm'
+import * as fs from 'fs'
+import * as path from 'path'
+import { Config } from 'src/config/config'
+import { Category } from 'src/entities/category.entity'
 
 config({
-  path: __dirname + '/../../.env',
-});
+  path: __dirname + '/../../.env'
+})
 
-const migrationDirectory = path.join(__dirname, 'migration');
-const migrationFiles = fs
-  .readdirSync(migrationDirectory)
-  .filter((file) => file.endsWith('.js'));
+const migrationDirectory = path.join(__dirname, 'migration')
+const migrationFiles = fs.readdirSync(migrationDirectory).filter((file) => file.endsWith('.js'))
 
 const migrations = migrationFiles.map((file) => {
-  const requiredModule = require(path.join(migrationDirectory, file));
-  return requiredModule[Object.keys(requiredModule)[0]];
-});
+  const requiredModule = require(path.join(migrationDirectory, file))
+  return requiredModule[Object.keys(requiredModule)[0]]
+})
 
 export const dataSource = new DataSource({
   type: 'postgres',
@@ -30,5 +28,5 @@ export const dataSource = new DataSource({
   entities: [Category],
   database: Config.db.database,
   logging: true,
-  migrations,
-});
+  migrations
+})

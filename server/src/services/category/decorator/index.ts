@@ -1,2 +1,2 @@
-export * from './createCategory.decorator';
-export * from './validator';
+export * from './createCategory.decorator'
+export * from './validator'
