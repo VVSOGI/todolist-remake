@@ -62,7 +62,17 @@ describe('CategoryModule', () => {
       expect(second.id).toBe('2')
     })
 
-    it('should return empty array', async () => {})
+    it('should return empty array', async () => {
+      const mockTodolist: Todolist[] = []
+
+      jest.spyOn(service, 'getTodolists').mockResolvedValue({
+        data: mockTodolist,
+        total: mockTodolist.length
+      })
+
+      const result = (await controller.getTodolists()).total
+      expect(result).toBe(0)
+    })
   })
 
   describe('createTodolist', () => {
