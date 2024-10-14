@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
 import { styles } from '@/app/styles'
 import { Button } from '@/app/ui'
+import { customFetch } from '@/app/utils/customFetch'
 
 const Input = styled.div`
   width: 100%;
@@ -24,9 +26,16 @@ const InputContents = styled.input`
 
 export function TodolistInput() {
   const [createValue, setCreateValue] = useState('')
+  const router = useRouter()
 
-  const handleSubmit = () => {
-    console.log(`${createValue} submit!`)
+  const handleSubmit = async () => {
+    await customFetch('/api/category', {
+      method: 'POST',
+      body: JSON.stringify({
+        title: createValue
+      })
+    })
+    router.refresh()
   }
 
   const onChangeCreateValue = (value: string) => {
