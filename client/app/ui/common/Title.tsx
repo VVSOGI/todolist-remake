@@ -12,8 +12,13 @@ const Paragraph = styled.h1`
 
 interface Props {
   children: React.ReactNode
+  styles?: React.CSSProperties
 }
 
-export function Title({ children }: Props) {
-  return <Paragraph className={D2CodingBold.className}>{children}</Paragraph>
+export function Title({ children, styles }: Props) {
+  return (
+    <Paragraph className={D2CodingBold.className} style={styles}>
+      {children}
+    </Paragraph>
+  )
 }
