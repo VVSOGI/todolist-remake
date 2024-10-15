@@ -1,5 +1,5 @@
 import { CategoryList, Container, CreateCategory, Title, CategoryInput } from '@/app/ui'
-import { getCategoryList } from '@/app/utils/getCategoryList'
+import { getCategoryList } from '@/app/utils'
 import { styles } from '@/app/styles'
 
 export default async function page() {
