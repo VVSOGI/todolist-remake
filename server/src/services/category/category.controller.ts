@@ -2,10 +2,8 @@ import { Controller, Get, Post } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { Category } from 'src/entities'
 import { CategoryService } from './category.service'
-import { CreateCategoryDto, GetCategoriesResponseType } from './types'
-import { ValidateCreateDTO } from './decorator'
-import { ValidateIdParamDTO } from './decorator/validateIdParam.decorator'
-import { GetCategoryDto } from './types/get.type'
+import { CreateCategoryDto, GetCategoriesResponseType, GetCategoryDto } from './types'
+import { ValidateCreateDTO, ValidateIdParamDTO } from './decorator'
 
 @ApiTags('Category')
 @Controller('category')
