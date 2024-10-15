@@ -17,6 +17,6 @@ interface Props {
   children: React.ReactNode
 }
 
-export function CreateCategory({ children }: Props) {
+export function CategoryMain({ children }: Props) {
   return <Main>{children}</Main>
 }
