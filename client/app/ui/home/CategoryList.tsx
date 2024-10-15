@@ -4,7 +4,19 @@ import { Category } from '@/app/types'
 import { colors, styles } from '@/app/styles'
 import { D2CodingBold } from '@/app/fonts'
 
-const CategoryWrapper = styled.button`
+const CategoryWrapper = styled.div`
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #ccc;
+  }
+`
+
+const CategoryButton = styled.button`
   width: 100%;
   height: 48px;
   display: flex;
@@ -63,18 +75,22 @@ export function CategoryList({ categories }: Props) {
     console.log(id)
   }
 
-  return categories.map((category) => {
-    const time = new Date(category.updatedAt.toString()).toLocaleString('ko')
-    return (
-      <CategoryWrapper key={category.id} onClick={() => onClickCategory(category.id)}>
-        <ContentsWrapper>
-          <CategoryTitle className={D2CodingBold.className}>{category.title}</CategoryTitle>
-          <CategoryTime>
-            <p>최종 수정일</p>
-            <span>{time}</span>
-          </CategoryTime>
-        </ContentsWrapper>
-      </CategoryWrapper>
-    )
-  })
+  return (
+    <CategoryWrapper>
+      {categories.map((category) => {
+        const time = new Date(category.updatedAt.toString()).toLocaleString('ko')
+        return (
+          <CategoryButton key={category.id} onClick={() => onClickCategory(category.id)}>
+            <ContentsWrapper>
+              <CategoryTitle className={D2CodingBold.className}>{category.title}</CategoryTitle>
+              <CategoryTime>
+                <p>최종 수정일</p>
+                <span>{time}</span>
+              </CategoryTime>
+            </ContentsWrapper>
+          </CategoryButton>
+        )
+      })}
+    </CategoryWrapper>
+  )
 }

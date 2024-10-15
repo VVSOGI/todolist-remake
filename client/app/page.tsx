@@ -17,7 +17,7 @@ export default async function page() {
       <CreateCategory>
         <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
         <CategoryInput />
-        <div>{data && <CategoryList categories={data} />}</div>
+        {data && <CategoryList categories={data} />}
       </CreateCategory>
     </Container>
   )
