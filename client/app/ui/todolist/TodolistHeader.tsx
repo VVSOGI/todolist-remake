@@ -51,7 +51,7 @@ export function TodolistHeader({ category }: Props) {
   return (
     <Header>
       <div>
-        <Title style={{ margin: 0 }}>{category.title}</Title>
+        <Title style={{ margin: 0, fontSize: '24px' }}>{category.title.toUpperCase()}</Title>
         <Time>{changeToLocaleTime(category.updatedAt)}</Time>
       </div>
       <BeforeButton onClick={moveBackPage}>X</BeforeButton>

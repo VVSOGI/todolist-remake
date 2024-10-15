@@ -7,7 +7,7 @@ export const styles = {
   },
 
   backgroundColor: {
-    primary: colors.cloudBlue_300,
+    primary: colors.cloudBlue_200,
     default: colors.white
   },
 
