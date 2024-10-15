@@ -4,6 +4,7 @@ import { Category } from '@/app/types'
 import { colors, styles } from '@/app/styles'
 import { D2CodingBold } from '@/app/fonts'
 import { useRouter } from 'next/navigation'
+import { changeToLocaleTime } from '@/app/utils/time'
 
 const CategoryWrapper = styled.div`
   overflow-y: scroll;
@@ -81,14 +82,13 @@ export function CategoryList({ categories }: Props) {
   return (
     <CategoryWrapper>
       {categories.map((category) => {
-        const time = new Date(category.updatedAt.toString()).toLocaleString('ko')
         return (
           <CategoryButton key={category.id} onClick={() => onClickCategory(category.id)}>
             <ContentsWrapper>
               <CategoryTitle className={D2CodingBold.className}>{category.title}</CategoryTitle>
               <CategoryTime>
                 <p>최종 수정일</p>
-                <span>{time}</span>
+                <span>{changeToLocaleTime(category.updatedAt)}</span>
               </CategoryTime>
             </ContentsWrapper>
           </CategoryButton>
