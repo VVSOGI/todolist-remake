@@ -1,6 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { TodolistController, TodolistService } from '../todolist'
 import { Category, Todolist } from 'src/entities'
+import { TypiaAssertError, TypiaExceptionHandler } from 'src/common'
+import { CreateTodolistValidator } from '../todolist/decorator'
+import { BadRequestException, NotFoundException } from '@nestjs/common'
 
 describe('CategoryModule', () => {
   let controller: TodolistController
@@ -76,6 +79,54 @@ describe('CategoryModule', () => {
   })
 
   describe('createTodolist', () => {
-    it('should throw error when sent wrong data', async () => {})
+    it('should throw error when sent wrong data', async () => {
+      let typiaError: TypiaAssertError | undefined
+      const request = {
+        body: {
+          title: 'test title',
+          description: 'test description',
+          categoryId: '1',
+          hack: 'hack'
+        }
+      }
+
+      try {
+        new CreateTodolistValidator(request).validate()
+      } catch (err) {
+        typiaError = err
+      }
+
+      if (!typiaError) return
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
+      }
+    })
+
+    it('should throw error when forget sent essential data', async () => {
+      let typiaError: TypiaAssertError | undefined
+      const request = {
+        body: {
+          title: 'test title',
+          description: 'test description'
+        }
+      }
+
+      try {
+        new CreateTodolistValidator(request).validate()
+      } catch (err) {
+        typiaError = err
+      }
+
+      if (!typiaError) return
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundException)
+        expect(err.response.message).toBe(`Received unexpected data 'categoryId' [MISSING DATA ERROR]`)
+      }
+    })
   })
 })
