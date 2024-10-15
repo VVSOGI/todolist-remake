@@ -7,7 +7,6 @@ const Main = styled.main`
   height: 480px;
   display: flex;
   flex-direction: column;
-  padding: 24px;
   border-radius: ${styles.borderRadius.medium};
   background-color: ${styles.backgroundColor.default};
   box-shadow: ${styles.boxShadow.primary};
