@@ -9,15 +9,15 @@ const StyledInput = styled.input`
 `
 
 interface Props {
-  handleSubmit: (value: string) => void
-  changeValue: (value: string) => void
   value: string
   placeholder?: string
   buttonContents?: string
   style?: React.CSSProperties
+  handleSubmit: (value: string) => void
+  changeValue: (value: string) => void
 }
 
-export function Input({ handleSubmit, changeValue, value, placeholder = 'Make your todolist', style }: Props) {
+export function Input({ value, placeholder = 'Make your todolist', style, handleSubmit, changeValue }: Props) {
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSubmit(value)
