@@ -1,4 +1,4 @@
-import { Container, CategoryMain, Title, CategoryInput } from '@/app/ui'
+import { Container, CategorySection, Title, CreateCategory } from '@/app/ui'
 import { styles } from '@/app/styles'
 import { Skeleton } from '@/app/ui/common/Skeleton'
 
@@ -12,9 +12,9 @@ export default function loading() {
         backgroundColor: styles.backgroundColor.primary
       }}
     >
-      <CategoryMain>
+      <CategorySection>
         <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
-        <CategoryInput />
+        <CreateCategory />
         <div
           style={{
             width: '100%',
@@ -30,7 +30,7 @@ export default function loading() {
           <Skeleton />
           <Skeleton />
         </div>
-      </CategoryMain>
+      </CategorySection>
     </Container>
   )
 }

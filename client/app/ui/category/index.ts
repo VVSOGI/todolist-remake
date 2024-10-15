@@ -1,3 +1,3 @@
-export * from './CategoryMain'
-export * from './CategoryInput'
+export * from './CategorySection'
+export * from './CreateCategory'
 export * from './CategoryList'

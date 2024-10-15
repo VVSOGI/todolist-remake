@@ -1,0 +1,28 @@
+import React from 'react'
+import styled from 'styled-components'
+
+const StyledInput = styled.input`
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+`
+
+interface Props {
+  handleSubmit: (value: string) => void
+  changeValue: (value: string) => void
+  value: string
+  placeholder?: string
+  buttonContents?: string
+  style?: React.CSSProperties
+}
+
+export function Input({ handleSubmit, changeValue, value, placeholder = 'Make your todolist', style }: Props) {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSubmit(value)
+    }
+  }
+
+  return <StyledInput onKeyDown={handleKeyPress} onChange={(e) => changeValue(e.target.value)} placeholder={placeholder} style={style} />
+}

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { styles } from '@/app/styles'
 
 const Main = styled.main`
+  position: relative;
   width: 970px;
   height: 480px;
   display: flex;

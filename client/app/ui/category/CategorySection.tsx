@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { styles } from '@/app/styles'
 
-const Main = styled.main`
+const Main = styled.section`
   width: 720px;
   height: 480px;
   display: flex;
@@ -17,6 +17,6 @@ interface Props {
   children: React.ReactNode
 }
 
-export function CategoryMain({ children }: Props) {
+export function CategorySection({ children }: Props) {
   return <Main>{children}</Main>
 }
