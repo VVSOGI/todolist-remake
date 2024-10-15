@@ -1,15 +1,11 @@
 import { v4 } from 'uuid'
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { CategoryRepository } from './category.repository'
 import { CreateCategory, CreateCategoryDto } from './types'
 
 @Injectable()
 export class CategoryService {
   constructor(private categoryRepository: CategoryRepository) {}
-
-  async getCategories() {
-    return await this.categoryRepository.findAll()
-  }
 
   async createCategory(createCategoryDto: CreateCategoryDto) {
     const category: CreateCategory = {
@@ -19,6 +15,19 @@ export class CategoryService {
       ...createCategoryDto
     }
 
-    return await this.categoryRepository.create(category)
+    return this.categoryRepository.create(category)
+  }
+
+  async getCategories() {
+    return this.categoryRepository.findAll()
+  }
+
+  async getCategoryById(categoryId: string) {
+    const category = await this.categoryRepository.findById(categoryId)
+    if (category) {
+      return category
+    }
+
+    throw new NotFoundException('There are no applicable categories.')
   }
 }

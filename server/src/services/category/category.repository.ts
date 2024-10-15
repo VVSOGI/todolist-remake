@@ -11,6 +11,11 @@ export class CategoryRepository {
     private categoryRepository: Repository<Category>
   ) {}
 
+  async create(category: CreateCategory) {
+    const created = this.categoryRepository.create(category)
+    return await this.categoryRepository.save(created)
+  }
+
   async findAll() {
     const [data, total] = await this.categoryRepository.findAndCount({
       order: {
@@ -23,8 +28,8 @@ export class CategoryRepository {
     }
   }
 
-  async create(category: CreateCategory) {
-    const created = this.categoryRepository.create(category)
-    return await this.categoryRepository.save(created)
+  async findById(categoryId: string) {
+    const category = await this.categoryRepository.findOneBy({ id: categoryId })
+    return category
   }
 }
