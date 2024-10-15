@@ -22,6 +22,6 @@ export class TodolistService {
   }
 
   async getTodolistsByCategoryId(categoryId: string) {
-    return this.todolistRepository.findById(categoryId)
+    return this.todolistRepository.findByCategoryId(categoryId)
   }
 }
