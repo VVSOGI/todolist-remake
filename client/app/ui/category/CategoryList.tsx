@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Category } from '@/app/types'
 import { colors, styles } from '@/app/styles'
 import { D2CodingBold } from '@/app/fonts'
+import { useRouter } from 'next/navigation'
 
 const CategoryWrapper = styled.div`
   overflow-y: scroll;
@@ -71,8 +72,10 @@ interface Props {
 }
 
 export function CategoryList({ categories }: Props) {
+  const router = useRouter()
+
   const onClickCategory = (id: string) => {
-    console.log(id)
+    router.push(`/${id}`)
   }
 
   return (
