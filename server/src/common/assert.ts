@@ -21,6 +21,11 @@ export class TypiaExceptionHandler {
     return typeof expected !== typeof value
   }
 
+  private isNotUUIDType(expected: any): boolean {
+    const reg = /uuid/i
+    return reg.test(expected)
+  }
+
   handleValidationError(): never {
     const { expected, value, path } = this.error
     const cleanPath = path.replace(this.pattern, '')
@@ -35,6 +40,10 @@ export class TypiaExceptionHandler {
 
     if (this.isInvalidDataType(expected, value)) {
       throw new BadRequestException(`Received unexpected data '${cleanPath}' [INVALID TYPE ERROR]`)
+    }
+
+    if (this.isNotUUIDType(expected)) {
+      throw new BadRequestException(`Received unmatched data '${cleanPath}' [INVALID UUID TYPE ERROR]`)
     }
 
     Logger.error(this.error)

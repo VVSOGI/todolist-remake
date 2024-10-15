@@ -3,7 +3,7 @@ import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { TypiaAssertError, TypiaExceptionHandler } from 'src/common'
 import { Category } from 'src/entities/category.entity'
 import { CategoryController, CategoryService } from '../category'
-import { CreateCategoryValidator } from '../category/decorator'
+import { CreateCategoryValidator, GetIdParamsValidator } from '../category/decorator'
 
 describe('CategoryModule', () => {
   let controller: CategoryController
@@ -28,6 +28,54 @@ describe('CategoryModule', () => {
 
   afterEach(() => {
     jest.clearAllMocks()
+  })
+
+  describe('createCategory', () => {
+    it('should throw error when sent wrong data', async () => {
+      let typiaError: TypiaAssertError | undefined
+      const request = {
+        body: {
+          title: 'test title',
+          hack: 'hack'
+        }
+      }
+
+      try {
+        new CreateCategoryValidator(request).validate()
+      } catch (err) {
+        typiaError = err
+      }
+
+      if (!typiaError) return
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
+      }
+    })
+
+    it('should throw error when forget sent essential data', async () => {
+      let typiaError: TypiaAssertError | undefined
+      const request = {
+        body: {}
+      }
+
+      try {
+        new CreateCategoryValidator(request).validate()
+      } catch (err) {
+        typiaError = err
+      }
+
+      if (!typiaError) return
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundException)
+        expect(err.response.message).toBe(`Received unexpected data 'title' [MISSING DATA ERROR]`)
+      }
+    })
   })
 
   describe('getCategories', () => {
@@ -71,49 +119,28 @@ describe('CategoryModule', () => {
     })
   })
 
-  describe('createCategory', () => {
-    it('should throw error when sent wrong data', async () => {
+  describe('getCategoryById', () => {
+    it('should throw error when categoryId not matched uuid type', async () => {
       let typiaError: TypiaAssertError | undefined
       const request = {
-        body: {
-          title: 'test title',
-          hack: 'hack'
+        params: {
+          categoryId: '1232'
         }
       }
 
       try {
-        new CreateCategoryValidator(request).validate()
+        new GetIdParamsValidator(request).validate()
       } catch (err) {
         typiaError = err
       }
 
       if (!typiaError) return
+
       try {
         new TypiaExceptionHandler(typiaError.response).handleValidationError()
       } catch (err) {
         expect(err).toBeInstanceOf(BadRequestException)
-        expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
-      }
-    })
-
-    it('should throw error when forget sent essential data', async () => {
-      let typiaError: TypiaAssertError | undefined
-      const request = {
-        body: {}
-      }
-
-      try {
-        new CreateCategoryValidator(request).validate()
-      } catch (err) {
-        typiaError = err
-      }
-
-      if (!typiaError) return
-      try {
-        new TypiaExceptionHandler(typiaError.response).handleValidationError()
-      } catch (err) {
-        expect(err).toBeInstanceOf(NotFoundException)
-        expect(err.response.message).toBe(`Received unexpected data 'title' [MISSING DATA ERROR]`)
+        expect(err.response.message).toBe(`Received unmatched data 'categoryId' [INVALID UUID TYPE ERROR]`)
       }
     })
   })
