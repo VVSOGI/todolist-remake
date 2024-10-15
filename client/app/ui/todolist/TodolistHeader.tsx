@@ -18,21 +18,22 @@ const Time = styled.div`
 `
 
 const BeforeButton = styled.button`
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: ${colors.cloudBlue_500};
-  color: ${colors.white};
+  color: ${colors.red_600};
   font-weight: 800;
-  font-size: 12px;
+  font-size: 18px;
   cursor: pointer;
 
   &:hover {
-    background-color: ${colors.cloudBlue_400};
+    background-color: ${colors.gray_100};
+    color: ${colors.red_400};
   }
 
   &:active {
-    background-color: ${colors.cloudBlue_500};
+    background-color: ${colors.white};
+    color: ${colors.red_500};
   }
 `
 
