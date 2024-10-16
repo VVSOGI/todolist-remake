@@ -28,6 +28,6 @@ export class CategoryService {
       return category
     }
 
-    throw new NotFoundException('There are no applicable categories.')
+    throw new NotFoundException(`The category you're looking for doesn't exist.`)
   }
 }
