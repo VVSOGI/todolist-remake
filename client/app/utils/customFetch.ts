@@ -10,5 +10,18 @@ interface CustomResponse<T> extends Response {
 }
 
 export async function customFetch<T>(endpoint: EndPoint, init?: CustomRequestInit | undefined): Promise<CustomResponse<T>> {
-  return fetch(`http://localhost:3001/${endpoint}`, init)
+  const response = await fetch(`http://localhost:3001/${endpoint}`, init)
+
+  if (response.ok) {
+    return response
+  }
+
+  const { message, status } = await response.json()
+
+  throw new Error(
+    JSON.stringify({
+      message,
+      status
+    })
+  )
 }
