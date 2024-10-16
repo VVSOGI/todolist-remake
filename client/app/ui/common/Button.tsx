@@ -5,6 +5,7 @@ import { colors } from '@/app/styles'
 const StyledButton = styled.button`
   width: fit-content;
   min-width: 48px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

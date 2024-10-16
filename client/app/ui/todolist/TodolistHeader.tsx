@@ -2,7 +2,7 @@ import { colors, styles } from '@/app/styles'
 import { Category } from '@/app/types'
 import { changeToLocaleTime } from '@/app/utils/time'
 import styled from 'styled-components'
-import { Title } from '..'
+import { Title } from '@/app/ui'
 import { useRouter } from 'next/navigation'
 
 const Header = styled.div`
