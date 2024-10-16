@@ -11,6 +11,15 @@ export class TodolistRepository {
     private todolistRepository: Repository<Todolist>
   ) {}
 
+  async save(todolist: Todolist) {
+    return await this.todolistRepository.save(todolist)
+  }
+
+  async create(todolist: createTodolist) {
+    const created = this.todolistRepository.create(todolist)
+    return created
+  }
+
   async findAll() {
     const [data, total] = await this.todolistRepository.findAndCount({
       order: {
@@ -23,9 +32,9 @@ export class TodolistRepository {
     }
   }
 
-  async create(todolist: createTodolist) {
-    const created = this.todolistRepository.create(todolist)
-    return await this.todolistRepository.save(created)
+  async findById(id: string) {
+    const todo = await this.todolistRepository.findOneBy({ id })
+    return todo
   }
 
   async findByCategoryId(categoryId: string) {
