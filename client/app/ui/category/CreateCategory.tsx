@@ -31,7 +31,10 @@ export function CreateCategory() {
       method: 'POST',
       body: JSON.stringify({
         title: value
-      })
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
     router.refresh()
   }

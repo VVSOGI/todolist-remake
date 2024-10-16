@@ -9,7 +9,7 @@ export async function getCategoryList() {
     },
     cache: 'no-cache'
   })
-  return response.json()
+  return response
 }
 
 export async function getCategoryById(categoryId: UUID) {
@@ -20,5 +20,5 @@ export async function getCategoryById(categoryId: UUID) {
     },
     cache: 'no-cache'
   })
-  return response.json()
+  return response
 }

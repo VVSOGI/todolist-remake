@@ -54,7 +54,7 @@ export default function error(err: any) {
     >
       <ErrorSection>
         <ErrorMessage>{error && error.message}</ErrorMessage>
-        <ErrorStatus>Error Status {error && error.status}</ErrorStatus>
+        <ErrorStatus>Error Status {error && error.statusCode}</ErrorStatus>
         <ButtonWrapper>
           <Button style={{ width: '144px', borderRadius: '8px' }} onClick={err.reset}>
             Try Reset

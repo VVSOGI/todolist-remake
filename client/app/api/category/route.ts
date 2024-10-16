@@ -1,41 +1,25 @@
 import { NextResponse } from 'next/server'
+import { fetchToBackend } from '@/app/utils'
 
 export async function GET(req: Request) {
   try {
-    const response = await fetch(`${process.env.BACKEND_SERVER_URL}/category`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      cache: 'no-cache'
-    })
-
-    if (response.ok) {
-      const data = await response.json()
-
-      return NextResponse.json(data, {
-        status: 200
-      })
-    }
+    const data = await fetchToBackend('/category', { method: 'GET', headers: req.headers })
+    return NextResponse.json(data, { status: 200 })
   } catch (err: any) {
-    if (err.cause.code === 'ECONNREFUSED') {
-      return NextResponse.json(
-        {
-          message: 'Connection Refused By Server',
-          status: 500
-        },
-        {
-          status: 500
-        }
-      )
+    if (err.cause?.code === 'ECONNREFUSED') {
+      return NextResponse.json({ message: 'Connection Refused By Server', statusCode: 500 }, { status: 500 })
     }
+
+    return NextResponse.json(
+      { message: err.message || 'Internal Server Error', statusCode: err.cause?.statusCode || 500 },
+      { status: err.cause?.statusCode || 500 }
+    )
   }
 }
 
 export async function POST(req: Request) {
   const body = await req.json()
-
-  const response = await fetch(`${process.env.BACKEND_SERVER_URL}/category`, {
+  const data = await fetchToBackend('/category', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -43,9 +27,7 @@ export async function POST(req: Request) {
     body: JSON.stringify(body)
   })
 
-  const data = await response.json()
-
   return NextResponse.json(data, {
-    status: data.statusCode
+    status: 201
   })
 }
