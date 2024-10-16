@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { TodolistController, TodolistService } from '../todolist'
 import { Category, Todolist } from 'src/entities'
-import { TypiaAssertError, TypiaExceptionHandler } from 'src/common'
-import { CreateTodolistValidator } from '../todolist/decorator'
+import { CreateTodolistValidator, UpdateTodolistValidator } from '../todolist/decorator'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
+import { checkRequestValidate, execeptionCheck } from './test.utils'
 
 describe('CategoryModule', () => {
   let controller: TodolistController
@@ -30,6 +30,51 @@ describe('CategoryModule', () => {
     jest.clearAllMocks()
   })
 
+  describe('createTodolist', () => {
+    it('should throw error when sent wrong data', async () => {
+      const request = {
+        body: {
+          title: 'test title',
+          description: 'test description',
+          categoryId: '1',
+          hack: 'hack'
+        }
+      }
+
+      const typiaError = await checkRequestValidate(CreateTodolistValidator, request)
+      execeptionCheck(typiaError, BadRequestException, `Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
+    })
+
+    it('should throw error when forget sent essential data', async () => {
+      const request = {
+        body: {
+          title: 'test title',
+          description: 'test description'
+        }
+      }
+
+      const typiaError = await checkRequestValidate(CreateTodolistValidator, request)
+      execeptionCheck(typiaError, NotFoundException, `Received unexpected data 'categoryId' [MISSING DATA ERROR]`)
+    })
+  })
+
+  describe('updateTodo', () => {
+    it('should throw error when sent wrong data', async () => {
+      const request = {
+        body: {
+          id: '1',
+          title: 'test title',
+          description: 'test description',
+          checked: false,
+          hack: 'hack'
+        }
+      }
+
+      const typiaError = await checkRequestValidate(UpdateTodolistValidator, request)
+      execeptionCheck(typiaError, BadRequestException, `Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
+    })
+  })
+
   describe('getTodolists', () => {
     it('should return Todolist type array', async () => {
       const mockTodolist: Todolist[] = [
@@ -39,6 +84,7 @@ describe('CategoryModule', () => {
           categoryId: '1',
           title: 'mock todolist title 1',
           description: 'mock todolist description 1',
+          checked: false,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -48,6 +94,7 @@ describe('CategoryModule', () => {
           categoryId: '1',
           title: 'mock todolist title 2',
           description: 'mock todolist description 2',
+          checked: false,
           createdAt: new Date(),
           updatedAt: new Date()
         }
@@ -75,58 +122,6 @@ describe('CategoryModule', () => {
 
       const result = (await controller.getTodolists()).total
       expect(result).toBe(0)
-    })
-  })
-
-  describe('createTodolist', () => {
-    it('should throw error when sent wrong data', async () => {
-      let typiaError: TypiaAssertError | undefined
-      const request = {
-        body: {
-          title: 'test title',
-          description: 'test description',
-          categoryId: '1',
-          hack: 'hack'
-        }
-      }
-
-      try {
-        new CreateTodolistValidator(request).validate()
-      } catch (err) {
-        typiaError = err
-      }
-
-      if (!typiaError) return
-      try {
-        new TypiaExceptionHandler(typiaError.response).handleValidationError()
-      } catch (err) {
-        expect(err).toBeInstanceOf(BadRequestException)
-        expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
-      }
-    })
-
-    it('should throw error when forget sent essential data', async () => {
-      let typiaError: TypiaAssertError | undefined
-      const request = {
-        body: {
-          title: 'test title',
-          description: 'test description'
-        }
-      }
-
-      try {
-        new CreateTodolistValidator(request).validate()
-      } catch (err) {
-        typiaError = err
-      }
-
-      if (!typiaError) return
-      try {
-        new TypiaExceptionHandler(typiaError.response).handleValidationError()
-      } catch (err) {
-        expect(err).toBeInstanceOf(NotFoundException)
-        expect(err.response.message).toBe(`Received unexpected data 'categoryId' [MISSING DATA ERROR]`)
-      }
     })
   })
 })
