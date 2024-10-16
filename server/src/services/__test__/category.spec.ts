@@ -4,6 +4,7 @@ import { TypiaAssertError, TypiaExceptionHandler } from 'src/common'
 import { Category } from 'src/entities/category.entity'
 import { CategoryController, CategoryService } from '../category'
 import { CreateCategoryValidator, GetIdParamsValidator } from '../category/decorator'
+import { checkRequestValidate, execeptionCheck } from './test.utils'
 
 describe('CategoryModule', () => {
   let controller: CategoryController
@@ -32,7 +33,6 @@ describe('CategoryModule', () => {
 
   describe('createCategory', () => {
     it('should throw error when sent wrong data', async () => {
-      let typiaError: TypiaAssertError | undefined
       const request = {
         body: {
           title: 'test title',
@@ -40,41 +40,17 @@ describe('CategoryModule', () => {
         }
       }
 
-      try {
-        new CreateCategoryValidator(request).validate()
-      } catch (err) {
-        typiaError = err
-      }
-
-      if (!typiaError) return
-      try {
-        new TypiaExceptionHandler(typiaError.response).handleValidationError()
-      } catch (err) {
-        expect(err).toBeInstanceOf(BadRequestException)
-        expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
-      }
+      const typiaError = await checkRequestValidate(CreateCategoryValidator, request)
+      execeptionCheck(typiaError, BadRequestException, `Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
     })
 
     it('should throw error when forget sent essential data', async () => {
-      let typiaError: TypiaAssertError | undefined
       const request = {
         body: {}
       }
 
-      try {
-        new CreateCategoryValidator(request).validate()
-      } catch (err) {
-        typiaError = err
-      }
-
-      if (!typiaError) return
-
-      try {
-        new TypiaExceptionHandler(typiaError.response).handleValidationError()
-      } catch (err) {
-        expect(err).toBeInstanceOf(NotFoundException)
-        expect(err.response.message).toBe(`Received unexpected data 'title' [MISSING DATA ERROR]`)
-      }
+      const typiaError = await checkRequestValidate(CreateCategoryValidator, request)
+      execeptionCheck(typiaError, NotFoundException, `Received unexpected data 'title' [MISSING DATA ERROR]`)
     })
   })
 
