@@ -6,10 +6,6 @@ export async function GET(req: Request) {
     const data = await fetchToBackend('/category', { method: 'GET', headers: req.headers })
     return NextResponse.json(data, { status: 200 })
   } catch (err: any) {
-    if (err.cause?.code === 'ECONNREFUSED') {
-      return NextResponse.json({ message: 'Connection Refused By Server', statusCode: 500 }, { status: 500 })
-    }
-
     return NextResponse.json(
       { message: err.message || 'Internal Server Error', statusCode: err.cause?.statusCode || 500 },
       { status: err.cause?.statusCode || 500 }

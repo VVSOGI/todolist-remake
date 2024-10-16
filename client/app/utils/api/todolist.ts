@@ -1,8 +1,8 @@
 import { UUID } from '@/app/types'
-import { customFetch } from '..'
+import { fetchToWebServer } from '..'
 
 export async function getTodolistByCategoryId(categoryId: UUID) {
-  const response = await customFetch(`/api/todolist/${categoryId}`, {
+  const response = await fetchToWebServer(`/api/todolist/${categoryId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

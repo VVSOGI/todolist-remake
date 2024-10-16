@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/navigation'
-import { customFetch } from '@/app/utils/customFetch'
+import { fetchToWebServer } from '@/app/utils/customFetch'
 import { Button, Input } from '@/app/ui'
 import { styles } from '@/app/styles'
 
@@ -27,7 +27,7 @@ export function CreateCategory() {
   }
 
   const handleSubmit = async (value: string) => {
-    await customFetch('/api/category', {
+    await fetchToWebServer('/api/category', {
       method: 'POST',
       body: JSON.stringify({
         title: value

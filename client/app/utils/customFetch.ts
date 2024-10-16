@@ -6,7 +6,7 @@ interface CustomRequestInit extends RequestInit {
   method: HTTPMethods
 }
 
-export async function customFetch<T>(endpoint: EndPoint, init?: CustomRequestInit | undefined): Promise<T> {
+export async function fetchToWebServer<T>(endpoint: EndPoint, init?: CustomRequestInit | undefined): Promise<T> {
   const response = await fetch(`http://localhost:3001${endpoint}`, init)
 
   if (response.ok) {
