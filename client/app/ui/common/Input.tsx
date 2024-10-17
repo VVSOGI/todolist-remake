@@ -24,5 +24,13 @@ export function Input({ value, placeholder = 'Make your todolist', style, handle
     }
   }
 
-  return <StyledInput onKeyDown={handleKeyPress} onChange={(e) => changeValue(e.target.value)} placeholder={placeholder} style={style} />
+  return (
+    <StyledInput
+      value={value}
+      onKeyDown={handleKeyPress}
+      onChange={(e) => changeValue(e.target.value)}
+      placeholder={placeholder}
+      style={style}
+    />
+  )
 }
