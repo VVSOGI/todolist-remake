@@ -9,7 +9,7 @@ interface Props {
 
 export default async function page({ params: { id: categoryId } }: Props) {
   const category = await getCategoryById(categoryId)
-  let todolist = await getTodolistByCategoryId(categoryId)
+  const todolist = await getTodolistByCategoryId(categoryId)
 
   const getTodolist = async () => {
     'use server'
@@ -28,7 +28,7 @@ export default async function page({ params: { id: categoryId } }: Props) {
     >
       <TodolistMain>
         <TodolistHeader category={category} />
-        <Todolist todolist={todolist.data} getTodolist={getTodolist} />
+        <Todolist categoryId={category.id} todolist={todolist.data} getTodolist={getTodolist} />
       </TodolistMain>
     </Container>
   )

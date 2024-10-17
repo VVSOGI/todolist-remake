@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { fetchToWebServer } from '@/app/utils'
 import { styles } from '@/app/styles'
-import { CheckCircle, CreateTodolist } from '..'
+import { CheckCircle, CreateTodolist } from '@/app/ui'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${styles.todolist.header.height} + ${styles.todolist.createInput.height}));
@@ -29,11 +29,12 @@ const Todo = styled.div`
 `
 
 interface Props {
+  categoryId: string
   todolist: Todo[]
   getTodolist: () => Promise<Todo[]>
 }
 
-export function Todolist({ todolist, getTodolist }: Props) {
+export function Todolist({ categoryId, todolist, getTodolist }: Props) {
   const [list, setList] = useState(todolist)
 
   const completeTodo = async (todo: Todo) => {
@@ -63,7 +64,7 @@ export function Todolist({ todolist, getTodolist }: Props) {
     const createTodo: CreateTodoDto = {
       title,
       description: 'not yet',
-      categoryId: todolist[0].categoryId
+      categoryId
     }
 
     await fetchToWebServer(`/api/todolist`, {
