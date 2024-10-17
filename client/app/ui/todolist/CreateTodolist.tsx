@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { styles } from '@/app/styles'
 import { Input, LargeButton } from '@/app/ui'
-import { CreateTodoDto } from '@/app/types'
-import { fetchToWebServer } from '@/app/utils'
 
 const CreateCategoryWrapper = styled.div`
   position: absolute;
@@ -20,33 +18,25 @@ const CreateCategoryWrapper = styled.div`
 `
 
 interface Props {
-  categoryId: string
+  handleCreateTodo: (title: string) => Promise<void>
 }
 
-export function CreateTodolist({ categoryId }: Props) {
-  const [categoryTitle, setCategoryTitle] = useState('')
+export function CreateTodolist({ handleCreateTodo }: Props) {
+  const [title, setTitle] = useState('')
 
   const changeValue = (value: string) => {
-    setCategoryTitle(value)
+    setTitle(value)
   }
 
-  const handleSubmit = async (title: string) => {
-    const createTodo: CreateTodoDto = {
-      title,
-      description: 'not yet',
-      categoryId
-    }
-
-    await fetchToWebServer(`/api/todolist`, {
-      method: 'POST',
-      body: JSON.stringify(createTodo)
-    })
+  const handleSubmit = async () => {
+    await handleCreateTodo(title)
+    setTitle('')
   }
 
   return (
     <CreateCategoryWrapper>
-      <Input handleSubmit={handleSubmit} changeValue={changeValue} value={categoryTitle} />
-      <LargeButton onClick={() => handleSubmit(categoryTitle)}>POST</LargeButton>
+      <Input handleSubmit={handleSubmit} changeValue={changeValue} value={title} />
+      <LargeButton onClick={handleSubmit}>POST</LargeButton>
     </CreateCategoryWrapper>
   )
 }

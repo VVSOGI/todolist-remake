@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Todo, UpdateTodoDTO } from '@/app/types'
+import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { fetchToWebServer } from '@/app/utils'
 import { styles } from '@/app/styles'
 import { CheckCircle, CreateTodolist } from '..'
@@ -36,7 +36,7 @@ interface Props {
 export function Todolist({ todolist, getTodolist }: Props) {
   const [list, setList] = useState(todolist)
 
-  const toggleToServer = async (todo: Todo) => {
+  const completeTodo = async (todo: Todo) => {
     const updated: UpdateTodoDTO = {
       id: todo.id,
       title: todo.title,
@@ -48,9 +48,7 @@ export function Todolist({ todolist, getTodolist }: Props) {
       method: 'PATCH',
       body: JSON.stringify(updated)
     })
-  }
 
-  const toggleStyle = (todo: Todo) => {
     const checkList = list.map((item) => {
       if (item.id === todo.id) {
         item.checked = !item.checked
@@ -61,23 +59,34 @@ export function Todolist({ todolist, getTodolist }: Props) {
     setList(checkList)
   }
 
+  const handleCreateTodo = async (title: string) => {
+    const createTodo: CreateTodoDto = {
+      title,
+      description: 'not yet',
+      categoryId: todolist[0].categoryId
+    }
+
+    await fetchToWebServer(`/api/todolist`, {
+      method: 'POST',
+      body: JSON.stringify(createTodo)
+    })
+
+    const newList = await getTodolist()
+    setList(newList)
+  }
+
   return (
     <TodolistWrapper>
-      {(todolist || list).map((todo) => {
+      {list.map((todo) => {
         if (todo.checked) return
         return (
           <Todo key={todo.id}>
-            <CheckCircle
-              onAnimationEnd={() => {
-                toggleToServer(todo)
-                toggleStyle(todo)
-              }}
-            />
+            <CheckCircle onAnimationEnd={() => completeTodo(todo)} />
             <div>{todo.title}</div>
           </Todo>
         )
       })}
-      <CreateTodolist categoryId={todolist[0].categoryId} />
+      <CreateTodolist handleCreateTodo={handleCreateTodo} />
     </TodolistWrapper>
   )
 }
