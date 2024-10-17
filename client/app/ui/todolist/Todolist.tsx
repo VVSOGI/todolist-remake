@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Todo, UpdateTodoDTO } from '@/app/types'
 import { fetchToWebServer } from '@/app/utils'
-import { colors, styles } from '@/app/styles'
-import { CheckCircle } from '..'
+import { styles } from '@/app/styles'
+import { CheckCircle, CreateTodolist } from '..'
 
 const TodolistWrapper = styled.div`
-  height: 100%;
+  height: calc(100% - (${styles.todolist.header.height} + ${styles.todolist.createInput.height}));
   overflow-y: scroll;
   &::-webkit-scrollbar {
-    width: 0px;
+    width: 4px;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -30,9 +30,10 @@ const Todo = styled.div`
 
 interface Props {
   todolist: Todo[]
+  getTodolist: () => Promise<Todo[]>
 }
 
-export function Todolist({ todolist }: Props) {
+export function Todolist({ todolist, getTodolist }: Props) {
   const [list, setList] = useState(todolist)
 
   const toggleToServer = async (todo: Todo) => {
@@ -62,7 +63,7 @@ export function Todolist({ todolist }: Props) {
 
   return (
     <TodolistWrapper>
-      {list.map((todo) => {
+      {(todolist || list).map((todo) => {
         if (todo.checked) return
         return (
           <Todo key={todo.id}>
@@ -76,6 +77,7 @@ export function Todolist({ todolist }: Props) {
           </Todo>
         )
       })}
+      <CreateTodolist categoryId={todolist[0].categoryId} />
     </TodolistWrapper>
   )
 }

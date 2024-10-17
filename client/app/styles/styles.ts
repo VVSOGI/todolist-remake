@@ -28,5 +28,15 @@ export const styles = {
     small: '4px',
     medium: '8px',
     large: '12px'
+  },
+
+  todolist: {
+    header: {
+      height: '67.5px'
+    },
+
+    createInput: {
+      height: '40px'
+    }
   }
 }

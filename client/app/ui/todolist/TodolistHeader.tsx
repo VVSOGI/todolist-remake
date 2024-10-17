@@ -6,6 +6,7 @@ import { Title } from '@/app/ui'
 import { useRouter } from 'next/navigation'
 
 const Header = styled.div`
+  height: ${styles.todolist.header.height};
   display: flex;
   justify-content: space-between;
   align-items: center;

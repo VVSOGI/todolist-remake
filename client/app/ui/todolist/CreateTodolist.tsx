@@ -4,14 +4,13 @@ import { styles } from '@/app/styles'
 import { Input, LargeButton } from '@/app/ui'
 import { CreateTodoDto } from '@/app/types'
 import { fetchToWebServer } from '@/app/utils'
-import { useRouter } from 'next/navigation'
 
 const CreateCategoryWrapper = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 40px;
-  min-height: 40px;
+  height: ${styles.todolist.createInput.height};
+  min-height: ${styles.todolist.createInput.height};
   display: flex;
   justify-content: space-between;
   border: 1px solid ${styles.borderColor.primary};
@@ -25,7 +24,6 @@ interface Props {
 }
 
 export function CreateTodolist({ categoryId }: Props) {
-  const router = useRouter()
   const [categoryTitle, setCategoryTitle] = useState('')
 
   const changeValue = (value: string) => {
@@ -43,8 +41,6 @@ export function CreateTodolist({ categoryId }: Props) {
       method: 'POST',
       body: JSON.stringify(createTodo)
     })
-
-    router.refresh()
   }
 
   return (
