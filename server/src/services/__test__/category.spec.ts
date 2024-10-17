@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
-import { TypiaAssertError, TypiaExceptionHandler } from 'src/common'
 import { Category } from 'src/entities/category.entity'
 import { CategoryController, CategoryService } from '../category'
 import { CreateCategoryValidator, GetIdParamsValidator } from '../category/decorator'
@@ -97,27 +96,14 @@ describe('CategoryModule', () => {
 
   describe('getCategoryById', () => {
     it('should throw error when categoryId not matched uuid type', async () => {
-      let typiaError: TypiaAssertError | undefined
       const request = {
         params: {
           categoryId: '1232'
         }
       }
 
-      try {
-        new GetIdParamsValidator(request).validate()
-      } catch (err) {
-        typiaError = err
-      }
-
-      if (!typiaError) return
-
-      try {
-        new TypiaExceptionHandler(typiaError.response).handleValidationError()
-      } catch (err) {
-        expect(err).toBeInstanceOf(BadRequestException)
-        expect(err.response.message).toBe(`Received unmatched data 'categoryId' [INVALID UUID TYPE ERROR]`)
-      }
+      const typiaError = await checkRequestValidate(GetIdParamsValidator, request)
+      execeptionCheck(typiaError, BadRequestException, `Received unmatched data 'categoryId' [INVALID UUID TYPE ERROR]`)
     })
   })
 })
