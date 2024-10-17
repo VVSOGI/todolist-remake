@@ -17,6 +17,12 @@ export interface UpdateTodoDTO {
   checked: boolean
 }
 
+export interface CreateTodoDto {
+  title: string
+  categoryId: string
+  description: string
+}
+
 export type GetResponseTodolist = {
   data: Todo[]
 }
