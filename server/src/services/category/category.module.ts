@@ -6,6 +6,7 @@ import { CategoryController, CategoryService, CategoryRepository } from '.'
 @Module({
   imports: [TypeOrmModule.forFeature([Category])],
   controllers: [CategoryController],
-  providers: [CategoryService, CategoryRepository]
+  providers: [CategoryService, CategoryRepository],
+  exports: [CategoryService]
 })
 export class CategoryModule {}

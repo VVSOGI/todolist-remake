@@ -11,9 +11,13 @@ export class CategoryRepository {
     private categoryRepository: Repository<Category>
   ) {}
 
+  async save(category: Category) {
+    return await this.categoryRepository.save(category)
+  }
+
   async create(category: CreateCategory) {
     const created = this.categoryRepository.create(category)
-    return await this.categoryRepository.save(created)
+    return created
   }
 
   async findAll() {
