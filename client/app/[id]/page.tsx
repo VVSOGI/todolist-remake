@@ -22,7 +22,7 @@ export default async function page({ params: { id: categoryId } }: Props) {
     >
       <TodolistMain>
         <TodolistHeader category={category} />
-        <CreateTodolist />
+        <CreateTodolist categoryId={category.id} />
         <Todolist todolist={todolist.data} />
       </TodolistMain>
     </Container>

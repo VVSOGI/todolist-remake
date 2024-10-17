@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { styles } from '@/app/styles'
 import { Input, LargeButton } from '@/app/ui'
+import { CreateTodoDto } from '@/app/types'
+import { fetchToWebServer } from '@/app/utils'
+import { useRouter } from 'next/navigation'
 
 const CreateCategoryWrapper = styled.div`
   position: absolute;
@@ -17,15 +20,31 @@ const CreateCategoryWrapper = styled.div`
   overflow: hidden;
 `
 
-export function CreateTodolist() {
+interface Props {
+  categoryId: string
+}
+
+export function CreateTodolist({ categoryId }: Props) {
+  const router = useRouter()
   const [categoryTitle, setCategoryTitle] = useState('')
 
   const changeValue = (value: string) => {
     setCategoryTitle(value)
   }
 
-  const handleSubmit = async (value: string) => {
-    console.log(value)
+  const handleSubmit = async (title: string) => {
+    const createTodo: CreateTodoDto = {
+      title,
+      description: 'not yet',
+      categoryId
+    }
+
+    await fetchToWebServer(`/api/todolist`, {
+      method: 'POST',
+      body: JSON.stringify(createTodo)
+    })
+
+    router.refresh()
   }
 
   return (
