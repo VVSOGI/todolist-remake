@@ -1,6 +1,7 @@
 export * from './Button'
 export * from './LargeButton'
 export * from './Container'
+export * from './CheckCircle'
 export * from './Divider'
 export * from './Skeleton'
 export * from './Title'

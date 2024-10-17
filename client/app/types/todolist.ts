@@ -10,6 +10,13 @@ export interface Todo {
   updatedAt: Date
 }
 
+export interface UpdateTodoDTO {
+  id: UUID
+  title: string
+  description: string
+  checked: boolean
+}
+
 export type GetResponseTodolist = {
   data: Todo[]
 }
