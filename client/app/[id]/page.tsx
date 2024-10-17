@@ -1,6 +1,6 @@
 import { styles } from '@/app/styles'
 import { UUID } from '@/app/types'
-import { Container, CreateTodolist, Todolist, TodolistHeader, TodolistMain } from '@/app/ui'
+import { Container, Todolist, TodolistHeader, TodolistMain } from '@/app/ui'
 import { getCategoryById, getTodolistByCategoryId } from '@/app/utils'
 
 interface Props {
@@ -9,7 +9,13 @@ interface Props {
 
 export default async function page({ params: { id: categoryId } }: Props) {
   const category = await getCategoryById(categoryId)
-  const todolist = await getTodolistByCategoryId(categoryId)
+  let todolist = await getTodolistByCategoryId(categoryId)
+
+  const getTodolist = async () => {
+    'use server'
+    const getTodolist = await getTodolistByCategoryId(categoryId)
+    return getTodolist.data
+  }
 
   return (
     <Container
@@ -22,8 +28,7 @@ export default async function page({ params: { id: categoryId } }: Props) {
     >
       <TodolistMain>
         <TodolistHeader category={category} />
-        <CreateTodolist categoryId={category.id} />
-        <Todolist todolist={todolist.data} />
+        <Todolist todolist={todolist.data} getTodolist={getTodolist} />
       </TodolistMain>
     </Container>
   )
