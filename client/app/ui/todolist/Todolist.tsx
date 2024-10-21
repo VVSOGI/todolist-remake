@@ -58,6 +58,9 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
     })
 
     setList(checkList)
+
+    const audio = document.getElementById('a1') as HTMLAudioElement
+    audio.play()
   }
 
   const handleCreateTodo = async (title: string) => {
@@ -87,6 +90,7 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
           </Todo>
         )
       })}
+      <audio id="a1" src="/poped.wav"></audio>
       <CreateTodolist handleCreateTodo={handleCreateTodo} />
     </TodolistWrapper>
   )
