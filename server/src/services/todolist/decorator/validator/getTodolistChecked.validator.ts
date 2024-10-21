@@ -11,17 +11,19 @@ export class GetTodolistCheckedValidator {
   private checked: GetTodolistDto
 
   constructor(request: GetTodolistRequest) {
-    this.checked = this.changeStringToBoolean(request.query.checked)
+    if (this.insertQueryButNoContents(request.query.checked)) {
+      this.checked = ' ' as any
+    } else {
+      this.checked = request.query.checked
+    }
   }
 
-  private changeStringToBoolean(checked?: string) {
-    if (!checked) return undefined
-
-    if (checked === 'true') {
+  private insertQueryButNoContents(checked: any) {
+    if (checked === '') {
       return true
-    } else {
-      return false
     }
+
+    return false
   }
 
   validate(): GetTodolistDto | never {

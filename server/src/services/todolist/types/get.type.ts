@@ -1,4 +1,4 @@
-export type GetTodolistDto = boolean | undefined
+export type GetTodolistDto = 'true' | 'false' | undefined
 
 export interface GetTodolistDtoFilters {
   categoryId: string
