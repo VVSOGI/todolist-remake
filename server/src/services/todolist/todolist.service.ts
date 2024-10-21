@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { v4 } from 'uuid'
 import { TodolistRepository } from './todolist.repository'
-import { CreateTodolistDto, UpdateTodolistDto, createTodolist } from './types'
+import { CreateTodolistDto, GetTodolistDtoFilters, UpdateTodolistDto, createTodolist } from './types'
 import { Todolist } from 'src/entities'
 import { CategoryService } from '../category'
 
@@ -49,7 +49,8 @@ export class TodolistService {
     throw new NotFoundException(`The todolist you're looking for doesn't exist.`)
   }
 
-  async getTodolistsByCategoryId(categoryId: string) {
-    return this.todolistRepository.findByCategoryId(categoryId)
+  async getTodolistsByCategoryId(filters: GetTodolistDtoFilters) {
+    const todolist = await this.todolistRepository.findByCategoryId(filters)
+    return todolist
   }
 }

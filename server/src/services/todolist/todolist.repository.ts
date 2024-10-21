@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Todolist } from 'src/entities'
 import { Repository } from 'typeorm'
-import { createTodolist } from './types'
+import { GetTodolistDtoFilters, createTodolist } from './types'
 
 @Injectable()
 export class TodolistRepository {
@@ -37,8 +37,9 @@ export class TodolistRepository {
     return todo
   }
 
-  async findByCategoryId(categoryId: string) {
-    const [data, total] = await this.todolistRepository.findAndCount({ where: { categoryId }, order: { createdAt: 'DESC' } })
+  async findByCategoryId(filters: GetTodolistDtoFilters) {
+    const { categoryId, checked } = filters
+    const [data, total] = await this.todolistRepository.findAndCount({ where: { categoryId, checked }, order: { createdAt: 'DESC' } })
     return {
       data,
       total

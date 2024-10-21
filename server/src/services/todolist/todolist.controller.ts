@@ -3,6 +3,7 @@ import { Todolist } from 'src/entities'
 import { TodolistService } from './todolist.service'
 import { CreateTodolistDto, GetTodolistsResponseType, UpdateTodolistDto } from './types'
 import { ValidateCreateTodolistDTO, ValidateUpdateTodolistDto } from './decorator'
+import { ValidateGetTodolistCheckedDTO } from './decorator/getTodolist.decorator'
 
 @Controller('todolist')
 export class TodolistController {
@@ -24,7 +25,10 @@ export class TodolistController {
   }
 
   @Get(':categoryId')
-  async getTodolistsByCategoryId(@Param('categoryId') categoryId: string): Promise<GetTodolistsResponseType> {
-    return this.todolistService.getTodolistsByCategoryId(categoryId)
+  async getTodolistsByCategoryId(
+    @Param('categoryId') categoryId: string,
+    @ValidateGetTodolistCheckedDTO() checked: boolean
+  ): Promise<GetTodolistsResponseType> {
+    return this.todolistService.getTodolistsByCategoryId({ categoryId, checked })
   }
 }
