@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { TodolistController, TodolistService } from '../todolist'
 import { Category, Todolist } from 'src/entities'
-import { CreateTodolistValidator, UpdateTodolistValidator } from '../todolist/decorator'
+import { CreateTodolistValidator, GetTodolistCheckedValidator, UpdateTodolistValidator } from '../todolist/decorator'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { checkRequestValidate, execeptionCheck } from './test.utils'
 
@@ -122,6 +122,21 @@ describe('CategoryModule', () => {
 
       const result = (await controller.getTodolists()).total
       expect(result).toBe(0)
+    })
+
+    it('when request query with dto that not matched', async () => {
+      const request = {
+        query: {
+          checked: 'tru'
+        }
+      }
+
+      const typiaError = await checkRequestValidate(GetTodolistCheckedValidator, request)
+      execeptionCheck(
+        typiaError,
+        BadRequestException,
+        `Received unexpected data '(\"false\" | \"true\" | undefined)' [INVALID QUERY DATA ERROR]`
+      )
     })
   })
 })
