@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { fetchToWebServer } from '@/app/utils'
-import { styles } from '@/app/styles'
+import { colors, styles } from '@/app/styles'
 import { CheckCircle, CreateTodolist } from '@/app/ui'
 
 const TodolistWrapper = styled.div`
@@ -26,6 +26,16 @@ const Todo = styled.div`
   gap: 14px;
   padding: 12px 16px;
   border-bottom: 1px solid ${styles.borderColor.primary};
+`
+
+const NothingInList = styled.div`
+  position: relative;
+  max-height: 45px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  color: ${colors.gray_300};
 `
 
 interface Props {
@@ -90,6 +100,7 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
           </Todo>
         )
       })}
+      {!list.length && <NothingInList>Nothing in list 😅</NothingInList>}
       <audio id="a1" src="/poped.wav"></audio>
       <CreateTodolist handleCreateTodo={handleCreateTodo} />
     </TodolistWrapper>
