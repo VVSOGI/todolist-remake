@@ -36,6 +36,7 @@ export class CategoryService {
 
   async getCategoryById(categoryId: string) {
     const category = await this.categoryRepository.findById(categoryId)
+
     if (category) {
       return category
     }
