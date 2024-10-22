@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { Category } from 'src/entities/category.entity'
 import { CategoryController, CategoryService } from '../category'
-import { CreateCategoryValidator, GetIdParamsValidator } from '../category/decorator'
+import { CreateCategoryValidator, CategoryIdParamsValidator } from '../category/decorator'
 import { checkRequestValidate, execeptionCheck } from './test.utils'
 
 describe('CategoryModule', () => {
@@ -102,7 +102,7 @@ describe('CategoryModule', () => {
         }
       }
 
-      const typiaError = await checkRequestValidate(GetIdParamsValidator, request)
+      const typiaError = await checkRequestValidate(CategoryIdParamsValidator, request)
       execeptionCheck(typiaError, BadRequestException, `Received unmatched data 'categoryId' [INVALID UUID TYPE ERROR]`)
     })
   })
