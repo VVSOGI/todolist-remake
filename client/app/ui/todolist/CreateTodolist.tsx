@@ -11,7 +11,7 @@ const CreateCategoryWrapper = styled.div`
   min-height: ${styles.todolist.createInput.height};
   display: flex;
   justify-content: space-between;
-  border: 1px solid ${styles.borderColor.primary};
+  border-top: 1px solid ${styles.borderColor.primary};
   border-bottom-right-radius: ${styles.borderRadius.medium};
   border-bottom-left-radius: ${styles.borderRadius.medium};
   overflow: hidden;
@@ -35,7 +35,7 @@ export function CreateTodolist({ handleCreateTodo }: Props) {
 
   return (
     <CreateCategoryWrapper>
-      <Input handleSubmit={handleSubmit} changeValue={changeValue} value={title} />
+      <Input value={title} handleSubmit={handleSubmit} changeValue={changeValue} />
       <LargeButton onClick={handleSubmit}>POST</LargeButton>
     </CreateCategoryWrapper>
   )
