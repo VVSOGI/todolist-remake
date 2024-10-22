@@ -1,11 +1,11 @@
 import { BadRequestException, Logger, NotAcceptableException, NotFoundException } from '@nestjs/common'
-import typia from 'typia'
+import { CustomIValidation } from './type'
 
 export class TypiaExceptionHandler {
   private readonly pattern = /\$input\./g
-  private readonly error: typia.IValidation.IError
+  private readonly error: CustomIValidation.IError
 
-  constructor(error: typia.IValidation.IError) {
+  constructor(error: CustomIValidation.IError) {
     this.error = error
   }
 
@@ -46,8 +46,12 @@ export class TypiaExceptionHandler {
   }
 
   handleValidationError(): never {
-    const { expected, value, path } = this.error
+    const { expected, value, path, messages } = this.error
     const cleanPath = path.replace(this.pattern, '')
+
+    if (messages) {
+      throw new BadRequestException(`${messages} [WRONG DATA SENT ERROR]`)
+    }
 
     if (this.isNonDtoType(expected)) {
       throw new BadRequestException(`Received unexpected data '${cleanPath}' [WRONG DATA SENT ERROR]`)
