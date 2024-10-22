@@ -42,6 +42,7 @@ export class TodolistService {
 
   async getTodolistById(id: string) {
     const target = await this.todolistRepository.findById(id)
+
     if (target) {
       return target
     }
