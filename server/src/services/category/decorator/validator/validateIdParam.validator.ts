@@ -1,7 +1,8 @@
 import typia from 'typia'
-import { GetRequest } from '..'
-import { CreateCategoryDto, GetCategoryDto } from '../../types'
 import { BadRequestException } from '@nestjs/common'
+import { CustomIValidation } from 'src/common'
+import { GetCategoryDto } from '../../types'
+import { GetRequest } from '..'
 
 /**
  * @description
@@ -16,7 +17,7 @@ export class GetIdParamsValidator {
   }
 
   validate(): any {
-    const checkValidate: typia.IValidation<GetCategoryDto> = typia.validateEquals<GetCategoryDto>({ categoryId: this.params.categoryId })
+    const checkValidate: CustomIValidation<GetCategoryDto> = typia.validateEquals<GetCategoryDto>({ categoryId: this.params.categoryId })
     const { success, errors } = checkValidate
 
     if (success) {

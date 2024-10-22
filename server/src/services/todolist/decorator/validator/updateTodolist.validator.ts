@@ -1,6 +1,7 @@
 import typia from 'typia'
-import { UpdateTodolistDto } from '../../types'
 import { BadRequestException } from '@nestjs/common'
+import { CustomIValidation } from 'src/common'
+import { UpdateTodolistDto } from '../../types'
 import { UpdateTodolistRequest } from '..'
 
 /**
@@ -16,7 +17,7 @@ export class UpdateTodolistValidator {
   }
 
   validate(): UpdateTodolistDto | never {
-    const checkValidate: typia.IValidation<UpdateTodolistDto> = typia.validateEquals<UpdateTodolistDto>(this.body)
+    const checkValidate: CustomIValidation<UpdateTodolistDto> = typia.validateEquals<UpdateTodolistDto>(this.body)
     const { success, errors } = checkValidate
 
     if (success) {
