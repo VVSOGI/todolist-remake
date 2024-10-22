@@ -1,2 +1,2 @@
 export * from './createCategory.validator'
-export * from './validateIdParam.validator'
+export * from './categoryIdParam.validator'
