@@ -36,4 +36,8 @@ export class CategoryRepository {
     const category = await this.categoryRepository.findOneBy({ id: categoryId })
     return category
   }
+
+  async delete(category: Category) {
+    return await this.categoryRepository.delete(category)
+  }
 }

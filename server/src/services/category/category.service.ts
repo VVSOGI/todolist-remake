@@ -12,6 +12,16 @@ export class CategoryService {
     return this.categoryRepository.save(category)
   }
 
+  private async findCategoryById(categoryId: string) {
+    const category = await this.categoryRepository.findById(categoryId)
+
+    if (category) {
+      return category
+    }
+
+    throw new NotFoundException(`The category you're looking for doesn't exist.`)
+  }
+
   async createCategory(createCategoryDto: CreateCategoryDto) {
     const category: CreateCategory = {
       id: v4(),
@@ -35,12 +45,11 @@ export class CategoryService {
   }
 
   async getCategoryById(categoryId: string) {
-    const category = await this.categoryRepository.findById(categoryId)
+    return await this.findCategoryById(categoryId)
+  }
 
-    if (category) {
-      return category
-    }
-
-    throw new NotFoundException(`The category you're looking for doesn't exist.`)
+  async deleteCategoryById(categoryId: string) {
+    const category = await this.findCategoryById(categoryId)
+    return await this.categoryRepository.delete(category)
   }
 }

@@ -4,6 +4,7 @@ import { Category } from 'src/entities'
 import { CategoryService } from './category.service'
 import { CategoryIdParamsDto, CreateCategoryDto, GetCategoriesResponseType } from './types'
 import { ValidateCreateDTO, ValidateIdParamDTO } from './decorator'
+import { DeleteResult } from 'typeorm'
 
 @ApiTags('Category')
 @Controller('category')
@@ -27,8 +28,8 @@ export class CategoryController {
   }
 
   @Delete(':categoryId')
-  async deleteCategoryById(@ValidateIdParamDTO() deleteCategoryDto: CategoryIdParamsDto): Promise<Category> {
+  async deleteCategoryById(@ValidateIdParamDTO() deleteCategoryDto: CategoryIdParamsDto): Promise<DeleteResult> {
     const { categoryId } = deleteCategoryDto
-    // return this.categoryService.getCategoryById(categoryId)
+    return this.categoryService.deleteCategoryById(categoryId)
   }
 }
