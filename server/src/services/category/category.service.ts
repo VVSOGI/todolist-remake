@@ -17,7 +17,7 @@ export class CategoryService {
       id: v4(),
       createdAt: new Date(),
       updatedAt: new Date(),
-      ...createCategoryDto
+      title: createCategoryDto.title as string
     }
 
     const created = await this.categoryRepository.create(category)
