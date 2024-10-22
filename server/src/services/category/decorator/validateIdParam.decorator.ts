@@ -1,8 +1,8 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common'
 import { TypiaExceptionHandler } from 'src/common'
-import { GetIdParamsValidator } from './validator'
+import { CategoryIdParamsValidator } from './validator'
 
-export interface GetRequest {
+export interface Request {
   params: {
     categoryId: string
   }
@@ -10,8 +10,8 @@ export interface GetRequest {
 
 export const ValidateIdParamDTO = createParamDecorator((data: unknown, ctx: ExecutionContext) => {
   try {
-    const request = ctx.switchToHttp().getRequest<GetRequest>()
-    return new GetIdParamsValidator(request).validate()
+    const request = ctx.switchToHttp().getRequest<Request>()
+    return new CategoryIdParamsValidator(request).validate()
   } catch (err) {
     new TypiaExceptionHandler(err.response).handleValidationError()
   }
