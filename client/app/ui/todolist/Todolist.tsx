@@ -51,7 +51,6 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
     const updated: UpdateTodoDTO = {
       id: todo.id,
       title: todo.title,
-      description: todo.description,
       checked: !todo.checked
     }
 
@@ -76,7 +75,6 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
   const handleCreateTodo = async (title: string) => {
     const createTodo: CreateTodoDto = {
       title,
-      description: 'not yet',
       categoryId
     }
 
