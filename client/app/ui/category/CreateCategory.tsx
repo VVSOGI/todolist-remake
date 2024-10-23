@@ -42,6 +42,8 @@ export function CreateCategory() {
   const handleSubmit = async (value: string) => {
     try {
       setError('')
+      setCategoryTitle('')
+
       await fetchToWebServer('/api/category', {
         method: 'POST',
         body: JSON.stringify({
@@ -51,6 +53,7 @@ export function CreateCategory() {
           'Content-Type': 'application/json'
         }
       })
+
       router.refresh()
     } catch (e: any) {
       setError(JSON.parse(e.message).message)
