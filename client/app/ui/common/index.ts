@@ -1,3 +1,4 @@
+export * from './AgreementModal'
 export * from './Button'
 export * from './LargeButton'
 export * from './Container'
