@@ -10,7 +10,7 @@ interface Params {
 
 export async function GET(req: NextRequest, { params: { categoryId } }: Params) {
   const checked = req.nextUrl.searchParams.get('checked') || 'false'
-  const data = await fetchToBackend(`/todolist/${categoryId}?checked=${checked}`, {
+  const { data, status } = await fetchToBackend(`/todolist/${categoryId}?checked=${checked}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -19,6 +19,6 @@ export async function GET(req: NextRequest, { params: { categoryId } }: Params) 
   })
 
   return NextResponse.json(data, {
-    status: 200
+    status
   })
 }

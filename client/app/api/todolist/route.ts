@@ -4,7 +4,7 @@ import { fetchToBackend } from '@/app/utils'
 export async function POST(req: Request) {
   const body = await req.json()
 
-  const data = await fetchToBackend(`/todolist`, {
+  const { data, status } = await fetchToBackend(`/todolist`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -14,14 +14,14 @@ export async function POST(req: Request) {
   })
 
   return NextResponse.json(data, {
-    status: 201
+    status
   })
 }
 
 export async function PATCH(req: Request) {
   const body = await req.json()
 
-  const data = await fetchToBackend(`/todolist`, {
+  const { data, status } = await fetchToBackend(`/todolist`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
@@ -31,6 +31,6 @@ export async function PATCH(req: Request) {
   })
 
   return NextResponse.json(data, {
-    status: 200
+    status
   })
 }

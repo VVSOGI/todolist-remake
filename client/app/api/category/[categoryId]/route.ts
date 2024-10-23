@@ -9,7 +9,7 @@ interface Params {
 }
 
 export async function GET(req: Request, { params: { categoryId } }: Params) {
-  const data = await fetchToBackend(`/category/${categoryId}`, {
+  const { data, status } = await fetchToBackend(`/category/${categoryId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -18,12 +18,12 @@ export async function GET(req: Request, { params: { categoryId } }: Params) {
   })
 
   return NextResponse.json(data, {
-    status: 200
+    status
   })
 }
 
 export async function DELETE(req: Request, { params: { categoryId } }: Params) {
-  const data = await fetchToBackend(`/category/${categoryId}`, {
+  const { data, status } = await fetchToBackend(`/category/${categoryId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -32,6 +32,6 @@ export async function DELETE(req: Request, { params: { categoryId } }: Params) {
   })
 
   return NextResponse.json(data, {
-    status: 200
+    status
   })
 }
