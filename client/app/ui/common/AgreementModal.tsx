@@ -76,37 +76,29 @@ const ModalButtonsWrapper = styled.div`
 `
 
 interface Props {
+  title: string
+  contents: string
   handleAgree: () => void
   handleRefuse: () => void
 }
 
-export function AgreementModal({ handleAgree, handleRefuse }: Props) {
-  //     () => {
-  //         setModal(false)
-  //         setDeleteCategory(null)
-  //       }
-  // () => {
-  //         if (deleteCategory) onClickDeleteButton(deleteCategory.id)
-  //         setModal(false)
-  //         setDeleteCategory(null)
-  //       }
-
+export function AgreementModal({ title, contents, handleAgree, handleRefuse }: Props) {
   return (
     <ModalContainer>
       <ModalWrapper>
         <ModalHeader>
-          <ModalTitle>삭제 확인</ModalTitle>
-          <ModalCloseIcon>
+          <ModalTitle>{title}</ModalTitle>
+          <ModalCloseIcon onClick={handleRefuse}>
             <IoMdClose />
           </ModalCloseIcon>
         </ModalHeader>
-        <ModalContentsWrapper>해당 카테고리를 삭제하시겠습니까?</ModalContentsWrapper>
+        <ModalContentsWrapper>{contents}</ModalContentsWrapper>
         <ModalButtonsWrapper>
           <LargeButton style={{ borderRadius: styles.borderRadius.small }} stylesTheme={ButtonsTheme.dark} onClick={handleRefuse}>
-            아니요
+            NO
           </LargeButton>
           <LargeButton style={{ borderRadius: styles.borderRadius.small }} stylesTheme={ButtonsTheme.bright} onClick={handleAgree}>
-            네
+            YES
           </LargeButton>
         </ModalButtonsWrapper>
       </ModalWrapper>
