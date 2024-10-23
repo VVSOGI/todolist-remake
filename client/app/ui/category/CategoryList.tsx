@@ -163,7 +163,14 @@ export function CategoryList({ categories }: Props) {
 
   return (
     <CategoryListContainer>
-      {isModalOpen && <AgreementModal handleRefuse={closeModal} handleAgree={onClickDeleteButton} />}
+      {isModalOpen && (
+        <AgreementModal
+          title="Delete"
+          contents="Are you sure you want to delete that category?"
+          handleRefuse={closeModal}
+          handleAgree={onClickDeleteButton}
+        />
+      )}
       {categories.map((category) => {
         return (
           <CategoryWrapper key={category.id}>
