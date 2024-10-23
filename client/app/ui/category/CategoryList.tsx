@@ -1,15 +1,15 @@
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
+import { FaTrashAlt } from 'react-icons/fa'
 import { Category } from '@/app/types'
 import { colors, styles } from '@/app/styles'
 import { D2CodingBold } from '@/app/fonts'
 import { useRouter } from 'next/navigation'
 import { changeToLocaleTime } from '@/app/utils/time'
-import { FaTrashAlt } from 'react-icons/fa'
 import { fetchToWebServer, mouseEvent } from '@/app/utils'
-import { IoMdClose } from 'react-icons/io'
+import { AgreementModal } from '@/app/ui'
 
-const EachCategory = styled.div`
+const CategoryWrapper = styled.div`
   width: 100%;
   height: 48px;
   display: flex;
@@ -17,7 +17,7 @@ const EachCategory = styled.div`
   border-bottom: 1px solid ${styles.borderColor.primary};
 `
 
-const CategoryWrapper = styled.div`
+const CategoryListContainer = styled.div`
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 4px;
@@ -99,40 +99,6 @@ const DeleteButton = styled.button`
   }
 `
 
-const DeleteModalContainer = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  user-select: none;
-`
-
-const Modal = styled.div`
-  width: 800px;
-  height: 300px;
-  background-color: ${colors.white};
-  border-radius: ${styles.borderRadius.medium};
-`
-
-const ModalHeader = styled.div`
-  display: flex;
-`
-
-const ModalTitle = styled.span`
-  font-size: 24px;
-  font-weight: 400;
-`
-
-const ModalIcon = styled.div`
-  width: 40px;
-  height: 40px;
-`
-
 interface Props {
   categories: Category[]
 }
@@ -140,7 +106,18 @@ interface Props {
 export function CategoryList({ categories }: Props) {
   const router = useRouter()
   const isDragging = useRef(false)
-  const [modal, setModal] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [deleteCategory, setDeleteCategory] = useState<Category | null>(null)
+
+  const openModal = (category: Category) => {
+    setIsModalOpen(true)
+    setDeleteCategory(category)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setDeleteCategory(null)
+  }
 
   const onClickCategory = (id: string) => {
     if (isDragging.current) {
@@ -169,36 +146,27 @@ export function CategoryList({ categories }: Props) {
     })
   }
 
-  const onClickDeleteButton = async (id: string) => {
-    await fetchToWebServer(`/api/category/${id}`, {
+  const onClickDeleteButton = async () => {
+    if (!deleteCategory) return
+
+    await fetchToWebServer(`/api/category/${deleteCategory.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       }
     })
 
+    closeModal()
+
     router.refresh()
   }
 
   return (
-    <CategoryWrapper>
-      {modal && (
-        <DeleteModalContainer>
-          <Modal>
-            <ModalHeader>
-              <ModalTitle>삭제 확인</ModalTitle>
-              <ModalIcon>
-                <IoMdClose />
-              </ModalIcon>
-            </ModalHeader>
-            <div></div>
-            <div></div>
-          </Modal>
-        </DeleteModalContainer>
-      )}
+    <CategoryListContainer>
+      {isModalOpen && <AgreementModal handleRefuse={closeModal} handleAgree={onClickDeleteButton} />}
       {categories.map((category) => {
         return (
-          <EachCategory key={category.id}>
+          <CategoryWrapper key={category.id}>
             <CategoryButton onMouseDown={(e) => onCategoryDrag(e, category.id)} onClick={() => onClickCategory(category.id)}>
               <ContentsWrapper>
                 <CategoryTitle className={D2CodingBold.className}>{category.title}</CategoryTitle>
@@ -209,17 +177,17 @@ export function CategoryList({ categories }: Props) {
               </ContentsWrapper>
             </CategoryButton>
             <DeleteButton
-              onClick={() => {
-                setModal(true)
-                // onClickDeleteButton(category.id)
-              }}
               id={category.id}
+              onClick={(e) => {
+                e.currentTarget.style.width = '0px'
+                openModal(category)
+              }}
             >
               <FaTrashAlt />
             </DeleteButton>
-          </EachCategory>
+          </CategoryWrapper>
         )
       })}
-    </CategoryWrapper>
+    </CategoryListContainer>
   )
 }
