@@ -18,9 +18,6 @@ export class Todolist {
   @Column({ type: 'varchar', length: 255 })
   title: string
 
-  @Column({ type: 'varchar', length: 255 })
-  description: string
-
   @Column({ type: 'boolean', default: 'false' })
   checked: boolean
 
