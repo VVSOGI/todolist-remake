@@ -35,7 +35,6 @@ describe('CategoryModule', () => {
       const request = {
         body: {
           title: 'test title',
-          description: 'test description',
           categoryId: '1',
           hack: 'hack'
         }
@@ -64,7 +63,6 @@ describe('CategoryModule', () => {
         body: {
           id: '1',
           title: 'test title',
-          description: 'test description',
           checked: false,
           hack: 'hack'
         }
@@ -83,7 +81,6 @@ describe('CategoryModule', () => {
           category: new Category(),
           categoryId: '1',
           title: 'mock todolist title 1',
-          description: 'mock todolist description 1',
           checked: false,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -93,7 +90,6 @@ describe('CategoryModule', () => {
           category: new Category(),
           categoryId: '1',
           title: 'mock todolist title 2',
-          description: 'mock todolist description 2',
           checked: false,
           createdAt: new Date(),
           updatedAt: new Date()
