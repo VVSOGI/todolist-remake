@@ -6,7 +6,9 @@ export class Todolist {
   @PrimaryColumn({ type: 'uuid' })
   id: string
 
-  @ManyToOne(() => Category, (category) => category.todolist)
+  @ManyToOne(() => Category, (category) => category.todolist, {
+    onDelete: 'CASCADE'
+  })
   @JoinColumn({ name: 'categoryId' })
   category: Category
 

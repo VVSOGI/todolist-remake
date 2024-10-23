@@ -15,6 +15,8 @@ export class Category {
   @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date
 
-  @OneToMany(() => Todolist, (todolist) => todolist.category)
+  @OneToMany(() => Todolist, (todolist) => todolist.category, {
+    cascade: true
+  })
   todolist: Todolist[]
 }
