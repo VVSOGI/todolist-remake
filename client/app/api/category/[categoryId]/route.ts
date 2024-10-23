@@ -21,3 +21,17 @@ export async function GET(req: Request, { params: { categoryId } }: Params) {
     status: 200
   })
 }
+
+export async function DELETE(req: Request, { params: { categoryId } }: Params) {
+  const data = await fetchToBackend(`/category/${categoryId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    cache: 'no-cache'
+  })
+
+  return NextResponse.json(data, {
+    status: 200
+  })
+}
