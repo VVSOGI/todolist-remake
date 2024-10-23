@@ -47,6 +47,7 @@ export function TodolistHeader({ category }: Props) {
 
   const moveBackPage = () => {
     router.push('/')
+    router.refresh()
   }
 
   return (
