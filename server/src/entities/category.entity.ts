@@ -19,4 +19,7 @@ export class Category {
     cascade: true
   })
   todolist: Todolist[]
+
+  @Column({ type: 'boolean', default: 'false' })
+  deleted: boolean
 }

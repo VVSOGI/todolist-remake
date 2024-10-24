@@ -12,7 +12,7 @@ export class Todolist {
   @JoinColumn({ name: 'categoryId' })
   category: Category
 
-  @Column({ type: 'uuid', nullable: true })
+  @Column({ type: 'uuid', nullable: false })
   categoryId: string
 
   @Column({ type: 'varchar', length: 255 })
