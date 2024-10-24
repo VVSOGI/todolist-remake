@@ -61,6 +61,7 @@ describe('CategoryModule', () => {
           title: 'Test Category 1',
           createdAt: new Date(),
           updatedAt: new Date(),
+          deleted: false,
           todolist: []
         },
         {
@@ -68,6 +69,7 @@ describe('CategoryModule', () => {
           title: 'Test Category 2',
           createdAt: new Date(),
           updatedAt: new Date(),
+          deleted: false,
           todolist: []
         }
       ]
@@ -77,7 +79,7 @@ describe('CategoryModule', () => {
         total: mockCategories.length
       })
 
-      const result = (await controller.getCategories()).data
+      const result = (await controller.getCategories('false')).data
       const [first, second] = result
 
       expect(first.id).toBe('1')
@@ -89,7 +91,7 @@ describe('CategoryModule', () => {
         data: [],
         total: 0
       })
-      const result = (await controller.getCategories()).data
+      const result = (await controller.getCategories('false')).data
       expect(result.length).toBe(0)
     })
   })
