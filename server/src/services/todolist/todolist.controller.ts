@@ -14,11 +14,6 @@ export class TodolistController {
     return this.todolistService.createTodolist(createTodolistDto)
   }
 
-  @Patch()
-  async updateTodo(@ValidateUpdateTodolistDto() updateTodolistDto: UpdateTodolistDto): Promise<Todolist> {
-    return this.todolistService.updateTodolist(updateTodolistDto)
-  }
-
   @Get()
   async getTodolists(): Promise<GetTodolistsResponseType> {
     return this.todolistService.getTodolists()
@@ -30,5 +25,10 @@ export class TodolistController {
     @ValidateGetTodolistCheckedDTO() checked: boolean
   ): Promise<GetTodolistsResponseType> {
     return this.todolistService.getTodolistsByCategoryId({ categoryId, checked })
+  }
+
+  @Patch()
+  async updateTodo(@ValidateUpdateTodolistDto() updateTodolistDto: UpdateTodolistDto): Promise<Todolist> {
+    return this.todolistService.updateTodolist(updateTodolistDto)
   }
 }
