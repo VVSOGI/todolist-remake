@@ -68,7 +68,7 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
 
     setList(checkList)
 
-    const audio = document.getElementById('a1') as HTMLAudioElement
+    const audio = document.getElementById('audio') as HTMLAudioElement
     audio.play()
   }
 
@@ -99,7 +99,7 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
         )
       })}
       {!list.length && <NothingInList>Nothing in list 😅</NothingInList>}
-      <audio id="a1" src="/poped.wav"></audio>
+      <audio id="audio" src="/poped.wav"></audio>
       <CreateTodolist handleCreateTodo={handleCreateTodo} />
     </TodolistWrapper>
   )
