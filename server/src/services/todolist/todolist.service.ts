@@ -16,6 +16,16 @@ export class TodolistService {
     return this.todolistRepository.save(todolist)
   }
 
+  private async findTodolistById(todolistId: string) {
+    const target = await this.todolistRepository.findById(todolistId)
+
+    if (target) {
+      return target
+    }
+
+    throw new NotFoundException(`The todolist you're looking for doesn't exist.`)
+  }
+
   async createTodolist(createTodolist: CreateTodolistDto) {
     const todolist: createTodolist = {
       id: v4(),
@@ -30,7 +40,7 @@ export class TodolistService {
 
   async updateTodolist(updateTodolist: UpdateTodolistDto) {
     const { id } = updateTodolist
-    const target = await this.getTodolistById(id)
+    const target = await this.findTodolistById(id)
     const updated: Todolist = { ...target, ...updateTodolist, updatedAt: new Date() }
     this.categoryService.updateDate(target.categoryId)
     return this.saveTodolist(updated)
@@ -41,13 +51,8 @@ export class TodolistService {
   }
 
   async getTodolistById(id: string) {
-    const target = await this.todolistRepository.findById(id)
-
-    if (target) {
-      return target
-    }
-
-    throw new NotFoundException(`The todolist you're looking for doesn't exist.`)
+    const target = await this.findTodolistById(id)
+    return target
   }
 
   async getTodolistsByCategoryId(filters: GetTodolistDtoFilters) {
