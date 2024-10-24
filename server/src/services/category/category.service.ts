@@ -1,7 +1,7 @@
 import { v4 } from 'uuid'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { CategoryRepository } from './category.repository'
-import { CreateCategory, CreateCategoryDto } from './types'
+import { CategoryDeleteParamsDto, CreateCategory, CreateCategoryDto } from './types'
 import { Category } from 'src/entities'
 
 @Injectable()
@@ -40,16 +40,25 @@ export class CategoryService {
     this.saveCategory(updated)
   }
 
-  async getCategories() {
-    return this.categoryRepository.findAll()
+  async getCategories(deleted: CategoryDeleteParamsDto) {
+    let check: boolean
+
+    if (deleted === 'true') {
+      check = true
+    } else {
+      check = false
+    }
+
+    return this.categoryRepository.findAll(check)
   }
 
   async getCategoryById(categoryId: string) {
     return await this.findCategoryById(categoryId)
   }
 
-  async deleteCategoryById(categoryId: string) {
+  async softDeleteCategoryById(categoryId: string) {
     const category = await this.findCategoryById(categoryId)
-    return await this.categoryRepository.delete(category)
+    const updated: Category = { ...category, deleted: true }
+    return this.saveCategory(updated)
   }
 }

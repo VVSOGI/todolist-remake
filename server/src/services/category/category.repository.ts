@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Category } from 'src/entities'
 import { Repository } from 'typeorm'
-import { CreateCategory } from './types'
+import { CategoryDeleteParamsDto, CreateCategory } from './types'
 
 @Injectable()
 export class CategoryRepository {
@@ -20,10 +20,13 @@ export class CategoryRepository {
     return created
   }
 
-  async findAll() {
+  async findAll(deleted: boolean) {
     const [data, total] = await this.categoryRepository.findAndCount({
       order: {
         createdAt: 'desc'
+      },
+      where: {
+        deleted
       }
     })
     return {

@@ -2,9 +2,8 @@ import { Controller, Delete, Get, Post } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { Category } from 'src/entities'
 import { CategoryService } from './category.service'
-import { CategoryIdParamsDto, CreateCategoryDto, GetCategoriesResponseType } from './types'
-import { ValidateCreateDTO, ValidateIdParamDTO } from './decorator'
-import { DeleteResult } from 'typeorm'
+import { CategoryDeleteParamsDto, CategoryIdParamsDto, CreateCategoryDto, GetCategoriesResponseType } from './types'
+import { ValidateCreateDTO, ValidateDeletedCheckedDTO, ValidateIdParamDTO } from './decorator'
 
 @ApiTags('Category')
 @Controller('category')
@@ -17,8 +16,8 @@ export class CategoryController {
   }
 
   @Get()
-  async getCategories(): Promise<GetCategoriesResponseType> {
-    return this.categoryService.getCategories()
+  async getCategories(@ValidateDeletedCheckedDTO() categoryDeleteParamsDto: CategoryDeleteParamsDto): Promise<GetCategoriesResponseType> {
+    return this.categoryService.getCategories(categoryDeleteParamsDto)
   }
 
   @Get(':categoryId')
@@ -28,8 +27,8 @@ export class CategoryController {
   }
 
   @Delete(':categoryId')
-  async deleteCategoryById(@ValidateIdParamDTO() deleteCategoryDto: CategoryIdParamsDto): Promise<DeleteResult> {
+  async softDeleteCategoryById(@ValidateIdParamDTO() deleteCategoryDto: CategoryIdParamsDto): Promise<Category> {
     const { categoryId } = deleteCategoryDto
-    return this.categoryService.deleteCategoryById(categoryId)
+    return this.categoryService.softDeleteCategoryById(categoryId)
   }
 }
