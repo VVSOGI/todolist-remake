@@ -21,7 +21,7 @@ export namespace mouseEvent {
       }
     }
 
-    const mouseUpHandler = (e: MouseEvent) => {
+    const mouseUpHandler = () => {
       document.removeEventListener('mousemove', mouseMoveHandler)
     }
 
