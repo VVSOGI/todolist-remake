@@ -23,7 +23,7 @@ export async function GET(req: Request, { params: { categoryId } }: Params) {
 }
 
 export async function DELETE(req: Request, { params: { categoryId } }: Params) {
-  const { data, status } = await fetchToBackend(`/category/${categoryId}`, {
+  const { data, status } = await fetchToBackend(`/category/soft/${categoryId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
