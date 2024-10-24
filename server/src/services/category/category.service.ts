@@ -41,12 +41,18 @@ export class CategoryService {
   }
 
   async getCategories(deleted: CategoryDeleteParamsDto) {
-    let check: boolean
+    let check: boolean | undefined
 
-    if (deleted === 'true') {
-      check = true
-    } else {
-      check = false
+    switch (deleted) {
+      case 'true':
+        check = true
+        break
+      case 'false':
+        check = false
+        break
+      default:
+        check = undefined
+        break
     }
 
     return this.categoryRepository.findAll(check)

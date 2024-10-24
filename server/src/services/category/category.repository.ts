@@ -20,7 +20,7 @@ export class CategoryRepository {
     return created
   }
 
-  async findAll(deleted: boolean) {
+  async findAll(deleted?: boolean) {
     const [data, total] = await this.categoryRepository.findAndCount({
       order: {
         createdAt: 'desc'

@@ -26,7 +26,7 @@ export class CategoryController {
     return this.categoryService.getCategoryById(categoryId)
   }
 
-  @Delete(':categoryId')
+  @Delete('/soft/:categoryId')
   async softDeleteCategoryById(@ValidateIdParamDTO() deleteCategoryDto: CategoryIdParamsDto): Promise<Category> {
     const { categoryId } = deleteCategoryDto
     return this.categoryService.softDeleteCategoryById(categoryId)
