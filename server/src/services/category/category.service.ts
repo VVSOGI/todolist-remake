@@ -62,6 +62,12 @@ export class CategoryService {
     return await this.findCategoryById(categoryId)
   }
 
+  async updateCategory(categoryId: string, title: string) {
+    const category = await this.findCategoryById(categoryId)
+    const updated = { ...category, title }
+    return await this.saveCategory(updated)
+  }
+
   async softDeleteCategoryById(categoryId: string) {
     const category = await this.findCategoryById(categoryId)
     const updated: Category = { ...category, deleted: true }
