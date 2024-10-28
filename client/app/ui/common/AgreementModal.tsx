@@ -77,12 +77,12 @@ const ModalButtonsWrapper = styled.div`
 
 interface Props {
   title: string
-  contents: string
+  children: React.ReactNode
   handleAgree: () => void
   handleRefuse: () => void
 }
 
-export function AgreementModal({ title, contents, handleAgree, handleRefuse }: Props) {
+export function AgreementModal({ title, children, handleAgree, handleRefuse }: Props) {
   return (
     <ModalContainer>
       <ModalWrapper>
@@ -92,7 +92,7 @@ export function AgreementModal({ title, contents, handleAgree, handleRefuse }: P
             <IoMdClose />
           </ModalCloseIcon>
         </ModalHeader>
-        <ModalContentsWrapper>{contents}</ModalContentsWrapper>
+        <ModalContentsWrapper>{children}</ModalContentsWrapper>
         <ModalButtonsWrapper>
           <LargeButton style={{ borderRadius: styles.borderRadius.small }} stylesTheme={ButtonsTheme.dark} onClick={handleRefuse}>
             NO
