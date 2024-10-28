@@ -7,7 +7,8 @@ import { D2CodingBold } from '@/app/fonts'
 import { useRouter } from 'next/navigation'
 import { changeToLocaleTime } from '@/app/utils/time'
 import { fetchToWebServer, mouseEvent } from '@/app/utils'
-import { AgreementModal } from '@/app/ui'
+import { AgreementModal, Button, ButtonsTheme } from '@/app/ui'
+import { IoSettings } from 'react-icons/io5'
 
 const CategoryWrapper = styled.div`
   width: 100%;
@@ -57,7 +58,8 @@ const ContentsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 8px;
+  padding-left: 8px;
+  padding-right: 16px;
   user-select: none;
 `
 
@@ -78,24 +80,19 @@ const CategoryTime = styled.div`
   }
 `
 
-const DeleteButton = styled.button`
+const HiddenButtonsWrapper = styled.div`
   width: 0px;
+  min-width: 0px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${colors.white};
-  background-color: ${colors.red_600};
-  font-size: 12px;
   transition: 0.2s;
+  overflow: hidden;
   cursor: pointer;
 
-  &:hover {
-    background-color: ${colors.red_200};
-  }
-
-  &:active {
-    background-color: ${colors.red_600};
+  button {
+    font-size: 14px;
   }
 `
 
@@ -106,16 +103,20 @@ interface Props {
 export function CategoryList({ categories }: Props) {
   const router = useRouter()
   const isDragging = useRef(false)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState<'delete' | 'update' | undefined>()
   const [deleteCategory, setDeleteCategory] = useState<Category | null>(null)
 
-  const openModal = (category: Category) => {
-    setIsModalOpen(true)
-    setDeleteCategory(category)
+  const openDeleteModal = (category: Category) => {
+    const component = document.getElementById(`${category.id}-hidden`)
+    if (component) {
+      component.style.minWidth = '0px'
+      setIsModalOpen('delete')
+      setDeleteCategory(category)
+    }
   }
 
-  const closeModal = () => {
-    setIsModalOpen(false)
+  const closeDeleteModal = () => {
+    setIsModalOpen(undefined)
     setDeleteCategory(null)
   }
 
@@ -130,18 +131,18 @@ export function CategoryList({ categories }: Props) {
   const onCategoryDrag = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, categoryId: string) => {
     isDragging.current = false
 
-    const deleteButton = document.getElementById(categoryId)
-    if (!deleteButton) return
+    const HiddenButtonsWrapper = document.getElementById(`${categoryId}-hidden`)
+    if (!HiddenButtonsWrapper) return
 
     mouseEvent.dragHorizon({
       event: e,
       leftCallback: () => {
         isDragging.current = true
-        deleteButton.style.width = '50px'
+        HiddenButtonsWrapper.style.minWidth = '96px'
       },
       rightCallback: () => {
         isDragging.current = true
-        deleteButton.style.width = '0px'
+        HiddenButtonsWrapper.style.minWidth = '0px'
       }
     })
   }
@@ -156,7 +157,7 @@ export function CategoryList({ categories }: Props) {
       }
     })
 
-    closeModal()
+    closeDeleteModal()
 
     router.refresh()
   }
@@ -164,12 +165,9 @@ export function CategoryList({ categories }: Props) {
   return (
     <CategoryListContainer>
       {isModalOpen && (
-        <AgreementModal
-          title="Delete"
-          contents="Are you sure you want to delete that category?"
-          handleRefuse={closeModal}
-          handleAgree={onClickDeleteButton}
-        />
+        <AgreementModal title="Delete" handleRefuse={closeDeleteModal} handleAgree={onClickDeleteButton}>
+          Are you sure you want to delete that category?
+        </AgreementModal>
       )}
       {categories.map((category) => {
         return (
@@ -183,15 +181,14 @@ export function CategoryList({ categories }: Props) {
                 </CategoryTime>
               </ContentsWrapper>
             </CategoryButton>
-            <DeleteButton
-              id={category.id}
-              onClick={(e) => {
-                e.currentTarget.style.width = '0px'
-                openModal(category)
-              }}
-            >
-              <FaTrashAlt />
-            </DeleteButton>
+            <HiddenButtonsWrapper id={`${category.id}-hidden`}>
+              <Button stylesTheme={ButtonsTheme.dark} onClick={() => {}}>
+                <IoSettings />
+              </Button>
+              <Button onClick={() => openDeleteModal(category)}>
+                <FaTrashAlt />
+              </Button>
+            </HiddenButtonsWrapper>
           </CategoryWrapper>
         )
       })}
