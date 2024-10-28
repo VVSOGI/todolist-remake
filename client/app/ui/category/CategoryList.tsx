@@ -104,20 +104,20 @@ export function CategoryList({ categories }: Props) {
   const router = useRouter()
   const isDragging = useRef(false)
   const [isModalOpen, setIsModalOpen] = useState<'delete' | 'update' | undefined>()
-  const [deleteCategory, setDeleteCategory] = useState<Category | null>(null)
+  const [targetCategory, setTargetCategory] = useState<Category | null>(null)
 
   const openDeleteModal = (category: Category) => {
     const component = document.getElementById(`${category.id}-hidden`)
     if (component) {
       component.style.minWidth = '0px'
       setIsModalOpen('delete')
-      setDeleteCategory(category)
+      setTargetCategory(category)
     }
   }
 
   const closeDeleteModal = () => {
     setIsModalOpen(undefined)
-    setDeleteCategory(null)
+    setTargetCategory(null)
   }
 
   const onClickCategory = (id: string) => {
@@ -148,9 +148,9 @@ export function CategoryList({ categories }: Props) {
   }
 
   const onClickDeleteButton = async () => {
-    if (!deleteCategory) return
+    if (!targetCategory) return
 
-    await fetchToWebServer(`/api/category/${deleteCategory.id}`, {
+    await fetchToWebServer(`/api/category/${targetCategory.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -164,7 +164,7 @@ export function CategoryList({ categories }: Props) {
 
   return (
     <CategoryListContainer>
-      {isModalOpen && (
+      {isModalOpen === 'delete' && (
         <AgreementModal title="Delete" handleRefuse={closeDeleteModal} handleAgree={onClickDeleteButton}>
           Are you sure you want to delete that category?
         </AgreementModal>
