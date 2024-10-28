@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import { Category } from '@/app/types'
 import { styles } from '@/app/styles'
 import { deleteCategory } from '@/app/utils'
-import { AgreementModal, Input } from '@/app/ui'
-import CategoryItem from './CategoryItem'
+import { AgreementModal, Input, CategoryItem } from '@/app/ui'
 
 const CategoryListContainer = styled.div`
   overflow-y: scroll;
@@ -88,7 +87,7 @@ export function CategoryList({ categories }: Props) {
         </AgreementModal>
       )}
       {categories.map((category) => {
-        return <CategoryItem category={category} openTargetModal={openTargetModal} openDeleteModal={openDeleteModal} />
+        return <CategoryItem key={category.id} category={category} openTargetModal={openTargetModal} openDeleteModal={openDeleteModal} />
       })}
     </CategoryListContainer>
   )

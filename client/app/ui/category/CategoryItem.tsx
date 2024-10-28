@@ -90,7 +90,7 @@ interface Props {
   openDeleteModal: (category: Category) => void
 }
 
-export default function CategoryItem({ category, openDeleteModal, openTargetModal }: Props) {
+export function CategoryItem({ category, openDeleteModal, openTargetModal }: Props) {
   const router = useRouter()
   const isDragging = useRef(false)
 
