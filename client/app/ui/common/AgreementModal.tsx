@@ -19,7 +19,7 @@ const ModalContainer = styled.div`
 
 const ModalWrapper = styled.div`
   width: 800px;
-  height: 300px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   background-color: ${colors.white};
@@ -94,10 +94,18 @@ export function AgreementModal({ title, children, handleAgree, handleRefuse }: P
         </ModalHeader>
         <ModalContentsWrapper>{children}</ModalContentsWrapper>
         <ModalButtonsWrapper>
-          <LargeButton style={{ borderRadius: styles.borderRadius.small }} stylesTheme={ButtonsTheme.dark} onClick={handleRefuse}>
+          <LargeButton
+            style={{ borderRadius: styles.borderRadius.small, minHeight: '36px' }}
+            stylesTheme={ButtonsTheme.dark}
+            onClick={handleRefuse}
+          >
             NO
           </LargeButton>
-          <LargeButton style={{ borderRadius: styles.borderRadius.small }} stylesTheme={ButtonsTheme.bright} onClick={handleAgree}>
+          <LargeButton
+            style={{ borderRadius: styles.borderRadius.small, minHeight: '36px' }}
+            stylesTheme={ButtonsTheme.bright}
+            onClick={handleAgree}
+          >
             YES
           </LargeButton>
         </ModalButtonsWrapper>
