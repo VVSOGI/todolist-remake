@@ -22,3 +22,12 @@ export async function getCategoryById(categoryId: UUID) {
   })
   return response
 }
+
+export async function deleteCategory(categoryId: string) {
+  await fetchToWebServer(`/api/category/${categoryId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+}
