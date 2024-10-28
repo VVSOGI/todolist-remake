@@ -40,16 +40,16 @@ interface StylesProps {
   stylestheme: ButtonsTheme
 }
 
-interface Props {
+interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   children: React.ReactNode
   style?: React.CSSProperties
   stylesTheme?: ButtonsTheme
-  onClick: () => void
+  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
-export function Button({ children, style, stylesTheme = ButtonsTheme.bright, onClick }: Props) {
+export function Button({ children, style, stylesTheme = ButtonsTheme.bright, onClick, ...rest }: Props) {
   return (
-    <StyledButton stylestheme={stylesTheme} style={style} onClick={onClick}>
+    <StyledButton stylestheme={stylesTheme} style={style} onClick={onClick} {...rest}>
       {children}
     </StyledButton>
   )
