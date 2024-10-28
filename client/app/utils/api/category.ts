@@ -31,3 +31,13 @@ export async function deleteCategory(categoryId: string) {
     }
   })
 }
+
+export async function updateCategory(categoryId: string, body: { title: string }) {
+  await fetchToWebServer(`/api/category/${categoryId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  })
+}

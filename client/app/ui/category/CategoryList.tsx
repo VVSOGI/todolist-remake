@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
 import { Category } from '@/app/types'
 import { styles } from '@/app/styles'
-import { deleteCategory } from '@/app/utils'
+import { deleteCategory, updateCategory } from '@/app/utils'
 import { AgreementModal, Input, CategoryItem } from '@/app/ui'
 
 const CategoryListContainer = styled.div`
@@ -53,7 +53,7 @@ export function CategoryList({ categories }: Props) {
     }
   }
 
-  const closeDeleteModal = () => {
+  const closeModal = () => {
     setIsModalOpen(undefined)
     setTargetCategory(null)
   }
@@ -61,14 +61,23 @@ export function CategoryList({ categories }: Props) {
   const onClickDeleteButton = async () => {
     if (!targetCategory) return
     await deleteCategory(targetCategory.id)
-    closeDeleteModal()
+    closeModal()
+    router.refresh()
+  }
+
+  const onClickUpdateButton = async () => {
+    if (!targetCategory) return
+    await updateCategory(targetCategory.id, {
+      title: updateTitle
+    })
+    closeModal()
     router.refresh()
   }
 
   return (
     <CategoryListContainer>
       {isModalOpen === 'update' && (
-        <AgreementModal title="Update" handleRefuse={closeDeleteModal} handleAgree={onClickDeleteButton}>
+        <AgreementModal title="Update" handleRefuse={closeModal} handleAgree={onClickUpdateButton}>
           <UpdateModalContents>
             <div>Change Title this category</div>
             <Input
@@ -82,7 +91,7 @@ export function CategoryList({ categories }: Props) {
         </AgreementModal>
       )}
       {isModalOpen === 'delete' && (
-        <AgreementModal title="Delete" handleRefuse={closeDeleteModal} handleAgree={onClickDeleteButton}>
+        <AgreementModal title="Delete" handleRefuse={closeModal} handleAgree={onClickDeleteButton}>
           Are you sure you want to delete that category?
         </AgreementModal>
       )}
