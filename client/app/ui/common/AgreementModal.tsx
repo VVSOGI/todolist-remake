@@ -5,7 +5,7 @@ import { colors, styles } from '@/app/styles'
 import { ButtonsTheme, LargeButton } from '.'
 
 const ModalContainer = styled.div`
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -15,6 +15,7 @@ const ModalContainer = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   user-select: none;
+  z-index: 10;
 `
 
 const ModalWrapper = styled.div`
