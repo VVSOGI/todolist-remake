@@ -77,21 +77,35 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
     await setNewTodolist()
   }
 
-  const handleEditModalOpen = async (todo: Todo) => {
+  const handleEditTodo = async () => {
+    if (!targetTodo) return
+
+    const updated: UpdateTodoDTO = {
+      id: targetTodo.id,
+      title: updateTitle,
+      checked: targetTodo.checked
+    }
+
+    await updateTodolist(updated)
+    await setNewTodolist()
+    handleEditModalClose()
+  }
+
+  const handleEditModalOpen = (todo: Todo) => {
     setTargetTodo(todo)
     setModal('edit')
+  }
+
+  const handleEditModalClose = () => {
+    setModal(undefined)
+    setTargetTodo(undefined)
+    setUpdateTitle('')
   }
 
   return (
     <TodolistWrapper>
       {modal === 'edit' && (
-        <AgreementModal
-          title="Edit"
-          handleAgree={() => {}}
-          handleRefuse={() => {
-            setModal(undefined)
-          }}
-        >
+        <AgreementModal title="Edit" handleAgree={handleEditTodo} handleRefuse={handleEditModalClose}>
           <EditModalContents>
             <div>Change Todo Title</div>
             <Input
