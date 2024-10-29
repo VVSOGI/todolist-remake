@@ -1,7 +1,7 @@
 import { ObjectLiteral, Repository } from 'typeorm'
 import { jest } from '@jest/globals'
 import { TypiaExceptionHandler } from 'src/common'
-import { BadRequestException, HttpException } from '@nestjs/common'
+import { BadRequestException, HttpException, NotFoundException } from '@nestjs/common'
 
 export type MockType<T> = {
   [P in keyof T]?: jest.Mock<any>
@@ -24,13 +24,4 @@ export const checkRequestValidate = async (Validator: any, request: any) => {
   }
 
   return typiaError
-}
-
-export const execeptionCheck = async (error: any, Exeception: any, expectedMsg: string) => {
-  try {
-    new TypiaExceptionHandler(error.response).handleValidationError()
-  } catch (err) {
-    expect(err).toBeInstanceOf(Exeception)
-    expect(err.response.message).toBe(expectedMsg)
-  }
 }

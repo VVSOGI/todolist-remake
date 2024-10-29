@@ -3,7 +3,8 @@ import { TodolistController, TodolistService } from '../todolist'
 import { Category, Todolist } from 'src/entities'
 import { CreateTodolistValidator, GetTodolistCheckedValidator, UpdateTodolistValidator } from '../todolist/decorator'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
-import { checkRequestValidate, execeptionCheck } from './test.utils'
+import { checkRequestValidate } from './test.utils'
+import { TypiaExceptionHandler } from 'src/common'
 
 describe('CategoryModule', () => {
   let controller: TodolistController
@@ -41,7 +42,13 @@ describe('CategoryModule', () => {
       }
 
       const typiaError = await checkRequestValidate(CreateTodolistValidator, request)
-      execeptionCheck(typiaError, BadRequestException, `Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
+      }
     })
 
     it('should throw error when forget sent essential data', async () => {
@@ -53,7 +60,13 @@ describe('CategoryModule', () => {
       }
 
       const typiaError = await checkRequestValidate(CreateTodolistValidator, request)
-      execeptionCheck(typiaError, NotFoundException, `Received unexpected data 'categoryId' [MISSING DATA ERROR]`)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundException)
+        expect(err.response.message).toBe(`Received unexpected data 'categoryId' [MISSING DATA ERROR]`)
+      }
     })
   })
 
@@ -69,7 +82,13 @@ describe('CategoryModule', () => {
       }
 
       const typiaError = await checkRequestValidate(UpdateTodolistValidator, request)
-      execeptionCheck(typiaError, BadRequestException, `Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
+      }
     })
   })
 
@@ -128,11 +147,13 @@ describe('CategoryModule', () => {
       }
 
       const typiaError = await checkRequestValidate(GetTodolistCheckedValidator, request)
-      execeptionCheck(
-        typiaError,
-        BadRequestException,
-        `Received unexpected data '(\"false\" | \"true\" | undefined)' [INVALID QUERY DATA ERROR]`
-      )
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unexpected data '(\"false\" | \"true\" | undefined)' [INVALID QUERY DATA ERROR]`)
+      }
     })
   })
 })
