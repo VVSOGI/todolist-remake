@@ -1,10 +1,9 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common'
 import { TypiaExceptionHandler } from 'src/common'
 import { UpdateCategoryValidator } from './validator'
-import { UpdateCategoryDto } from '../types'
 
 export interface UpdateRequest {
-  body: UpdateCategoryDto | any
+  body: any
 }
 
 export const ValidateUpdateDTO = createParamDecorator((data: unknown, ctx: ExecutionContext) => {

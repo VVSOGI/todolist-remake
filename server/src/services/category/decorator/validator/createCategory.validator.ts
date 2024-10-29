@@ -4,11 +4,6 @@ import { CustomIValidation } from 'src/common'
 import { CreateCategoryDto } from '../../types'
 import { CreateRequest } from '..'
 
-/**
- * @description
- * CreateCategory의 typia validate 미들웨어
- * - request의 body가 CreateCategoryDto와 일치하지 않으면 에러를 뱉음.
- */
 export class CreateCategoryValidator {
   private body: CreateCategoryDto
 
