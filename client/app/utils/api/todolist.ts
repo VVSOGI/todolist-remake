@@ -1,4 +1,4 @@
-import { GetResponseTodolist, UUID } from '@/app/types'
+import { CreateTodoDto, GetResponseTodolist, UUID, UpdateTodoDTO } from '@/app/types'
 import { fetchToWebServer } from '..'
 
 export async function getTodolistByCategoryId(categoryId: UUID) {
@@ -8,6 +8,30 @@ export async function getTodolistByCategoryId(categoryId: UUID) {
       'Content-Type': 'application/json'
     },
     cache: 'no-cache'
+  })
+
+  return response
+}
+
+export async function createTodolist(createTodo: CreateTodoDto) {
+  const response = await fetchToWebServer(`/api/todolist`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(createTodo)
+  })
+
+  return response
+}
+
+export async function updateTodolist(updatedTodo: UpdateTodoDTO) {
+  const response = await fetchToWebServer(`/api/todolist`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedTodo)
   })
 
   return response
