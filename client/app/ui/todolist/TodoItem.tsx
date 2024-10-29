@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { colors, styles } from '@/app/styles'
 import { CheckCircle } from '@/app/ui'
@@ -7,8 +7,9 @@ import { Todo } from '@/app/types'
 
 const TodoWrapper = styled.div`
   position: relative;
-  max-height: 45px;
+  min-height: 54px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
   border-bottom: 1px solid ${styles.borderColor.primary};
@@ -39,18 +40,23 @@ const TodoIcons = styled.div`
 interface Props {
   todo: Todo
   handleCompleteTodo: (todo: Todo) => void
+  handleEditModalOpen: (todo: Todo) => void
 }
 
-export function TodoItem({ todo, handleCompleteTodo }: Props) {
+export function TodoItem({ todo, handleCompleteTodo, handleEditModalOpen }: Props) {
+  const [isHover, setIsHover] = useState(false)
+
   return (
-    <TodoWrapper>
+    <TodoWrapper onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
       <TodoContents>
         <CheckCircle onAnimationEnd={() => handleCompleteTodo(todo)} />
         <div>{todo.title}</div>
       </TodoContents>
-      <TodoIcons>
-        <CiEdit />
-      </TodoIcons>
+      {isHover && (
+        <TodoIcons>
+          <CiEdit onClick={() => handleEditModalOpen(todo)} />
+        </TodoIcons>
+      )}
     </TodoWrapper>
   )
 }
