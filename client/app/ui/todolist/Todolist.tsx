@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { createTodolist, updateTodolist } from '@/app/utils'
 import { colors, styles } from '@/app/styles'
-import { CreateTodolist, TodoItem } from '@/app/ui'
+import { AgreementModal, CreateTodolist, Input, TodoItem } from '@/app/ui'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${styles.todolist.header.height} + ${styles.todolist.createInput.height}));
@@ -28,6 +28,14 @@ const NothingInList = styled.div`
   color: ${colors.gray_300};
 `
 
+const EditModalContents = styled.div`
+  width: 100%;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`
+
 interface Props {
   categoryId: string
   todolist: Todo[]
@@ -36,6 +44,9 @@ interface Props {
 
 export function Todolist({ categoryId, todolist, getTodolist }: Props) {
   const [list, setList] = useState(todolist)
+  const [modal, setModal] = useState<'edit' | undefined>()
+  const [targetTodo, setTargetTodo] = useState<Todo>()
+  const [updateTitle, setUpdateTitle] = useState('')
 
   const setNewTodolist = async () => {
     const todos = await getTodolist()
@@ -66,13 +77,41 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
     await setNewTodolist()
   }
 
+  const handleEditModalOpen = async (todo: Todo) => {
+    setTargetTodo(todo)
+    setModal('edit')
+  }
+
   return (
     <TodolistWrapper>
+      {modal === 'edit' && (
+        <AgreementModal
+          title="Edit"
+          handleAgree={() => {}}
+          handleRefuse={() => {
+            setModal(undefined)
+          }}
+        >
+          <EditModalContents>
+            <div>Change Todo Title</div>
+            <Input
+              style={{ width: '100%', border: `1px solid ${styles.borderColor.primary}`, borderRadius: '4px' }}
+              value={updateTitle}
+              changeValue={(value) => setUpdateTitle(value)}
+              handleSubmit={() => {}}
+              placeholder={targetTodo?.title}
+            />
+          </EditModalContents>
+        </AgreementModal>
+      )}
+
       {list.map((todo) => {
         if (todo.checked) return
-        return <TodoItem key={todo.id} todo={todo} handleCompleteTodo={handleCompleteTodo} />
+        return <TodoItem key={todo.id} todo={todo} handleCompleteTodo={handleCompleteTodo} handleEditModalOpen={handleEditModalOpen} />
       })}
+
       {!list.length && <NothingInList>Nothing in list 😅</NothingInList>}
+
       <audio id="audio" src="/poped.wav"></audio>
       <CreateTodolist handleCreateTodo={handleCreateTodo} />
     </TodolistWrapper>
