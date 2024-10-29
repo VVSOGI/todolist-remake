@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
-import { fetchToWebServer } from '@/app/utils'
+import { createTodolist, updateTodolist } from '@/app/utils'
 import { colors, styles } from '@/app/styles'
-import { CheckCircle, CreateTodolist } from '@/app/ui'
+import { CreateTodolist, TodoItem } from '@/app/ui'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${styles.todolist.header.height} + ${styles.todolist.createInput.height}));
@@ -16,16 +16,6 @@ const TodolistWrapper = styled.div`
     border-radius: 2px;
     background: #ccc;
   }
-`
-
-const Todo = styled.div`
-  position: relative;
-  max-height: 45px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 12px 16px;
-  border-bottom: 1px solid ${styles.borderColor.primary};
 `
 
 const NothingInList = styled.div`
@@ -47,6 +37,11 @@ interface Props {
 export function Todolist({ categoryId, todolist, getTodolist }: Props) {
   const [list, setList] = useState(todolist)
 
+  const setNewTodolist = async () => {
+    const todos = await getTodolist()
+    setList(todos)
+  }
+
   const completeTodo = async (todo: Todo) => {
     const updated: UpdateTodoDTO = {
       id: todo.id,
@@ -54,19 +49,8 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
       checked: !todo.checked
     }
 
-    await fetchToWebServer(`/api/todolist`, {
-      method: 'PATCH',
-      body: JSON.stringify(updated)
-    })
-
-    const checkList = list.map((item) => {
-      if (item.id === todo.id) {
-        item.checked = !item.checked
-      }
-      return item
-    })
-
-    setList(checkList)
+    await updateTodolist(updated)
+    await setNewTodolist()
 
     const audio = document.getElementById('audio') as HTMLAudioElement
     audio.play()
@@ -78,25 +62,15 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
       categoryId
     }
 
-    await fetchToWebServer(`/api/todolist`, {
-      method: 'POST',
-      body: JSON.stringify(createTodo)
-    })
-
-    const newList = await getTodolist()
-    setList(newList)
+    await createTodolist(createTodo)
+    await setNewTodolist()
   }
 
   return (
     <TodolistWrapper>
       {list.map((todo) => {
         if (todo.checked) return
-        return (
-          <Todo key={todo.id}>
-            <CheckCircle onAnimationEnd={() => completeTodo(todo)} />
-            <div>{todo.title}</div>
-          </Todo>
-        )
+        return <TodoItem key={todo.id} todo={todo} completeTodo={completeTodo} />
       })}
       {!list.length && <NothingInList>Nothing in list 😅</NothingInList>}
       <audio id="audio" src="/poped.wav"></audio>
