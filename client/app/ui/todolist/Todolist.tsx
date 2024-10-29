@@ -119,10 +119,9 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
         </AgreementModal>
       )}
 
-      {list.map((todo) => {
-        if (todo.checked) return
-        return <TodoItem key={todo.id} todo={todo} handleCompleteTodo={handleCompleteTodo} handleEditModalOpen={handleEditModalOpen} />
-      })}
+      {list.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} handleCompleteTodo={handleCompleteTodo} handleEditModalOpen={handleEditModalOpen} />
+      ))}
 
       {!list.length && <NothingInList>Nothing in list 😅</NothingInList>}
 
