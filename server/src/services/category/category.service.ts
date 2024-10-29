@@ -1,7 +1,7 @@
 import { v4 } from 'uuid'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { CategoryRepository } from './category.repository'
-import { CategoryDeleteParamsDto, CreateCategory, CreateCategoryDto } from './types'
+import { CategoryDeleteParamsDto, CreateCategory } from './types'
 import { Category } from 'src/entities'
 
 @Injectable()
