@@ -38,14 +38,14 @@ const TodoIcons = styled.div`
 
 interface Props {
   todo: Todo
-  completeTodo: (todo: Todo) => void
+  handleCompleteTodo: (todo: Todo) => void
 }
 
-export function TodoItem({ todo, completeTodo }: Props) {
+export function TodoItem({ todo, handleCompleteTodo }: Props) {
   return (
     <TodoWrapper>
       <TodoContents>
-        <CheckCircle onAnimationEnd={() => completeTodo(todo)} />
+        <CheckCircle onAnimationEnd={() => handleCompleteTodo(todo)} />
         <div>{todo.title}</div>
       </TodoContents>
       <TodoIcons>

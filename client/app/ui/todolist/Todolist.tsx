@@ -42,7 +42,7 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
     setList(todos)
   }
 
-  const completeTodo = async (todo: Todo) => {
+  const handleCompleteTodo = async (todo: Todo) => {
     const updated: UpdateTodoDTO = {
       id: todo.id,
       title: todo.title,
@@ -70,7 +70,7 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
     <TodolistWrapper>
       {list.map((todo) => {
         if (todo.checked) return
-        return <TodoItem key={todo.id} todo={todo} completeTodo={completeTodo} />
+        return <TodoItem key={todo.id} todo={todo} handleCompleteTodo={handleCompleteTodo} />
       })}
       {!list.length && <NothingInList>Nothing in list 😅</NothingInList>}
       <audio id="audio" src="/poped.wav"></audio>
