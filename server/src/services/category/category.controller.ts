@@ -12,7 +12,8 @@ export class CategoryController {
 
   @Post()
   async createCategory(@ValidateCreateDTO() createCategoryDto: CreateCategoryDto): Promise<Category> {
-    return this.categoryService.createCategory(createCategoryDto)
+    const { title } = createCategoryDto
+    return this.categoryService.createCategory(title)
   }
 
   @Get()

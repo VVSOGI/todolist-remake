@@ -22,12 +22,12 @@ export class CategoryService {
     throw new NotFoundException(`The category you're looking for doesn't exist.`)
   }
 
-  async createCategory(createCategoryDto: CreateCategoryDto) {
+  async createCategory(title: string) {
     const category: CreateCategory = {
       id: v4(),
       createdAt: new Date(),
       updatedAt: new Date(),
-      title: createCategoryDto.title as string
+      title
     }
 
     const created = await this.categoryRepository.create(category)
