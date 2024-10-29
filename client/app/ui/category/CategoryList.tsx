@@ -22,7 +22,13 @@ const UpdateModalContents = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 48px 0;
   gap: 12px;
+`
+
+const DeleteModalContents = styled.div`
+  width: 100%;
+  padding: 48px 0;
 `
 
 interface Props {
@@ -92,7 +98,7 @@ export function CategoryList({ categories }: Props) {
       )}
       {isModalOpen === 'delete' && (
         <AgreementModal title="Delete" handleRefuse={closeModal} handleAgree={onClickDeleteButton}>
-          Are you sure you want to delete that category?
+          <DeleteModalContents>Are you sure you want to delete that category?</DeleteModalContents>
         </AgreementModal>
       )}
       {categories.map((category) => {
