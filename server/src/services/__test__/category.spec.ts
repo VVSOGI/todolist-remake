@@ -65,7 +65,7 @@ describe('CategoryModule', () => {
   })
 
   describe('updateCategory', () => {
-    it('should throw error when sent wrong data', async () => {
+    it('should throw error when sent wrong data in body validator', async () => {
       const request = {
         body: {
           title: 'test title',
@@ -83,7 +83,7 @@ describe('CategoryModule', () => {
       }
     })
 
-    it('should throw error when forget sent essential data', async () => {
+    it('should throw error when forget sent essential data in body validator', async () => {
       const request = {
         body: {}
       }
@@ -95,6 +95,38 @@ describe('CategoryModule', () => {
       } catch (err) {
         expect(err).toBeInstanceOf(NotFoundException)
         expect(err.response.message).toBe(`Received unexpected data 'title' [MISSING DATA ERROR]`)
+      }
+    })
+
+    it('should throw error when sent wrong data in params validator', async () => {
+      const request = {
+        params: {
+          categoryId: '123'
+        }
+      }
+
+      const typiaError = await checkRequestValidate(CategoryIdParamsValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unmatched data 'categoryId' [INVALID UUID TYPE ERROR]`)
+      }
+    })
+
+    it('should throw error when forget sent essential data in params validator', async () => {
+      const request = {
+        params: {}
+      }
+
+      const typiaError = await checkRequestValidate(CategoryIdParamsValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundException)
+        expect(err.response.message).toBe(`Received unexpected data 'categoryId' [MISSING DATA ERROR]`)
       }
     })
   })
