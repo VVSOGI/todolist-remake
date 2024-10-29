@@ -63,7 +63,7 @@ const ModalCloseIcon = styled.div`
 const ModalContentsWrapper = styled.div`
   display: flex;
   flex: 1;
-  padding: 48px 24px;
+  padding: 0px 24px;
   font-size: 18px;
   border-bottom: 1px solid ${styles.borderColor.primary};
 `
