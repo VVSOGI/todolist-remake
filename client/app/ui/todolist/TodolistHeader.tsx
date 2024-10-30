@@ -1,9 +1,10 @@
 import { colors, styles } from '@/app/styles'
 import { Category } from '@/app/types'
-import { changeToLocaleTime } from '@/app/utils/time'
+import { changeToLocaleTime } from '@/app/utils'
 import styled from 'styled-components'
 import { Title } from '@/app/ui'
 import { useRouter } from 'next/navigation'
+import { FaBox } from 'react-icons/fa'
 
 const Header = styled.div`
   height: ${styles.todolist.header.height};
@@ -18,23 +19,34 @@ const Time = styled.div`
   font-size: 12px;
 `
 
-const BeforeButton = styled.button`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: ${colors.red_600};
-  font-weight: 800;
-  font-size: 18px;
-  cursor: pointer;
+const IconsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 
-  &:hover {
-    background-color: ${colors.gray_100};
-    color: ${colors.red_400};
-  }
+  button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: ${colors.red_600};
+    font-weight: 800;
+    font-size: 18px;
+    cursor: pointer;
 
-  &:active {
-    background-color: ${colors.white};
-    color: ${colors.red_500};
+    &:hover {
+      background-color: ${colors.gray_100};
+      color: ${colors.red_400};
+    }
+
+    &:active {
+      background-color: ${colors.white};
+      color: ${colors.red_500};
+    }
+
+    svg {
+      font-size: 14px;
+      color: ${colors.black};
+    }
   }
 `
 
@@ -44,6 +56,10 @@ interface Props {
 
 export function TodolistHeader({ category }: Props) {
   const router = useRouter()
+
+  const moveStorage = () => {
+    router.push(`/storage/${category.id}`)
+  }
 
   const moveBackPage = () => {
     router.push('/')
@@ -56,7 +72,12 @@ export function TodolistHeader({ category }: Props) {
         <Title style={{ margin: 0, fontSize: '24px' }}>{category.title.toUpperCase()}</Title>
         <Time>{changeToLocaleTime(category.updatedAt)}</Time>
       </div>
-      <BeforeButton onClick={moveBackPage}>X</BeforeButton>
+      <IconsWrapper>
+        <button onClick={moveStorage}>
+          <FaBox />
+        </button>
+        <button onClick={moveBackPage}>X</button>
+      </IconsWrapper>
     </Header>
   )
 }
