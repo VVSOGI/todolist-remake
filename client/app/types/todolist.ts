@@ -23,3 +23,9 @@ export interface CreateTodoDto {
 export type GetResponseTodolist = {
   data: Todo[]
 }
+
+export type TodolistsBySortedDates = { date: string; todolists: Todo[] }[]
+
+export type GetResponseTodolistByDates = {
+  data: TodolistsBySortedDates
+}
