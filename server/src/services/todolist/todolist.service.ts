@@ -69,7 +69,7 @@ export class TodolistService {
     const dates: { date: string; todolists: Todolist[] }[] = []
 
     todolists.data.forEach((todolist) => {
-      const date = todolist.createdAt.toISOString().split('T')[0]
+      const date = todolist.updatedAt.toISOString().split('T')[0]
       const founded = dates.findIndex((item) => item.date === date)
       if (founded < 0) {
         dates.push({
