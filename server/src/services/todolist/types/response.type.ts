@@ -4,3 +4,8 @@ export interface GetTodolistsResponseType {
   data: Todolist[]
   total: number
 }
+
+export interface GetTodolistsByDatesResponseType {
+  data: { date: string; todolists: Todolist[] }[]
+  total: number
+}
