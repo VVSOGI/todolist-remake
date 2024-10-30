@@ -7,15 +7,7 @@ import { AgreementModal, CreateTodolist, Input, TodoItem } from '@/app/ui'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${styles.todolist.header.height} + ${styles.todolist.createInput.height}));
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
-    background: #ccc;
-  }
+  ${styles.yScrollDefaultSetting}
 `
 
 const NothingInList = styled.div`

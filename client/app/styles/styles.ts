@@ -38,5 +38,15 @@ export const styles = {
     createInput: {
       height: '40px'
     }
+  },
+
+  yScrollDefaultSetting: `
+  &::-webkit-scrollbar {
+    width: 4px;
   }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background: #ccc;
+  }`
 }
