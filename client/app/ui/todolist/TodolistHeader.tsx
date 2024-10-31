@@ -13,6 +13,8 @@ const Header = styled.div`
   align-items: center;
   padding: 12px 16px;
   border-bottom: 1px solid ${styles.borderColor.primary};
+  background-color: ${colors.white};
+  z-index: 100;
 `
 
 const Time = styled.div`

@@ -11,6 +11,7 @@ const Main = styled.main`
   border-radius: ${styles.borderRadius.medium};
   background-color: ${styles.backgroundColor.default};
   box-shadow: ${styles.boxShadow.primary};
+  overflow-y: hidden;
 `
 
 interface Props {

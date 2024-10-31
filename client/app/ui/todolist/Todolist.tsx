@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { createTodolist, updateTodolist } from '@/app/utils'
@@ -35,7 +35,7 @@ interface Props {
 }
 
 export function Todolist({ categoryId, todolist, getTodolist }: Props) {
-  const [list, setList] = useState(todolist)
+  const [list, setList] = useState<Todo[]>(todolist)
   const [modal, setModal] = useState<'edit' | undefined>()
   const [targetTodo, setTargetTodo] = useState<Todo>()
   const [updateTitle, setUpdateTitle] = useState('')
@@ -111,9 +111,11 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
         </AgreementModal>
       )}
 
-      {list.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} handleCompleteTodo={handleCompleteTodo} handleEditModalOpen={handleEditModalOpen} />
-      ))}
+      <div>
+        {list.map((todo) => (
+          <TodoItem key={todo.id} todo={todo} handleCompleteTodo={handleCompleteTodo} handleEditModalOpen={handleEditModalOpen} />
+        ))}
+      </div>
 
       {!list.length && <NothingInList>Nothing in list 😅</NothingInList>}
 

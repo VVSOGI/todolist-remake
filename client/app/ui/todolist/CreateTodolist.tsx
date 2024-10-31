@@ -15,6 +15,7 @@ const CreateCategoryWrapper = styled.div`
   border-bottom-right-radius: ${styles.borderRadius.medium};
   border-bottom-left-radius: ${styles.borderRadius.medium};
   overflow: hidden;
+  z-index: 100;
 `
 
 interface Props {
