@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { createTodolist, updateTodolist } from '@/app/utils'
@@ -94,6 +94,44 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
     setUpdateTitle('')
   }
 
+  const [draggedItem, setDraggedItem] = useState<Todo | null>(null)
+  const [draggedOverItem, setDraggedOverItem] = useState<Todo | null>(null)
+
+  const listRef = useRef(null)
+
+  const handleDragStart = (e: React.DragEvent<HTMLElement>, todo: Todo) => {
+    setDraggedItem(todo)
+
+    const dragImage = new Image()
+    dragImage.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+    e.dataTransfer.setDragImage(dragImage, 0, 0)
+    e.currentTarget.style.opacity = '0.5'
+  }
+
+  const handleDragEnd = (e: React.DragEvent<HTMLElement>) => {
+    setDraggedItem(null)
+    setDraggedOverItem(null)
+    e.currentTarget.style.opacity = '1'
+  }
+
+  const handleDragOver = (e: React.DragEvent<HTMLElement>, todo: Todo) => {
+    e.preventDefault()
+    if (draggedItem === todo) return
+
+    setDraggedOverItem(todo)
+
+    const draggedItemIndex = list.findIndex((i) => i.id === draggedItem?.id)
+    const draggedOverItemIndex = list.findIndex((i) => i.id === todo.id)
+
+    if (draggedItemIndex === draggedOverItemIndex) return
+
+    const newItems = [...list]
+    const removedItem = newItems.splice(draggedItemIndex, 1)[0]
+    newItems.splice(draggedOverItemIndex, 0, removedItem)
+
+    setList(newItems)
+  }
+
   return (
     <TodolistWrapper>
       {modal === 'edit' && (
@@ -111,9 +149,18 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
         </AgreementModal>
       )}
 
-      <div>
-        {list.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} handleCompleteTodo={handleCompleteTodo} handleEditModalOpen={handleEditModalOpen} />
+      <div ref={listRef}>
+        {list.map((todo, index) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            draggedItem={draggedItem}
+            handleCompleteTodo={handleCompleteTodo}
+            handleEditModalOpen={handleEditModalOpen}
+            handleDragStart={handleDragStart}
+            handleDragEnd={handleDragEnd}
+            handleDragOver={handleDragOver}
+          />
         ))}
       </div>
 

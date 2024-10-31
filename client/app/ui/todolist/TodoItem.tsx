@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { colors, styles } from '@/app/styles'
 import { CheckCircle } from '@/app/ui'
@@ -14,7 +14,6 @@ const TodoWrapper = styled.div`
   padding: 12px 16px;
   border-bottom: 1px solid ${styles.borderColor.primary};
   background-color: ${colors.white};
-  cursor: pointer;
   user-select: none;
 `
 
@@ -25,6 +24,8 @@ const TodoContents = styled.div`
 `
 
 const TodoIcons = styled.div`
+  cursor: pointer;
+
   svg {
     border-radius: ${styles.borderRadius.small};
     font-size: 24px;
@@ -41,38 +42,41 @@ const TodoIcons = styled.div`
 
 interface Props {
   todo: Todo
+  draggedItem: Todo | null
   handleCompleteTodo: (todo: Todo) => void
   handleEditModalOpen: (todo: Todo) => void
+  handleDragStart: (e: React.DragEvent<HTMLElement>, todo: Todo) => void
+  handleDragEnd: (e: React.DragEvent<HTMLElement>) => void
+  handleDragOver: (e: React.DragEvent<HTMLElement>, todo: Todo) => void
 }
 
-export function TodoItem({ todo, handleCompleteTodo, handleEditModalOpen }: Props) {
+export function TodoItem({
+  todo,
+  draggedItem,
+  handleCompleteTodo,
+  handleEditModalOpen,
+  handleDragStart,
+  handleDragEnd,
+  handleDragOver
+}: Props) {
   const [isHover, setIsHover] = useState(false)
 
   return (
     <TodoWrapper
       id={`${todo.id}-todo`}
-      onMouseDown={(event) => {
-        const { top, left } = event.currentTarget.getBoundingClientRect()
-        const target = document.getElementById(`${todo.id}-todo`)
-        if (!target) return
-        target.style.zIndex = '10'
-
-        const mouseMoveHandler = (e: MouseEvent) => {
-          const moveY = e.pageY - event.pageY
-          target.style.top = `${moveY}px`
-        }
-
-        const mouseUpHandler = () => {
-          target.style.top = `0px`
-          target.style.zIndex = '0'
-          document.removeEventListener('mousemove', mouseMoveHandler)
-        }
-
-        document.addEventListener('mousemove', mouseMoveHandler)
-        document.addEventListener('mouseup', () => mouseUpHandler(), { once: true })
-      }}
+      draggable
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
+      onDragStart={(e) => handleDragStart(e, todo)}
+      onDragEnd={handleDragEnd}
+      onDragOver={(e) => handleDragOver(e, todo)}
+      style={{
+        borderTop: draggedItem?.id === todo.id ? '1px solid red' : 'none',
+        borderLeft: draggedItem?.id === todo.id ? '1px solid red' : 'none',
+        borderRight: draggedItem?.id === todo.id ? '1px solid red' : 'none',
+        borderBottom: draggedItem?.id === todo.id ? '1px solid red' : '1px solid #eee',
+        cursor: 'move'
+      }}
     >
       <TodoContents>
         <CheckCircle onAnimationEnd={() => handleCompleteTodo(todo)} />
