@@ -22,7 +22,7 @@ const Detail = styled.div<{ width?: string; height?: string }>`
   background-image: linear-gradient(90deg, #f7f7f7, #fefefe, #f7f7f7);
   background-size: 200px 100%;
   background-repeat: no-repeat;
-  border-radius: ${styles.borderRadius.small};
+  border-radius: ${styles.borderRadius.medium};
 `
 
 const StyledSkeleton = styled(Detail)`
