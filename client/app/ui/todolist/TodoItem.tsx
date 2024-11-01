@@ -16,6 +16,7 @@ const TodoWrapper = styled.div`
   padding: 12px 16px;
   background-color: ${colors.white};
   user-select: none;
+  cursor: move;
 `
 
 const TodoContents = styled.div`
