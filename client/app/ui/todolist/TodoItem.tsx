@@ -14,7 +14,6 @@ const TodoWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  border-bottom: 1px solid ${styles.borderColor.primary};
   background-color: ${colors.white};
   user-select: none;
 `
