@@ -1,14 +1,11 @@
-import React, { useMemo, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
-import { createTodolist, updateTodolist } from '@/app/utils'
-import { colors, styles } from '@/app/styles'
-import { AgreementModal, CreateTodolist, Input, SortableOverlay, TodoItem } from '@/app/ui'
 import { DndContext } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
-import { useDragDndKit } from '@/app/utils/hooks/useDragDndKit'
-import { useTodolist } from '@/app/utils/hooks/useTodolist'
-import { useTodolistEditModal } from '@/app/utils/hooks/useTodolistEditModal'
+import { Todo } from '@/app/types'
+import { colors, styles } from '@/app/styles'
+import { AgreementModal, CreateTodolist, Input, SortableOverlay, TodoItem } from '@/app/ui'
+import { useDragDndKit, useTodolist, useTodolistEditModal } from '@/app/utils'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${styles.todolist.header.height} + ${styles.todolist.createInput.height}));
