@@ -4,8 +4,11 @@ import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { createTodolist, updateTodolist } from '@/app/utils'
 import { colors, styles } from '@/app/styles'
 import { AgreementModal, CreateTodolist, Input, SortableOverlay, TodoItem } from '@/app/ui'
-import { DndContext, DragEndEvent, DragStartEvent, MouseSensor, TouchSensor, UniqueIdentifier, useSensor, useSensors } from '@dnd-kit/core'
-import { SortableContext, arrayMove } from '@dnd-kit/sortable'
+import { DndContext } from '@dnd-kit/core'
+import { SortableContext } from '@dnd-kit/sortable'
+import { useDragDndKit } from '@/app/utils/hooks/useDragDndKit'
+import { useTodolist } from '@/app/utils/hooks/useTodolist'
+import { useTodolistEditModal } from '@/app/utils/hooks/useTodolistEditModal'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${styles.todolist.header.height} + ${styles.todolist.createInput.height}));
@@ -37,99 +40,30 @@ interface Props {
 }
 
 export function Todolist({ categoryId, todolist, getTodolist }: Props) {
-  const [list, setList] = useState<Todo[]>(todolist)
-  const [modal, setModal] = useState<'edit' | undefined>()
-  const [targetTodo, setTargetTodo] = useState<Todo>()
-  const [updateTitle, setUpdateTitle] = useState('')
-  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null)
-
-  const activeItem = useMemo(() => list.find((item) => item.id === activeId), [activeId, list])
-
-  const sensors = useSensors(
-    useSensor(MouseSensor, {
-      activationConstraint: {
-        distance: 10
-      }
-    }),
-    useSensor(TouchSensor, {
-      activationConstraint: {
-        delay: 250,
-        tolerance: 5
-      }
-    })
-  )
-
-  const handleDragStart = ({ active }: DragStartEvent) => {
-    setActiveId(active.id)
-  }
-
-  const handleDragEnd = ({ over }: DragEndEvent) => {
-    if (over && activeId) {
-      const activeIndex = list.findIndex((todo) => todo.id === activeId.toString())
-      const overIndex = list.findIndex((todo) => todo.id === over.id.toString())
-      setList(arrayMove(list, activeIndex, overIndex))
-    }
-    setActiveId(null)
-  }
-
-  const setNewTodolist = async () => {
-    const todos = await getTodolist()
-    setList(todos)
-  }
-
-  const handleCompleteTodo = async (todo: Todo) => {
-    const updated: UpdateTodoDTO = {
-      id: todo.id,
-      title: todo.title,
-      checked: !todo.checked
-    }
-
-    await updateTodolist(updated)
-    await setNewTodolist()
-
-    const audio = document.getElementById('audio') as HTMLAudioElement
-    audio.play()
-  }
-
-  const handleCreateTodo = async (title: string) => {
-    const createTodo: CreateTodoDto = {
-      title,
-      categoryId
-    }
-
-    await createTodolist(createTodo)
-    await setNewTodolist()
-  }
-
-  const handleEditTodo = async () => {
-    if (!targetTodo) return
-
-    const updated: UpdateTodoDTO = {
-      id: targetTodo.id,
-      title: updateTitle,
-      checked: targetTodo.checked
-    }
-
-    await updateTodolist(updated)
-    await setNewTodolist()
-    handleEditModalClose()
-  }
-
-  const handleEditModalOpen = (todo: Todo) => {
-    setTargetTodo(todo)
-    setModal('edit')
-  }
-
-  const handleEditModalClose = () => {
-    setModal(undefined)
-    setTargetTodo(undefined)
-    setUpdateTitle('')
-  }
+  const { list, setList, handleCompleteTodo, handleCreateTodo, handleEditTodo } = useTodolist({ categoryId, todolist, getTodolist })
+  const { activeItem, sensors, handleDragStart, handleDragEnd } = useDragDndKit<Todo>({ list, setList })
+  const {
+    modal,
+    targetTodo,
+    updateTitle,
+    setUpdateTitle,
+    makeUpdatedTodo,
+    handleEditModalOpen,
+    handleEditModalClose //
+  } = useTodolistEditModal()
 
   return (
     <TodolistWrapper>
       {modal === 'edit' && (
-        <AgreementModal title="Edit" handleAgree={handleEditTodo} handleRefuse={handleEditModalClose}>
+        <AgreementModal
+          title="Edit"
+          handleAgree={() => {
+            const updated = makeUpdatedTodo()
+            if (updated) handleEditTodo(updated)
+            handleEditModalClose()
+          }}
+          handleRefuse={handleEditModalClose}
+        >
           <EditModalContents>
             <div>Change Todo Title</div>
             <Input
