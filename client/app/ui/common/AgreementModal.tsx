@@ -15,7 +15,7 @@ const ModalContainer = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   user-select: none;
-  z-index: 10;
+  z-index: 100000;
 `
 
 const ModalWrapper = styled.div`
