@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { colors, styles } from '@/app/styles'
 import { CheckCircle } from '@/app/ui'
 import { CiEdit } from 'react-icons/ci'
 import { Todo } from '@/app/types'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 
 const TodoWrapper = styled.div`
   position: relative;
@@ -42,41 +44,27 @@ const TodoIcons = styled.div`
 
 interface Props {
   todo: Todo
-  draggedItem: Todo | null
   handleCompleteTodo: (todo: Todo) => void
   handleEditModalOpen: (todo: Todo) => void
-  handleDragStart: (e: React.DragEvent<HTMLElement>, todo: Todo) => void
-  handleDragEnd: (e: React.DragEvent<HTMLElement>) => void
-  handleDragOver: (e: React.DragEvent<HTMLElement>, todo: Todo) => void
 }
 
-export function TodoItem({
-  todo,
-  draggedItem,
-  handleCompleteTodo,
-  handleEditModalOpen,
-  handleDragStart,
-  handleDragEnd,
-  handleDragOver
-}: Props) {
+export function TodoItem({ todo, handleCompleteTodo, handleEditModalOpen }: Props) {
   const [isHover, setIsHover] = useState(false)
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: todo.id })
 
   return (
     <TodoWrapper
       id={`${todo.id}-todo`}
-      draggable
+      {...attributes}
+      {...listeners}
+      style={{
+        transform: CSS.Transform.toString(transform),
+        transition,
+        zIndex: isDragging ? '100' : '1'
+      }}
+      ref={setNodeRef}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      onDragStart={(e) => handleDragStart(e, todo)}
-      onDragEnd={handleDragEnd}
-      onDragOver={(e) => handleDragOver(e, todo)}
-      style={{
-        borderTop: draggedItem?.id === todo.id ? '1px solid red' : 'none',
-        borderLeft: draggedItem?.id === todo.id ? '1px solid red' : 'none',
-        borderRight: draggedItem?.id === todo.id ? '1px solid red' : 'none',
-        borderBottom: draggedItem?.id === todo.id ? '1px solid red' : '1px solid #eee',
-        cursor: 'move'
-      }}
     >
       <TodoContents>
         <CheckCircle onAnimationEnd={() => handleCompleteTodo(todo)} />

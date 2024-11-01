@@ -1,9 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { createTodolist, updateTodolist } from '@/app/utils'
 import { colors, styles } from '@/app/styles'
 import { AgreementModal, CreateTodolist, Input, TodoItem } from '@/app/ui'
+import { DndContext, DragEndEvent, DragStartEvent, MouseSensor, TouchSensor, UniqueIdentifier, useSensor, useSensors } from '@dnd-kit/core'
+import { SortableContext, arrayMove } from '@dnd-kit/sortable'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${styles.todolist.header.height} + ${styles.todolist.createInput.height}));
@@ -39,6 +41,36 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
   const [modal, setModal] = useState<'edit' | undefined>()
   const [targetTodo, setTargetTodo] = useState<Todo>()
   const [updateTitle, setUpdateTitle] = useState('')
+  const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null)
+
+  const activeItem = useMemo(() => list.find((item) => item.id === activeId), [activeId, list])
+
+  const sensors = useSensors(
+    useSensor(MouseSensor, {
+      activationConstraint: {
+        distance: 10
+      }
+    }),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 250,
+        tolerance: 5
+      }
+    })
+  )
+
+  const handleDragStart = ({ active }: DragStartEvent) => {
+    setActiveId(active.id)
+  }
+
+  const handleDragEnd = ({ active, over }: DragEndEvent) => {
+    if (over && activeId && activeId !== over?.id) {
+      const activeIndex = list.findIndex((todo) => todo.id === activeId.toString())
+      const overIndex = list.findIndex((todo) => todo.id === active.id.toString())
+      setList(arrayMove(list, activeIndex, overIndex))
+    }
+    setActiveId(null)
+  }
 
   const setNewTodolist = async () => {
     const todos = await getTodolist()
@@ -94,44 +126,6 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
     setUpdateTitle('')
   }
 
-  const [draggedItem, setDraggedItem] = useState<Todo | null>(null)
-  const [draggedOverItem, setDraggedOverItem] = useState<Todo | null>(null)
-
-  const listRef = useRef(null)
-
-  const handleDragStart = (e: React.DragEvent<HTMLElement>, todo: Todo) => {
-    setDraggedItem(todo)
-
-    const dragImage = new Image()
-    dragImage.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-    e.dataTransfer.setDragImage(dragImage, 0, 0)
-    e.currentTarget.style.opacity = '0.5'
-  }
-
-  const handleDragEnd = (e: React.DragEvent<HTMLElement>) => {
-    setDraggedItem(null)
-    setDraggedOverItem(null)
-    e.currentTarget.style.opacity = '1'
-  }
-
-  const handleDragOver = (e: React.DragEvent<HTMLElement>, todo: Todo) => {
-    e.preventDefault()
-    if (draggedItem === todo) return
-
-    setDraggedOverItem(todo)
-
-    const draggedItemIndex = list.findIndex((i) => i.id === draggedItem?.id)
-    const draggedOverItemIndex = list.findIndex((i) => i.id === todo.id)
-
-    if (draggedItemIndex === draggedOverItemIndex) return
-
-    const newItems = [...list]
-    const removedItem = newItems.splice(draggedItemIndex, 1)[0]
-    newItems.splice(draggedOverItemIndex, 0, removedItem)
-
-    setList(newItems)
-  }
-
   return (
     <TodolistWrapper>
       {modal === 'edit' && (
@@ -149,20 +143,20 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
         </AgreementModal>
       )}
 
-      <div ref={listRef}>
-        {list.map((todo, index) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            draggedItem={draggedItem}
-            handleCompleteTodo={handleCompleteTodo}
-            handleEditModalOpen={handleEditModalOpen}
-            handleDragStart={handleDragStart}
-            handleDragEnd={handleDragEnd}
-            handleDragOver={handleDragOver}
-          />
-        ))}
-      </div>
+      <DndContext
+        sensors={sensors}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onDragOver={(e) => {
+          console.log(e)
+        }}
+      >
+        <SortableContext items={list}>
+          {list.map((todo, index) => (
+            <TodoItem key={todo.id} todo={todo} handleCompleteTodo={handleCompleteTodo} handleEditModalOpen={handleEditModalOpen} />
+          ))}
+        </SortableContext>
+      </DndContext>
 
       {!list.length && <NothingInList>Nothing in list 😅</NothingInList>}
 
