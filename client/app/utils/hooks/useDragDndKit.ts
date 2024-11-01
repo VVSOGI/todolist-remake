@@ -44,6 +44,8 @@ export function useDragDndKit<T>({ list, setList }: Props<T>) {
     setActiveId(null)
   }
 
+  const saveListToServer = async () => {}
+
   return {
     activeItem,
     sensors,
