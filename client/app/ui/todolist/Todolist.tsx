@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { createTodolist, updateTodolist } from '@/app/utils'
 import { colors, styles } from '@/app/styles'
-import { AgreementModal, CreateTodolist, Input, TodoItem } from '@/app/ui'
+import { AgreementModal, CreateTodolist, Input, SortableOverlay, TodoItem } from '@/app/ui'
 import { DndContext, DragEndEvent, DragStartEvent, MouseSensor, TouchSensor, UniqueIdentifier, useSensor, useSensors } from '@dnd-kit/core'
 import { SortableContext, arrayMove } from '@dnd-kit/sortable'
 
@@ -63,10 +63,10 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
     setActiveId(active.id)
   }
 
-  const handleDragEnd = ({ active, over }: DragEndEvent) => {
-    if (over && activeId && activeId !== over?.id) {
+  const handleDragEnd = ({ over }: DragEndEvent) => {
+    if (over && activeId) {
       const activeIndex = list.findIndex((todo) => todo.id === activeId.toString())
-      const overIndex = list.findIndex((todo) => todo.id === active.id.toString())
+      const overIndex = list.findIndex((todo) => todo.id === over.id.toString())
       setList(arrayMove(list, activeIndex, overIndex))
     }
     setActiveId(null)
@@ -143,19 +143,22 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
         </AgreementModal>
       )}
 
-      <DndContext
-        sensors={sensors}
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        onDragOver={(e) => {
-          console.log(e)
-        }}
-      >
+      <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <SortableContext items={list}>
-          {list.map((todo, index) => (
+          {list.map((todo) => (
             <TodoItem key={todo.id} todo={todo} handleCompleteTodo={handleCompleteTodo} handleEditModalOpen={handleEditModalOpen} />
           ))}
         </SortableContext>
+        <SortableOverlay>
+          {activeItem ? (
+            <TodoItem
+              key={activeItem.id}
+              todo={activeItem}
+              handleCompleteTodo={handleCompleteTodo}
+              handleEditModalOpen={handleEditModalOpen}
+            />
+          ) : null}
+        </SortableOverlay>
       </DndContext>
 
       {!list.length && <NothingInList>Nothing in list 😅</NothingInList>}

@@ -58,8 +58,11 @@ export function TodoItem({ todo, handleCompleteTodo, handleEditModalOpen }: Prop
       {...attributes}
       {...listeners}
       style={{
-        transform: CSS.Transform.toString(transform),
+        opacity: isDragging ? 0.5 : 1,
+        transform: CSS.Translate.toString(transform),
         transition,
+        border: isDragging ? '1px solid red' : 'none',
+        borderBottom: isDragging ? '1px solid red' : `1px solid ${styles.borderColor.primary}`,
         zIndex: isDragging ? '100' : '1'
       }}
       ref={setNodeRef}
