@@ -39,7 +39,7 @@ export class TodolistRepository {
 
   async findByCategoryId(filters: GetTodolistDtoFilters) {
     const { categoryId, checked } = filters
-    const [data, total] = await this.todolistRepository.findAndCount({ where: { categoryId, checked }, order: { updatedAt: 'DESC' } })
+    const [data, total] = await this.todolistRepository.findAndCount({ where: { categoryId, checked }, order: { order: 'ASC' } })
     return {
       data,
       total
