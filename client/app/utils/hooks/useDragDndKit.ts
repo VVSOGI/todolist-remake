@@ -11,6 +11,10 @@ interface Props<T> {
   setList: (item: ListItem<T>[]) => void
 }
 
+interface CustomDragEndEvent extends DragEndEvent {
+  saveCallback: (list: any[]) => Promise<any>
+}
+
 export function useDragDndKit<T>({ list, setList }: Props<T>) {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null)
 
@@ -34,18 +38,16 @@ export function useDragDndKit<T>({ list, setList }: Props<T>) {
     setActiveId(active.id)
   }
 
-  const handleDragEnd = ({ over }: DragEndEvent) => {
+  const handleDragEnd = async ({ over, saveCallback }: CustomDragEndEvent) => {
     if (over && activeId) {
       const activeIndex = list.findIndex((todo) => todo.id === activeId.toString())
       const overIndex = list.findIndex((todo) => todo.id === over.id.toString())
       const newList = arrayMove(list, activeIndex, overIndex)
-      saveListToServer(newList)
+      await saveCallback(newList)
       setList(newList)
     }
     setActiveId(null)
   }
-
-  const saveListToServer = async (list: ListItem<T>[]) => {}
 
   return {
     activeItem,
