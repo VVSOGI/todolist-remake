@@ -39,12 +39,13 @@ export function useDragDndKit<T>({ list, setList }: Props<T>) {
       const activeIndex = list.findIndex((todo) => todo.id === activeId.toString())
       const overIndex = list.findIndex((todo) => todo.id === over.id.toString())
       const newList = arrayMove(list, activeIndex, overIndex)
+      saveListToServer(newList)
       setList(newList)
     }
     setActiveId(null)
   }
 
-  const saveListToServer = async () => {}
+  const saveListToServer = async (list: ListItem<T>[]) => {}
 
   return {
     activeItem,
