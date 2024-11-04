@@ -7,6 +7,7 @@ export interface Todo {
   checked: boolean
   createdAt: Date
   updatedAt: Date
+  order: number
 }
 
 export interface UpdateTodoDTO {

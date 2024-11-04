@@ -1,4 +1,4 @@
-import { CreateTodoDto, GetResponseTodolist, GetResponseTodolistByDates, UUID, UpdateTodoDTO } from '@/app/types'
+import { CreateTodoDto, GetResponseTodolist, GetResponseTodolistByDates, Todo, UUID, UpdateTodoDTO } from '@/app/types'
 import { fetchToWebServer } from '..'
 
 export async function createTodolist(createTodo: CreateTodoDto) {
@@ -44,6 +44,23 @@ export async function updateTodolist(updatedTodo: UpdateTodoDTO) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(updatedTodo)
+  })
+
+  return response
+}
+
+export async function saveTodolistOrder(todolist: Todo[]) {
+  const saveList = todolist.map((item, index) => {
+    item.order = index
+    return item
+  })
+
+  const response = await fetchToWebServer(`/api/todolist/order`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(saveList)
   })
 
   return response

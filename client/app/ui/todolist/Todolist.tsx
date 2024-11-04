@@ -5,7 +5,7 @@ import { SortableContext } from '@dnd-kit/sortable'
 import { Todo } from '@/app/types'
 import { colors, styles } from '@/app/styles'
 import { AgreementModal, CreateTodolist, Input, SortableOverlay, TodoItem } from '@/app/ui'
-import { useDragDndKit, useTodolist, useTodolistEditModal } from '@/app/utils'
+import { saveTodolistOrder, useDragDndKit, useTodolist, useTodolistEditModal } from '@/app/utils'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${styles.todolist.header.height} + ${styles.todolist.createInput.height}));
@@ -74,7 +74,11 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
         </AgreementModal>
       )}
 
-      <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+      <DndContext
+        sensors={sensors}
+        onDragStart={handleDragStart}
+        onDragEnd={(props) => handleDragEnd({ ...props, saveCallback: saveTodolistOrder })}
+      >
         <SortableContext items={list}>
           {list.map((todo) => (
             <TodoItem key={todo.id} todo={todo} handleCompleteTodo={handleCompleteTodo} handleEditModalOpen={handleEditModalOpen} />
