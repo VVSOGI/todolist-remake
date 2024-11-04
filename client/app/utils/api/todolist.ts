@@ -55,7 +55,7 @@ export async function saveTodolistOrder(todolist: Todo[]) {
     return item
   })
 
-  const response = await fetchToWebServer(`/api/todolist`, {
+  const response = await fetchToWebServer(`/api/todolist/order`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'

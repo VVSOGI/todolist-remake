@@ -43,8 +43,8 @@ export function useDragDndKit<T>({ list, setList }: Props<T>) {
       const activeIndex = list.findIndex((todo) => todo.id === activeId.toString())
       const overIndex = list.findIndex((todo) => todo.id === over.id.toString())
       const newList = arrayMove(list, activeIndex, overIndex)
-      await saveCallback(newList)
       setList(newList)
+      await saveCallback(newList)
     }
     setActiveId(null)
   }
