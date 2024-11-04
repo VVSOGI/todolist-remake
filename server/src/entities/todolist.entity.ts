@@ -21,6 +21,9 @@ export class Todolist {
   @Column({ type: 'boolean', default: 'false' })
   checked: boolean
 
+  @Column({ type: 'int', default: 0 })
+  order: number
+
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date
 
