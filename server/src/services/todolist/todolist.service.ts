@@ -46,6 +46,16 @@ export class TodolistService {
     return this.saveTodolist(updated)
   }
 
+  async updateTodolistOrder(updateTodolist: Todolist[]) {
+    for (let i = 0; i < updateTodolist.length; i++) {
+      const todolist = updateTodolist[i]
+      this.saveTodolist(todolist)
+    }
+    return {
+      data: 'success'
+    }
+  }
+
   async getTodolists() {
     return this.todolistRepository.findAll()
   }

@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Patch, Post } from '@nestjs/common'
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common'
 import { Todolist } from 'src/entities'
 import { TodolistService } from './todolist.service'
 import { CreateTodolistDto, GetTodolistsByDatesResponseType, GetTodolistsResponseType, UpdateTodolistDto } from './types'
@@ -34,5 +34,10 @@ export class TodolistController {
   @Patch()
   async updateTodo(@ValidateUpdateTodolistDto() updateTodolistDto: UpdateTodolistDto): Promise<Todolist> {
     return this.todolistService.updateTodolist(updateTodolistDto)
+  }
+
+  @Patch('/order')
+  async updateTodoOrder(@Body() updateTodolistDto: Todolist[]): Promise<any> {
+    return this.todolistService.updateTodolistOrder(updateTodolistDto)
   }
 }
