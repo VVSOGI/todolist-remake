@@ -50,7 +50,11 @@ export async function updateTodolist(updatedTodo: UpdateTodoDTO) {
 }
 
 export async function saveTodolistOrder(todolist: Todo[]) {
-  const saveList = todolist.map((item, index) => (item.order = index))
+  const saveList = todolist.map((item, index) => {
+    item.order = index
+    return item
+  })
+
   const response = await fetchToWebServer(`/api/todolist`, {
     method: 'PATCH',
     headers: {
