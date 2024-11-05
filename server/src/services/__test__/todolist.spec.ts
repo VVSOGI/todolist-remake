@@ -1,7 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { TodolistController, TodolistService } from '../todolist'
 import { Category, Todolist } from 'src/entities'
-import { CreateTodolistValidator, GetTodolistCheckedValidator, UpdateTodolistValidator } from '../todolist/decorator'
+import {
+  CreateTodolistValidator,
+  GetTodolistCheckedValidator,
+  UpdateTodolistOrderValidator,
+  UpdateTodolistValidator
+} from '../todolist/decorator'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { checkRequestValidate } from './test.utils'
 import { TypiaExceptionHandler } from 'src/common'
@@ -82,6 +87,42 @@ describe('CategoryModule', () => {
       }
 
       const typiaError = await checkRequestValidate(UpdateTodolistValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
+      }
+    })
+  })
+
+  describe('updateTodoOrder', () => {
+    it('should return UpdateTodolistOrderDto[] when send right request', async () => {
+      const request = {
+        body: [
+          {
+            id: '1',
+            order: 0
+          }
+        ]
+      }
+      const todolist = new UpdateTodolistOrderValidator(request).validate()
+      expect(todolist[0].id).toBe('1')
+    })
+
+    it('should throw error when sent wrong data', async () => {
+      const request = {
+        body: [
+          {
+            id: '1',
+            order: 0,
+            hack: ''
+          }
+        ]
+      }
+
+      const typiaError = await checkRequestValidate(UpdateTodolistOrderValidator, request)
 
       try {
         new TypiaExceptionHandler(typiaError.response).handleValidationError()
