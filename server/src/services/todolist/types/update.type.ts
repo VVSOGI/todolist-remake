@@ -3,3 +3,13 @@ export interface UpdateTodolistDto {
   title: string
   checked: boolean
 }
+
+export interface UpdateTodolistOrderDto {
+  id: string
+  categoryId: string
+  title: string
+  checked: boolean
+  order: number
+  createdAt: Date
+  updatedAt: Date
+}
