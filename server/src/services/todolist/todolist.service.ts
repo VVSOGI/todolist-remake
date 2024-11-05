@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { v4 } from 'uuid'
 import { TodolistRepository } from './todolist.repository'
-import { CreateTodolistDto, GetTodolistDtoFilters, UpdateTodolistDto, createTodolist } from './types'
+import { CreateTodolistDto, GetTodolistDtoFilters, UpdateTodolistDto, UpdateTodolistOrderDto, createTodolist } from './types'
 import { Todolist } from 'src/entities'
 import { CategoryService } from '../category'
 
@@ -46,10 +46,11 @@ export class TodolistService {
     return this.saveTodolist(updated)
   }
 
-  async updateTodolistOrder(updateTodolist: Todolist[]) {
+  async updateTodolistOrder(updateTodolist: UpdateTodolistOrderDto[]) {
     for (let i = 0; i < updateTodolist.length; i++) {
-      const todolist = updateTodolist[i]
-      this.saveTodolist(todolist)
+      const target = await this.findTodolistById(updateTodolist[i].id)
+      const updated: Todolist = { ...target, ...updateTodolist[i] }
+      this.saveTodolist(updated)
     }
     return {
       data: 'success'
