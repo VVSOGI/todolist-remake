@@ -6,10 +6,5 @@ export interface UpdateTodolistDto {
 
 export interface UpdateTodolistOrderDto {
   id: string
-  categoryId: string
-  title: string
-  checked: boolean
   order: number
-  createdAt: Date
-  updatedAt: Date
 }
