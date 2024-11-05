@@ -49,7 +49,7 @@ export class TodolistService {
   async updateTodolistOrder(updateTodolist: UpdateTodolistOrderDto[]) {
     for (let i = 0; i < updateTodolist.length; i++) {
       const target = await this.findTodolistById(updateTodolist[i].id)
-      const updated: Todolist = { ...target, ...updateTodolist[i] }
+      const updated: Todolist = { ...target, order: updateTodolist[i].order }
       this.saveTodolist(updated)
     }
     return {
