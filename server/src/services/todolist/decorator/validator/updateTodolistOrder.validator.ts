@@ -12,7 +12,7 @@ export class UpdateTodolistOrderValidator {
     this.body = request.body
   }
 
-  validate(): Todolist[] | never {
+  validate(): UpdateTodolistOrderDto[] | never {
     for (let i = 0; i < this.body.length; i++) {
       const checkValidate: CustomIValidation<UpdateTodolistOrderDto> = typia.validateEquals<UpdateTodolistOrderDto>(this.body[i])
       const { errors } = checkValidate
