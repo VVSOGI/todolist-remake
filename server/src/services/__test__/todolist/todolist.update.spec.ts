@@ -8,7 +8,7 @@ describe('Testing Update Todolist', () => {
     jest.clearAllMocks()
   })
 
-  describe('updateTodo(@ValidateUpdateTodolistDto() updateTodolistDto: UpdateTodolistDto) {...}', () => {
+  describe('function updateTodo(@ValidateUpdateTodolistDto() updateTodolistDto: UpdateTodolistDto) {...}', () => {
     it('should throw error when sent wrong data', async () => {
       const request = {
         body: {
@@ -30,7 +30,7 @@ describe('Testing Update Todolist', () => {
     })
   })
 
-  describe('updateTodoOrder(@ValidateUpdateTodolistOrderDTO() updateTodolistOrderDto: UpdateTodolistOrderDto[]) {...}', () => {
+  describe('function updateTodoOrder(@ValidateUpdateTodolistOrderDTO() updateTodolistOrderDto: UpdateTodolistOrderDto[]) {...}', () => {
     it('should return UpdateTodolistOrderDto[] when send right request', async () => {
       const request = {
         body: [
