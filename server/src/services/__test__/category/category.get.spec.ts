@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing'
-import { BadRequestException, NotFoundException } from '@nestjs/common'
+import { BadRequestException } from '@nestjs/common'
 import { Category } from 'src/entities/category.entity'
-import { CategoryController, CategoryService } from '../category'
-import { CategoryIdParamsValidator, UpdateCategoryValidator } from '../category/decorator'
-import { checkRequestValidate } from './test.utils'
+import { CategoryController, CategoryService } from '../../category'
+import { CategoryIdParamsValidator } from '../../category/decorator'
+import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 
-describe('CategoryModule', () => {
+describe('Testing Get Category', () => {
   let controller: CategoryController
   let service: CategoryService
 
@@ -31,7 +31,7 @@ describe('CategoryModule', () => {
     jest.clearAllMocks()
   })
 
-  describe('getCategories', () => {
+  describe('getCategories(@ValidateDeletedCheckedDTO() categoryDeleteParamsDto: CategoryDeleteParamsDto) {...}', () => {
     it('should return Category type array', async () => {
       const mockCategories: Category[] = [
         {
@@ -74,7 +74,7 @@ describe('CategoryModule', () => {
     })
   })
 
-  describe('getCategoryById', () => {
+  describe('getCategoryById(@ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto) {...}', () => {
     it('should throw error when categoryId not matched uuid type', async () => {
       const request = {
         params: {
