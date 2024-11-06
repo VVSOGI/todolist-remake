@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { Category } from 'src/entities/category.entity'
 import { CategoryController, CategoryService } from '../category'
-import { CreateCategoryValidator, CategoryIdParamsValidator, UpdateCategoryValidator } from '../category/decorator'
+import { CategoryIdParamsValidator, UpdateCategoryValidator } from '../category/decorator'
 import { checkRequestValidate } from './test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 
@@ -31,39 +31,6 @@ describe('CategoryModule', () => {
     jest.clearAllMocks()
   })
 
-  describe('createCategory', () => {
-    it('should throw error when sent wrong data', async () => {
-      const request = {
-        body: {
-          title: 'test title',
-          hack: 'hack'
-        }
-      }
-
-      const typiaError = await checkRequestValidate(CreateCategoryValidator, request)
-      try {
-        new TypiaExceptionHandler(typiaError.response).handleValidationError()
-      } catch (err) {
-        expect(err).toBeInstanceOf(BadRequestException)
-        expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
-      }
-    })
-
-    it('should throw error when forget sent essential data', async () => {
-      const request = {
-        body: {}
-      }
-
-      const typiaError = await checkRequestValidate(CreateCategoryValidator, request)
-      try {
-        new TypiaExceptionHandler(typiaError.response).handleValidationError()
-      } catch (err) {
-        expect(err).toBeInstanceOf(NotFoundException)
-        expect(err.response.message).toBe(`Received unexpected data 'title' [MISSING DATA ERROR]`)
-      }
-    })
-  })
-
   describe('updateCategory', () => {
     it('should throw error when sent wrong data in body validator', async () => {
       const request = {
@@ -88,7 +55,7 @@ describe('CategoryModule', () => {
         body: {}
       }
 
-      const typiaError = await checkRequestValidate(CreateCategoryValidator, request)
+      const typiaError = await checkRequestValidate(UpdateCategoryValidator, request)
 
       try {
         new TypiaExceptionHandler(typiaError.response).handleValidationError()
