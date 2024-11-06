@@ -11,7 +11,7 @@ import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { checkRequestValidate } from './test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 
-describe('CategoryModule', () => {
+describe('TodolistModule', () => {
   let controller: TodolistController
   let service: TodolistService
 
