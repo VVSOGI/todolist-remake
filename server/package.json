@@ -19,7 +19,7 @@
     "migration:dev": "typeorm migration:run src/database/data-source.ts",
     "migration:revert": "typeorm migration:revert -d ./dist/database/data-source.js",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest --watch --config ./jest.config.ts",
+    "test": "jest --watch --config --verbose ./jest.config.ts",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "prepare": "ts-patch install && typia patch"
