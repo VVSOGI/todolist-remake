@@ -28,7 +28,7 @@ export class CategoryController {
   }
 
   @Patch(':categoryId')
-  async updateTodo(
+  async updateCategory(
     @ValidateIdParamDTO() idParamsDto: CategoryIdParamsDto,
     @ValidateUpdateDTO() updateCategoryDto: UpdateCategoryDto
   ): Promise<Category> {
