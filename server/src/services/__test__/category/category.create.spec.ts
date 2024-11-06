@@ -1,31 +1,9 @@
-import { Test, TestingModule } from '@nestjs/testing'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
-import { CategoryController, CategoryService } from '../../category'
 import { CreateCategoryValidator } from '../../category/decorator'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 
 describe('Testing Create Category', () => {
-  let controller: CategoryController
-  let service: CategoryService
-
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [CategoryController],
-      providers: [
-        {
-          provide: CategoryService,
-          useValue: {
-            getCategories: jest.fn()
-          }
-        }
-      ]
-    }).compile()
-
-    controller = module.get<CategoryController>(CategoryController)
-    service = module.get<CategoryService>(CategoryService)
-  })
-
   afterEach(() => {
     jest.clearAllMocks()
   })
