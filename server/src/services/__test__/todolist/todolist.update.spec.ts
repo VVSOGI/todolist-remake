@@ -1,10 +1,25 @@
+import typia from 'typia'
 import { BadRequestException } from '@nestjs/common'
 import { TypiaExceptionHandler } from 'src/common'
 import { UpdateTodolistOrderValidator, UpdateTodolistValidator } from '../../todolist/decorator'
 import { checkRequestValidate } from '../test.utils'
+import { UpdateTodolistDto, UpdateTodolistOrderDto } from 'src/services/todolist/types'
 
 describe('Testing Update Todolist', () => {
   describe('UpdateTodolistValidator test', () => {
+    it('should return UpdateTodolistDto to controller', async () => {
+      const request = {
+        body: {
+          id: '1',
+          title: 'test title',
+          checked: true
+        }
+      }
+
+      const result = new UpdateTodolistValidator(request).validate()
+      expect(typia.equals<UpdateTodolistDto>(result)).toBe(true)
+    })
+
     it('should throw error when sent wrong data', async () => {
       const request = {
         body: {
@@ -27,7 +42,7 @@ describe('Testing Update Todolist', () => {
   })
 
   describe('UpdateTodolistOrderValidator test', () => {
-    it('should return UpdateTodolistOrderDto[] when send right request', async () => {
+    it('should return UpdateTodolistOrderDto to controller', async () => {
       const request = {
         body: [
           {
@@ -36,8 +51,9 @@ describe('Testing Update Todolist', () => {
           }
         ]
       }
-      const todolist = new UpdateTodolistOrderValidator(request).validate()
-      expect(todolist[0].id).toBe('1')
+
+      const result = new UpdateTodolistOrderValidator(request).validate()
+      expect(typia.equals<UpdateTodolistOrderDto[]>(result)).toBe(true)
     })
 
     it('should throw error when sent wrong data', async () => {
