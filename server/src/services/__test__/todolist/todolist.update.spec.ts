@@ -4,10 +4,6 @@ import { UpdateTodolistOrderValidator, UpdateTodolistValidator } from '../../tod
 import { checkRequestValidate } from '../test.utils'
 
 describe('Testing Update Todolist', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
   describe('UpdateTodolistValidator test', () => {
     it('should throw error when sent wrong data', async () => {
       const request = {
