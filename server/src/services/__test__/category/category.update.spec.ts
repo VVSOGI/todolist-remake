@@ -4,10 +4,6 @@ import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 
 describe('Testing Update Category', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
   describe(`function updateCategory(@ValidateIdParamDTO() idParamsDto: CategoryIdParamsDto, @ValidateUpdateDTO() updateCategoryDto: UpdateCategoryDto) {...}`, () => {
     it('should throw error when sent wrong data in body validator', async () => {
       const request = {

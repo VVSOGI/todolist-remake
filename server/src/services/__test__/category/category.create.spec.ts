@@ -4,10 +4,6 @@ import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 
 describe('Testing Create Category', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
   describe('function createCategory(@ValidateCreateDTO() createCategoryDto: CreateCategoryDto) {...}', () => {
     it('should throw error when sent wrong data', async () => {
       const request = {
