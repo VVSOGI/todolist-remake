@@ -3,10 +3,9 @@ import { BadRequestException } from '@nestjs/common'
 import { CustomIValidation } from 'src/common'
 import { UpdateTodolistRequest } from '..'
 import { UpdateTodolistOrderDto } from '../../types'
-import { Todolist } from 'src/entities'
 
 export class UpdateTodolistOrderValidator {
-  private body: Todolist[]
+  private body: UpdateTodolistOrderDto[]
 
   constructor(request: UpdateTodolistRequest) {
     this.body = request.body

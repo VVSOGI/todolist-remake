@@ -1,10 +1,24 @@
+import typia from 'typia'
 import { CreateTodolistValidator } from '../../todolist/decorator'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
+import { CreateTodolistDto } from 'src/services/todolist/types'
 
 describe('Testing Create Todolist', () => {
   describe('CreateTodolistValidator test', () => {
+    it('should return CreateTodolistDto to controller', async () => {
+      const request = {
+        body: {
+          title: 'test title',
+          categoryId: '1'
+        }
+      }
+
+      const result = new CreateTodolistValidator(request).validate()
+      expect(typia.equals<CreateTodolistDto>(result)).toBe(true)
+    })
+
     it('should throw error when sent wrong data', async () => {
       const request = {
         body: {
