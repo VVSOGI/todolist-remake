@@ -1,10 +1,23 @@
+import typia from 'typia'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { CategoryIdParamsValidator, UpdateCategoryValidator } from '../../category/decorator'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
+import { UpdateCategoryDto } from 'src/services/category/types'
 
 describe('Testing Update Category', () => {
   describe(`UpdateCategoryValidator test`, () => {
+    it('should return CreateCategoryDto to controller', async () => {
+      const request = {
+        body: {
+          title: 'test title'
+        }
+      }
+
+      const result = new UpdateCategoryValidator(request).validate()
+      expect(typia.equals<UpdateCategoryDto>(result)).toBe(true)
+    })
+
     it('should throw error when sent wrong data in body validator', async () => {
       const request = {
         body: {
