@@ -4,11 +4,7 @@ import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 
 describe('Testing Create Todolist', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
-  describe('function createTodolist(@ValidateCreateTodolistDTO() createTodolistDto: CreateTodolistDto) {...}', () => {
+  describe('CreateTodolistValidator test', () => {
     it('should throw error when sent wrong data', async () => {
       const request = {
         body: {
