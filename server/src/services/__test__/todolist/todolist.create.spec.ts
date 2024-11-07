@@ -8,7 +8,7 @@ describe('Testing Create Todolist', () => {
     jest.clearAllMocks()
   })
 
-  describe('function createTodolist(@ValidateCreateTodolistDTO() createTodolistDto: CreateTodolistDto) {...}', () => {
+  describe('CreateTodolistValidator test', () => {
     it('should throw error when sent wrong data', async () => {
       const request = {
         body: {

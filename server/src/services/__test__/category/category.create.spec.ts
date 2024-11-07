@@ -4,7 +4,7 @@ import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 
 describe('Testing Create Category', () => {
-  describe('function createCategory(@ValidateCreateDTO() createCategoryDto: CreateCategoryDto) {...}', () => {
+  describe('CreateCategoryValidator test', () => {
     it('should throw error when sent wrong data', async () => {
       const request = {
         body: {

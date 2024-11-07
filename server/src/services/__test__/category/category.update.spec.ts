@@ -4,7 +4,7 @@ import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 
 describe('Testing Update Category', () => {
-  describe(`function updateCategory(@ValidateIdParamDTO() idParamsDto: CategoryIdParamsDto, @ValidateUpdateDTO() updateCategoryDto: UpdateCategoryDto) {...}`, () => {
+  describe(`UpdateCategoryValidator test`, () => {
     it('should throw error when sent wrong data in body validator', async () => {
       const request = {
         body: {
