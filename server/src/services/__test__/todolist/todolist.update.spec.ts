@@ -19,7 +19,6 @@ describe('Testing Update Todolist', () => {
         {
           provide: TodolistService,
           useValue: {
-            getTodolists: jest.fn(),
             updateTodolist: jest.fn(),
             updateTodolistOrder: jest.fn()
           }
