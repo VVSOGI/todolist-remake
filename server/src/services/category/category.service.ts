@@ -1,7 +1,7 @@
 import { v4 } from 'uuid'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { CategoryRepository } from './category.repository'
-import { CategoryDeleteParamsDto, CreateCategory } from './types'
+import { CategoryDeleteParamsDto, CreateCategory, CreateCategoryResponseType } from './types'
 import { Category } from 'src/entities'
 
 @Injectable()
@@ -22,7 +22,7 @@ export class CategoryService {
     throw new NotFoundException(`The category you're looking for doesn't exist.`)
   }
 
-  async createCategory(title: string) {
+  async createCategory(title: string): Promise<CreateCategoryResponseType> {
     const category: CreateCategory = {
       id: v4(),
       createdAt: new Date(),
