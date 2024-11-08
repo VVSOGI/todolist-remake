@@ -6,7 +6,6 @@ import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 import { CreateTodolistsResponseType } from 'src/services/todolist/types'
 import { TodolistController, TodolistService } from 'src/services/todolist'
-import { Category } from 'src/entities'
 
 describe('Testing Create Todolist', () => {
   let controller: TodolistController
