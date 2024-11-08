@@ -12,3 +12,11 @@ export interface CreateCategoryResponseType {
   updatedAt: Date
   deleted: boolean
 }
+
+export interface UpdateCategoryResponseType {
+  id: string
+  title: string
+  createdAt: Date
+  updatedAt: Date
+  deleted: boolean
+}

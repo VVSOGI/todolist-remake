@@ -1,21 +1,60 @@
 import typia from 'typia'
+import { Test, TestingModule } from '@nestjs/testing'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { CategoryIdParamsValidator, UpdateCategoryValidator } from '../../category/decorator'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
-import { UpdateCategoryDto } from 'src/services/category/types'
+import { UpdateCategoryResponseType } from 'src/services/category/types'
+import { CategoryController, CategoryService } from 'src/services/category'
 
 describe('Testing Update Category', () => {
+  let controller: CategoryController
+  let service: CategoryService
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [CategoryController],
+      providers: [
+        {
+          provide: CategoryService,
+          useValue: {
+            updateCategory: jest.fn()
+          }
+        }
+      ]
+    }).compile()
+
+    controller = module.get<CategoryController>(CategoryController)
+    service = module.get<CategoryService>(CategoryService)
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   describe(`UpdateCategoryValidator test`, () => {
     it('should return CreateCategoryDto to controller', async () => {
       const request = {
         body: {
           title: 'test title'
+        },
+        params: {
+          categoryId: '44acf95a-70a5-4141-aa0e-bc32f7997cbe'
         }
       }
+      jest.spyOn(service, 'updateCategory').mockResolvedValue({
+        ...request.body,
+        id: '1',
+        deleted: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      })
 
-      const result = new UpdateCategoryValidator(request).validate()
-      expect(typia.equals<UpdateCategoryDto>(result)).toBe(true)
+      const body = new UpdateCategoryValidator(request).validate()
+      const idParams = new CategoryIdParamsValidator(request).validate()
+
+      const updated = await controller.updateCategory(idParams, body)
+      expect(typia.equals<UpdateCategoryResponseType>(updated)).toBe(true)
     })
 
     it('should throw error when sent wrong data in body validator', async () => {

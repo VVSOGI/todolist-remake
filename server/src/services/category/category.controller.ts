@@ -8,7 +8,8 @@ import {
   CreateCategoryDto,
   CreateCategoryResponseType,
   GetCategoriesResponseType,
-  UpdateCategoryDto
+  UpdateCategoryDto,
+  UpdateCategoryResponseType
 } from './types'
 import { ValidateCreateDTO, ValidateDeletedCheckedDTO, ValidateIdParamDTO, ValidateUpdateDTO } from './decorator'
 
@@ -38,7 +39,7 @@ export class CategoryController {
   async updateCategory(
     @ValidateIdParamDTO() idParamsDto: CategoryIdParamsDto,
     @ValidateUpdateDTO() updateCategoryDto: UpdateCategoryDto
-  ): Promise<Category> {
+  ): Promise<UpdateCategoryResponseType> {
     const { categoryId } = idParamsDto
     const { title } = updateCategoryDto
     return this.categoryService.updateCategory(categoryId, title)
