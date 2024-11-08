@@ -1,11 +1,37 @@
 import typia from 'typia'
+import { Test, TestingModule } from '@nestjs/testing'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { CreateCategoryValidator } from '../../category/decorator'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
-import { CreateCategoryDto } from 'src/services/category/types'
+import { CreateCategoryResponseType } from 'src/services/category/types'
+import { CategoryController, CategoryService } from 'src/services/category'
 
 describe('Testing Create Category', () => {
+  let controller: CategoryController
+  let service: CategoryService
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [CategoryController],
+      providers: [
+        {
+          provide: CategoryService,
+          useValue: {
+            createCategory: jest.fn()
+          }
+        }
+      ]
+    }).compile()
+
+    controller = module.get<CategoryController>(CategoryController)
+    service = module.get<CategoryService>(CategoryService)
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
   describe('CreateCategoryValidator test', () => {
     it('should return CreateCategoryDto to controller', async () => {
       const request = {
@@ -14,8 +40,17 @@ describe('Testing Create Category', () => {
         }
       }
 
+      jest.spyOn(service, 'createCategory').mockResolvedValue({
+        ...request.body,
+        id: '1',
+        deleted: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      })
+
       const result = new CreateCategoryValidator(request).validate()
-      expect(typia.equals<CreateCategoryDto>(result)).toBe(true)
+      const created = await controller.createCategory(result)
+      expect(typia.equals<CreateCategoryResponseType>(created)).toBe(true)
     })
 
     it('should throw error when sent wrong data', async () => {
