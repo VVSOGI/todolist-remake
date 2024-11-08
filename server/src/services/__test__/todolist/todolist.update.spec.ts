@@ -1,11 +1,65 @@
 import typia from 'typia'
+import { Test, TestingModule } from '@nestjs/testing'
 import { BadRequestException } from '@nestjs/common'
 import { TypiaExceptionHandler } from 'src/common'
 import { UpdateTodolistOrderValidator, UpdateTodolistValidator } from '../../todolist/decorator'
 import { checkRequestValidate } from '../test.utils'
 import { UpdateTodolistDto, UpdateTodolistOrderDto } from 'src/services/todolist/types'
+import { TodolistController, TodolistService } from 'src/services/todolist'
+import { Category } from 'src/entities'
 
 describe('Testing Update Todolist', () => {
+  let controller: TodolistController
+  let service: TodolistService
+
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      controllers: [TodolistController],
+      providers: [
+        {
+          provide: TodolistService,
+          useValue: {
+            getTodolists: jest.fn(),
+            updateTodolist: jest.fn()
+          }
+        }
+      ]
+    }).compile()
+
+    controller = module.get<TodolistController>(TodolistController)
+    service = module.get<TodolistService>(TodolistService)
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
+
+  describe('PATCH /todolist', () => {
+    it('should return todolist when successed call patch api', async () => {
+      const request = {
+        body: {
+          id: '1',
+          title: 'test title',
+          checked: true
+        }
+      }
+
+      jest.spyOn(service, 'updateTodolist').mockResolvedValue({
+        ...request.body,
+        category: {} as Category,
+        categoryId: '1',
+        order: 1,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      })
+
+      const result = new UpdateTodolistValidator(request).validate()
+      const updated = await controller.updateTodo(result)
+
+      expect(updated.checked).toBe(true)
+    })
+  })
+
   describe('UpdateTodolistValidator test', () => {
     it('should return UpdateTodolistDto to controller', async () => {
       const request = {
