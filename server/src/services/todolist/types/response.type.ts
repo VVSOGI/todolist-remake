@@ -13,3 +13,13 @@ export interface GetTodolistsByDatesResponseType {
 export interface UpdateTodolistsOrderResponseType {
   data: string
 }
+
+export interface CreateTodolistsResponseType {
+  id: string
+  categoryId: string
+  title: string
+  checked: boolean
+  order: number
+  createdAt: Date
+  updatedAt: Date
+}
