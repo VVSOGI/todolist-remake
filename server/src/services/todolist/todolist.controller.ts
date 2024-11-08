@@ -6,7 +6,8 @@ import {
   GetTodolistsByDatesResponseType,
   GetTodolistsResponseType,
   UpdateTodolistDto,
-  UpdateTodolistOrderDto
+  UpdateTodolistOrderDto,
+  UpdateTodolistsOrderResponseType
 } from './types'
 import {
   ValidateCreateTodolistDTO,
@@ -48,7 +49,9 @@ export class TodolistController {
   }
 
   @Patch('/order')
-  async updateTodoOrder(@ValidateUpdateTodolistOrderDTO() updateTodolistOrderDto: UpdateTodolistOrderDto[]): Promise<any> {
+  async updateTodoOrder(
+    @ValidateUpdateTodolistOrderDTO() updateTodolistOrderDto: UpdateTodolistOrderDto[]
+  ): Promise<UpdateTodolistsOrderResponseType> {
     return this.todolistService.updateTodolistOrder(updateTodolistOrderDto)
   }
 }
