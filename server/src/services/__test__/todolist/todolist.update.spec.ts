@@ -4,7 +4,7 @@ import { BadRequestException } from '@nestjs/common'
 import { TypiaExceptionHandler } from 'src/common'
 import { UpdateTodolistOrderValidator, UpdateTodolistValidator } from '../../todolist/decorator'
 import { checkRequestValidate } from '../test.utils'
-import { UpdateTodolistDto, UpdateTodolistOrderDto } from 'src/services/todolist/types'
+import { UpdateTodolistDto, UpdateTodolistsOrderResponseType } from 'src/services/todolist/types'
 import { TodolistController, TodolistService } from 'src/services/todolist'
 import { Category } from 'src/entities'
 
@@ -20,7 +20,8 @@ describe('Testing Update Todolist', () => {
           provide: TodolistService,
           useValue: {
             getTodolists: jest.fn(),
-            updateTodolist: jest.fn()
+            updateTodolist: jest.fn(),
+            updateTodolistOrder: jest.fn()
           }
         }
       ]
@@ -106,8 +107,14 @@ describe('Testing Update Todolist', () => {
         ]
       }
 
-      const result = new UpdateTodolistOrderValidator(request).validate()
-      expect(typia.equals<UpdateTodolistOrderDto[]>(result)).toBe(true)
+      jest.spyOn(service, 'updateTodolistOrder').mockResolvedValue({
+        data: 'success'
+      })
+
+      const validateResult = new UpdateTodolistOrderValidator(request).validate()
+      const result = await controller.updateTodoOrder(validateResult)
+
+      expect(typia.equals<UpdateTodolistsOrderResponseType>(result)).toBe(true)
     })
 
     it('should throw error when sent wrong data', async () => {
