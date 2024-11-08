@@ -3,6 +3,7 @@ import { Todolist } from 'src/entities'
 import { TodolistService } from './todolist.service'
 import {
   CreateTodolistDto,
+  CreateTodolistsResponseType,
   GetTodolistsByDatesResponseType,
   GetTodolistsResponseType,
   UpdateTodolistDto,
@@ -21,7 +22,7 @@ export class TodolistController {
   constructor(private todolistService: TodolistService) {}
 
   @Post()
-  async createTodolist(@ValidateCreateTodolistDTO() createTodolistDto: CreateTodolistDto): Promise<Todolist> {
+  async createTodolist(@ValidateCreateTodolistDTO() createTodolistDto: CreateTodolistDto): Promise<CreateTodolistsResponseType> {
     return this.todolistService.createTodolist(createTodolistDto)
   }
 
