@@ -1,7 +1,7 @@
 import { v4 } from 'uuid'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { CategoryRepository } from './category.repository'
-import { CategoryDeleteParamsDto, CreateCategory, CreateCategoryResponseType } from './types'
+import { CategoryDeleteParamsDto, CreateCategory, CreateCategoryResponseType, UpdateCategoryResponseType } from './types'
 import { Category } from 'src/entities'
 
 @Injectable()
@@ -62,7 +62,7 @@ export class CategoryService {
     return await this.findCategoryById(categoryId)
   }
 
-  async updateCategory(categoryId: string, title: string) {
+  async updateCategory(categoryId: string, title: string): Promise<UpdateCategoryResponseType> {
     const category = await this.findCategoryById(categoryId)
     const updated = { ...category, title }
     return await this.saveCategory(updated)
