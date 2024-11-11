@@ -3,7 +3,7 @@ import { v4 } from 'uuid'
 import { TodolistRepository } from './todolist.repository'
 import {
   CreateTodolistDto,
-  CreateTodolistsResponseType,
+  TodolistResponseType,
   GetTodolistDtoFilters,
   UpdateTodolistDto,
   UpdateTodolistOrderDto,
@@ -19,7 +19,7 @@ export class TodolistService {
     private categoryService: CategoryService
   ) {}
 
-  private async saveTodolist(todolist: Todolist) {
+  private async saveTodolist(todolist: Todolist): Promise<TodolistResponseType> {
     return this.todolistRepository.save(todolist)
   }
 
@@ -33,7 +33,7 @@ export class TodolistService {
     throw new NotFoundException(`The todolist you're looking for doesn't exist.`)
   }
 
-  async createTodolist(createTodolist: CreateTodolistDto): Promise<CreateTodolistsResponseType> {
+  async createTodolist(createTodolist: CreateTodolistDto): Promise<TodolistResponseType> {
     const todolist: createTodolist = {
       id: v4(),
       createdAt: new Date(),
@@ -45,7 +45,7 @@ export class TodolistService {
     return this.saveTodolist(created)
   }
 
-  async updateTodolist(updateTodolist: UpdateTodolistDto) {
+  async updateTodolist(updateTodolist: UpdateTodolistDto): Promise<TodolistResponseType> {
     const { id } = updateTodolist
     const target = await this.findTodolistById(id)
     const updated: Todolist = { ...target, ...updateTodolist, updatedAt: new Date() }
