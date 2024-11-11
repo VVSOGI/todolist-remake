@@ -3,6 +3,7 @@ import { Injectable, NotFoundException } from '@nestjs/common'
 import { CategoryRepository } from './category.repository'
 import { CategoryDeleteParamsDto, CreateCategory, CreateCategoryResponseType, UpdateCategoryResponseType } from './types'
 import { Category } from 'src/entities'
+import { tags } from 'typia'
 
 @Injectable()
 export class CategoryService {
@@ -62,7 +63,7 @@ export class CategoryService {
     return await this.findCategoryById(categoryId)
   }
 
-  async updateCategory(categoryId: string, title: string): Promise<UpdateCategoryResponseType> {
+  async updateCategory(categoryId: string & tags.Format<'uuid'>, title: string): Promise<UpdateCategoryResponseType> {
     const category = await this.findCategoryById(categoryId)
     const updated = { ...category, title }
     return await this.saveCategory(updated)

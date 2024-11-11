@@ -1,4 +1,5 @@
 import { Category } from 'src/entities/category.entity'
+import { tags } from 'typia'
 
 export interface GetCategoriesResponseType {
   data: Category[]
@@ -6,7 +7,7 @@ export interface GetCategoriesResponseType {
 }
 
 export interface CreateCategoryResponseType {
-  id: string
+  id: string & tags.Format<'uuid'>
   title: string
   createdAt: Date
   updatedAt: Date
