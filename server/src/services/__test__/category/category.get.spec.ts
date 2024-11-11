@@ -33,7 +33,7 @@ describe('Testing Get Category', () => {
   })
 
   describe('function getCategories(@ValidateDeletedCheckedDTO() categoryDeleteParamsDto: CategoryDeleteParamsDto) {...}', () => {
-    it('should return Category type array', async () => {
+    it('should return GetCategoriesResponseType', async () => {
       const mockCategories: CreateCategoryResponseType[] = [
         {
           id: '74cea9ab-6fe5-4a64-a3dd-ed91631bbcd6',
