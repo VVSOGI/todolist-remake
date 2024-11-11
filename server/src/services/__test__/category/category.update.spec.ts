@@ -44,7 +44,7 @@ describe('Testing Update Category', () => {
       }
       jest.spyOn(service, 'updateCategory').mockResolvedValue({
         ...request.body,
-        id: '1',
+        id: request.params.categoryId,
         deleted: false,
         createdAt: new Date(),
         updatedAt: new Date()

@@ -42,7 +42,7 @@ describe('Testing Create Category', () => {
 
       jest.spyOn(service, 'createCategory').mockResolvedValue({
         ...request.body,
-        id: '1',
+        id: '44acf95a-70a5-4141-aa0e-bc32f7997cbe',
         deleted: false,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -50,6 +50,7 @@ describe('Testing Create Category', () => {
 
       const result = new CreateCategoryValidator(request).validate()
       const created = await controller.createCategory(result)
+
       expect(typia.equals<CreateCategoryResponseType>(created)).toBe(true)
     })
 

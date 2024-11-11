@@ -6,7 +6,6 @@ import { UpdateTodolistOrderValidator, UpdateTodolistValidator } from '../../tod
 import { checkRequestValidate } from '../test.utils'
 import { UpdateTodolistDto, UpdateTodolistsOrderResponseType } from 'src/services/todolist/types'
 import { TodolistController, TodolistService } from 'src/services/todolist'
-import { Category } from 'src/entities'
 
 describe('Testing Update Todolist', () => {
   let controller: TodolistController
@@ -38,7 +37,7 @@ describe('Testing Update Todolist', () => {
     it('should return todolist when successed call patch api', async () => {
       const request = {
         body: {
-          id: '1',
+          id: '89736e81-4068-43cd-8975-80358aa686ed',
           title: 'test title',
           checked: true
         }
@@ -46,7 +45,6 @@ describe('Testing Update Todolist', () => {
 
       jest.spyOn(service, 'updateTodolist').mockResolvedValue({
         ...request.body,
-        category: {} as Category,
         categoryId: '1',
         order: 1,
         createdAt: new Date(),
@@ -64,7 +62,7 @@ describe('Testing Update Todolist', () => {
     it('should return UpdateTodolistDto to controller', async () => {
       const request = {
         body: {
-          id: '1',
+          id: '89736e81-4068-43cd-8975-80358aa686ed',
           title: 'test title',
           checked: true
         }
@@ -77,7 +75,7 @@ describe('Testing Update Todolist', () => {
     it('should throw error when sent wrong data', async () => {
       const request = {
         body: {
-          id: '1',
+          id: '89736e81-4068-43cd-8975-80358aa686ed',
           title: 'test title',
           checked: false,
           hack: 'hack'
@@ -100,7 +98,7 @@ describe('Testing Update Todolist', () => {
       const request = {
         body: [
           {
-            id: '1',
+            id: '89736e81-4068-43cd-8975-80358aa686ed',
             order: 0
           }
         ]
@@ -120,7 +118,7 @@ describe('Testing Update Todolist', () => {
       const request = {
         body: [
           {
-            id: '1',
+            id: '89736e81-4068-43cd-8975-80358aa686ed',
             order: 0,
             hack: ''
           }
