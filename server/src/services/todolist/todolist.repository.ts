@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Todolist } from 'src/entities'
 import { Repository } from 'typeorm'
-import { GetTodolistDtoFilters, createTodolist } from './types'
+import { GetTodolistDtoFilters, GetTodolistsResponseType, createTodolist } from './types'
 
 @Injectable()
 export class TodolistRepository {
@@ -20,7 +20,7 @@ export class TodolistRepository {
     return created
   }
 
-  async findAll() {
+  async findAll(): Promise<GetTodolistsResponseType> {
     const [data, total] = await this.todolistRepository.findAndCount({
       order: {
         createdAt: 'desc'
