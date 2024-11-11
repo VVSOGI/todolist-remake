@@ -1,10 +1,11 @@
+import typia from 'typia'
 import { Test, TestingModule } from '@nestjs/testing'
 import { BadRequestException } from '@nestjs/common'
-import { Category } from 'src/entities/category.entity'
 import { CategoryController, CategoryService } from '../../category'
 import { CategoryIdParamsValidator } from '../../category/decorator'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
+import { CreateCategoryResponseType, GetCategoriesResponseType } from 'src/services/category/types'
 
 describe('Testing Get Category', () => {
   let controller: CategoryController
@@ -33,22 +34,20 @@ describe('Testing Get Category', () => {
 
   describe('function getCategories(@ValidateDeletedCheckedDTO() categoryDeleteParamsDto: CategoryDeleteParamsDto) {...}', () => {
     it('should return Category type array', async () => {
-      const mockCategories: Category[] = [
+      const mockCategories: CreateCategoryResponseType[] = [
         {
-          id: '1',
+          id: '74cea9ab-6fe5-4a64-a3dd-ed91631bbcd6',
           title: 'Test Category 1',
           createdAt: new Date(),
           updatedAt: new Date(),
-          deleted: false,
-          todolist: []
+          deleted: false
         },
         {
-          id: '2',
+          id: '4fdf955a-5afe-4bbe-91e6-4f2d95861f6f',
           title: 'Test Category 2',
           createdAt: new Date(),
           updatedAt: new Date(),
-          deleted: false,
-          todolist: []
+          deleted: false
         }
       ]
 
@@ -57,11 +56,8 @@ describe('Testing Get Category', () => {
         total: mockCategories.length
       })
 
-      const result = (await controller.getCategories('false')).data
-      const [first, second] = result
-
-      expect(first.id).toBe('1')
-      expect(second.id).toBe('2')
+      const result = await controller.getCategories('false')
+      expect(typia.equals<GetCategoriesResponseType>(result)).toBe(true)
     })
 
     it('should return empty array', async () => {
