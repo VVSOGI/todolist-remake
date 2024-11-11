@@ -4,7 +4,7 @@ import { CreateTodolistValidator } from '../../todolist/decorator'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
-import { CreateTodolistsResponseType } from 'src/services/todolist/types'
+import { TodolistResponseType } from 'src/services/todolist/types'
 import { TodolistController, TodolistService } from 'src/services/todolist'
 
 describe('Testing Create Todolist', () => {
@@ -33,13 +33,13 @@ describe('Testing Create Todolist', () => {
       const request = {
         body: {
           title: 'test title',
-          categoryId: '1'
+          categoryId: '89736e81-4068-43cd-8975-80358aa686ed'
         }
       }
 
       jest.spyOn(service, 'createTodolist').mockResolvedValue({
         ...request.body,
-        id: '1',
+        id: 'd19826d4-80c0-43c2-bcee-294d8c78e11d',
         order: 1,
         checked: false,
         createdAt: new Date(),
@@ -48,14 +48,14 @@ describe('Testing Create Todolist', () => {
 
       const result = new CreateTodolistValidator(request).validate()
       const created = await controller.createTodolist(result)
-      expect(typia.equals<CreateTodolistsResponseType>(created)).toBe(true)
+      expect(typia.equals<TodolistResponseType>(created)).toBe(true)
     })
 
     it('should throw error when sent wrong data', async () => {
       const request = {
         body: {
           title: 'test title',
-          categoryId: '1',
+          categoryId: '89736e81-4068-43cd-8975-80358aa686ed',
           hack: 'hack'
         }
       }
