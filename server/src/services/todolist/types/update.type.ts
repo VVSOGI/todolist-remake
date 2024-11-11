@@ -1,10 +1,12 @@
+import { tags } from 'typia'
+
 export interface UpdateTodolistDto {
-  id: string
+  id: string & tags.Format<'uuid'>
   title: string
   checked: boolean
 }
 
 export interface UpdateTodolistOrderDto {
-  id: string
+  id: string & tags.Format<'uuid'>
   order: number
 }
