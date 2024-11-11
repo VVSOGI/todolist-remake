@@ -1,4 +1,5 @@
 import { Todolist } from 'src/entities'
+import { tags } from 'typia'
 
 export interface GetTodolistsResponseType {
   data: Todolist[]
@@ -14,9 +15,9 @@ export interface UpdateTodolistsOrderResponseType {
   data: string
 }
 
-export interface CreateTodolistsResponseType {
-  id: string
-  categoryId: string
+export interface TodolistResponseType {
+  id: string & tags.Format<'uuid'>
+  categoryId: string & tags.Format<'uuid'>
   title: string
   checked: boolean
   order: number
