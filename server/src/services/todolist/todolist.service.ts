@@ -7,7 +7,8 @@ import {
   GetTodolistDtoFilters,
   UpdateTodolistDto,
   UpdateTodolistOrderDto,
-  createTodolist
+  createTodolist,
+  GetTodolistsResponseType
 } from './types'
 import { Todolist } from 'src/entities'
 import { CategoryService } from '../category'
@@ -64,7 +65,7 @@ export class TodolistService {
     }
   }
 
-  async getTodolists() {
+  async getTodolists(): Promise<GetTodolistsResponseType> {
     return this.todolistRepository.findAll()
   }
 

@@ -1,10 +1,12 @@
+import typia from 'typia'
 import { Test, TestingModule } from '@nestjs/testing'
 import { TodolistController, TodolistService } from '../../todolist'
-import { Category, Todolist } from 'src/entities'
+import { Todolist } from 'src/entities'
 import { GetTodolistCheckedValidator } from '../../todolist/decorator'
 import { BadRequestException } from '@nestjs/common'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
+import { GetTodolistsResponseType, TodolistResponseType } from 'src/services/todolist/types'
 
 describe('Testing Get Todolist', () => {
   let controller: TodolistController
@@ -33,11 +35,10 @@ describe('Testing Get Todolist', () => {
 
   describe('function getTodolists() {}', () => {
     it('should return Todolist type array', async () => {
-      const mockTodolist: Todolist[] = [
+      const mockTodolist: TodolistResponseType[] = [
         {
-          id: '1',
-          category: new Category(),
-          categoryId: '1',
+          id: '03f3a6ba-77e9-4e64-accc-f2d3b86dd70a',
+          categoryId: '72b2b482-b257-48d0-a89a-f4225b4f1ff4',
           order: 0,
           title: 'mock todolist title 1',
           checked: false,
@@ -45,9 +46,8 @@ describe('Testing Get Todolist', () => {
           updatedAt: new Date()
         },
         {
-          id: '2',
-          category: new Category(),
-          categoryId: '1',
+          id: 'bfa7dc79-693d-431a-9eca-d65fc4dde7d2',
+          categoryId: '72f6e270-f7dd-418b-b932-0a7f187a211e',
           order: 1,
           title: 'mock todolist title 2',
           checked: false,
@@ -61,11 +61,8 @@ describe('Testing Get Todolist', () => {
         total: mockTodolist.length
       })
 
-      const result = (await controller.getTodolists()).data
-      const [first, second] = result
-
-      expect(first.id).toBe('1')
-      expect(second.id).toBe('2')
+      const result = await controller.getTodolists()
+      expect(typia.equals<GetTodolistsResponseType>(result)).toBe(true)
     })
 
     it('should return empty array', async () => {

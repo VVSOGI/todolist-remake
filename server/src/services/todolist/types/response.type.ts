@@ -2,7 +2,7 @@ import { Todolist } from 'src/entities'
 import { tags } from 'typia'
 
 export interface GetTodolistsResponseType {
-  data: Todolist[]
+  data: TodolistResponseType[]
   total: number
 }
 
