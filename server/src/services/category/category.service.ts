@@ -1,9 +1,15 @@
 import { v4 } from 'uuid'
+import { tags } from 'typia'
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { CategoryRepository } from './category.repository'
-import { CategoryDeleteParamsDto, CreateCategory, CreateCategoryResponseType, UpdateCategoryResponseType } from './types'
+import {
+  CategoryDeleteParamsDto,
+  CreateCategory,
+  CreateCategoryResponseType,
+  GetCategoriesResponseType,
+  UpdateCategoryResponseType
+} from './types'
 import { Category } from 'src/entities'
-import { tags } from 'typia'
 
 @Injectable()
 export class CategoryService {
@@ -41,7 +47,7 @@ export class CategoryService {
     this.saveCategory(updated)
   }
 
-  async getCategories(deleted: CategoryDeleteParamsDto) {
+  async getCategories(deleted: CategoryDeleteParamsDto): Promise<GetCategoriesResponseType> {
     let check: boolean | undefined
 
     switch (deleted) {
