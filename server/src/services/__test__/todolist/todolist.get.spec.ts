@@ -34,7 +34,7 @@ describe('Testing Get Todolist', () => {
   })
 
   describe('function getTodolists() {}', () => {
-    it('should return Todolist type array', async () => {
+    it('should return GetTodolistsResponseType', async () => {
       const mockTodolist: TodolistResponseType[] = [
         {
           id: '03f3a6ba-77e9-4e64-accc-f2d3b86dd70a',
