@@ -1,6 +1,6 @@
 import typia from 'typia'
 import { Test, TestingModule } from '@nestjs/testing'
-import { BadRequestException } from '@nestjs/common'
+import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { TypiaExceptionHandler } from 'src/common'
 import { UpdateTodolistOrderValidator, UpdateTodolistValidator } from '../../todolist/decorator'
 import { checkRequestValidate } from '../test.utils'
@@ -91,6 +91,62 @@ describe('Testing Update Todolist', () => {
         expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
       }
     })
+
+    it('should throw error when if sent three characters or less', async () => {
+      const request = {
+        body: {
+          id: '89736e81-4068-43cd-8975-80358aa686ed',
+          title: '',
+          checked: false
+        }
+      }
+
+      const typiaError = await checkRequestValidate(UpdateTodolistValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`You must enter at least three characters. [WRONG DATA SENT ERROR]`)
+      }
+    })
+
+    it('should throw error when forget sent essential data', async () => {
+      const request = {
+        body: {
+          id: '89736e81-4068-43cd-8975-80358aa686ed',
+          title: 'test title'
+        }
+      }
+
+      const typiaError = await checkRequestValidate(UpdateTodolistValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundException)
+        expect(err.response.message).toBe(`Received unexpected data 'checked' [MISSING DATA ERROR]`)
+      }
+    })
+
+    it('should throw error when if sent id of a type other than UUID', async () => {
+      const request = {
+        body: {
+          id: '123',
+          title: 'test title',
+          checked: false
+        }
+      }
+
+      const typiaError = await checkRequestValidate(UpdateTodolistValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unmatched data 'id' [INVALID UUID TYPE ERROR]`)
+      }
+    })
   })
 
   describe('UpdateTodolistOrderValidator test', () => {
@@ -132,6 +188,65 @@ describe('Testing Update Todolist', () => {
       } catch (err) {
         expect(err).toBeInstanceOf(BadRequestException)
         expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
+      }
+    })
+
+    it('should throw error when sent wrong data type', async () => {
+      const request = {
+        body: [
+          {
+            id: '89736e81-4068-43cd-8975-80358aa686ed',
+            order: '10'
+          }
+        ]
+      }
+
+      const typiaError = await checkRequestValidate(UpdateTodolistOrderValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unexpected data 'order' [INVALID TYPE ERROR]`)
+      }
+    })
+
+    it('should throw error when if sent id of a type other than UUID', async () => {
+      const request = {
+        body: [
+          {
+            id: '123',
+            order: '10'
+          }
+        ]
+      }
+
+      const typiaError = await checkRequestValidate(UpdateTodolistOrderValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unmatched data 'id' [INVALID UUID TYPE ERROR]`)
+      }
+    })
+
+    it('should throw error when forget sent essential data', async () => {
+      const request = {
+        body: [
+          {
+            id: '89736e81-4068-43cd-8975-80358aa686ed'
+          }
+        ]
+      }
+
+      const typiaError = await checkRequestValidate(UpdateTodolistOrderValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundException)
+        expect(err.response.message).toBe(`Received unexpected data 'order' [MISSING DATA ERROR]`)
       }
     })
   })

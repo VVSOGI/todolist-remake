@@ -2,7 +2,7 @@ import { tags } from 'typia'
 
 export interface UpdateTodolistDto {
   id: string & tags.Format<'uuid'>
-  title: string
+  title: string & tags.MinLength<3>
   checked: boolean
 }
 

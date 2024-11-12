@@ -18,7 +18,7 @@ export class TypiaExceptionHandler {
   }
 
   private isInvalidDataType(expected: any, value: any): boolean {
-    return typeof expected !== typeof value
+    return expected !== typeof value
   }
 
   private isNotUUIDType(expected: any): boolean {
@@ -61,16 +61,16 @@ export class TypiaExceptionHandler {
       throw new NotFoundException(`Received unexpected data '${cleanPath}' [MISSING DATA ERROR]`)
     }
 
-    if (this.isInvalidDataType(expected, value)) {
-      throw new BadRequestException(`Received unexpected data '${cleanPath}' [INVALID TYPE ERROR]`)
+    if (this.isExpectedUnionType(expected) && this.isNotMatchedNarrowingType(expected, value)) {
+      throw new BadRequestException(`Received unexpected data '${expected}' [INVALID QUERY DATA ERROR]`)
     }
 
     if (this.isNotUUIDType(expected)) {
       throw new BadRequestException(`Received unmatched data '${cleanPath}' [INVALID UUID TYPE ERROR]`)
     }
 
-    if (this.isExpectedUnionType(expected) && this.isNotMatchedNarrowingType(expected, value)) {
-      throw new BadRequestException(`Received unexpected data '${expected}' [INVALID QUERY DATA ERROR]`)
+    if (this.isInvalidDataType(expected, value)) {
+      throw new BadRequestException(`Received unexpected data '${cleanPath}' [INVALID TYPE ERROR]`)
     }
 
     Logger.error(this.error)
