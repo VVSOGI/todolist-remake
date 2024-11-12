@@ -1,7 +1,7 @@
 import { tags } from 'typia'
 
 export interface CreateTodolistDto {
-  title: string
+  title: string & tags.MinLength<3>
   categoryId: string & tags.Format<'uuid'>
 }
 
