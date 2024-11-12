@@ -75,6 +75,23 @@ describe('Testing Update Category', () => {
       }
     })
 
+    it('should throw error when if sent three characters or less', async () => {
+      const request = {
+        body: {
+          title: ''
+        }
+      }
+
+      const typiaError = await checkRequestValidate(UpdateCategoryValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`You must enter at least three characters. [WRONG DATA SENT ERROR]`)
+      }
+    })
+
     it('should throw error when forget sent essential data in body validator', async () => {
       const request = {
         body: {}
