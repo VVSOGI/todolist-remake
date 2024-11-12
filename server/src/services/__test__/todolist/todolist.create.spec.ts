@@ -88,6 +88,24 @@ describe('Testing Create Todolist', () => {
       }
     })
 
+    it('should throw error when if sent categoryId of a type other than UUID', async () => {
+      const request = {
+        body: {
+          title: 'test title',
+          categoryId: '123'
+        }
+      }
+
+      const typiaError = await checkRequestValidate(CreateTodolistValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unmatched data 'categoryId' [INVALID UUID TYPE ERROR]`)
+      }
+    })
+
     it('should throw error when forget sent essential data', async () => {
       const request = {
         body: {
