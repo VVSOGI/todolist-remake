@@ -32,7 +32,7 @@ describe('Testing Create Category', () => {
     jest.clearAllMocks()
   })
 
-  describe('CreateCategoryValidator test', () => {
+  describe('POST /category', () => {
     it('should return CreateCategoryDto to controller', async () => {
       const request = {
         body: {

@@ -33,7 +33,7 @@ describe('Testing Get Todolist', () => {
     jest.clearAllMocks()
   })
 
-  describe('function getTodolists() {}', () => {
+  describe('GET /todolist', () => {
     it('should return GetTodolistsResponseType', async () => {
       const mockTodolist: TodolistResponseType[] = [
         {
