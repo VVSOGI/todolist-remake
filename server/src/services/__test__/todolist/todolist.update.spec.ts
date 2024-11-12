@@ -190,5 +190,25 @@ describe('Testing Update Todolist', () => {
         expect(err.response.message).toBe(`Received unexpected data 'hack' [WRONG DATA SENT ERROR]`)
       }
     })
+
+    it('should throw error when sent wrong data type', async () => {
+      const request = {
+        body: [
+          {
+            id: '89736e81-4068-43cd-8975-80358aa686ed',
+            order: '10'
+          }
+        ]
+      }
+
+      const typiaError = await checkRequestValidate(UpdateTodolistOrderValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unexpected data 'order' [INVALID TYPE ERROR]`)
+      }
+    })
   })
 })
