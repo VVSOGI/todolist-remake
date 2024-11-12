@@ -70,6 +70,24 @@ describe('Testing Create Todolist', () => {
       }
     })
 
+    it('should throw error when if sent three characters or less', async () => {
+      const request = {
+        body: {
+          title: '',
+          categoryId: '89736e81-4068-43cd-8975-80358aa686ed'
+        }
+      }
+
+      const typiaError = await checkRequestValidate(CreateTodolistValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`You must enter at least three characters. [WRONG DATA SENT ERROR]`)
+      }
+    })
+
     it('should throw error when forget sent essential data', async () => {
       const request = {
         body: {
