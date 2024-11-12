@@ -28,8 +28,8 @@ describe('Testing Create Todolist', () => {
     service = module.get<TodolistService>(TodolistService)
   })
 
-  describe('CreateTodolistValidator test', () => {
-    it('should return CreateTodolistDto to controller', async () => {
+  describe('POST /todolist', () => {
+    it('should return todolist when successed call POST api', async () => {
       const request = {
         body: {
           title: 'test title',

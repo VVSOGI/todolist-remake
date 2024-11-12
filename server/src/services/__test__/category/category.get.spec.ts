@@ -32,7 +32,7 @@ describe('Testing Get Category', () => {
     jest.clearAllMocks()
   })
 
-  describe('function getCategories(@ValidateDeletedCheckedDTO() categoryDeleteParamsDto: CategoryDeleteParamsDto) {...}', () => {
+  describe('GET /category', () => {
     it('should return GetCategoriesResponseType', async () => {
       const mockCategories: CreateCategoryResponseType[] = [
         {
@@ -70,7 +70,7 @@ describe('Testing Get Category', () => {
     })
   })
 
-  describe('function getCategoryById(@ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto) {...}', () => {
+  describe('GET /category/:categoryId', () => {
     it('should throw error when categoryId not matched uuid type', async () => {
       const request = {
         params: {
