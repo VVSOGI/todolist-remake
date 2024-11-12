@@ -210,5 +210,44 @@ describe('Testing Update Todolist', () => {
         expect(err.response.message).toBe(`Received unexpected data 'order' [INVALID TYPE ERROR]`)
       }
     })
+
+    it('should throw error when if sent id of a type other than UUID', async () => {
+      const request = {
+        body: [
+          {
+            id: '123',
+            order: '10'
+          }
+        ]
+      }
+
+      const typiaError = await checkRequestValidate(UpdateTodolistOrderValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unmatched data 'id' [INVALID UUID TYPE ERROR]`)
+      }
+    })
+
+    it('should throw error when forget sent essential data', async () => {
+      const request = {
+        body: [
+          {
+            id: '89736e81-4068-43cd-8975-80358aa686ed'
+          }
+        ]
+      }
+
+      const typiaError = await checkRequestValidate(UpdateTodolistOrderValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(NotFoundException)
+        expect(err.response.message).toBe(`Received unexpected data 'order' [MISSING DATA ERROR]`)
+      }
+    })
   })
 })
