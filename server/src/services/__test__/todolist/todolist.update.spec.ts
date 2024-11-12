@@ -56,9 +56,7 @@ describe('Testing Update Todolist', () => {
 
       expect(updated.checked).toBe(true)
     })
-  })
 
-  describe('UpdateTodolistValidator test', () => {
     it('should return UpdateTodolistDto to controller', async () => {
       const request = {
         body: {
@@ -149,7 +147,7 @@ describe('Testing Update Todolist', () => {
     })
   })
 
-  describe('UpdateTodolistOrderValidator test', () => {
+  describe('PATCH /todolist/order', () => {
     it('should return UpdateTodolistOrderDto to controller', async () => {
       const request = {
         body: [
