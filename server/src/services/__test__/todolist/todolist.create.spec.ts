@@ -91,8 +91,7 @@ describe('Testing Create Todolist', () => {
     it('should throw error when forget sent essential data', async () => {
       const request = {
         body: {
-          title: 'test title',
-          description: 'test description'
+          title: 'test title'
         }
       }
 
