@@ -2,7 +2,8 @@
 
 ## client
 
-1. routing
+1. Routing
+
    - MAIN: **/**
      - get categories
      - create category
@@ -16,6 +17,11 @@
      - move storage page that contain completed todo's
    - STORAGE: **/storage/:todolistId**
      - get completed todo's by dates
+
+2. Use specs
+   - NextJS
+   - Styled-components
+   - dnd-kit
 
 ## server
 
