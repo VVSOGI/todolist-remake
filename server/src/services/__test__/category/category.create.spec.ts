@@ -4,7 +4,7 @@ import { BadRequestException, NotFoundException } from '@nestjs/common'
 import { CreateCategoryValidator } from '../../category/decorator'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
-import { CreateCategoryResponseType } from 'src/services/category/types'
+import { DefaultCategoryResponseType } from 'src/services/category/types'
 import { CategoryController, CategoryService } from 'src/services/category'
 
 describe('Testing Create Category', () => {
@@ -51,7 +51,7 @@ describe('Testing Create Category', () => {
       const result = new CreateCategoryValidator(request).validate()
       const created = await controller.createCategory(result)
 
-      expect(typia.equals<CreateCategoryResponseType>(created)).toBe(true)
+      expect(typia.equals<DefaultCategoryResponseType>(created)).toBe(true)
     })
 
     it('should throw error when sent wrong data', async () => {
