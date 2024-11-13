@@ -1,3 +1,32 @@
+## server
+
+1. End points
+
+   - Category: **/category**
+     - Create category: **POST** /category
+     - Get categories: **GET** /category
+     - Get category by id: **GET** /category/:categoryId
+     - Update category: **PATCH** /category/:categoryId
+     - Delete category: **DELETE** /category/:categoryId
+   - Todolist: **/todolist**
+     - Create todo: **POST** /todolist
+     - Get todo's: **GET** /todolist
+     - Get todo's by categoryId: **GET** /todolist/:categoryId
+     - Get todo's by dates: **GET** /todolist/dates/:categoryId
+     - Update todo: **PATCH** /todolist
+     - Update todo's order: **PATCH** /todolist/order
+
+2. Use specs
+   - NestJS
+   - Typia
+   - Jest
+   - PostgreSQL
+   - Typeorm
+
+### Server testing in progress
+
+<img width="633" alt="스크린샷 2024-11-12 오후 7 01 09" src="https://github.com/user-attachments/assets/b7199bdc-7669-45be-ab4b-98e347053930">
+
 ## client
 
 1. Routing
@@ -35,24 +64,3 @@
    - NextJS
    - Styled-components
    - dnd-kit
-
-## server
-
-1. End points
-   - Category: **/category**
-     - Create category: **POST** /category
-     - Get categories: **GET** /category
-     - Get category by id: **GET** /category/:categoryId
-     - Update category: **PATCH** /category/:categoryId
-     - Delete category: **DELETE** /category/:categoryId
-   - Todolist: **/todolist**
-     - Create todo: **POST** /todolist
-     - Get todo's: **GET** /todolist
-     - Get todo's by categoryId: **GET** /todolist/:categoryId
-     - Get todo's by dates: **GET** /todolist/dates/:categoryId
-     - Update todo: **PATCH** /todolist
-     - Update todo's order: **PATCH** /todolist/order
-
-### Server testing in progress
-
-<img width="633" alt="스크린샷 2024-11-12 오후 7 01 09" src="https://github.com/user-attachments/assets/b7199bdc-7669-45be-ab4b-98e347053930">
