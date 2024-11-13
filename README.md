@@ -21,11 +21,19 @@
 2. API routing
 
    - Category
+
      - Get categories: **GET** /api/category
      - Create category: **POST** /api/category
      - Get category by id: **GET** /api/category/:categoryId
      - Update category by id: **PATCH** /api/category/:categoryId
      - Delete category by id: **DELETE** /api/category/:categoryId
+
+   - Todolist
+     - Get todo's list by category Id: **GET** /api/todolist/:categoryId
+     - Create todo: **POST** /api/todolist
+     - Update todo: **PATCH** /api/todolist
+     - Get todo's list by dates: **GET** /api/todolist/dates/:categoryId
+     - Update todo's order: **PATCH** /api/todolist/order
 
 3. Use specs
    - NextJS
