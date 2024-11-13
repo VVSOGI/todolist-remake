@@ -6,7 +6,7 @@ import {
   CategoryDeleteParamsDto,
   CategoryIdParamsDto,
   CreateCategoryDto,
-  CreateCategoryResponseType,
+  DefaultCategoryResponseType,
   GetCategoriesResponseType,
   UpdateCategoryDto,
   UpdateCategoryResponseType
@@ -19,7 +19,7 @@ export class CategoryController {
   constructor(private categoryService: CategoryService) {}
 
   @Post()
-  async createCategory(@ValidateCreateDTO() createCategoryDto: CreateCategoryDto): Promise<CreateCategoryResponseType> {
+  async createCategory(@ValidateCreateDTO() createCategoryDto: CreateCategoryDto): Promise<DefaultCategoryResponseType> {
     const { title } = createCategoryDto
     return this.categoryService.createCategory(title)
   }
@@ -46,7 +46,7 @@ export class CategoryController {
   }
 
   @Delete('/soft/:categoryId')
-  async softDeleteCategoryById(@ValidateIdParamDTO() deleteCategoryDto: CategoryIdParamsDto): Promise<Category> {
+  async softDeleteCategoryById(@ValidateIdParamDTO() deleteCategoryDto: CategoryIdParamsDto): Promise<DefaultCategoryResponseType> {
     const { categoryId } = deleteCategoryDto
     return this.categoryService.softDeleteCategoryById(categoryId)
   }
