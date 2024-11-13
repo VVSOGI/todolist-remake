@@ -38,8 +38,20 @@
 
 ## server
 
-- nest js
-- typia
+1. End points
+   - Category: **/category**
+     - Create category: **POST** /category
+     - Get categories: **GET** /category
+     - Get category by id: **GET** /category/:categoryId
+     - Update category: **PATCH** /category/:categoryId
+     - Delete category: **DELETE** /category/:categoryId
+   - Todolist: **/todolist**
+     - Create todo: **POST** /todolist
+     - Get todo's: **GET** /todolist
+     - Get todo's by categoryId: **GET** /todolist/:categoryId
+     - Get todo's by dates: **GET** /todolist/dates/:categoryId
+     - Update todo: **PATCH** /todolist
+     - Update todo's order: **PATCH** /todolist/order
 
 ### Server testing in progress
 
