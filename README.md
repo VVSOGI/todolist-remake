@@ -8,7 +8,7 @@
      - get categories
      - create category
      - categories of todolist
-   - CATEGORY: **/:categoryId**
+   - TODOLIST: **/:categoryId**
      - get todo's
      - create todo
      - complete todo
@@ -18,7 +18,16 @@
    - STORAGE: **/storage/:todolistId**
      - get completed todo's by dates
 
-2. Use specs
+2. API routing
+
+   - Category
+     - Get categories: **GET** /api/category
+     - Create category: **POST** /api/category
+     - Get category by id: **GET** /api/category/:categoryId
+     - Update category by id: **PATCH** /api/category/:categoryId
+     - Delete category by id: **DELETE** /api/category/:categoryId
+
+3. Use specs
    - NextJS
    - Styled-components
    - dnd-kit
