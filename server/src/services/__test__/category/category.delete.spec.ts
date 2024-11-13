@@ -1,7 +1,7 @@
 import typia from 'typia'
 import { Test, TestingModule } from '@nestjs/testing'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
-import { CategoryIdParamsValidator, CreateCategoryValidator } from '../../category/decorator'
+import { CategoryIdParamsValidator } from '../../category/decorator'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 import { CategoryIdParamsDto, DefaultCategoryResponseType } from 'src/services/category/types'
