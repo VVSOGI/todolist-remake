@@ -5,7 +5,7 @@ import { CategoryController, CategoryService } from '../../category'
 import { CategoryIdParamsValidator } from '../../category/decorator'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
-import { CreateCategoryResponseType, GetCategoriesResponseType } from 'src/services/category/types'
+import { DefaultCategoryResponseType, GetCategoriesResponseType } from 'src/services/category/types'
 
 describe('Testing Get Category', () => {
   let controller: CategoryController
@@ -34,7 +34,7 @@ describe('Testing Get Category', () => {
 
   describe('GET /category', () => {
     it('should return GetCategoriesResponseType', async () => {
-      const mockCategories: CreateCategoryResponseType[] = [
+      const mockCategories: DefaultCategoryResponseType[] = [
         {
           id: '74cea9ab-6fe5-4a64-a3dd-ed91631bbcd6',
           title: 'Test Category 1',

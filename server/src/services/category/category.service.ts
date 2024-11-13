@@ -5,7 +5,7 @@ import { CategoryRepository } from './category.repository'
 import {
   CategoryDeleteParamsDto,
   CreateCategory,
-  CreateCategoryResponseType,
+  DefaultCategoryResponseType,
   GetCategoriesResponseType,
   UpdateCategoryResponseType
 } from './types'
@@ -29,7 +29,7 @@ export class CategoryService {
     throw new NotFoundException(`The category you're looking for doesn't exist.`)
   }
 
-  async createCategory(title: string): Promise<CreateCategoryResponseType> {
+  async createCategory(title: string): Promise<DefaultCategoryResponseType> {
     const category: CreateCategory = {
       id: v4(),
       createdAt: new Date(),
@@ -75,7 +75,7 @@ export class CategoryService {
     return await this.saveCategory(updated)
   }
 
-  async softDeleteCategoryById(categoryId: string) {
+  async softDeleteCategoryById(categoryId: string): Promise<DefaultCategoryResponseType> {
     const category = await this.findCategoryById(categoryId)
     const updated: Category = { ...category, deleted: true }
     return this.saveCategory(updated)
