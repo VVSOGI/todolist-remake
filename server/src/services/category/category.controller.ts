@@ -30,7 +30,7 @@ export class CategoryController {
   }
 
   @Get(':categoryId')
-  async getCategoryById(@ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto): Promise<Category> {
+  async getCategoryById(@ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto): Promise<DefaultCategoryResponseType> {
     const { categoryId } = getCategoryDto
     return this.categoryService.getCategoryById(categoryId)
   }
