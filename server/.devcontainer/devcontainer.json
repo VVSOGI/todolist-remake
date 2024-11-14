@@ -13,7 +13,7 @@
     "NODE_ENV": "development"
   },
   "initializeCommand": "docker network create todolist || true",
-  "runArgs": ["--network", "todolist", "--name", "${containerWorkspaceFolderBasename}-vscode"],
+  "runArgs": ["--network", "todolist", "--name", "${containerWorkspaceFolderBasename}-vscode", "--memory", "2g"],
   "forwardPorts": ["postgres:5432"],
   "customizations": {
     "vscode": {
