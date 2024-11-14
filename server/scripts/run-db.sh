@@ -8,6 +8,9 @@ docker network create $DOCKER_NETWORK | true
 docker run \
   --name $DB_CONTAINER_NAME \
   --network $DOCKER_NETWORK \
+  --memory=2g \
+  --memory-swap=3g \
+  -p 5432:5432 \
   -e POSTGRES_PASSWORD=$DB_PASSWORD \
   -e POSTGRES_USER=$DB_USERNAME \
   -e POSTGRES_DB=$DB_DATABASE \
