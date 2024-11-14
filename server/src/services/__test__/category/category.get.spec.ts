@@ -2,10 +2,10 @@ import typia from 'typia'
 import { Test, TestingModule } from '@nestjs/testing'
 import { BadRequestException } from '@nestjs/common'
 import { CategoryController, CategoryService } from '../../category'
-import { CategoryIdParamsValidator } from '../../category/decorator'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 import { DefaultCategoryResponseType, GetCategoriesResponseType } from 'src/services/category/types'
+import { CategoryIdParamsValidator } from 'src/services/common'
 
 describe('Testing Get Category', () => {
   let controller: CategoryController

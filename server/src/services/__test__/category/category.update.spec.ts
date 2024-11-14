@@ -1,11 +1,12 @@
 import typia from 'typia'
 import { Test, TestingModule } from '@nestjs/testing'
 import { BadRequestException, NotFoundException } from '@nestjs/common'
-import { CategoryIdParamsValidator, UpdateCategoryValidator } from '../../category/decorator'
+import { UpdateCategoryValidator } from '../../category/decorator'
 import { checkRequestValidate } from '../test.utils'
 import { TypiaExceptionHandler } from 'src/common'
 import { UpdateCategoryResponseType } from 'src/services/category/types'
 import { CategoryController, CategoryService } from 'src/services/category'
+import { CategoryIdParamsValidator } from 'src/services/common'
 
 describe('Testing Update Category', () => {
   let controller: CategoryController

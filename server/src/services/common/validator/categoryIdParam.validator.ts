@@ -1,8 +1,7 @@
 import typia from 'typia'
 import { BadRequestException } from '@nestjs/common'
 import { CustomIValidation } from 'src/common'
-import { CategoryIdParamsDto } from '../../types'
-import { IdParamsRequest } from '..'
+import { CategoryIdParamsDto, IdParamsRequest } from '..'
 
 export class CategoryIdParamsValidator {
   private params: CategoryIdParamsDto

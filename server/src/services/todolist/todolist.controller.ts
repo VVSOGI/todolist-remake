@@ -15,6 +15,7 @@ import {
   ValidateUpdateTodolistDto,
   ValidateUpdateTodolistOrderDTO
 } from './decorator'
+import { ValidateIdParamDTO } from '../common'
 
 @Controller('todolist')
 export class TodolistController {
@@ -32,7 +33,7 @@ export class TodolistController {
 
   @Get(':categoryId')
   async getTodolistsByCategoryId(
-    @Param('categoryId') categoryId: string,
+    @ValidateIdParamDTO() categoryId: string,
     @ValidateGetTodolistCheckedDTO() checked: boolean
   ): Promise<GetTodolistsResponseType> {
     return this.todolistService.getTodolistsByCategoryId({ categoryId, checked })
