@@ -132,4 +132,35 @@ describe('Testing Get Todolist', () => {
       expect(typia.equals<GetTodolistsResponseType>(result)).toBe(true)
     })
   })
+  describe('GET /todolist/dates/:categoryId', () => {
+    it('should return GetTodolistsResponseType', async () => {
+      const request = {
+        params: {
+          categoryId: '32e553e1-455f-4713-be2b-b71322cf5047'
+        }
+      }
+
+      const mockTodolists: TodolistResponseType[] = [
+        {
+          id: 'bfa7dc79-693d-431a-9eca-d65fc4dde7d2',
+          categoryId: '72f6e270-f7dd-418b-b932-0a7f187a211e',
+          order: 1,
+          title: 'mock todolist title 2',
+          checked: false,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        }
+      ]
+
+      jest.spyOn(service, 'getTodolistsByCategoryId').mockResolvedValue({
+        data: mockTodolists,
+        total: mockTodolists.length
+      })
+
+      const idParams = new CategoryIdParamsValidator(request).validate()
+      const result = await controller.getTodolistsByCategoryId(idParams)
+
+      expect(typia.equals<GetTodolistsResponseType>(result)).toBe(true)
+    })
+  })
 })
