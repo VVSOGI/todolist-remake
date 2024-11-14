@@ -131,7 +131,48 @@ describe('Testing Get Todolist', () => {
 
       expect(typia.equals<GetTodolistsResponseType>(result)).toBe(true)
     })
+
+    it('should throw error when if sent id of a type other than UUID', async () => {
+      const request = {
+        params: {
+          categoryId: '123'
+        },
+        query: {
+          checked: 'false'
+        }
+      }
+
+      const typiaError = await checkRequestValidate(CategoryIdParamsValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unmatched data 'categoryId' [INVALID UUID TYPE ERROR]`)
+      }
+    })
+
+    it('should throw error when if sent wrong data that query checked', async () => {
+      const request = {
+        params: {
+          categoryId: '32e553e1-455f-4713-be2b-b71322cf5047'
+        },
+        query: {
+          checked: ''
+        }
+      }
+
+      const typiaError = await checkRequestValidate(GetTodolistCheckedValidator, request)
+
+      try {
+        new TypiaExceptionHandler(typiaError.response).handleValidationError()
+      } catch (err) {
+        expect(err).toBeInstanceOf(BadRequestException)
+        expect(err.response.message).toBe(`Received unexpected data '(\"false\" | \"true\" | undefined)' [INVALID QUERY DATA ERROR]`)
+      }
+    })
   })
+
   describe('GET /todolist/dates/:categoryId', () => {
     it('should return GetTodolistsResponseType', async () => {
       const request = {
