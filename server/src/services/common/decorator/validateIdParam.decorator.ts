@@ -1,6 +1,6 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common'
 import { TypiaExceptionHandler } from 'src/common'
-import { CategoryIdParamsValidator } from './validator'
+import { CategoryIdParamsValidator } from '../validator'
 
 export interface IdParamsRequest {
   params: {

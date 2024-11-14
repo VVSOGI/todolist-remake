@@ -1,6 +1,5 @@
 import { Controller, Delete, Get, Patch, Post } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
-import { Category } from 'src/entities'
 import { CategoryService } from './category.service'
 import {
   CategoryDeleteParamsDto,
@@ -11,7 +10,8 @@ import {
   UpdateCategoryDto,
   UpdateCategoryResponseType
 } from './types'
-import { ValidateCreateDTO, ValidateDeletedCheckedDTO, ValidateIdParamDTO, ValidateUpdateDTO } from './decorator'
+import { ValidateCreateDTO, ValidateDeletedCheckedDTO, ValidateUpdateDTO } from './decorator'
+import { ValidateIdParamDTO } from '../common'
 
 @ApiTags('Category')
 @Controller('category')
@@ -30,7 +30,7 @@ export class CategoryController {
   }
 
   @Get(':categoryId')
-  async getCategoryById(@ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto): Promise<Category> {
+  async getCategoryById(@ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto): Promise<DefaultCategoryResponseType> {
     const { categoryId } = getCategoryDto
     return this.categoryService.getCategoryById(categoryId)
   }

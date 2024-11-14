@@ -7,7 +7,8 @@ import {
   GetTodolistsResponseType,
   UpdateTodolistDto,
   UpdateTodolistOrderDto,
-  UpdateTodolistsOrderResponseType
+  UpdateTodolistsOrderResponseType,
+  GetTodolistDto
 } from './types'
 import {
   ValidateCreateTodolistDTO,
@@ -15,6 +16,7 @@ import {
   ValidateUpdateTodolistDto,
   ValidateUpdateTodolistOrderDTO
 } from './decorator'
+import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
 
 @Controller('todolist')
 export class TodolistController {
@@ -32,10 +34,17 @@ export class TodolistController {
 
   @Get(':categoryId')
   async getTodolistsByCategoryId(
-    @Param('categoryId') categoryId: string,
-    @ValidateGetTodolistCheckedDTO() checked: boolean
+    @ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto,
+    @ValidateGetTodolistCheckedDTO() checked?: GetTodolistDto
   ): Promise<GetTodolistsResponseType> {
-    return this.todolistService.getTodolistsByCategoryId({ categoryId, checked })
+    const { categoryId } = getCategoryDto
+    let isChecked: boolean
+    if (checked === 'true') {
+      isChecked = true
+    } else {
+      isChecked = false
+    }
+    return this.todolistService.getTodolistsByCategoryId({ categoryId, checked: isChecked })
   }
 
   @Get('/dates/:categoryId')

@@ -42,7 +42,7 @@ export class CategoryService {
   }
 
   async updateDate(categoryId: string) {
-    const category = await this.getCategoryById(categoryId)
+    const category = await this.findCategoryById(categoryId)
     const updated: Category = { ...category, updatedAt: new Date() }
     this.saveCategory(updated)
   }
@@ -65,7 +65,7 @@ export class CategoryService {
     return this.categoryRepository.findAll(check)
   }
 
-  async getCategoryById(categoryId: string) {
+  async getCategoryById(categoryId: string): Promise<DefaultCategoryResponseType> {
     return await this.findCategoryById(categoryId)
   }
 
