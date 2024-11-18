@@ -26,7 +26,7 @@
 actor Customer
 Customer -> Frontend: 특정 카테고리에 대해 수정 요청
     Frontend -> Backend: 특정 카테고리 수정 API 요청
-        Backend -> CategoryController: GET /category/:categoryId
+        Backend -> CategoryController: PATCH /category/:categoryId
             CategoryController -> CategoryService: updateCategory(categoryId, title)
                 CategoryService -> CategoryService: findCategoryById(categoryId)
                 CategoryService -> DB: findById(categoryId) 요청
