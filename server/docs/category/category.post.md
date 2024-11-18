@@ -25,5 +25,18 @@
 
 ```plantuml
 @startuml
+actor Customer
+Customer -> Frontend: 앱 메인 페이지 입장 /
+    Frontend -> Backend: 카테고리 생성 시 필요한 데이터 전송 POST /category
+        Backend -> BoardController: POST /category
+            BoardController -> BoardService: createCategory(title)
+                BoardService -> DB: 필수 카테고리 데이터를 담아 DB에 생성 요청
+                DB -> BoardService: 생성된 카테고리 데이터 제공
+                BoardService -> BoardService: saveCategory(created)
+                BoardService -> DB: 생성된 카테고리 데이터 저장 요청
+                DB -> BoardService: 저장 성공
+            Backend <-- BoardService: true
+    Frontend <-- Backend: 201 STATUS CODE
+Customer <- Frontend: 카테고리 리스트에 새로 생성한 카테고리가 추가된 화면
 @enduml
 ```
