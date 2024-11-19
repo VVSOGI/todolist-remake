@@ -75,7 +75,7 @@ export class TodolistService {
   }
 
   async getTodolistsByCategoryId(filters: GetTodolistDtoFilters): Promise<GetTodolistsResponseType> {
-    this.categoryService.getCategoryById(filters.categoryId)
+    await this.categoryService.getCategoryById(filters.categoryId)
     const todolist = await this.todolistRepository.findByCategoryId(filters)
     return todolist
   }
