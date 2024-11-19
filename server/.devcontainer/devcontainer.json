@@ -4,7 +4,7 @@
   "dockerFile": "Dockerfile",
   "mounts": [
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
-    "source=/var/lib/postgresql2/data,target=/var/lib/postgresql2/data,type=bind"
+    "source=/var/lib/todolist/data,target=/var/lib/postgresql/data,type=bind"
   ],
   "containerEnv": {
     "WORKSPACE_ROOT": "${containerWorkspaceFolder}",
@@ -13,8 +13,17 @@
     "NODE_ENV": "development"
   },
   "initializeCommand": "docker network create todolist || true",
-  "runArgs": ["--network", "todolist", "--name", "${containerWorkspaceFolderBasename}-vscode", "--memory", "2g"],
-  "forwardPorts": ["postgres:5432"],
+  "runArgs": [
+    "--network",
+    "todolist",
+    "--name",
+    "${containerWorkspaceFolderBasename}-vscode",
+    "--memory",
+    "2g"
+  ],
+  "forwardPorts": [
+    "postgres:5432"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
