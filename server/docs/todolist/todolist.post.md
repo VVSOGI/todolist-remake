@@ -1,6 +1,6 @@
-# 투두리스트 생성 프로세스
+# Todolist 생성 프로세스
 
-### 유스케이스 명: 투두리스트 생성 (Post todolist)
+### 유스케이스 명: Todolist 생성 (Post todolist)
 
 **선행 조건**:
 
@@ -11,7 +11,7 @@
 3. 백엔드는 필수 데이터인 title과 categoryId가 타입 형식에 맞게 잘 전달되었는지 확인한다.
 4. 필수 데이터를 이용해서 새로운 todolist 데이터를 만든 후 저장한다.
 5. 프론트엔드에게 생성된 데이터 결과값을 전달한다.
-6. 프론트엔드는 유저에게 생성된 투두리스트가 존재하는 화면을 보여준다.
+6. 프론트엔드는 유저에게 생성된 Todolist가 존재하는 화면을 보여준다.
 
 **대안 흐름**:
 
@@ -34,6 +34,6 @@ Customer -> Frontend: 유저가 특정 카테고리 todolist 화면에서 todoli
                 TodolistService -> DB: 전달받은 데이터를 저장 및 결과 반환
             Backend <-- TodolistService: TodolistResponseType[]
     Frontend <-- Backend: 200 STATUS CODE
-Customer <- Frontend: 유저에게 새롭게 생성된 투두리스트가 현재 리스트에 추가된 화면 제공.
+Customer <- Frontend: 유저에게 새롭게 생성된 Todolist가 현재 리스트에 추가된 화면 제공.
 @enduml
 ```
