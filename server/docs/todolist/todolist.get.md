@@ -62,7 +62,7 @@ Customer <- Frontend: 유저가 모든 투두리스트를 확인 가능.
 @startuml
 actor Customer
 Customer -> Frontend: 유저가 특정 카테고리의 투두리스트 조회 페이지 접근
-    Frontend -> Backend: 모든 투두리스트 조회 API 요청 GET /todolist/:categoryId
+    Frontend -> Backend: 특정 투두리스트 조회 API 요청 GET /todolist/:categoryId
         Backend -> TodolistController: GET /todolist/:categoryId
             TodolistController -> TodolistController: checked 확인 후 boolean type 변경
             TodolistController -> TodolistService: getTodolistsByCategoryId({ categoryId, checked: isChecked })
@@ -71,6 +71,58 @@ Customer -> Frontend: 유저가 특정 카테고리의 투두리스트 조회 �
                 DB -> TodolistService: 특정 카테고리의 투두리스트를 조회 후 data에 담아 total과 함께 전달
             Backend <-- TodolistService: GetTodolistsResponseType[]
     Frontend <-- Backend: 200 STATUS CODE
-Customer <- Frontend: 유저가 모든 투두리스트를 확인 가능.
+Customer <- Frontend: 유저가 특정 카테고리의 투두리스트를 확인 가능.
+@enduml
+```
+
+### 유스케이스 명: 특정 카테고리 투두리스트 dates에 따라 조회 (Get todolist with categoryId, query)
+
+**선행 조건**:
+
+**기본 흐름**:
+
+1. 유저가 특정 카테고리의 투두리스트를 날짜별로 볼 수 있는 페이지 접근
+2. 프론트엔드는 백엔드에게 해당 카테고리에 해당하는 모든 todolist를 날짜별로 나뉜 데이터 호출 API 요청
+3. 백엔드는 해당 카테고리 ID가 UUID 타입인지 확인한다.
+4. 해당하는 카테고리가 존재하는지 확인한다.
+5. 카테고리가 있다면 DB에 해당하는 카테고리에 존재하는 모든 todolist 데이터 중 checked가 true인 경우만 가져온다.
+6. todolist에 updatedAt에 기반하여 데이터를 날짜별로 분류한다.
+7. 정리된 데이터를 total과 함께 프론트엔드로 반환한다.
+
+**대안 흐름**:
+
+**후행 조건**:
+
+**상세 타입**:
+
+```typescript
+GetTodolistsByDatesResponseType {
+    data:
+        dates: {
+            date: string;
+            todolists: Todolist[];
+        }[],
+        total: number
+}
+```
+
+**특별 요구 사항**:
+
+**비즈니스 규칙**:
+
+```plantuml
+@startuml
+actor Customer
+Customer -> Frontend: 유저가 특정 카테고리의 투두리스트 날짜에 따라 조회할 수 있는 페이지 접근
+    Frontend -> Backend: 특정 투두리스트 날짜별 조회 API 요청 GET /todolist/dates/:categoryId
+        Backend -> TodolistController: GET /todolist/dates/:categoryId
+            TodolistController -> TodolistService: getTodolistsByDate(categoryId)
+                TodolistService -> CategoryService: getCategoryById(categoeyId)를 이용해 존재하는 카테고리인지 확인
+                TodolistService -> DB: findByCategoryId({ categoryId, checked })
+                DB -> TodolistService: 특정 카테고리의 투두리스트를 조회 후 data에 담아 total과 함께 전달
+                TodolistService -> TodolistService: updatedAt에 따른 데이터 분류
+            Backend <-- TodolistService: GetTodolistsByDatesResponseType[]
+    Frontend <-- Backend: 200 STATUS CODE
+Customer <- Frontend: 유저가 특정 카테고리의 투두리스트를 날짜별로 확인 가능.
 @enduml
 ```
