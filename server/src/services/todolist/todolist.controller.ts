@@ -48,8 +48,8 @@ export class TodolistController {
   }
 
   @Get('/dates/:categoryId')
-  async getTodolistsByDate(@Param('categoryId') categoryId: string): Promise<GetTodolistsByDatesResponseType> {
-    return this.todolistService.getTodolistsByDate(categoryId)
+  async getTodolistsByDate(@ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto): Promise<GetTodolistsByDatesResponseType> {
+    return this.todolistService.getTodolistsByDate(getCategoryDto.categoryId)
   }
 
   @Patch()
