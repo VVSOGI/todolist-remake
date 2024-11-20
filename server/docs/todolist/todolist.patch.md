@@ -78,7 +78,7 @@ Customer -> Frontend: 유저가 특정 카테고리 todolist 화면에서 todoli
                 DB -> TodolistService: 데이터 확인
                 TodolistService -> TodolistService: 수정된 데이터 저장 this.saveTodolist(updated)
                 TodolistService -> DB: 전달받은 데이터를 저장 및 결과 반환
-            Backend <-- TodolistService: success code
+            Backend <-- TodolistService: success
     Frontend <-- Backend: 200 STATUS CODE
 Customer <- Frontend: 유저가 다음에 앱에 접속할 때 드래그로 변경되었던 상태를 유지한 todolist를 볼 수 있다.
 @enduml
