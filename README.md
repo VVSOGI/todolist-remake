@@ -17,11 +17,16 @@
      - Update todo's order: **PATCH** /todolist/order
 
 2. Use specs
+
    - NestJS
    - Typia
    - Jest
    - PostgreSQL
    - Typeorm
+
+3. UML Flow
+   - [Category uml flow](https://github.com/VVSOGI/todolist-remake/blob/main/server/docs/category/category.md)
+   - [Todolist uml flow](https://github.com/VVSOGI/todolist-remake/blob/main/server/docs/todolist/todolist.md)
 
 ## Server testing in progress
 
