@@ -30,7 +30,7 @@
 
 ## Server testing in progress
 
-<img width="633" alt="스크린샷 2024-11-12 오후 7 01 09" src="https://github.com/user-attachments/assets/b7199bdc-7669-45be-ab4b-98e347053930">
+<img width="778" alt="스크린샷 2024-11-20 오후 11 54 19" src="https://github.com/user-attachments/assets/561a9522-8fd9-4e6c-9e9a-ac3907bee970">
 
 ## client
 
