@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
-import { CreateCategory } from '../CreateCategory'
+import { CreateCategory } from '@/app/ui'
 
 const createCategory = {
   title: 'Example/Button/UseCase',
@@ -8,7 +8,7 @@ const createCategory = {
   parameters: {
     layout: 'centered'
   },
-  tags: ['autodocs'],
+  tags: ['!autodocs'],
   argTypes: {},
   args: {
     categoryTitle: '',
@@ -20,6 +20,6 @@ const createCategory = {
 export default createCategory
 type Story = StoryObj<typeof createCategory>
 
-export const create: Story = {
+export const StylesCreateCategory: Story = {
   args: {}
 }
