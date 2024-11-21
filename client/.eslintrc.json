@@ -1,6 +1,14 @@
 {
-  "plugins": ["prettier", "@typescript-eslint"],
-  "extends": ["next/core-web-vitals", "airbnb-typescript", "prettier"],
+  "plugins": [
+    "prettier",
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb-typescript",
+    "prettier",
+    "plugin:storybook/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -8,7 +16,10 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "moduleDirectory": ["node_modules", "src/"]
+        "moduleDirectory": [
+          "node_modules",
+          "src/"
+        ]
       },
       "typescript": {
         "alwaysTryTypes": true
@@ -38,7 +49,12 @@
     "import/no-cycle": 0,
     "prefer-destructuring": 0,
     "react/display-name": 0,
-    "import/no-unresolved": [2, { "caseSensitive": false }],
+    "import/no-unresolved": [
+      2,
+      {
+        "caseSensitive": false
+      }
+    ],
     "@typescript-eslint/no-unused-vars": [
       1,
       {

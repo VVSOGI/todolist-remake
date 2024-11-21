@@ -18,6 +18,8 @@ const StyledButton = styled.button<StylesProps>`
   font-weight: 700;
   cursor: pointer;
   user-select: none;
+  border: none;
+  outline: none;
 
   &:hover {
     background-color: ${(props) => {
@@ -42,16 +44,14 @@ interface StylesProps {
 }
 
 interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  children: React.ReactNode
-  style?: React.CSSProperties
   stylesTheme?: ButtonsTheme
   onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
-export function Button({ children, style, stylesTheme = ButtonsTheme.bright, onClick, ...rest }: Props) {
+export function Button({ children, stylesTheme = ButtonsTheme.bright, onClick, ...rest }: Props) {
   return (
-    <StyledButton stylestheme={stylesTheme} style={style} onClick={onClick} {...rest}>
-      {children}
+    <StyledButton stylestheme={stylesTheme} onClick={onClick} {...rest}>
+      Button
     </StyledButton>
   )
 }
