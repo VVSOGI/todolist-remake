@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { styles } from '@/app/styles'
 import { Input, LargeButton } from '@/app/ui'
 
-const CreateCategoryWrapper = styled.div`
+const CreateTodolistWrapper = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -35,9 +35,9 @@ export function CreateTodolist({ handleCreateTodo }: Props) {
   }
 
   return (
-    <CreateCategoryWrapper>
+    <CreateTodolistWrapper>
       <Input value={title} handleSubmit={handleSubmit} changeValue={changeValue} />
       <LargeButton onClick={handleSubmit}>POST</LargeButton>
-    </CreateCategoryWrapper>
+    </CreateTodolistWrapper>
   )
 }
