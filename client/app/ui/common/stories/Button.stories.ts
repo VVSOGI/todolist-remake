@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
-import { Button, ButtonsTheme } from '..'
+import { ButtonSize, ButtonsTheme } from '@/app/styles/button'
+import { Button } from '..'
 
 const meta = {
   title: 'Example/Button',
@@ -10,10 +11,10 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    stylesTheme: {
+    theme: {
       control: 'select',
       description: 'Choose your theme',
-      options: [ButtonsTheme.bright, ButtonsTheme.dark]
+      options: [ButtonsTheme.BRIGHT, ButtonsTheme.DARK]
     },
     onClick: {
       description: 'Event occur when clicked'
@@ -25,7 +26,8 @@ const meta = {
   },
   args: {
     onClick: fn(),
-    stylesTheme: ButtonsTheme.bright,
+    theme: ButtonsTheme.BRIGHT,
+    size: ButtonSize.SMALL,
     children: '버튼'
   }
 } satisfies Meta<typeof Button>
