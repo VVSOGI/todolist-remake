@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { fetchToWebServer } from '@/app/utils/customFetch'
 import { Button, Input } from '@/app/ui'
 import { colors, styles } from '@/app/styles'
+import { ButtonSize } from '@/app/styles/button'
 
 const CreateCategoryWrapper = styled.div`
   width: 100%;
@@ -64,7 +65,9 @@ export function CreateCategory() {
     <CreateCategoryWrapper>
       <Create>
         <Input handleSubmit={handleSubmit} changeValue={changeValue} value={categoryTitle} />
-        <Button onClick={() => handleSubmit(categoryTitle)}>+</Button>
+        <Button size={ButtonSize.SMALL} onClick={() => handleSubmit(categoryTitle)}>
+          +
+        </Button>
       </Create>
       <CreateError>{error}</CreateError>
     </CreateCategoryWrapper>
