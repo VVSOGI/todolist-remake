@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { IoMdClose } from 'react-icons/io'
 import { colors, styles } from '@/app/styles'
-import { ButtonsTheme, LargeButton } from '.'
+import { ButtonsTheme } from '@/app/styles/button'
+import { LargeButton } from '.'
 
 const ModalContainer = styled.div`
   position: fixed;
@@ -97,14 +98,14 @@ export function AgreementModal({ title, children, handleAgree, handleRefuse }: P
         <ModalButtonsWrapper>
           <LargeButton
             style={{ borderRadius: styles.borderRadius.small, minHeight: '36px' }}
-            stylesTheme={ButtonsTheme.dark}
+            stylesTheme={ButtonsTheme.DARK}
             onClick={handleRefuse}
           >
             NO
           </LargeButton>
           <LargeButton
             style={{ borderRadius: styles.borderRadius.small, minHeight: '36px' }}
-            stylesTheme={ButtonsTheme.bright}
+            stylesTheme={ButtonsTheme.BRIGHT}
             onClick={handleAgree}
           >
             YES

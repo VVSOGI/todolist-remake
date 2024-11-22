@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, ButtonsTheme } from '.'
+import { Button } from '.'
+import { ButtonSize, ButtonsTheme } from '@/app/styles/button'
 
 interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   style?: React.CSSProperties
@@ -10,7 +11,7 @@ interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLB
 
 export function LargeButton({ style, stylesTheme, children, onClick, ...rest }: Props) {
   return (
-    <Button stylesTheme={stylesTheme} style={{ minWidth: '84px', ...style }} onClick={onClick} {...rest}>
+    <Button size={ButtonSize.SMALL} theme={stylesTheme} style={{ minWidth: '84px', ...style }} onClick={onClick} {...rest}>
       {children}
     </Button>
   )

@@ -1,14 +1,14 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { colors, styles } from '@/app/styles'
+import { ButtonSize, ButtonsTheme } from '@/app/styles/button'
 import { D2CodingBold } from '@/app/fonts'
-import { changeToLocaleTime } from '@/app/utils/time'
+import { mouseEvent, changeToLocaleTime } from '@/app/utils'
+import { Button } from '@/app/ui'
+import { useRouter } from 'next/navigation'
+import { Category } from '@/app/types'
 import { FaTrashAlt } from 'react-icons/fa'
 import { IoSettings } from 'react-icons/io5'
-import { Button, ButtonsTheme } from '@/app/ui'
-import { useRouter } from 'next/navigation'
-import { mouseEvent } from '@/app/utils'
-import { Category } from '@/app/types'
 
 const CategoryWrapper = styled.div`
   width: 100%;
@@ -133,10 +133,10 @@ export function CategoryItem({ category, openDeleteModal, openTargetModal }: Pro
         </ContentsWrapper>
       </CategoryButton>
       <HiddenButtonsWrapper id={`${category.id}-hidden`}>
-        <Button stylesTheme={ButtonsTheme.dark} onClick={() => openTargetModal(category)}>
+        <Button size={ButtonSize.SMALL} theme={ButtonsTheme.DARK} onClick={() => openTargetModal(category)}>
           <IoSettings />
         </Button>
-        <Button onClick={() => openDeleteModal(category)}>
+        <Button size={ButtonSize.SMALL} onClick={() => openDeleteModal(category)}>
           <FaTrashAlt />
         </Button>
       </HiddenButtonsWrapper>
