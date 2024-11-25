@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import { DndContext } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
 import { Todo } from '@/app/types'
-import { colors, styles } from '@/app/styles'
+import { SCROLL_BAR_SETTINGS, colors, styles } from '@/app/styles'
 import { AgreementModal, CreateTodolist, Input, SortableOverlay, TodoItem } from '@/app/ui'
 import { saveTodolistOrder, useDragDndKit, useTodolist, useTodolistEditModal } from '@/app/utils'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${styles.todolist.header.height} + ${styles.todolist.createInput.height}));
-  ${styles.yScrollDefaultSetting}
+  ${SCROLL_BAR_SETTINGS}
 `
 
 const NothingInList = styled.div`

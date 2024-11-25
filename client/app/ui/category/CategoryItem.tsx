@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { colors, styles } from '@/app/styles'
+import { colors } from '@/app/styles'
 import { ButtonSize, ButtonsTheme } from '@/app/styles/button'
 import { D2CodingBold } from '@/app/fonts'
 import { mouseEvent, changeToLocaleTime } from '@/app/utils'
@@ -54,16 +54,16 @@ const ContentsWrapper = styled.div`
 const CategoryTitle = styled.h2`
   font-size: 16px;
   font-weight: 500;
-  color: ${colors.gray_400};
+  color: ${colors.gray_500};
 `
 
 const CategoryTime = styled.div`
   display: flex;
   gap: 8px;
   font-size: 14 px;
-  color: ${colors.gray_400};
+  color: ${colors.gray_500};
   span {
-    color: ${styles.mainColor.primary};
+    color: ${colors.red_600};
     font-weight: 400;
   }
 `
