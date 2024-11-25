@@ -18,7 +18,7 @@ export enum ButtonSize {
   LARGE = 'large'
 }
 
-export const ButtonDefault = css<ButtonStyleProps>`
+export const BUTTON_DEFAULT_STYLE = css<ButtonStyleProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,7 @@ export const ButtonDefault = css<ButtonStyleProps>`
   }
 `
 
-export const ButtonSizes: Record<ButtonSize, RuleSet> = {
+export const BUTTON_SIZES: Record<ButtonSize, RuleSet> = {
   small: css`
     padding: 0.8rem 0.4rem;
     width: fit-content;
@@ -58,7 +58,7 @@ export const ButtonSizes: Record<ButtonSize, RuleSet> = {
     width: fit-content;
     min-width: 5rem;
     height: 100%;
-    min-height: 3rem;
+    min-height: 2.5rem;
     font-size: 1rem;
     font-weight: 700;
   `,
