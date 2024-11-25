@@ -7,7 +7,10 @@ const meta = {
   title: 'Example/Button',
   component: Button,
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    viewport: {
+      defaultViewport: 'tablet'
+    }
   },
   tags: ['autodocs'],
   argTypes: {
