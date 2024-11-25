@@ -31,28 +31,28 @@ export const styles = {
   },
 
   borderRadius: {
-    small: '4px',
-    medium: '8px',
-    large: '12px'
+    small: '0.25rem',
+    medium: '0.5rem',
+    large: '0.75rem'
   },
 
   todolist: {
     header: {
-      height: '67.5px'
+      height: '4.21875rem'
     },
 
     createInput: {
-      height: '40px'
+      height: '2.5rem'
     }
   },
 
   yScrollDefaultSetting: `
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 0.25rem;
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
+    border-radius: 0.125rem;
     background: #ccc;
   }`
 }
