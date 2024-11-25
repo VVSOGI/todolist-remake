@@ -1,4 +1,5 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import { MediaQueryStandard } from '../app/styles'
 import '../app/globals.css'
 
 import type { Preview } from '@storybook/react'
@@ -7,7 +8,7 @@ const customViewports = {
   desktop: {
     name: 'Desktop',
     styles: {
-      width: '90.0625rem',
+      width: MediaQueryStandard.DESKTOP,
       height: '100%',
       overflow: 'hidden'
     }
