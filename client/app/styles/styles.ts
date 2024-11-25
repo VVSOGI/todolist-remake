@@ -1,5 +1,5 @@
 import { RuleSet, css } from 'styled-components'
-import { BorderRadius, BoxShadow, TodolistHeights } from '../types'
+import { BorderRadius, BoxShadow, TodolistHeights } from '@/app/types'
 
 export const BORDER_RADIUS_SIZES: Record<BorderRadius, RuleSet> = {
   small: css`

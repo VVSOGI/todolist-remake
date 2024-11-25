@@ -1,22 +1,7 @@
 import { css } from 'styled-components'
-import { colors } from '@/app/styles'
 import { RuleSet } from 'styled-components/dist/types'
-
-export enum ButtonsTheme {
-  BRIGHT = 'BRIGHT',
-  DARK = 'DARK'
-}
-
-export interface ButtonStyleProps {
-  stylestheme: ButtonsTheme
-  size: ButtonSize
-}
-
-export enum ButtonSize {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-  LARGE = 'large'
-}
+import { colors } from '@/app/styles'
+import { ButtonSize, ButtonStyleProps, ButtonsTheme } from '@/app/types'
 
 export const BUTTON_DEFAULT_STYLE = css<ButtonStyleProps>`
   display: flex;
