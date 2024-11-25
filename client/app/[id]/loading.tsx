@@ -1,17 +1,9 @@
 import React from 'react'
 import { Container, TodolistHeader, TodolistMain } from '@/app/ui'
-import { styles } from '@/app/styles'
 
 export default function loading() {
   return (
-    <Container
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: styles.backgroundColor.primary
-      }}
-    >
+    <Container>
       <TodolistMain>
         <TodolistHeader
           category={{

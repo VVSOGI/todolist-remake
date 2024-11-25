@@ -1,14 +1,18 @@
+import { styles } from '@/app/styles'
 import React from 'react'
 import styled from 'styled-components'
 
 const Section = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${styles.backgroundColor.primary};
 `
 
 interface Props {
-  children: React.ReactNode
+  children?: React.ReactNode
   style?: React.CSSProperties
 }
 

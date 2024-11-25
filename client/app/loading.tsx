@@ -1,17 +1,9 @@
 import { Container, CategorySection, Title, CreateCategory } from '@/app/ui'
-import { styles } from '@/app/styles'
 import { Skeleton } from '@/app/ui/common/Skeleton'
 
 export default function loading() {
   return (
-    <Container
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: styles.backgroundColor.primary
-      }}
-    >
+    <Container>
       <CategorySection>
         <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
         <CreateCategory />

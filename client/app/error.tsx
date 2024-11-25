@@ -5,6 +5,7 @@ import { styles } from './styles'
 import { Button, Container } from './ui'
 import { useEffect, useState } from 'react'
 import { InternalError } from './types'
+import { ButtonSize } from './styles/button'
 
 const ErrorSection = styled.section`
   width: 720px;
@@ -44,19 +45,12 @@ export default function error(err: any) {
   }, [])
 
   return (
-    <Container
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: styles.backgroundColor.primary
-      }}
-    >
+    <Container>
       <ErrorSection>
         <ErrorMessage>{error && error.message}</ErrorMessage>
         <ErrorStatus>Error Status {error && error.status}</ErrorStatus>
         <ButtonWrapper>
-          <Button style={{ width: '144px', borderRadius: '8px' }} onClick={err.reset}>
+          <Button size={ButtonSize.MEDIUM} style={{ width: '144px', borderRadius: '8px' }} onClick={err.reset}>
             Try Reset
           </Button>
         </ButtonWrapper>

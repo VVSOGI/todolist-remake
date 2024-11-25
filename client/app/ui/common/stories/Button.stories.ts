@@ -16,6 +16,11 @@ const meta = {
       description: 'Choose your theme',
       options: [ButtonsTheme.BRIGHT, ButtonsTheme.DARK]
     },
+    size: {
+      control: 'select',
+      description: 'Choose your size',
+      options: [ButtonSize.SMALL, ButtonSize.MEDIUM, ButtonSize.LARGE]
+    },
     onClick: {
       description: 'Event occur when clicked'
     },
@@ -27,7 +32,6 @@ const meta = {
   args: {
     onClick: fn(),
     theme: ButtonsTheme.BRIGHT,
-    size: ButtonSize.SMALL,
     children: '버튼'
   }
 } satisfies Meta<typeof Button>
@@ -41,8 +45,22 @@ type Story = StoryObj<typeof meta>
  * When used, it resizes to fit the shape of the parent component that wraps around the button.
  *
  */
-export const Default: Story = {
-  args: {}
+export const Small: Story = {
+  args: {
+    size: ButtonSize.SMALL
+  }
+}
+
+export const Medium: Story = {
+  args: {
+    size: ButtonSize.MEDIUM
+  }
+}
+
+export const Large: Story = {
+  args: {
+    size: ButtonSize.LARGE
+  }
 }
 
 export default meta
