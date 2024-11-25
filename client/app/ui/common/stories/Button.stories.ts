@@ -16,6 +16,11 @@ const meta = {
       description: 'Choose your theme',
       options: [ButtonsTheme.BRIGHT, ButtonsTheme.DARK]
     },
+    size: {
+      control: 'select',
+      description: 'Choose your size',
+      options: [ButtonSize.SMALL, ButtonSize.MEDIUM, ButtonSize.LARGE]
+    },
     onClick: {
       description: 'Event occur when clicked'
     },
