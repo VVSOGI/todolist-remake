@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { fetchToWebServer } from '@/app/utils/customFetch'
 import { Button, Input } from '@/app/ui'
 import { BORDER_RADIUS_SIZES, colors } from '@/app/styles'
-import { ButtonSize } from '@/app/styles/button'
+import { ButtonSize } from '@/app/types'
 
 const CreateCategoryWrapper = styled.div`
   width: 100%;

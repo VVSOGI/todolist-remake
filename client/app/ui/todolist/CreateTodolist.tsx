@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { TODOLIST_HEIGHTS, colors } from '@/app/styles'
-import { Input, LargeButton } from '@/app/ui'
+import { Button, Input } from '@/app/ui'
+import { ButtonSize } from '@/app/types'
 
 const CreateTodolistWrapper = styled.div`
   position: absolute;
@@ -37,7 +38,9 @@ export function CreateTodolist({ handleCreateTodo }: Props) {
   return (
     <CreateTodolistWrapper>
       <Input value={title} handleSubmit={handleSubmit} changeValue={changeValue} />
-      <LargeButton onClick={handleSubmit}>POST</LargeButton>
+      <Button size={ButtonSize.MEDIUM} onClick={handleSubmit}>
+        POST
+      </Button>
     </CreateTodolistWrapper>
   )
 }

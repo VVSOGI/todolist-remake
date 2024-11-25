@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BUTTON_SIZES, BUTTON_DEFAULT_STYLE, ButtonStyleProps, ButtonsTheme, ButtonSize } from '@/app/styles/button'
+import { BUTTON_SIZES, BUTTON_DEFAULT_STYLE } from '@/app/styles/button'
+import { ButtonStyleProps, ButtonsTheme, ButtonSize } from '@/app/types'
 
 const StyledButton = styled.button<ButtonStyleProps>`
   ${BUTTON_DEFAULT_STYLE};
