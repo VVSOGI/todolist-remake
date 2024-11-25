@@ -3,7 +3,7 @@ import { colors } from './colors'
 export enum MediaQueryStandard {
   MOBILE = '37.5rem',
   TABLET = '45rem',
-  DESKTOP = '90.0625rem'
+  DESKTOP = '90rem'
 }
 
 export const styles = {
