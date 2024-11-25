@@ -11,8 +11,8 @@ export const SectionMediaQuery: RuleSet = css`
   width: ${SectionWidth.TABLET};
 
   @media only screen and (max-width: ${MediaQueryStandard.MOBILE}) {
-    max-width: ${SectionWidth.MOBILE};
     width: 100%;
+    max-width: ${SectionWidth.MOBILE};
   }
 
   @media only screen and (min-width: ${MediaQueryStandard.DESKTOP}) {
