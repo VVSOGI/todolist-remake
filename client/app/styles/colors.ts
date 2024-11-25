@@ -7,10 +7,11 @@ export const colors = {
   red_600: '#e82f2c',
 
   gray_100: '#f7f7f7',
-  gray_200: '#e6e6e6',
-  gray_300: '#969696',
-  gray_400: '#5c5c5c',
-  gray_500: '#363636',
+  gray_200: '#f2f2f2',
+  gray_300: '#e6e6e6',
+  gray_400: '#969696',
+  gray_500: '#5c5c5c',
+  gray_600: '#363636',
 
   cloudBlue_100: '#d7dce6',
   cloudBlue_200: '#c3cee3',
