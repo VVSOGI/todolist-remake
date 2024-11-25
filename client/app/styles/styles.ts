@@ -1,3 +1,4 @@
+import { css } from 'styled-components'
 import { colors } from './colors'
 
 export enum MediaQueryStandard {
@@ -8,7 +9,7 @@ export enum MediaQueryStandard {
 
 export const styles = {
   mainColor: {
-    primary: colors.red_500,
+    primary: colors.red_600,
     secondary: colors.red_300
   },
 
@@ -35,9 +36,10 @@ export const styles = {
     createInput: {
       height: '2.5rem'
     }
-  },
+  }
+}
 
-  yScrollDefaultSetting: `
+export const SCROLL_BAR_SETTINGS = css`
   &::-webkit-scrollbar {
     width: 0.25rem;
   }
@@ -45,5 +47,5 @@ export const styles = {
   &::-webkit-scrollbar-thumb {
     border-radius: 0.125rem;
     background: #ccc;
-  }`
-}
+  }
+`
