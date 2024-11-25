@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { colors, styles } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, colors } from '@/app/styles'
 import { CheckCircle } from '@/app/ui'
 import { CiEdit } from 'react-icons/ci'
 import { Todo } from '@/app/types'
@@ -29,7 +29,6 @@ const TodoIcons = styled.div`
   cursor: pointer;
 
   svg {
-    border-radius: ${styles.borderRadius.small};
     font-size: 24px;
 
     &:hover {
@@ -39,6 +38,8 @@ const TodoIcons = styled.div`
     &:active {
       background-color: ${colors.gray_100};
     }
+
+    ${BORDER_RADIUS_SIZES.medium}
   }
 `
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { IoMdClose } from 'react-icons/io'
-import { colors, styles } from '@/app/styles'
-import { ButtonsTheme } from '@/app/styles/button'
-import { LargeButton } from '.'
+import { BORDER_RADIUS_SIZES, colors } from '@/app/styles'
+import { ButtonSize, ButtonsTheme } from '@/app/styles/button'
+import { Button } from '.'
 
 const ModalContainer = styled.div`
   position: fixed;
@@ -26,7 +26,7 @@ const ModalWrapper = styled.div`
   flex-direction: column;
   background-color: ${colors.white};
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  border-radius: ${styles.borderRadius.medium};
+  ${BORDER_RADIUS_SIZES.medium}
 `
 
 const ModalHeader = styled.div`
@@ -77,6 +77,12 @@ const ModalButtonsWrapper = styled.div`
   padding: 24px;
 `
 
+const ModalButtonWrapper = styled.div`
+  ${BORDER_RADIUS_SIZES.small}
+  height: 2.5rem;
+  overflow: hidden;
+`
+
 interface Props {
   title: string
   children: React.ReactNode
@@ -96,20 +102,16 @@ export function AgreementModal({ title, children, handleAgree, handleRefuse }: P
         </ModalHeader>
         <ModalContentsWrapper>{children}</ModalContentsWrapper>
         <ModalButtonsWrapper>
-          <LargeButton
-            style={{ borderRadius: styles.borderRadius.small, minHeight: '36px' }}
-            stylesTheme={ButtonsTheme.DARK}
-            onClick={handleRefuse}
-          >
-            NO
-          </LargeButton>
-          <LargeButton
-            style={{ borderRadius: styles.borderRadius.small, minHeight: '36px' }}
-            stylesTheme={ButtonsTheme.BRIGHT}
-            onClick={handleAgree}
-          >
-            YES
-          </LargeButton>
+          <ModalButtonWrapper>
+            <Button size={ButtonSize.MEDIUM} theme={ButtonsTheme.DARK} onClick={handleRefuse}>
+              NO
+            </Button>
+          </ModalButtonWrapper>
+          <ModalButtonWrapper>
+            <Button size={ButtonSize.MEDIUM} theme={ButtonsTheme.BRIGHT} onClick={handleAgree}>
+              YES
+            </Button>
+          </ModalButtonWrapper>
         </ModalButtonsWrapper>
       </ModalWrapper>
     </ModalContainer>

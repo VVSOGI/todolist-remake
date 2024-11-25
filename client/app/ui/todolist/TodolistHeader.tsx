@@ -1,13 +1,13 @@
-import { colors, styles } from '@/app/styles'
-import { Category } from '@/app/types'
-import { changeToLocaleTime } from '@/app/utils'
 import styled from 'styled-components'
-import { Title } from '@/app/ui'
 import { useRouter } from 'next/navigation'
 import { FaBox } from 'react-icons/fa'
+import { Title } from '@/app/ui'
+import { Category } from '@/app/types'
+import { changeToLocaleTime } from '@/app/utils'
+import { TODOLIST_HEIGHTS, colors } from '@/app/styles'
 
 const Header = styled.div`
-  height: ${styles.todolist.header.height};
+  height: ${TODOLIST_HEIGHTS.HEADER};
   display: flex;
   justify-content: space-between;
   align-items: center;

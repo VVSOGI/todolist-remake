@@ -20,7 +20,7 @@ const createTodolist = {
           width: '100%',
           height: '80vh',
           border: `1px solid ${colors.gray_200}`,
-          borderRadius: styles.borderRadius.medium
+          borderRadius: '0.5rem'
         }}
       >
         <Story handleCreateTodo={() => {}} />

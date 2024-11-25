@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { colors, styles } from '@/app/styles'
+import { TODOLIST_HEIGHTS, colors } from '@/app/styles'
 import { Input, LargeButton } from '@/app/ui'
 
 const CreateTodolistWrapper = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: ${styles.todolist.createInput.height};
-  min-height: ${styles.todolist.createInput.height};
+  height: ${TODOLIST_HEIGHTS.CREATE_INPUT};
+  min-height: ${TODOLIST_HEIGHTS.CREATE_INPUT};
   display: flex;
   justify-content: space-between;
   border-top: 1px solid ${colors.gray_200};
-  border-bottom-right-radius: ${styles.borderRadius.medium};
-  border-bottom-left-radius: ${styles.borderRadius.medium};
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
   overflow: hidden;
   z-index: 100;
 `

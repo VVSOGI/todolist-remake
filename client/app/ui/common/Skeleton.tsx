@@ -1,6 +1,6 @@
 'use client'
 
-import { styles } from '@/app/styles'
+import { BORDER_RADIUS_SIZES } from '@/app/styles'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
@@ -22,7 +22,7 @@ const Detail = styled.div<{ width?: string; height?: string }>`
   background-image: linear-gradient(90deg, #f7f7f7, #fefefe, #f7f7f7);
   background-size: 200px 100%;
   background-repeat: no-repeat;
-  border-radius: ${styles.borderRadius.medium};
+  ${BORDER_RADIUS_SIZES.medium}
 `
 
 const StyledSkeleton = styled(Detail)`

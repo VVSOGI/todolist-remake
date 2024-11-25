@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { styles } from '@/app/styles'
-import { SectionMediaQuery } from '@/app/styles/sections'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, colors } from '@/app/styles'
+import { SECTION_MEDIA_QUERY } from '@/app/styles/sections'
 
 const Main = styled.section`
-  ${SectionMediaQuery}
   height: 480px;
   display: flex;
   flex-direction: column;
   padding: 24px;
-  border-radius: ${styles.borderRadius.medium};
-  box-shadow: ${styles.boxShadow.primary};
-  background-color: ${styles.backgroundColor.default};
+  background-color: ${colors.white};
+  ${BOX_SHADOWS.primary};
+  ${BORDER_RADIUS_SIZES.medium};
+  ${SECTION_MEDIA_QUERY};
 `
 
 interface Props {

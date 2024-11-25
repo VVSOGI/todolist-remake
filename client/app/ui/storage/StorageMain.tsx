@@ -1,4 +1,4 @@
-import { styles } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, colors } from '@/app/styles'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -8,9 +8,9 @@ const Main = styled.main`
   height: 480px;
   display: flex;
   flex-direction: column;
-  border-radius: ${styles.borderRadius.medium};
-  background-color: ${styles.backgroundColor.default};
-  box-shadow: ${styles.boxShadow.primary};
+  background-color: ${colors.white};
+  ${BOX_SHADOWS.primary};
+  ${BORDER_RADIUS_SIZES.medium}
 `
 
 interface Props {
