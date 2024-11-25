@@ -20,7 +20,7 @@ const Create = styled.div`
   display: flex;
   justify-content: space-between;
   border-radius: ${styles.borderRadius.small};
-  border: 1px solid ${styles.borderColor.primary};
+  border: 1px solid ${colors.gray_200};
   overflow: hidden;
 `
 

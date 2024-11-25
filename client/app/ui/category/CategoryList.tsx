@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
 import { Category } from '@/app/types'
-import { styles } from '@/app/styles'
+import { colors } from '@/app/styles'
 import { deleteCategory, updateCategory } from '@/app/utils'
 import { AgreementModal, Input, CategoryItem } from '@/app/ui'
 
@@ -87,7 +87,7 @@ export function CategoryList({ categories }: Props) {
           <UpdateModalContents>
             <div>Change Title this category</div>
             <Input
-              style={{ width: '100%', border: `1px solid ${styles.borderColor.primary}`, borderRadius: '4px' }}
+              style={{ width: '100%', border: `1px solid ${colors.gray_200}`, borderRadius: '4px' }}
               value={updateTitle}
               changeValue={(value) => setUpdateTitle(value)}
               handleSubmit={() => {}}

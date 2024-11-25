@@ -35,7 +35,7 @@ const ModalHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 24px;
-  border-bottom: 1px solid ${styles.borderColor.primary};
+  border-bottom: 1px solid ${colors.gray_200};
 `
 
 const ModalTitle = styled.span`
@@ -66,7 +66,7 @@ const ModalContentsWrapper = styled.div`
   flex: 1;
   padding: 0px 24px;
   font-size: 18px;
-  border-bottom: 1px solid ${styles.borderColor.primary};
+  border-bottom: 1px solid ${colors.gray_200};
 `
 
 const ModalButtonsWrapper = styled.div`

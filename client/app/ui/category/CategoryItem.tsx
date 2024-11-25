@@ -15,7 +15,7 @@ const CategoryWrapper = styled.div`
   height: 48px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid ${styles.borderColor.primary};
+  border-bottom: 1px solid ${colors.gray_200};
 `
 
 const CategoryButton = styled.button`
@@ -28,7 +28,7 @@ const CategoryButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: ${styles.buttons.hover};
+    background-color: ${colors.gray_100};
 
     h2 {
       color: ${colors.black};
@@ -36,7 +36,7 @@ const CategoryButton = styled.button`
   }
 
   &:active {
-    background-color: ${styles.buttons.active};
+    background-color: ${colors.gray_200};
   }
 `
 

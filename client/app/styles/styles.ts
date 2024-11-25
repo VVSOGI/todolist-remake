@@ -18,16 +18,7 @@ export const styles = {
   },
 
   boxShadow: {
-    primary: '0 4px 8px rgba(0, 0, 0, 0.2)'
-  },
-
-  buttons: {
-    hover: colors.gray_100,
-    active: '#f2f2f2'
-  },
-
-  borderColor: {
-    primary: colors.gray_200
+    primary: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.2)'
   },
 
   borderRadius: {

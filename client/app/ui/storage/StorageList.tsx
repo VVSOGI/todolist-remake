@@ -15,7 +15,7 @@ const ListWrapper = styled.div`
 
 const StorageItem = styled.div`
   padding: 16px;
-  border-bottom: 1px solid ${styles.borderColor.primary};
+  border-bottom: 1px solid ${colors.gray_200};
 `
 
 const Date = styled.div`
