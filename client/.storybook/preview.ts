@@ -1,5 +1,5 @@
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
-import { MediaQueryStandard } from '../app/styles'
+import { MediaQueryStandard } from '../app/types'
 import '../app/globals.css'
 
 import type { Preview } from '@storybook/react'
