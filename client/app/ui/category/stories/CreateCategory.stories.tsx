@@ -7,7 +7,10 @@ const createCategory = {
   title: 'Example/Button/UseCase',
   component: CreateCategory,
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    viewport: {
+      defaultViewport: 'tablet'
+    }
   },
   tags: ['!autodocs'],
   argTypes: {},
