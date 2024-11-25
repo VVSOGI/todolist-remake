@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import { CreateTodolist } from '@/app/ui'
-import { colors, styles } from '@/app/styles'
+import { colors } from '@/app/styles'
 
 const createTodolist = {
   title: 'Example/Button/UseCase',

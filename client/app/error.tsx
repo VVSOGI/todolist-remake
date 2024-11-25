@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import { BORDER_RADIUS_SIZES, BOX_SHADOWS, colors } from './styles'
 import { Button, Container } from './ui'
 import { useEffect, useState } from 'react'
-import { InternalError } from './types'
-import { ButtonSize } from './styles/button'
+import { InternalError, ButtonSize } from './types'
 
 const ErrorSection = styled.section`
   width: 720px;

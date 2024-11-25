@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { IoMdClose } from 'react-icons/io'
 import { BORDER_RADIUS_SIZES, colors } from '@/app/styles'
-import { ButtonSize, ButtonsTheme } from '@/app/styles/button'
+import { ButtonSize, ButtonsTheme } from '@/app/types'
 import { Button } from '.'
 
 const ModalContainer = styled.div`

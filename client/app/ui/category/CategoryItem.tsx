@@ -1,12 +1,11 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
 import { colors } from '@/app/styles'
-import { ButtonSize, ButtonsTheme } from '@/app/styles/button'
 import { D2CodingBold } from '@/app/fonts'
 import { mouseEvent, changeToLocaleTime } from '@/app/utils'
+import { Category, ButtonSize, ButtonsTheme } from '@/app/types'
 import { Button } from '@/app/ui'
 import { useRouter } from 'next/navigation'
-import { Category } from '@/app/types'
 import { FaTrashAlt } from 'react-icons/fa'
 import { IoSettings } from 'react-icons/io5'
 
