@@ -9,8 +9,7 @@ const customViewports = {
     name: 'Desktop',
     styles: {
       width: MediaQueryStandard.DESKTOP,
-      height: '100%',
-      overflow: 'hidden'
+      height: '100%'
     }
   },
 
