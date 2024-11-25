@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { colors, styles } from '@/app/styles'
+import { SCROLL_BAR_SETTINGS, colors } from '@/app/styles'
 import { TodolistsBySortedDates } from '@/app/types'
 import { changeToLocaleTime } from '@/app/utils'
 import { D2CodingLight } from '@/app/fonts'
@@ -10,7 +10,7 @@ const ListWrapper = styled.div`
   flex-direction: column;
   overflow-y: scroll;
 
-  ${styles.yScrollDefaultSetting}
+  ${SCROLL_BAR_SETTINGS}
 `
 
 const StorageItem = styled.div`
