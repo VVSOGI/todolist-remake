@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { styles } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, colors } from '@/app/styles'
 
 const Main = styled.main`
   position: relative;
@@ -8,10 +8,10 @@ const Main = styled.main`
   height: 480px;
   display: flex;
   flex-direction: column;
-  border-radius: ${styles.borderRadius.medium};
-  background-color: ${styles.backgroundColor.default};
-  box-shadow: ${styles.boxShadow.primary};
+  background-color: ${colors.white};
   overflow-y: hidden;
+  ${BORDER_RADIUS_SIZES.medium};
+  ${BOX_SHADOWS.primary};
 `
 
 interface Props {

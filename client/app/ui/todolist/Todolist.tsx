@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import { DndContext } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
 import { Todo } from '@/app/types'
-import { colors, styles } from '@/app/styles'
+import { SCROLL_BAR_SETTINGS, TODOLIST_HEIGHTS, colors } from '@/app/styles'
 import { AgreementModal, CreateTodolist, Input, SortableOverlay, TodoItem } from '@/app/ui'
 import { saveTodolistOrder, useDragDndKit, useTodolist, useTodolistEditModal } from '@/app/utils'
 
 const TodolistWrapper = styled.div`
-  height: calc(100% - (${styles.todolist.header.height} + ${styles.todolist.createInput.height}));
-  ${styles.yScrollDefaultSetting}
+  height: calc(100% - (${TODOLIST_HEIGHTS.HEADER} + ${TODOLIST_HEIGHTS.CREATE_INPUT}));
+  ${SCROLL_BAR_SETTINGS};
 `
 
 const NothingInList = styled.div`
@@ -64,7 +64,7 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
           <EditModalContents>
             <div>Change Todo Title</div>
             <Input
-              style={{ width: '100%', border: `1px solid ${styles.borderColor.primary}`, borderRadius: '4px' }}
+              style={{ width: '100%', border: `1px solid ${colors.gray_200}`, borderRadius: '4px' }}
               value={updateTitle}
               changeValue={(value) => setUpdateTitle(value)}
               handleSubmit={() => {}}

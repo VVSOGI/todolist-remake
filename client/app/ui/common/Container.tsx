@@ -1,4 +1,4 @@
-import { styles } from '@/app/styles'
+import { colors } from '@/app/styles'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -8,7 +8,7 @@ const Section = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${styles.backgroundColor.primary};
+  background-color: ${colors.cloudBlue_200};
 `
 
 interface Props {

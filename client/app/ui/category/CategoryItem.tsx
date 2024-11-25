@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { colors, styles } from '@/app/styles'
+import { colors } from '@/app/styles'
 import { ButtonSize, ButtonsTheme } from '@/app/styles/button'
 import { D2CodingBold } from '@/app/fonts'
 import { mouseEvent, changeToLocaleTime } from '@/app/utils'
@@ -15,7 +15,7 @@ const CategoryWrapper = styled.div`
   height: 48px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid ${styles.borderColor.primary};
+  border-bottom: 1px solid ${colors.gray_200};
 `
 
 const CategoryButton = styled.button`
@@ -28,7 +28,7 @@ const CategoryButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: ${styles.buttons.hover};
+    background-color: ${colors.gray_100};
 
     h2 {
       color: ${colors.black};
@@ -36,7 +36,7 @@ const CategoryButton = styled.button`
   }
 
   &:active {
-    background-color: ${styles.buttons.active};
+    background-color: ${colors.gray_200};
   }
 `
 
@@ -54,16 +54,16 @@ const ContentsWrapper = styled.div`
 const CategoryTitle = styled.h2`
   font-size: 16px;
   font-weight: 500;
-  color: ${colors.gray_400};
+  color: ${colors.gray_500};
 `
 
 const CategoryTime = styled.div`
   display: flex;
   gap: 8px;
   font-size: 14 px;
-  color: ${colors.gray_400};
+  color: ${colors.gray_500};
   span {
-    color: ${styles.mainColor.primary};
+    color: ${colors.red_600};
     font-weight: 400;
   }
 `

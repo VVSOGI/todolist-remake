@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import { CreateCategory } from '@/app/ui'
-import { colors, styles } from '@/app/styles'
+import { colors } from '@/app/styles'
 
 const createCategory = {
   title: 'Example/Button/UseCase',
@@ -34,7 +34,7 @@ const createCategory = {
           style={{
             height: '50%',
             border: `1px solid ${colors.gray_200}`,
-            borderRadius: styles.borderRadius.small
+            borderRadius: '0.25rem'
           }}
         />
       </div>

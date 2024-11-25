@@ -1,7 +1,7 @@
 'use client'
 
 import styled from 'styled-components'
-import { styles } from './styles'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, colors } from './styles'
 import { Button, Container } from './ui'
 import { useEffect, useState } from 'react'
 import { InternalError } from './types'
@@ -13,9 +13,9 @@ const ErrorSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: ${styles.borderRadius.medium};
-  background-color: ${styles.backgroundColor.default};
-  box-shadow: ${styles.boxShadow.primary};
+  background-color: ${colors.white};
+  ${BOX_SHADOWS.primary};
+  ${BORDER_RADIUS_SIZES.medium};
 `
 
 const ErrorMessage = styled.div`

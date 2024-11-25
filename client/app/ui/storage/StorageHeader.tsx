@@ -1,17 +1,17 @@
-import { colors, styles } from '@/app/styles'
-import { Category } from '@/app/types'
-import { changeToLocaleTime } from '@/app/utils'
 import styled from 'styled-components'
 import { Title } from '@/app/ui'
+import { Category } from '@/app/types'
+import { changeToLocaleTime } from '@/app/utils'
+import { TODOLIST_HEIGHTS, colors } from '@/app/styles'
 import { useRouter } from 'next/navigation'
 
 const Header = styled.div`
-  height: ${styles.todolist.header.height};
+  height: ${TODOLIST_HEIGHTS.HEADER};
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  border-bottom: 1px solid ${styles.borderColor.primary};
+  border-bottom: 1px solid ${colors.gray_200};
 `
 
 const Time = styled.div`

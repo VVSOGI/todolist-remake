@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ButtonSizes, ButtonDefault, ButtonStyleProps, ButtonsTheme, ButtonSize } from '@/app/styles/button'
+import { BUTTON_SIZES, BUTTON_DEFAULT_STYLE, ButtonStyleProps, ButtonsTheme, ButtonSize } from '@/app/styles/button'
 
 const StyledButton = styled.button<ButtonStyleProps>`
-  ${ButtonDefault};
+  ${BUTTON_DEFAULT_STYLE};
   ${(props) => {
-    return ButtonSizes[props.size]
+    return BUTTON_SIZES[props.size]
   }};
 `
 
