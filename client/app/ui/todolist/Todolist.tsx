@@ -64,7 +64,7 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
           <EditModalContents>
             <div>Change Todo Title</div>
             <Input
-              style={{ width: '100%', border: `1px solid ${colors.gray_200}`, borderRadius: '4px' }}
+              style={{ width: '100%', border: `1px solid ${colors.gray_200}`, borderRadius: '0.25rem' }}
               value={updateTitle}
               changeValue={(value) => setUpdateTitle(value)}
               handleSubmit={() => {}}

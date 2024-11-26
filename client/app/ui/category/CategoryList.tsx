@@ -44,7 +44,7 @@ export function CategoryList({ categories }: Props) {
   const openDeleteModal = (category: Category) => {
     const component = document.getElementById(`${category.id}-hidden`)
     if (component) {
-      component.style.minWidth = '0px'
+      component.style.minWidth = '0rem'
       setIsModalOpen('delete')
       setTargetCategory(category)
     }
@@ -53,7 +53,7 @@ export function CategoryList({ categories }: Props) {
   const openTargetModal = (category: Category) => {
     const component = document.getElementById(`${category.id}-hidden`)
     if (component) {
-      component.style.minWidth = '0px'
+      component.style.minWidth = '0rem'
       setIsModalOpen('update')
       setTargetCategory(category)
     }
@@ -87,7 +87,7 @@ export function CategoryList({ categories }: Props) {
           <UpdateModalContents>
             <div>Change Title this category</div>
             <Input
-              style={{ width: '100%', border: `1px solid ${colors.gray_200}`, borderRadius: '4px' }}
+              style={{ width: '100%', border: `1px solid ${colors.gray_200}`, borderRadius: '0.25rem' }}
               value={updateTitle}
               changeValue={(value) => setUpdateTitle(value)}
               handleSubmit={() => {}}
