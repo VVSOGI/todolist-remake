@@ -54,7 +54,6 @@ export class TodolistController {
 
   @Patch()
   async updateTodo(@ValidateUpdateTodolistDto() updateTodolistDto: UpdateTodolistDto): Promise<TodolistResponseType> {
-    console.log(updateTodolistDto)
     return this.todolistService.updateTodolist(updateTodolistDto)
   }
 
