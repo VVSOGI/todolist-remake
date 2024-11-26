@@ -49,7 +49,7 @@ export default function error(err: any) {
         <ErrorMessage>{error && error.message}</ErrorMessage>
         <ErrorStatus>Error Status {error && error.status}</ErrorStatus>
         <ButtonWrapper>
-          <Button size={ButtonSize.MEDIUM} style={{ width: '144px', borderRadius: '8px' }} onClick={err.reset}>
+          <Button size={ButtonSize.MEDIUM} style={{ width: '9rem', borderRadius: '0.5rem' }} onClick={err.reset}>
             Try Reset
           </Button>
         </ButtonWrapper>

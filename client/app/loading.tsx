@@ -13,7 +13,7 @@ export default function loading() {
             height: '60%',
             display: 'flex',
             flexDirection: 'column',
-            gap: '4px'
+            gap: '0.25rem'
           }}
         >
           <Skeleton />

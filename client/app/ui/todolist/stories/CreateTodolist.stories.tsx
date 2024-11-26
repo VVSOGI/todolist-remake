@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import { CreateTodolist } from '@/app/ui'
 import { colors } from '@/app/styles'
+import { MediaQueryStandard } from '@/app/types'
 
 const createTodolist = {
   title: 'Example/Button/UseCase',
@@ -16,7 +17,7 @@ const createTodolist = {
       <div
         style={{
           position: 'relative',
-          maxWidth: '720px',
+          maxWidth: MediaQueryStandard.TABLET,
           width: '100%',
           height: '80vh',
           border: `1px solid ${colors.gray_200}`,

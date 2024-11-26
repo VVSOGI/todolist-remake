@@ -71,7 +71,7 @@ export function TodolistHeader({ category }: Props) {
   return (
     <Header>
       <div>
-        <Title style={{ margin: 0, fontSize: '24px' }}>{category.title.toUpperCase()}</Title>
+        <Title style={{ margin: 0, fontSize: '1.5rem' }}>{category.title.toUpperCase()}</Title>
         <Time>{changeToLocaleTime(category.updatedAt)}</Time>
       </div>
       <IconsWrapper>

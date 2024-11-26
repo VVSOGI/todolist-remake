@@ -111,11 +111,11 @@ export function CategoryItem({ category, openDeleteModal, openTargetModal }: Pro
       event: e,
       leftCallback: () => {
         isDragging.current = true
-        HiddenButtonsWrapper.style.minWidth = '96px'
+        HiddenButtonsWrapper.style.minWidth = '6rem'
       },
       rightCallback: () => {
         isDragging.current = true
-        HiddenButtonsWrapper.style.minWidth = '0px'
+        HiddenButtonsWrapper.style.minWidth = '0rem'
       }
     })
   }

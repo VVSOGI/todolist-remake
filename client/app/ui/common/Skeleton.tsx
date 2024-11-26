@@ -15,7 +15,7 @@ const skeletonKeyframes = keyframes`
 
 const Detail = styled.div<{ width?: string; height?: string }>`
   display: inline-block;
-  height: ${(props) => props.height || '24px'};
+  height: ${(props) => props.height || '1.5rem'};
   width: ${(props) => props.width || '100%'};
   animation: ${skeletonKeyframes} 1300ms ease-in-out infinite;
   background-color: #f7f7f7;
