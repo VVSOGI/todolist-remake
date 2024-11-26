@@ -82,10 +82,7 @@ export class TodolistService {
 
   async getTodolistsByDate(categoryId: string) {
     await this.categoryService.getCategoryById(categoryId)
-    const todolists = await this.todolistRepository.findByCategoryId({
-      categoryId,
-      checked: true
-    })
+    const todolists = await this.todolistRepository.findByDatesOrder(categoryId)
 
     const dates: { date: string; todolists: Todolist[] }[] = []
 

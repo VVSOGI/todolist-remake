@@ -45,4 +45,12 @@ export class TodolistRepository {
       total
     }
   }
+
+  async findByDatesOrder(categoryId: string) {
+    const [data, total] = await this.todolistRepository.findAndCount({ where: { categoryId, checked: true }, order: { updatedAt: 'DESC' } })
+    return {
+      data,
+      total
+    }
+  }
 }
