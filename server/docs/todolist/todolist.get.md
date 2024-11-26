@@ -118,7 +118,7 @@ Customer -> Frontend: 유저가 특정 Category의 Todolist 날짜에 따라 조
         Backend -> TodolistController: GET /todolist/dates/:categoryId
             TodolistController -> TodolistService: getTodolistsByDate(categoryId)
                 TodolistService -> CategoryService: getCategoryById(categoeyId)를 이용해 존재하는 Category인지 확인
-                TodolistService -> DB: findByCategoryId({ categoryId, checked })
+                TodolistService -> DB: findByDatesOrder(categoryId)
                 DB -> TodolistService: 특정 Category의 Todolist를 조회 후 data에 담아 total과 함께 전달
                 TodolistService -> TodolistService: updatedAt에 따른 데이터 분류
             Backend <-- TodolistService: GetTodolistsByDatesResponseType[]
