@@ -35,11 +35,15 @@ export class TodolistService {
   }
 
   async createTodolist(createTodolist: CreateTodolistDto): Promise<TodolistResponseType> {
+    const lastTodo = await this.todolistRepository.findLastOrder(createTodolist.categoryId)
+    const nextOrder = lastTodo ? lastTodo.order + 1 : 0
+
     const todolist: createTodolist = {
       id: v4(),
       createdAt: new Date(),
       updatedAt: new Date(),
       checked: false,
+      order: nextOrder,
       ...createTodolist
     }
     const created = await this.todolistRepository.create(todolist)

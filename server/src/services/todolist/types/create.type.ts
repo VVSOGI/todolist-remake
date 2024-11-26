@@ -10,4 +10,5 @@ export interface createTodolist extends CreateTodolistDto {
   checked: boolean
   createdAt: Date
   updatedAt: Date
+  order: number
 }

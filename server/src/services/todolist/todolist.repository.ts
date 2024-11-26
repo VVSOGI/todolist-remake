@@ -20,6 +20,13 @@ export class TodolistRepository {
     return created
   }
 
+  async findLastOrder(categoryId: string) {
+    return await this.todolistRepository.findOne({
+      where: { categoryId },
+      order: { order: 'DESC' }
+    })
+  }
+
   async findAll(): Promise<GetTodolistsResponseType> {
     const [data, total] = await this.todolistRepository.findAndCount({
       order: {
