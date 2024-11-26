@@ -24,7 +24,7 @@ export class CreateTodolistValidator {
       return this.body
     }
 
-    if (errors[0].expected === 'string & MinLength<3>') {
+    if (errors[0].expected === 'string & MinLength<1>') {
       errors[0].messages = 'You must enter at least three characters.'
     }
 
