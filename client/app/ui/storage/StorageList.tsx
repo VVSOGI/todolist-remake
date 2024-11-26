@@ -53,7 +53,7 @@ export function StorageList({ list }: Props) {
           <Date className={D2CodingLight.className}>{item.date}</Date>
           <UnorderList>
             {item.todolists.map((todolist) => (
-              <div>
+              <div key={todolist.id}>
                 <ListItemUpdatedAt className={D2CodingLight.className}>{changeToLocaleTime(todolist.updatedAt)}</ListItemUpdatedAt>
                 <ListItemTitle>{todolist.title}</ListItemTitle>
               </div>
