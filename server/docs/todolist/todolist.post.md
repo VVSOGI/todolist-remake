@@ -28,6 +28,8 @@ Customer -> Frontend: 유저가 특정 카테고리 todolist 화면에서 todoli
     Frontend -> Backend: todolist 생성 API 요청 POST /todolist
         Backend -> TodolistController: POST /todolist
             TodolistController -> TodolistService: createTodolist(createTodolistDto)
+                TodolistService -> DB: findLastOrder(categoryId) categoryId에 일치하는 모든 투두리스트들 중 가장 순서가 높은 투두를 가져온다.
+                DB -> TodolistService: 데이터 반환
                 TodolistService -> DB: 전달받은 데이터를 이용한 새로운 todolist 데이터 생성 요청
                 DB -> TodolistService: 새로운 데이터 생성 및 반환
                 TodolistService -> TodolistService: 생성된 데이터 저장 this.saveTodolist(created)
