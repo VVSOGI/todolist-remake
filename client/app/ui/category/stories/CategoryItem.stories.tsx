@@ -1,18 +1,25 @@
 import { fn } from '@storybook/test'
-import { CategorySection, CreateCategory } from '@/app/ui'
+import { CategoryItem, CategorySection } from '@/app/ui'
 import { colors } from '@/app/styles'
 import type { Meta, StoryObj } from '@storybook/react'
 
-const createCategory = {
+const categoryItem = {
   title: 'Example/category',
-  component: CreateCategory,
+  component: CategoryItem,
   parameters: {
     layout: 'center'
   },
   tags: ['!autodocs'],
   argTypes: {},
   args: {
-    handleCreateTodo: fn()
+    category: {
+      id: '1',
+      title: 'Test Title',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    openDeleteModal: fn(),
+    openTargetModal: fn()
   },
   decorators: (Story) => (
     <div
@@ -30,16 +37,16 @@ const createCategory = {
       </CategorySection>
     </div>
   )
-} satisfies Meta<typeof CreateCategory>
+} satisfies Meta<typeof CategoryItem>
 
-export default createCategory
-type Story = StoryObj<typeof createCategory>
+export default categoryItem
+type Story = StoryObj<typeof categoryItem>
 
-export const StylesCreateCategory: Story = {
+export const StylesCategoryItem: Story = {
   args: {}
 }
 
-StylesCreateCategory.parameters = {
+StylesCategoryItem.parameters = {
   viewport: {
     defaultViewport: 'tablet'
   }

@@ -4,8 +4,8 @@ import { CreateTodolist } from '@/app/ui'
 import { colors } from '@/app/styles'
 import { MediaQueryStandard } from '@/app/types'
 
-const createTodolist = {
-  title: 'Example/Button/UseCase',
+const usecaseTodolistButton = {
+  title: 'Example/Button/UseCases',
   component: CreateTodolist,
   parameters: {
     layout: 'left'
@@ -33,9 +33,9 @@ const createTodolist = {
   }
 } satisfies Meta<typeof CreateTodolist>
 
-export default createTodolist
-type Story = StoryObj<typeof createTodolist>
+export default usecaseTodolistButton
+type Story = StoryObj<typeof usecaseTodolistButton>
 
-export const StylesCreateTodolist: Story = {
+export const UsecaseTodolistButton: Story = {
   args: {}
 }

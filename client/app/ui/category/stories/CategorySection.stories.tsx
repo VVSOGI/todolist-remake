@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { CategorySection } from '@/app/ui'
+import { colors } from '@/app/styles'
 
 const categorySection = {
-  title: 'Example/Category',
+  title: 'Example/Category/Section',
   component: CategorySection,
   parameters: {
     layout: 'fullscreen'
@@ -12,7 +13,16 @@ const categorySection = {
     children: ''
   },
   decorators: (Story) => (
-    <div style={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div
+      style={{
+        width: '100%',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.cloudBlue_200
+      }}
+    >
       <Story />
     </div>
   )
