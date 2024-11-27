@@ -4,8 +4,8 @@ import { CreateCategory } from '@/app/ui'
 import { colors } from '@/app/styles'
 import { MediaQueryStandard } from '@/app/types'
 
-const createCategory = {
-  title: 'Example/Button/UseCase',
+const usecaseCatagoryButton = {
+  title: 'Example/Button/UseCases',
   component: CreateCategory,
   parameters: {
     layout: 'centered',
@@ -43,9 +43,9 @@ const createCategory = {
   )
 } satisfies Meta<typeof CreateCategory>
 
-export default createCategory
-type Story = StoryObj<typeof createCategory>
+export default usecaseCatagoryButton
+type Story = StoryObj<typeof usecaseCatagoryButton>
 
-export const StylesCreateCategory: Story = {
+export const UsecaseCatagoryButton: Story = {
   args: {}
 }
