@@ -15,8 +15,8 @@ const CreateCategoryWrapper = styled.div`
 
 const Create = styled.div`
   width: 100%;
-  height: 40px;
-  min-height: 40px;
+  height: 2.5rem;
+  min-height: 2.5rem;
   display: flex;
   justify-content: space-between;
   border: 1px solid ${colors.gray_200};
@@ -25,8 +25,8 @@ const Create = styled.div`
 `
 
 const CreateError = styled.p`
-  margin: 9px 0;
-  font-size: 14px;
+  margin: 0.5625rem 0;
+  font-size: 0.875rem;
   color: ${colors.red_600};
 `
 

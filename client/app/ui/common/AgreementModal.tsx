@@ -20,12 +20,12 @@ const ModalContainer = styled.div`
 `
 
 const ModalWrapper = styled.div`
-  width: 800px;
-  min-height: 300px;
+  width: 50rem;
+  min-height: 18.75rem;
   display: flex;
   flex-direction: column;
   background-color: ${colors.white};
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.2);
   ${BORDER_RADIUS_SIZES.medium}
 `
 
@@ -34,22 +34,22 @@ const ModalHeader = styled.div`
   flex: 1;
   align-items: center;
   justify-content: space-between;
-  padding: 24px;
+  padding: 1.5rem;
   border-bottom: 1px solid ${colors.gray_200};
 `
 
 const ModalTitle = styled.span`
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 400;
 `
 
 const ModalCloseIcon = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 1.5rem;
   cursor: pointer;
 
   &:hover {
@@ -64,8 +64,8 @@ const ModalCloseIcon = styled.div`
 const ModalContentsWrapper = styled.div`
   display: flex;
   flex: 1;
-  padding: 0px 24px;
-  font-size: 18px;
+  padding: 0rem 1.5rem;
+  font-size: 1.125rem;
   border-bottom: 1px solid ${colors.gray_200};
 `
 
@@ -73,8 +73,8 @@ const ModalButtonsWrapper = styled.div`
   display: flex;
   justify-content: end;
   flex: 1;
-  gap: 12px;
-  padding: 24px;
+  gap: 0.75rem;
+  padding: 1.5rem;
 `
 
 const ModalButtonWrapper = styled.div`

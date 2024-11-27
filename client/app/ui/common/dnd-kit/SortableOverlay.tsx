@@ -18,7 +18,7 @@ const dropAnimationConfig: DropAnimation = {
 const DragOverlayContainer = styled(DragOverlay)`
   height: fit-content;
   overflow: hidden;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.1);
   ${BORDER_RADIUS_SIZES.small};
 `
 

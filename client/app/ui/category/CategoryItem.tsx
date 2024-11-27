@@ -11,7 +11,7 @@ import { IoSettings } from 'react-icons/io5'
 
 const CategoryWrapper = styled.div`
   width: 100%;
-  height: 48px;
+  height: 3rem;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid ${colors.gray_200};
@@ -45,21 +45,21 @@ const ContentsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 8px;
-  padding-right: 16px;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
   user-select: none;
 `
 
 const CategoryTitle = styled.h2`
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   color: ${colors.gray_500};
 `
 
 const CategoryTime = styled.div`
   display: flex;
-  gap: 8px;
-  font-size: 14 px;
+  gap: 0.5rem;
+  font-size: 0.875rem;
   color: ${colors.gray_500};
   span {
     color: ${colors.red_600};
@@ -68,8 +68,8 @@ const CategoryTime = styled.div`
 `
 
 const HiddenButtonsWrapper = styled.div`
-  width: 0px;
-  min-width: 0px;
+  width: 0rem;
+  min-width: 0rem;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -79,7 +79,7 @@ const HiddenButtonsWrapper = styled.div`
   cursor: pointer;
 
   button {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 `
 

@@ -9,11 +9,11 @@ import { CSS } from '@dnd-kit/utilities'
 
 const TodoWrapper = styled.div`
   position: relative;
-  min-height: 54px;
+  min-height: 3.375rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   background-color: ${colors.white};
   user-select: none;
   cursor: move;
@@ -22,14 +22,14 @@ const TodoWrapper = styled.div`
 const TodoContents = styled.div`
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 0.875rem;
 `
 
 const TodoIcons = styled.div`
   cursor: pointer;
 
   svg {
-    font-size: 24px;
+    font-size: 1.5rem;
 
     &:hover {
       background-color: ${colors.gray_200};

@@ -11,28 +11,28 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid ${colors.gray_200};
   background-color: ${colors.white};
   z-index: 100;
 `
 
 const Time = styled.div`
-  font-size: 12px;
+  font-size: 0.75rem;
 `
 
 const IconsWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
 
   button {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
     color: ${colors.red_600};
     font-weight: 800;
-    font-size: 18px;
+    font-size: 1.125rem;
     cursor: pointer;
 
     &:hover {
@@ -46,7 +46,7 @@ const IconsWrapper = styled.div`
     }
 
     svg {
-      font-size: 14px;
+      font-size: 0.875rem;
       color: ${colors.black};
     }
   }

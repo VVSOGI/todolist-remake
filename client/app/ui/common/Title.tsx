@@ -5,8 +5,8 @@ import { D2CodingBold } from '@/app/fonts'
 
 const Paragraph = styled.h1`
   width: 100%;
-  margin-bottom: 24px;
-  font-size: 18px;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
   color: ${colors.red_600};
 `
 

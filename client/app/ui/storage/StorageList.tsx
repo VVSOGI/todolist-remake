@@ -14,30 +14,30 @@ const ListWrapper = styled.div`
 `
 
 const StorageItem = styled.div`
-  padding: 16px;
+  padding: 1rem;
   border-bottom: 1px solid ${colors.gray_200};
 `
 
 const Date = styled.div`
-  margin-bottom: 18px;
-  font-size: 24px;
+  margin-bottom: 1.125rem;
+  font-size: 1.5rem;
 `
 
 const UnorderList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 0px 24px;
+  gap: 1.5rem;
+  padding: 0rem 1.5rem;
 `
 
 const ListItemUpdatedAt = styled.div`
-  margin-bottom: 4px;
-  font-size: 14px;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
   color: ${colors.gray_500};
 `
 
 const ListItemTitle = styled.div`
-  font-size: 18px;
+  font-size: 1.125rem;
   color: ${colors.black};
 `
 
