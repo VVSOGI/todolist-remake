@@ -19,7 +19,7 @@ export type TodolistHeights = 'HEADER' | 'CREATE_INPUT'
 export enum MediaQueryStandard {
   MOBILE = '37.5rem',
   TABLET = '45rem',
-  DESKTOP = '90.0125rem'
+  DESKTOP = '90.125rem'
 }
 
 export enum SectionWidth {
