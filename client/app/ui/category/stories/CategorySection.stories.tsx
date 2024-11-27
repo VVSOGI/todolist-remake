@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { CategorySection } from '@/app/ui'
 
 const categorySection = {
-  title: 'Example/Category',
+  title: 'Example/Category/Section',
   component: CategorySection,
   parameters: {
     layout: 'fullscreen'
