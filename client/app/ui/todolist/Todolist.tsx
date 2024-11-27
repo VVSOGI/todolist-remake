@@ -14,20 +14,20 @@ const TodolistWrapper = styled.div`
 
 const NothingInList = styled.div`
   position: relative;
-  max-height: 45px;
+  max-height: 2.8125rem;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 12px 16px;
+  gap: 0.875rem;
+  padding: 0.75rem 1rem;
   color: ${colors.gray_300};
 `
 
 const EditModalContents = styled.div`
   width: 100%;
-  padding: 24px 0;
+  padding: 1.5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
 `
 
 interface Props {

@@ -9,11 +9,11 @@ import { AgreementModal, Input, CategoryItem } from '@/app/ui'
 const CategoryListContainer = styled.div`
   overflow-y: scroll;
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 0.25rem;
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: 2px;
+    border-radius: 0.125rem;
     background: #ccc;
   }
 `
@@ -22,13 +22,13 @@ const UpdateModalContents = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 48px 0;
-  gap: 12px;
+  padding: 3rem 0;
+  gap: 0.75rem;
 `
 
 const DeleteModalContents = styled.div`
   width: 100%;
-  padding: 48px 0;
+  padding: 3rem 0;
 `
 
 interface Props {

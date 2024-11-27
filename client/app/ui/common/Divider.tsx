@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const DividerStyles = styled.div`
   width: 100%;
   height: 1px;
-  margin: 16px 0px;
+  margin: 1rem 0rem;
   border-top: 1px solid ${colors.gray_200};
 `
 

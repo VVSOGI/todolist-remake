@@ -4,8 +4,8 @@ import { colors } from '@/app/styles'
 import { GiCheckMark } from 'react-icons/gi'
 
 const Circle = styled.div`
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@ const Circle = styled.div`
 
 const CheckIcon = styled(GiCheckMark)`
   color: ${colors.white};
-  font-size: 10px;
+  font-size: 0.625rem;
   transition: 0.2s;
 `
 

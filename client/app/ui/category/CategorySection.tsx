@@ -4,10 +4,10 @@ import { BORDER_RADIUS_SIZES, BOX_SHADOWS, colors } from '@/app/styles'
 import { SECTION_MEDIA_QUERY } from '@/app/styles/sections'
 
 const Main = styled.section`
-  height: 480px;
+  height: 30rem;
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: 1.5rem;
   background-color: ${colors.white};
   ${BOX_SHADOWS.primary};
   ${BORDER_RADIUS_SIZES.medium};

@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 const Main = styled.main`
   position: relative;
-  width: 970px;
-  height: 480px;
+  width: 60.625rem;
+  height: 30rem;
   display: flex;
   flex-direction: column;
   background-color: ${colors.white};
