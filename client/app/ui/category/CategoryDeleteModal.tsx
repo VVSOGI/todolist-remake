@@ -12,7 +12,7 @@ interface Props {
   onClickDeleteButton: () => Promise<void>
 }
 
-export default function CategoryDeleteModal({ closeModal, onClickDeleteButton }: Props) {
+export function CategoryDeleteModal({ closeModal, onClickDeleteButton }: Props) {
   return (
     <AgreementModal title="Delete" handleRefuse={closeModal} handleAgree={onClickDeleteButton}>
       <DeleteModalContents>Are you sure you want to delete that category?</DeleteModalContents>

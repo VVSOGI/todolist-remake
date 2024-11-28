@@ -3,9 +3,7 @@ import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
 import { Category } from '@/app/types'
 import { deleteCategory, updateCategory } from '@/app/utils'
-import { CategoryItem } from '@/app/ui'
-import { CategoryUpdateModal } from './CategoryUpdateModal'
-import CategoryDeleteModal from './CategoryDeleteModal'
+import { CategoryDeleteModal, CategoryItem, CategoryUpdateModal } from '@/app/ui'
 
 const CategoryDisplayContainer = styled.div`
   overflow-y: scroll;
