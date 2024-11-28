@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
 import { Category } from '@/app/types'
-import { colors } from '@/app/styles'
 import { deleteCategory, updateCategory } from '@/app/utils'
-import { AgreementModal, Input, CategoryItem } from '@/app/ui'
+import { AgreementModal, CategoryItem } from '@/app/ui'
+import { CategoryUpdateModal } from './CategoryUpdateModal'
 
 const CategoryDisplayContainer = styled.div`
   overflow-y: scroll;
@@ -16,14 +16,6 @@ const CategoryDisplayContainer = styled.div`
     border-radius: 0.125rem;
     background: #ccc;
   }
-`
-
-const UpdateModalContents = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 3rem 0;
-  gap: 0.75rem;
 `
 
 const DeleteModalContents = styled.div`
@@ -71,11 +63,9 @@ export function CategoryDisplay({ categories }: Props) {
     router.refresh()
   }
 
-  const onClickUpdateButton = async () => {
+  const onClickUpdateButton = async (title: string) => {
     if (!targetCategory) return
-    await updateCategory(targetCategory.id, {
-      title: updateTitle
-    })
+    await updateCategory(targetCategory.id, { title })
     closeModal()
     router.refresh()
   }
@@ -83,18 +73,7 @@ export function CategoryDisplay({ categories }: Props) {
   return (
     <CategoryDisplayContainer>
       {isModalOpen === 'update' && (
-        <AgreementModal title="Update" handleRefuse={closeModal} handleAgree={onClickUpdateButton}>
-          <UpdateModalContents>
-            <div>Change Title this category</div>
-            <Input
-              style={{ width: '100%', border: `1px solid ${colors.gray_200}`, borderRadius: '0.25rem' }}
-              value={updateTitle}
-              changeValue={(value) => setUpdateTitle(value)}
-              handleSubmit={() => {}}
-              placeholder={targetCategory?.title}
-            />
-          </UpdateModalContents>
-        </AgreementModal>
+        <CategoryUpdateModal placeholder={targetCategory?.title} closeModal={closeModal} onClickUpdateButton={onClickUpdateButton} />
       )}
       {isModalOpen === 'delete' && (
         <AgreementModal title="Delete" handleRefuse={closeModal} handleAgree={onClickDeleteButton}>
