@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { memo, useRef } from 'react'
 import styled from 'styled-components'
 import { colors } from '@/app/styles'
 import { D2CodingBold } from '@/app/fonts'
@@ -89,7 +89,7 @@ interface Props {
   openDeleteModal: (category: Category) => void
 }
 
-export function CategoryItem({ category, openDeleteModal, openTargetModal }: Props) {
+function CategoryComponent({ category, openDeleteModal, openTargetModal }: Props) {
   const router = useRouter()
   const isDragging = useRef(false)
 
@@ -142,3 +142,5 @@ export function CategoryItem({ category, openDeleteModal, openTargetModal }: Pro
     </CategoryWrapper>
   )
 }
+
+export const CategoryItem = memo(CategoryComponent)

@@ -1,7 +1,8 @@
 import { fn } from '@storybook/test'
-import { CategoryItem, CategorySection } from '@/app/ui'
+import { CategorySection } from '@/app/ui'
 import { colors } from '@/app/styles'
 import type { Meta, StoryObj } from '@storybook/react'
+import { CategoryItem } from '../CategoryItem'
 
 const categoryItem = {
   title: 'Example/category',

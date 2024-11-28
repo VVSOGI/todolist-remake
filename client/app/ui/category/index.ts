@@ -1,4 +1,6 @@
 export * from './CategorySection'
 export * from './CreateCategory'
 export * from './CategoryDisplay'
-export * from './CategoryItem'
+export * from './CategoryUpdateModal'
+export * from './CategoryDeleteModal'
+export * from './Categories'
