@@ -1,6 +1,6 @@
 import { Category } from '@/app/types'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { deleteCategory, updateCategory } from '@/app/utils'
 
 export function useCategoryModal() {
@@ -8,42 +8,45 @@ export function useCategoryModal() {
   const [isModalOpen, setIsModalOpen] = useState<'delete' | 'update' | undefined>()
   const [targetCategory, setTargetCategory] = useState<Category | null>(null)
 
-  const openDeleteModal = (category: Category) => {
+  const closeModal = useCallback(() => {
+    setIsModalOpen(undefined)
+    setTargetCategory(null)
+  }, [])
+
+  const openDeleteModal = useCallback((category: Category) => {
     const component = document.getElementById(`${category.id}-hidden`)
     if (component) {
       component.style.minWidth = '0rem'
       setIsModalOpen('delete')
       setTargetCategory(category)
     }
-  }
+  }, [])
 
-  const openTargetModal = (category: Category) => {
+  const openTargetModal = useCallback((category: Category) => {
     const component = document.getElementById(`${category.id}-hidden`)
     if (component) {
       component.style.minWidth = '0rem'
       setIsModalOpen('update')
       setTargetCategory(category)
     }
-  }
+  }, [])
 
-  const closeModal = () => {
-    setIsModalOpen(undefined)
-    setTargetCategory(null)
-  }
-
-  const onClickDeleteButton = async () => {
+  const onClickDeleteButton = useCallback(async () => {
     if (!targetCategory) return
     await deleteCategory(targetCategory.id)
     closeModal()
     router.refresh()
-  }
+  }, [targetCategory, closeModal, router])
 
-  const onClickUpdateButton = async (title: string) => {
-    if (!targetCategory) return
-    await updateCategory(targetCategory.id, { title })
-    closeModal()
-    router.refresh()
-  }
+  const onClickUpdateButton = useCallback(
+    async (title: string) => {
+      if (!targetCategory) return
+      await updateCategory(targetCategory.id, { title })
+      closeModal()
+      router.refresh()
+    },
+    [targetCategory, closeModal, router]
+  )
 
   return {
     isModalOpen,
