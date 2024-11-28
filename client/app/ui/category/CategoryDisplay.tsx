@@ -6,7 +6,7 @@ import { colors } from '@/app/styles'
 import { deleteCategory, updateCategory } from '@/app/utils'
 import { AgreementModal, Input, CategoryItem } from '@/app/ui'
 
-const CategoryListContainer = styled.div`
+const CategoryDisplayContainer = styled.div`
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 0.25rem;
@@ -35,7 +35,7 @@ interface Props {
   categories: Category[]
 }
 
-export function CategoryList({ categories }: Props) {
+export function CategoryDisplay({ categories }: Props) {
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState<'delete' | 'update' | undefined>()
   const [targetCategory, setTargetCategory] = useState<Category | null>(null)
@@ -81,7 +81,7 @@ export function CategoryList({ categories }: Props) {
   }
 
   return (
-    <CategoryListContainer>
+    <CategoryDisplayContainer>
       {isModalOpen === 'update' && (
         <AgreementModal title="Update" handleRefuse={closeModal} handleAgree={onClickUpdateButton}>
           <UpdateModalContents>
@@ -104,6 +104,6 @@ export function CategoryList({ categories }: Props) {
       {categories.map((category) => {
         return <CategoryItem key={category.id} category={category} openTargetModal={openTargetModal} openDeleteModal={openDeleteModal} />
       })}
-    </CategoryListContainer>
+    </CategoryDisplayContainer>
   )
 }
