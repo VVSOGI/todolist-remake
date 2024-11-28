@@ -1,4 +1,4 @@
-import { CategoryList, Container, CategorySection, Title, CreateCategory } from '@/app/ui'
+import { Container, CategorySection, Title, CreateCategory, CategoryDisplay } from '@/app/ui'
 import { getCategoryList } from '@/app/utils'
 
 export default async function page() {
@@ -9,7 +9,7 @@ export default async function page() {
       <CategorySection>
         <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
         <CreateCategory />
-        {data && <CategoryList categories={data} />}
+        {data && <CategoryDisplay categories={data} />}
       </CategorySection>
     </Container>
   )
