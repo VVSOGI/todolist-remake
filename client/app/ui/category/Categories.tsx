@@ -1,6 +1,6 @@
 import React from 'react'
-import { CategoryItem } from '@/app/ui'
 import { Category } from '@/app/types'
+import { CategoryItem } from './CategoryItem'
 
 interface Props {
   categories: Category[]
