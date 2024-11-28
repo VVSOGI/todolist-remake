@@ -3,8 +3,9 @@ import { useRouter } from 'next/navigation'
 import styled from 'styled-components'
 import { Category } from '@/app/types'
 import { deleteCategory, updateCategory } from '@/app/utils'
-import { AgreementModal, CategoryItem } from '@/app/ui'
+import { CategoryItem } from '@/app/ui'
 import { CategoryUpdateModal } from './CategoryUpdateModal'
+import CategoryDeleteModal from './CategoryDeleteModal'
 
 const CategoryDisplayContainer = styled.div`
   overflow-y: scroll;
@@ -18,11 +19,6 @@ const CategoryDisplayContainer = styled.div`
   }
 `
 
-const DeleteModalContents = styled.div`
-  width: 100%;
-  padding: 3rem 0;
-`
-
 interface Props {
   categories: Category[]
 }
@@ -31,7 +27,6 @@ export function CategoryDisplay({ categories }: Props) {
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState<'delete' | 'update' | undefined>()
   const [targetCategory, setTargetCategory] = useState<Category | null>(null)
-  const [updateTitle, setUpdateTitle] = useState('')
 
   const openDeleteModal = (category: Category) => {
     const component = document.getElementById(`${category.id}-hidden`)
@@ -75,10 +70,8 @@ export function CategoryDisplay({ categories }: Props) {
       {isModalOpen === 'update' && (
         <CategoryUpdateModal placeholder={targetCategory?.title} closeModal={closeModal} onClickUpdateButton={onClickUpdateButton} />
       )}
-      {isModalOpen === 'delete' && (
-        <AgreementModal title="Delete" handleRefuse={closeModal} handleAgree={onClickDeleteButton}>
-          <DeleteModalContents>Are you sure you want to delete that category?</DeleteModalContents>
-        </AgreementModal>
+      {isModalOpen === 'delete' && ( //
+        <CategoryDeleteModal closeModal={closeModal} onClickDeleteButton={onClickDeleteButton} />
       )}
       {categories.map((category) => {
         return <CategoryItem key={category.id} category={category} openTargetModal={openTargetModal} openDeleteModal={openDeleteModal} />
