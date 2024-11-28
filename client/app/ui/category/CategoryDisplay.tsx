@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Category } from '@/app/types'
-import { CategoryDeleteModal, CategoryItem, CategoryUpdateModal } from '@/app/ui'
+import { Categories, CategoryDeleteModal, CategoryUpdateModal } from '@/app/ui'
 import { useCategoryModal } from '@/app/utils'
 
 const CategoryDisplayContainer = styled.div`
@@ -39,9 +39,7 @@ export function CategoryDisplay({ categories }: Props) {
       {isModalOpen === 'delete' && ( //
         <CategoryDeleteModal closeModal={closeModal} onClickDeleteButton={onClickDeleteButton} />
       )}
-      {categories.map((category) => {
-        return <CategoryItem key={category.id} category={category} openTargetModal={openTargetModal} openDeleteModal={openDeleteModal} />
-      })}
+      <Categories categories={categories} openTargetModal={openTargetModal} openDeleteModal={openDeleteModal} />
     </CategoryDisplayContainer>
   )
 }
