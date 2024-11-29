@@ -37,6 +37,7 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
 
   return (
     <TodolistWrapper>
+      <audio id="audio" src="/poped.wav"></audio>
       {modal === 'edit' && (
         <TodoUpdateModal
           placeholder={targetTodo?.title}
@@ -45,8 +46,6 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
           handleEditModalClose={handleEditModalClose}
         />
       )}
-
-      <audio id="audio" src="/poped.wav"></audio>
       {!list.length && <EmptyTodolist>Nothing in list 😅</EmptyTodolist>}
       <DraggableTodolist list={list} setList={setList} handleCompleteTodo={handleCompleteTodo} handleEditModalOpen={handleEditModalOpen} />
       <CreateTodolist handleCreateTodo={handleCreateTodo} />
