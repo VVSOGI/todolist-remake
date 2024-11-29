@@ -25,7 +25,7 @@ interface Props {
   getTodolist: () => Promise<Todo[]>
 }
 
-export function Todolist({ categoryId, todolist, getTodolist }: Props) {
+export function TodolistSection({ categoryId, todolist, getTodolist }: Props) {
   const { list, setList, handleCompleteTodo, handleCreateTodo, handleEditTodo } = useTodolist({ categoryId, todolist, getTodolist })
   const {
     modal,
