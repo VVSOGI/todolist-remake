@@ -4,7 +4,7 @@ import { DndContext } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
 import { Todo } from '@/app/types'
 import { SCROLL_BAR_SETTINGS, TODOLIST_HEIGHTS, colors } from '@/app/styles'
-import { AgreementModal, CreateTodolist, Input, SortableOverlay, TodoItem } from '@/app/ui'
+import { CreateTodolist, SortableOverlay, TodoItem, TodoUpdateModal } from '@/app/ui'
 import { saveTodolistOrder, useDragDndKit, useTodolist, useTodolistEditModal } from '@/app/utils'
 
 const TodolistWrapper = styled.div`
@@ -21,15 +21,6 @@ const NothingInList = styled.div`
   padding: 0.75rem 1rem;
   color: ${colors.gray_300};
 `
-
-const EditModalContents = styled.div`
-  width: 100%;
-  padding: 1.5rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-`
-
 interface Props {
   categoryId: string
   todolist: Todo[]
@@ -42,8 +33,6 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
   const {
     modal,
     targetTodo,
-    updateTitle,
-    setUpdateTitle,
     makeUpdatedTodo,
     handleEditModalOpen,
     handleEditModalClose //
@@ -52,26 +41,12 @@ export function Todolist({ categoryId, todolist, getTodolist }: Props) {
   return (
     <TodolistWrapper>
       {modal === 'edit' && (
-        <AgreementModal
-          title="Edit"
-          handleAgree={() => {
-            const updated = makeUpdatedTodo()
-            if (updated) handleEditTodo(updated)
-            handleEditModalClose()
-          }}
-          handleRefuse={handleEditModalClose}
-        >
-          <EditModalContents>
-            <div>Change Todo Title</div>
-            <Input
-              style={{ width: '100%', border: `1px solid ${colors.gray_200}`, borderRadius: '0.25rem' }}
-              value={updateTitle}
-              changeValue={(value) => setUpdateTitle(value)}
-              handleSubmit={() => {}}
-              placeholder={targetTodo?.title}
-            />
-          </EditModalContents>
-        </AgreementModal>
+        <TodoUpdateModal
+          placeholder={targetTodo?.title}
+          makeUpdatedTodo={makeUpdatedTodo}
+          handleEditTodo={handleEditTodo}
+          handleEditModalClose={handleEditModalClose}
+        />
       )}
 
       <DndContext
