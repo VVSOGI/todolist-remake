@@ -50,7 +50,6 @@ interface Props {
 }
 
 export function TodoItem({ todo, handleCompleteTodo, handleEditModalOpen }: Props) {
-  const [isHover, setIsHover] = useState(false)
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: todo.id })
 
   return (
@@ -67,18 +66,14 @@ export function TodoItem({ todo, handleCompleteTodo, handleEditModalOpen }: Prop
         zIndex: isDragging ? '100' : '1'
       }}
       ref={setNodeRef}
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
     >
       <TodoContents>
         <CheckCircle onAnimationEnd={() => handleCompleteTodo(todo)} />
         <div>{todo.title}</div>
       </TodoContents>
-      {isHover && (
-        <TodoIcons>
-          <CiEdit onClick={() => handleEditModalOpen(todo)} />
-        </TodoIcons>
-      )}
+      <TodoIcons>
+        <CiEdit onClick={() => handleEditModalOpen(todo)} />
+      </TodoIcons>
     </TodoWrapper>
   )
 }
