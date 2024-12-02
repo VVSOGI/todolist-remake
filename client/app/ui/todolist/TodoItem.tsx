@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { BORDER_RADIUS_SIZES, colors } from '@/app/styles'
 import { CheckCircle } from '@/app/ui'
 import { CiEdit } from 'react-icons/ci'
 import { Todo } from '@/app/types'
 import { useSortable } from '@dnd-kit/sortable'
-import { CSS } from '@dnd-kit/utilities'
+import { CSS, Transform } from '@dnd-kit/utilities'
 
-const TodoWrapper = styled.div`
+const TodoWrapper = styled.div<TodolistWrapperStylesProps>`
   position: relative;
   min-height: 3.375rem;
   display: flex;
@@ -15,6 +15,12 @@ const TodoWrapper = styled.div`
   justify-content: space-between;
   padding: 0.75rem 1rem;
   background-color: ${colors.white};
+  opacity: ${({ isDragging }) => (isDragging ? 0.5 : 1)};
+  transform: ${({ stringTransform }) => CSS.Translate.toString(stringTransform)};
+  transition: ${({ transition }) => transition};
+  border: ${({ isDragging }) => (isDragging ? '1px solid red' : 'none')};
+  border-bottom: ${({ isDragging }) => (isDragging ? '1px solid red' : `1px solid ${colors.gray_200}`)};
+  z-index: ${({ isDragging }) => (isDragging ? '100' : `1`)};
   user-select: none;
   cursor: move;
 
@@ -50,6 +56,12 @@ const TodoIcons = styled.i`
   }
 `
 
+interface TodolistWrapperStylesProps {
+  isDragging: boolean
+  stringTransform: Transform | null
+  transition?: string
+}
+
 interface Props {
   todo: Todo
   handleCompleteTodo: (todo: Todo) => void
@@ -64,14 +76,9 @@ export function TodoItem({ todo, handleCompleteTodo, handleEditModalOpen }: Prop
       id={`${todo.id}-todo`}
       {...attributes}
       {...listeners}
-      style={{
-        opacity: isDragging ? 0.5 : 1,
-        transform: CSS.Translate.toString(transform),
-        transition,
-        border: isDragging ? '1px solid red' : 'none',
-        borderBottom: isDragging ? '1px solid red' : `1px solid ${colors.gray_200}`,
-        zIndex: isDragging ? '100' : '1'
-      }}
+      isDragging={isDragging}
+      stringTransform={transform}
+      transition={transition}
       ref={setNodeRef}
     >
       <TodoContents>
