@@ -17,7 +17,6 @@ interface CustomDragEndEvent extends DragEndEvent {
 
 export function useDragDndKit<T>({ list, setList }: Props<T>) {
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null)
-
   const activeItem = useMemo(() => list.find((item) => item.id === activeId), [activeId, list])
 
   const sensors = useSensors(

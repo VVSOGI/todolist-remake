@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styled from 'styled-components'
 import { BORDER_RADIUS_SIZES, colors } from '@/app/styles'
 import { CheckCircle } from '@/app/ui'
@@ -68,7 +68,7 @@ interface Props {
   handleEditModalOpen: (todo: Todo) => void
 }
 
-export function TodoItem({ todo, handleCompleteTodo, handleEditModalOpen }: Props) {
+function TodoItemComponent({ todo, handleCompleteTodo, handleEditModalOpen }: Props) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: todo.id })
 
   return (
@@ -91,3 +91,5 @@ export function TodoItem({ todo, handleCompleteTodo, handleEditModalOpen }: Prop
     </TodoWrapper>
   )
 }
+
+export const TodoItem = memo(TodoItemComponent)
