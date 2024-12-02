@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Todolist } from 'src/entities'
 import { Repository } from 'typeorm'
-import { GetTodolistDtoFilters, GetTodolistsResponseType, createTodolist } from './types'
+import { GetTodolistDatesDto, GetTodolistDtoFilters, GetTodolistsResponseType, createTodolist } from './types'
 
 @Injectable()
 export class TodolistRepository {
@@ -53,8 +53,17 @@ export class TodolistRepository {
     }
   }
 
-  async findByDatesOrder(categoryId: string) {
-    const [data, total] = await this.todolistRepository.findAndCount({ where: { categoryId, checked: true }, order: { updatedAt: 'DESC' } })
+  async findByDatesOrder(categoryId: string, checked: GetTodolistDatesDto) {
+    let isChecked: boolean | undefined = undefined
+    if (checked === 'true' || !checked) {
+      isChecked = true
+    } else if (checked === 'false') {
+      isChecked = false
+    }
+    const [data, total] = await this.todolistRepository.findAndCount({
+      where: { categoryId, checked: isChecked },
+      order: { updatedAt: 'DESC' }
+    })
     return {
       data,
       total

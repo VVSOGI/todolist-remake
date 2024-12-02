@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Patch, Post } from '@nestjs/common'
+import { Controller, Get, Param, Patch, Post, Query } from '@nestjs/common'
 import { TodolistService } from './todolist.service'
 import {
   CreateTodolistDto,
@@ -8,7 +8,8 @@ import {
   UpdateTodolistDto,
   UpdateTodolistOrderDto,
   UpdateTodolistsOrderResponseType,
-  GetTodolistDto
+  GetTodolistDto,
+  GetTodolistDatesDto
 } from './types'
 import {
   ValidateCreateTodolistDTO,
@@ -48,8 +49,11 @@ export class TodolistController {
   }
 
   @Get('/dates/:categoryId')
-  async getTodolistsByDate(@ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto): Promise<GetTodolistsByDatesResponseType> {
-    return this.todolistService.getTodolistsByDate(getCategoryDto.categoryId)
+  async getTodolistsByDate(
+    @ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto,
+    @Query('checked') checked: GetTodolistDatesDto = 'true'
+  ): Promise<GetTodolistsByDatesResponseType> {
+    return this.todolistService.getTodolistsByDate(getCategoryDto.categoryId, checked)
   }
 
   @Patch()

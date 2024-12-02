@@ -8,7 +8,8 @@ import {
   UpdateTodolistDto,
   UpdateTodolistOrderDto,
   createTodolist,
-  GetTodolistsResponseType
+  GetTodolistsResponseType,
+  GetTodolistDatesDto
 } from './types'
 import { Todolist } from 'src/entities'
 import { CategoryService } from '../category'
@@ -84,9 +85,9 @@ export class TodolistService {
     return todolist
   }
 
-  async getTodolistsByDate(categoryId: string) {
+  async getTodolistsByDate(categoryId: string, checked: GetTodolistDatesDto) {
     await this.categoryService.getCategoryById(categoryId)
-    const todolists = await this.todolistRepository.findByDatesOrder(categoryId)
+    const todolists = await this.todolistRepository.findByDatesOrder(categoryId, checked)
 
     const dates: { date: string; todolists: Todolist[] }[] = []
 
