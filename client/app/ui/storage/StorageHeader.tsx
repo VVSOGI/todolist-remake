@@ -4,7 +4,7 @@ import { Title } from '@/app/ui'
 import { Category } from '@/app/types'
 import { changeToLocaleTime } from '@/app/utils'
 import { TODOLIST_HEIGHTS, colors } from '@/app/styles'
-import { IoIosClose } from 'react-icons/io'
+import { IoClose } from 'react-icons/io5'
 
 const Header = styled.div`
   height: ${TODOLIST_HEIGHTS.HEADER};
@@ -19,7 +19,7 @@ const Time = styled.div`
   font-size: 0.75rem;
 `
 
-const IconsWrapper = styled(Link)`
+const LinkWrapper = styled(Link)`
   width: 2.5rem;
   height: 2.5rem;
   display: flex;
@@ -31,16 +31,17 @@ const IconsWrapper = styled(Link)`
 
   &:hover {
     background-color: ${colors.gray_100};
-    color: ${colors.red_400};
   }
 
   &:active {
     background-color: ${colors.white};
-    color: ${colors.red_500};
+    svg {
+      color: ${colors.red_500};
+    }
   }
 
   svg {
-    font-size: 1.8rem;
+    font-size: 1.25rem;
     color: ${colors.red_600};
   }
 `
@@ -56,9 +57,9 @@ export function StorageHeader({ category }: Props) {
         <Title style={{ margin: 0, fontSize: '1.5rem' }}>{category.title.toUpperCase()}</Title>
         <Time>{changeToLocaleTime(category.updatedAt)}</Time>
       </div>
-      <IconsWrapper href={`/todolist/${category.id}`}>
-        <IoIosClose />
-      </IconsWrapper>
+      <LinkWrapper href={`/todolist/${category.id}`}>
+        <IoClose />
+      </LinkWrapper>
     </Header>
   )
 }
