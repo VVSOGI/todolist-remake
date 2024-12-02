@@ -17,6 +17,12 @@ const TodoWrapper = styled.div`
   background-color: ${colors.white};
   user-select: none;
   cursor: move;
+
+  &:hover {
+    i {
+      display: block;
+    }
+  }
 `
 
 const TodoContents = styled.div`
@@ -25,7 +31,8 @@ const TodoContents = styled.div`
   gap: 0.875rem;
 `
 
-const TodoIcons = styled.div`
+const TodoIcons = styled.i`
+  display: none;
   cursor: pointer;
 
   svg {
