@@ -1,9 +1,11 @@
 import styled from 'styled-components'
+import Link from 'next/link'
 import { Title } from '@/app/ui'
 import { Category } from '@/app/types'
 import { changeToLocaleTime } from '@/app/utils'
 import { TODOLIST_HEIGHTS, colors } from '@/app/styles'
 import { useRouter } from 'next/navigation'
+import { IoIosClose } from 'react-icons/io'
 
 const Header = styled.div`
   height: ${TODOLIST_HEIGHTS.HEADER};
@@ -18,34 +20,29 @@ const Time = styled.div`
   font-size: 0.75rem;
 `
 
-const IconsWrapper = styled.div`
+const IconsWrapper = styled(Link)`
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
 
-  button {
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
+  &:hover {
+    background-color: ${colors.gray_100};
+    color: ${colors.red_400};
+  }
+
+  &:active {
+    background-color: ${colors.white};
+    color: ${colors.red_500};
+  }
+
+  svg {
+    font-size: 1.8rem;
     color: ${colors.red_600};
-    font-weight: 800;
-    font-size: 1.125rem;
-    cursor: pointer;
-
-    &:hover {
-      background-color: ${colors.gray_100};
-      color: ${colors.red_400};
-    }
-
-    &:active {
-      background-color: ${colors.white};
-      color: ${colors.red_500};
-    }
-
-    svg {
-      font-size: 0.875rem;
-      color: ${colors.black};
-    }
   }
 `
 
@@ -56,18 +53,14 @@ interface Props {
 export function StorageHeader({ category }: Props) {
   const router = useRouter()
 
-  const moveBackPage = () => {
-    router.push(`/${category.id}`)
-  }
-
   return (
     <Header>
       <div>
         <Title style={{ margin: 0, fontSize: '1.5rem' }}>{category.title.toUpperCase()}</Title>
         <Time>{changeToLocaleTime(category.updatedAt)}</Time>
       </div>
-      <IconsWrapper>
-        <button onClick={moveBackPage}>X</button>
+      <IconsWrapper href={`/todolist/${category.id}`}>
+        <IoIosClose />
       </IconsWrapper>
     </Header>
   )
