@@ -4,7 +4,6 @@ import { Title } from '@/app/ui'
 import { Category } from '@/app/types'
 import { changeToLocaleTime } from '@/app/utils'
 import { TODOLIST_HEIGHTS, colors } from '@/app/styles'
-import { useRouter } from 'next/navigation'
 import { IoIosClose } from 'react-icons/io'
 
 const Header = styled.div`
@@ -51,8 +50,6 @@ interface Props {
 }
 
 export function StorageHeader({ category }: Props) {
-  const router = useRouter()
-
   return (
     <Header>
       <div>
