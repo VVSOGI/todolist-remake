@@ -1,18 +1,19 @@
 import React from 'react'
-import { Skeleton, StorageHeader, StorageMain } from '../ui'
+import { Container, TodolistHeader, TodolistMain } from '@/app/ui'
 
 export default function loading() {
   return (
-    <StorageMain>
-      <StorageHeader
-        category={{
-          id: '',
-          title: '...Loading',
-          updatedAt: new Date('2000.01.01'),
-          createdAt: new Date('2000.01.01')
-        }}
-      />
-      <Skeleton />
-    </StorageMain>
+    <Container>
+      <TodolistMain>
+        <TodolistHeader
+          category={{
+            id: '',
+            title: '...Loading',
+            updatedAt: new Date('2000.01.01'),
+            createdAt: new Date('2000.01.01')
+          }}
+        />
+      </TodolistMain>
+    </Container>
   )
 }
