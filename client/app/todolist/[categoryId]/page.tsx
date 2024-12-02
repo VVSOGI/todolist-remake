@@ -3,10 +3,10 @@ import { TodolistHeader, TodolistSection, TodolistMain } from '@/app/ui'
 import { getCategoryById, getTodolistByCategoryId } from '@/app/utils'
 
 interface Props {
-  params: { id: UUID }
+  params: { categoryId: UUID }
 }
 
-export default async function page({ params: { id: categoryId } }: Props) {
+export default async function page({ params: { categoryId: categoryId } }: Props) {
   const category = await getCategoryById(categoryId)
   const todolist = await getTodolistByCategoryId(categoryId)
 

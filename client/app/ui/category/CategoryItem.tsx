@@ -98,7 +98,7 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal }: Props
       return
     }
 
-    router.push(`/${id}`)
+    router.push(`/todolist/${id}`)
   }
 
   const onCategoryDrag = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, categoryId: string) => {
