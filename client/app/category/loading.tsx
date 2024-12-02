@@ -1,7 +1,7 @@
 import { Container, CategorySection, Title, CreateCategory } from '@/app/ui'
 import { Skeleton } from '@/app/ui/common/Skeleton'
 
-export default function loading() {
+export default function HomeLoading() {
   return (
     <Container>
       <CategorySection>
