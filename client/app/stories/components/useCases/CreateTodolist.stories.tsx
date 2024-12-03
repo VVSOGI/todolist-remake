@@ -5,7 +5,7 @@ import { colors } from '@/app/styles'
 import { MediaQueryStandard } from '@/app/types'
 
 const usecaseTodolistButton = {
-  title: 'Example/Button/UseCases',
+  title: 'Example/Components/Button/UseCases',
   component: CreateTodolist,
   parameters: {
     layout: 'left'
