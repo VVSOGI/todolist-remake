@@ -7,7 +7,7 @@ const ModalContents = () => {
 }
 
 const meta = {
-  title: 'Example/Common/modal',
+  title: 'Example/Components/Modal',
   component: AgreementModal,
   parameters: {
     viewport: {
