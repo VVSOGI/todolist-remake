@@ -4,7 +4,7 @@ import { colors } from '@/app/styles'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const createCategory = {
-  title: 'Example/category',
+  title: 'Example/Category/CreateCategory',
   component: CreateCategory,
   parameters: {
     layout: 'center'

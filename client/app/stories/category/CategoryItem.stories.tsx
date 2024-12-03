@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { CategoryItem } from '@/app/ui/category/CategoryItem'
 
 const categoryItem = {
-  title: 'Example/category',
+  title: 'Example/Category/CategoryItem',
   component: CategoryItem,
   parameters: {
     layout: 'center'
