@@ -5,7 +5,7 @@ import { colors } from '@/app/styles'
 import { MediaQueryStandard } from '@/app/types'
 
 const usecaseCatagoryButton = {
-  title: 'Example/Components/Button/UseCases',
+  title: 'Example/Components/UseCases',
   component: CreateCategory,
   parameters: {
     layout: 'centered',
