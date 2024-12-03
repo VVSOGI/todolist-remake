@@ -1,13 +1,13 @@
 import React, { memo, useRef } from 'react'
 import styled from 'styled-components'
 import { colors } from '@/app/styles'
-import { D2CodingBold } from '@/app/fonts'
 import { mouseEvent, changeToLocaleTime } from '@/app/utils'
 import { Category, ButtonSize, ButtonsTheme } from '@/app/types'
 import { Button } from '@/app/ui'
 import { useRouter } from 'next/navigation'
 import { FaTrashAlt } from 'react-icons/fa'
 import { IoSettings } from 'react-icons/io5'
+import { D2CodingBold } from '@/public/fonts'
 
 const CategoryWrapper = styled.div`
   width: 100%;

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { colors } from '@/app/styles'
-import { D2CodingBold } from '@/app/fonts'
+import { D2CodingBold } from '@/public/fonts'
 
 const Paragraph = styled.h1`
   width: 100%;

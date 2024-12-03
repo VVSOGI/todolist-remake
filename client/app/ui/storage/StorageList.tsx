@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { SCROLL_BAR_SETTINGS, colors } from '@/app/styles'
 import { TodolistsBySortedDates } from '@/app/types'
 import { changeToLocaleTime } from '@/app/utils'
-import { D2CodingLight } from '@/app/fonts'
+import { D2CodingLight } from '@/public/fonts'
 
 const ListWrapper = styled.div`
   display: flex;
