@@ -24,6 +24,11 @@ const customViewports = {
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: (a, b) => {
+        return a.id === b.id ? 0 : a.id.localeCompare(b.id, undefined, { numeric: true })
+      }
+    },
     nextjs: {
       appDirectory: true
     },
