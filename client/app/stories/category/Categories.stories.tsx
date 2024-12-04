@@ -66,7 +66,7 @@ type Story = StoryObj<typeof categories>
 /**
  * 가장 기본적인 화면의 Categories 입니다.
  */
-export const StylesCategoriesTablet: Story = {
+export const StylesTablet: Story = {
   parameters: {
     viewport: {
       defaultViewport: 'tablet'
@@ -76,7 +76,7 @@ export const StylesCategoriesTablet: Story = {
   args: {}
 }
 
-export const StylesCategoriesDesktop: Story = {
+export const StylesDesktop: Story = {
   parameters: {
     viewport: {
       defaultViewport: 'desktop'
@@ -86,7 +86,7 @@ export const StylesCategoriesDesktop: Story = {
   args: {}
 }
 
-export const StylesCategoriesMobile: Story = {
+export const StylesMobile: Story = {
   parameters: {
     viewport: {
       defaultViewport: 'iphone14'

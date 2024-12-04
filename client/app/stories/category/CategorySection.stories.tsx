@@ -39,7 +39,7 @@ type Story = StoryObj<typeof categorySection>
 /**
  * 가장 기본적인 형태의 CategorySection 입니다.
  */
-export const TabletSection: Story = {
+export const StylesTablet: Story = {
   parameters: {
     viewport: {
       defaultViewport: 'tablet'
@@ -49,7 +49,7 @@ export const TabletSection: Story = {
   args: {}
 }
 
-export const DesktopSection: Story = {
+export const StylesDesktop: Story = {
   parameters: {
     viewport: {
       defaultViewport: 'desktop'
@@ -59,7 +59,7 @@ export const DesktopSection: Story = {
   args: {}
 }
 
-export const MobileSection: Story = {
+export const StylesMobile: Story = {
   parameters: {
     viewport: {
       defaultViewport: 'iphone14'
