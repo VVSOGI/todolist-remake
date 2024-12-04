@@ -6,7 +6,12 @@ const categorySection = {
   title: 'Example/Category/Section',
   component: CategorySection,
   parameters: {
-    layout: 'fullscreen'
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        component: '카테고리의 섹션 입니다. \n\n 해당 섹션에는 Title, CreateCategory, CategoryList를 배치합니다.'
+      }
+    }
   },
   argTypes: {},
   args: {
@@ -31,32 +36,35 @@ const categorySection = {
 export default categorySection
 type Story = StoryObj<typeof categorySection>
 
+/**
+ *
+ */
 export const DesktopSection: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'desktop'
+    }
+  },
+  tags: ['!autodocs'],
   args: {}
 }
 
 export const TabletSection: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'tablet'
+    }
+  },
+  tags: ['autodocs'],
   args: {}
 }
 
 export const MobileSection: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'iphone14'
+    }
+  },
+  tags: ['!autodocs'],
   args: {}
-}
-
-DesktopSection.parameters = {
-  viewport: {
-    defaultViewport: 'desktop'
-  }
-}
-
-TabletSection.parameters = {
-  viewport: {
-    defaultViewport: 'tablet'
-  }
-}
-
-MobileSection.parameters = {
-  viewport: {
-    defaultViewport: 'iphone14'
-  }
 }
