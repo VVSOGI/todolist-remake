@@ -30,6 +30,9 @@ const meta = {
       story: {
         inline: false,
         iframeHeight: 100
+      },
+      description: {
+        component: '기본 타이틀 디자인 입니다. \n\n 글꼴은 Naver D2 입니다.'
       }
     }
   },
@@ -37,7 +40,7 @@ const meta = {
   argTypes: {
     children: {
       control: 'text',
-      description: 'Enter the text that will go into the Title and pass it to the component.'
+      description: '제목에 들어갈 텍스트를 입력하고 컴포넌트에 전달합니다.'
     }
   },
   decorators: (Story) => (
