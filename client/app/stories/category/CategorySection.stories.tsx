@@ -3,7 +3,7 @@ import { CategorySection } from '@/app/ui'
 import { colors } from '@/app/styles'
 
 const categorySection = {
-  title: 'Example/Category/Section',
+  title: 'Example/Category/CategorySection',
   component: CategorySection,
   parameters: {
     layout: 'fullscreen',
