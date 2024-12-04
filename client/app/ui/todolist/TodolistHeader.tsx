@@ -40,6 +40,9 @@ const LinkWrapper = styled(Link)`
 
   &:hover {
     background-color: ${colors.gray_100};
+    svg {
+      color: ${colors.red_600};
+    }
   }
 
   &:active {
@@ -47,10 +50,6 @@ const LinkWrapper = styled(Link)`
     svg {
       color: ${colors.red_500};
     }
-  }
-
-  svg {
-    color: ${colors.red_600};
   }
 `
 
@@ -70,7 +69,7 @@ export function TodolistHeader({ category }: Props) {
           <FaBox />
         </LinkWrapper>
         <LinkWrapper href={`/`}>
-          <IoClose fontSize={`1.25rem`} />
+          <IoClose color={colors.red_600} fontSize={`1.25rem`} />
         </LinkWrapper>
       </IconsWrapper>
     </Header>
