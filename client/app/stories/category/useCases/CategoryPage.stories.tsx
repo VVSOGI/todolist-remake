@@ -1,4 +1,3 @@
-import { fn } from '@storybook/test'
 import { CategoryDisplay, CategorySection, CreateCategory, Title } from '@/app/ui'
 import { colors } from '@/app/styles'
 import { mockCategories } from '@/app/stories/mock'
@@ -11,11 +10,6 @@ const categoryPage = {
   },
   tags: ['!autodocs'],
   argTypes: {},
-  args: {
-    categoryTitle: '',
-    changeValue: fn(),
-    handleSubmit: fn()
-  },
   decorators: () => (
     <div
       style={{
