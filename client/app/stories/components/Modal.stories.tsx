@@ -17,11 +17,14 @@ const meta = {
     docs: {
       story: {
         inline: false,
-        iframeHeight: 700
+        iframeHeight: 400
+      },
+      description: {
+        component:
+          '해당 앱의 기본적인 형태의 모달입니다. \n\n 모달의 내용에 React Component를 넣어줘서 Style의 변경이 자유롭습니다. \n\n  Yes, No 두 가지 버튼만을 가지고있으며 해당 버튼을 클릭했을 때 발생할 이벤트는 부모 컴포넌트에서 전달받습니다.'
       }
     }
   },
-  tags: ['autodocs'],
   argTypes: {},
   args: {
     title: 'Example Modal',
@@ -33,13 +36,31 @@ const meta = {
 
 type Story = StoryObj<typeof meta>
 
-export const Modal: Story = {
-  args: {}
+export const StylesTablet: Story = {
+  args: {},
+  parameters: {
+    viewport: {
+      defaultViewport: 'tablet'
+    }
+  },
+  tags: ['autodocs']
 }
 
-Modal.parameters = {
-  viewport: {
-    defaultViewport: 'tablet'
+export const StylesDesktop: Story = {
+  args: {},
+  parameters: {
+    viewport: {
+      defaultViewport: 'desktop'
+    }
+  }
+}
+
+export const StylesMobile: Story = {
+  args: {},
+  parameters: {
+    viewport: {
+      defaultViewport: 'iphone14'
+    }
   }
 }
 
