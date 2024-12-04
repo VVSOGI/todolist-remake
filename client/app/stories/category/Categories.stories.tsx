@@ -32,11 +32,10 @@ const categories = {
     layout: 'center',
     docs: {
       description: {
-        component: '...'
+        component: '카테고리 리스트입니다. \n\n 여러 개의 CategoryItem을 볼 수 있으며 드래그 기능도 유효합니다.'
       }
     }
   },
-  tags: ['autodocs'],
   argTypes: {},
   args: {
     categories: mockCategories,
@@ -64,12 +63,35 @@ const categories = {
 export default categories
 type Story = StoryObj<typeof categories>
 
-export const StylesCategories: Story = {
+/**
+ * 가장 기본적인 화면의 Categories 입니다.
+ */
+export const StylesCategoriesTablet: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'tablet'
+    }
+  },
+  tags: ['autodocs'],
   args: {}
 }
 
-StylesCategories.parameters = {
-  viewport: {
-    defaultViewport: 'tablet'
-  }
+export const StylesCategoriesDesktop: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'desktop'
+    }
+  },
+  tags: ['!autodocs'],
+  args: {}
+}
+
+export const StylesCategoriesMobile: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'iphone14'
+    }
+  },
+  tags: ['!autodocs'],
+  args: {}
 }
