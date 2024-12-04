@@ -50,11 +50,10 @@ export default categoryItem
 type Story = StoryObj<typeof categoryItem>
 
 export const StylesCategoryItem: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'tablet'
+    }
+  },
   args: {}
-}
-
-StylesCategoryItem.parameters = {
-  viewport: {
-    defaultViewport: 'tablet'
-  }
 }

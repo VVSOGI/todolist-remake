@@ -37,18 +37,8 @@ export default categorySection
 type Story = StoryObj<typeof categorySection>
 
 /**
- *
+ * 가장 기본적인 형태의 CategorySection 입니다.
  */
-export const DesktopSection: Story = {
-  parameters: {
-    viewport: {
-      defaultViewport: 'desktop'
-    }
-  },
-  tags: ['!autodocs'],
-  args: {}
-}
-
 export const TabletSection: Story = {
   parameters: {
     viewport: {
@@ -56,6 +46,16 @@ export const TabletSection: Story = {
     }
   },
   tags: ['autodocs'],
+  args: {}
+}
+
+export const DesktopSection: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'desktop'
+    }
+  },
+  tags: ['!autodocs'],
   args: {}
 }
 
