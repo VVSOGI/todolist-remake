@@ -3,10 +3,15 @@ import { CategorySection } from '@/app/ui'
 import { colors } from '@/app/styles'
 
 const categorySection = {
-  title: 'Example/Category/Section',
+  title: 'Example/Category/CategorySection',
   component: CategorySection,
   parameters: {
-    layout: 'fullscreen'
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        component: '카테고리의 섹션 입니다. \n\n 해당 섹션에는 Title, CreateCategory, CategoryList를 배치합니다.'
+      }
+    }
   },
   argTypes: {},
   args: {
@@ -31,32 +36,35 @@ const categorySection = {
 export default categorySection
 type Story = StoryObj<typeof categorySection>
 
-export const DesktopSection: Story = {
+/**
+ * 가장 기본적인 형태의 CategorySection 입니다.
+ */
+export const StylesTablet: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'tablet'
+    }
+  },
+  tags: ['autodocs'],
   args: {}
 }
 
-export const TabletSection: Story = {
+export const StylesDesktop: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'desktop'
+    }
+  },
+  tags: ['!autodocs'],
   args: {}
 }
 
-export const MobileSection: Story = {
+export const StylesMobile: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'iphone14'
+    }
+  },
+  tags: ['!autodocs'],
   args: {}
-}
-
-DesktopSection.parameters = {
-  viewport: {
-    defaultViewport: 'desktop'
-  }
-}
-
-TabletSection.parameters = {
-  viewport: {
-    defaultViewport: 'tablet'
-  }
-}
-
-MobileSection.parameters = {
-  viewport: {
-    defaultViewport: 'iphone14'
-  }
 }
