@@ -1,10 +1,10 @@
 import React from 'react'
-import { Container, TodolistHeader, TodolistMain } from '@/app/ui'
+import { Container, TodolistHeader, TodolistSection } from '@/app/ui'
 
 export default function loading() {
   return (
     <Container>
-      <TodolistMain>
+      <TodolistSection>
         <TodolistHeader
           category={{
             id: '',
@@ -13,7 +13,7 @@ export default function loading() {
             createdAt: new Date('2000.01.01')
           }}
         />
-      </TodolistMain>
+      </TodolistSection>
     </Container>
   )
 }

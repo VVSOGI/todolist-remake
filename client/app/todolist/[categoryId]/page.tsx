@@ -1,5 +1,5 @@
 import { UUID } from '@/app/types'
-import { TodolistHeader, TodolistSection, TodolistMain } from '@/app/ui'
+import { TodolistHeader, TodolistDisplay, TodolistSection } from '@/app/ui'
 import { getCategoryById, getTodolistByCategoryId } from '@/app/utils'
 
 interface Props {
@@ -17,9 +17,9 @@ export default async function page({ params: { categoryId: categoryId } }: Props
   }
 
   return (
-    <TodolistMain>
+    <TodolistSection>
       <TodolistHeader category={category} />
-      <TodolistSection categoryId={category.id} todolist={todolist.data} getTodolist={getTodolist} />
-    </TodolistMain>
+      <TodolistDisplay categoryId={category.id} todolist={todolist.data} getTodolist={getTodolist} />
+    </TodolistSection>
   )
 }
