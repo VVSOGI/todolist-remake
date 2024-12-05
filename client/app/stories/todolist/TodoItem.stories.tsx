@@ -1,9 +1,11 @@
-import { Container, TodolistSection } from '@/app/ui'
+import { Container, TodoItem, TodolistSection } from '@/app/ui'
+import { mockTodoItems } from '../mock/todolist'
+import { fn } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const todolistMain = {
-  title: 'Example/Todolist/TodolistSection',
-  component: TodolistSection,
+  title: 'Example/Todolist/TodoItem',
+  component: TodoItem,
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -14,20 +16,24 @@ const todolistMain = {
   },
   argTypes: {},
   args: {
-    children: ''
+    todo: mockTodoItems[0],
+    handleCompleteTodo: fn(),
+    handleEditModalOpen: fn()
   },
   decorators: (Story) => (
     <Container>
-      <Story />
+      <TodolistSection>
+        <Story />
+      </TodolistSection>
     </Container>
   )
-} satisfies Meta<typeof TodolistSection>
+} satisfies Meta<typeof TodoItem>
 
 export default todolistMain
 type Story = StoryObj<typeof todolistMain>
 
 /**
- * 가장 기본적인 형태의 todolistMain 입니다.
+ * 가장 기본적인 형태의 TodoItem 입니다.
  */
 export const Styles1Tablet: Story = {
   parameters: {
