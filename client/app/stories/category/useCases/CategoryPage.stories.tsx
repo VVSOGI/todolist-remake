@@ -1,5 +1,4 @@
-import { CategoryDisplay, CategorySection, CreateCategory, Title } from '@/app/ui'
-import { colors } from '@/app/styles'
+import { CategoryDisplay, CategorySection, Container, CreateCategory, Title } from '@/app/ui'
 import { mockCategories } from '@/app/stories/mock'
 import type { StoryObj } from '@storybook/react'
 
@@ -11,22 +10,13 @@ const categoryPage = {
   tags: ['!autodocs'],
   argTypes: {},
   decorators: () => (
-    <div
-      style={{
-        width: '100%',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: colors.cloudBlue_200
-      }}
-    >
+    <Container>
       <CategorySection>
         <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
         <CreateCategory />
         <CategoryDisplay categories={mockCategories} />
       </CategorySection>
-    </div>
+    </Container>
   )
 }
 
