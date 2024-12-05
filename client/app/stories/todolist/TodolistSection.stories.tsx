@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Container, TodolistMain } from '@/app/ui'
+import { Container, TodolistSection } from '@/app/ui'
 
 const todolistMain = {
-  title: 'Example/Todolist/TodolistMain',
-  component: TodolistMain,
+  title: 'Example/Todolist/TodolistSection',
+  component: TodolistSection,
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -21,7 +21,7 @@ const todolistMain = {
       <Story />
     </Container>
   )
-} satisfies Meta<typeof TodolistMain>
+} satisfies Meta<typeof TodolistSection>
 
 export default todolistMain
 type Story = StoryObj<typeof todolistMain>
