@@ -36,7 +36,7 @@ const meta = {
 
 type Story = StoryObj<typeof meta>
 
-export const StylesTablet: Story = {
+export const Styles1Tablet: Story = {
   args: {},
   parameters: {
     viewport: {
@@ -46,7 +46,7 @@ export const StylesTablet: Story = {
   tags: ['autodocs']
 }
 
-export const StylesDesktop: Story = {
+export const Styles2Desktop: Story = {
   args: {},
   parameters: {
     viewport: {
@@ -55,7 +55,7 @@ export const StylesDesktop: Story = {
   }
 }
 
-export const StylesMobile: Story = {
+export const Styles3Mobile: Story = {
   args: {},
   parameters: {
     viewport: {
