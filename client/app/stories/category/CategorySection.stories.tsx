@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CategorySection } from '@/app/ui'
-import { colors } from '@/app/styles'
+import { CategorySection, Container } from '@/app/ui'
 
 const categorySection = {
   title: 'Example/Category/CategorySection',
@@ -18,18 +17,9 @@ const categorySection = {
     children: ''
   },
   decorators: (Story) => (
-    <div
-      style={{
-        width: '100%',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: colors.cloudBlue_200
-      }}
-    >
+    <Container>
       <Story />
-    </div>
+    </Container>
   )
 } satisfies Meta<typeof CategorySection>
 

@@ -1,8 +1,7 @@
 import { fn } from '@storybook/test'
-import { Categories, CategorySection } from '@/app/ui'
-import { colors } from '@/app/styles'
-import type { Meta, StoryObj } from '@storybook/react'
+import { Categories, CategorySection, Container } from '@/app/ui'
 import { mockCategories } from '@/app/stories/mock'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const categories = {
   title: 'Example/Category/Categories',
@@ -22,20 +21,11 @@ const categories = {
     openTargetModal: fn()
   },
   decorators: (Story) => (
-    <div
-      style={{
-        width: '100%',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: colors.cloudBlue_200
-      }}
-    >
+    <Container>
       <CategorySection>
         <Story />
       </CategorySection>
-    </div>
+    </Container>
   )
 } satisfies Meta<typeof Categories>
 

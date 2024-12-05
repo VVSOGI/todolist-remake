@@ -1,6 +1,5 @@
 import { fn } from '@storybook/test'
-import { CategorySection, CreateCategory } from '@/app/ui'
-import { colors } from '@/app/styles'
+import { CategorySection, Container, CreateCategory } from '@/app/ui'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const createCategory = {
@@ -20,20 +19,11 @@ const createCategory = {
     handleCreateTodo: fn()
   },
   decorators: (Story) => (
-    <div
-      style={{
-        width: '100%',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: colors.cloudBlue_200
-      }}
-    >
+    <Container>
       <CategorySection>
         <Story handleCreateTodo={() => {}} />
       </CategorySection>
-    </div>
+    </Container>
   )
 } satisfies Meta<typeof CreateCategory>
 
