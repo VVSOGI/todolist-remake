@@ -1,5 +1,5 @@
 import React from 'react'
-import { StorageHeader, StorageList, StorageSection } from '@/app/ui'
+import { StorageHeader, StorageListDisplay, StorageSection } from '@/app/ui'
 import { getCategoryById, getTodolistByDates } from '@/app/utils'
 import { UUID } from '@/app/types'
 
@@ -14,7 +14,7 @@ export default async function page({ params: { id: categoryId } }: Props) {
   return (
     <StorageSection>
       <StorageHeader category={category} />
-      <StorageList list={todolistsByDate.data} />
+      <StorageListDisplay list={todolistsByDate.data} />
     </StorageSection>
   )
 }

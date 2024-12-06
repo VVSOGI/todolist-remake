@@ -45,7 +45,7 @@ interface Props {
   list: TodolistsBySortedDates
 }
 
-export function StorageList({ list }: Props) {
+export function StorageListDisplay({ list }: Props) {
   return (
     <ListWrapper>
       {list.map((item) => (

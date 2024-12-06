@@ -1,3 +1,3 @@
 export * from './StorageSection'
 export * from './StorageHeader'
-export * from './StorageList'
+export * from './StorageListDisplay'
