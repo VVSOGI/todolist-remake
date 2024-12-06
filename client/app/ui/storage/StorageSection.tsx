@@ -17,6 +17,6 @@ interface Props {
   children: React.ReactNode
 }
 
-export function StorageMain({ children }: Props) {
+export function StorageSection({ children }: Props) {
   return <Main>{children}</Main>
 }
