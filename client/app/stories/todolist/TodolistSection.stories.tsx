@@ -1,7 +1,7 @@
 import { Container, TodolistSection } from '@/app/ui'
 import type { Meta, StoryObj } from '@storybook/react'
 
-const todolistMain = {
+const todolistSection = {
   title: 'Example/Todolist/TodolistSection',
   component: TodolistSection,
   parameters: {
@@ -23,11 +23,11 @@ const todolistMain = {
   )
 } satisfies Meta<typeof TodolistSection>
 
-export default todolistMain
-type Story = StoryObj<typeof todolistMain>
+export default todolistSection
+type Story = StoryObj<typeof todolistSection>
 
 /**
- * 가장 기본적인 형태의 todolistMain 입니다.
+ * 가장 기본적인 형태의 todolistSection 입니다.
  */
 export const Styles1Tablet: Story = {
   parameters: {
