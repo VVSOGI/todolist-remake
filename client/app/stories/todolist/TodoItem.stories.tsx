@@ -10,7 +10,8 @@ const todolistMain = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: '투두리스트의 섹션 입니다. \n\n 해당 섹션에는 TodolistHeader, TodolistSection을 배치합니다.'
+        component:
+          '투두리스트에 들어가는 1 개의 TodoItem입니다. \n\n 해당 아이템은 Hover 이벤트와 Checked 클릭 이벤트를 사용할 수 있습니다.'
       }
     }
   },
