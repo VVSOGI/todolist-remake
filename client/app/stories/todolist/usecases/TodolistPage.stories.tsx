@@ -30,9 +30,6 @@ const TodolistPage = {
 export default TodolistPage
 type Story = StoryObj<typeof TodolistPage>
 
-/**
- * 가장 기본적인 형태의 TodoItem 입니다.
- */
 export const Styles1Tablet: Story = {
   parameters: {
     viewport: {
