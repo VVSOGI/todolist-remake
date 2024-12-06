@@ -1,5 +1,5 @@
 import { Container, TodolistHeader, TodolistSection } from '@/app/ui'
-import { mockCategories } from '../mock'
+import { mockCategories } from '@/app/stories/mock'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const todolistHeader = {

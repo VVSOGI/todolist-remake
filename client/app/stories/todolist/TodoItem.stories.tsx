@@ -1,9 +1,9 @@
 import { Container, TodoItem, TodolistSection } from '@/app/ui'
-import { mockTodoItems } from '../mock/todolist'
+import { mockTodoItems } from '@/app/stories/mock'
 import { fn } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/react'
 
-const todolistMain = {
+const todoItem = {
   title: 'Example/Todolist/TodoItem',
   component: TodoItem,
   parameters: {
@@ -30,8 +30,8 @@ const todolistMain = {
   )
 } satisfies Meta<typeof TodoItem>
 
-export default todolistMain
-type Story = StoryObj<typeof todolistMain>
+export default todoItem
+type Story = StoryObj<typeof todoItem>
 
 /**
  * 가장 기본적인 형태의 TodoItem 입니다.
