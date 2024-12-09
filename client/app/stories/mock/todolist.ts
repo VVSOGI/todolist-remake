@@ -1,4 +1,4 @@
-import { Todo } from '@/app/types'
+import { Todo, TodolistsBySortedDates } from '@/app/types'
 
 export const mockTodoItems: Todo[] = [
   {
@@ -27,5 +27,37 @@ export const mockTodoItems: Todo[] = [
     createdAt: new Date(),
     updatedAt: new Date(),
     order: 2
+  }
+]
+
+const otherDateMockTodoitems: Todo[] = [
+  {
+    id: '4',
+    categoryId: '2',
+    title: 'Test todo item title -1',
+    checked: false,
+    createdAt: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+    updatedAt: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+    order: 3
+  },
+  {
+    id: '5',
+    categoryId: '2',
+    title: 'Test todo item title -2',
+    checked: false,
+    createdAt: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+    updatedAt: new Date(new Date().getTime() - 24 * 60 * 60 * 1000),
+    order: 4
+  }
+]
+
+export const mockStorageTodoLists: TodolistsBySortedDates = [
+  {
+    date: new Date().toLocaleString('ko').split('. ').slice(0, 3).join('. '),
+    todolists: mockTodoItems
+  },
+  {
+    date: new Date(new Date().getTime() - 24 * 60 * 60 * 1000).toLocaleString('ko').split('. ').slice(0, 3).join('. '),
+    todolists: otherDateMockTodoitems
   }
 ]
