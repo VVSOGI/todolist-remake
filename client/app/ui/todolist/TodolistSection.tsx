@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BORDER_RADIUS_SIZES, BOX_SHADOWS, colors } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, SECTION_MEDIA_QUERY, colors } from '@/app/styles'
 
 const Main = styled.main`
   position: relative;
-  width: 60.625rem;
   height: 30rem;
   display: flex;
   flex-direction: column;
@@ -12,6 +11,7 @@ const Main = styled.main`
   overflow-y: hidden;
   ${BORDER_RADIUS_SIZES.medium};
   ${BOX_SHADOWS.primary};
+  ${SECTION_MEDIA_QUERY};
 `
 
 interface Props {

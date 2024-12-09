@@ -1,6 +1,6 @@
-import { BORDER_RADIUS_SIZES, BOX_SHADOWS, colors } from '@/app/styles'
 import React from 'react'
 import styled from 'styled-components'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, SECTION_MEDIA_QUERY, colors } from '@/app/styles'
 
 const Main = styled.main`
   position: relative;
@@ -11,6 +11,7 @@ const Main = styled.main`
   background-color: ${colors.white};
   ${BOX_SHADOWS.primary};
   ${BORDER_RADIUS_SIZES.medium}
+  ${SECTION_MEDIA_QUERY};
 `
 
 interface Props {
