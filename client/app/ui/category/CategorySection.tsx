@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { BORDER_RADIUS_SIZES, BOX_SHADOWS, SECTION_MEDIA_QUERY, colors } from '@/app/styles'
 
-const Main = styled.section`
+const Section = styled.section`
   height: 30rem;
   display: flex;
   flex-direction: column;
@@ -18,5 +18,5 @@ interface Props {
 }
 
 export function CategorySection({ children }: Props) {
-  return <Main>{children}</Main>
+  return <Section>{children}</Section>
 }

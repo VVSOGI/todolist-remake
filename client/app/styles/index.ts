@@ -1,3 +1,3 @@
 export * from './colors'
 export * from './styles'
-export * from './sections'
+export * from './mediaQueries'
