@@ -1,17 +1,13 @@
-import { Container, StorageListDisplay, StorageSection } from '@/app/ui'
-import { mockStorageTodoLists } from '@/app/stories/mock'
+import { Container, StorageHeader, StorageListDisplay, StorageSection } from '@/app/ui'
+import { mockCategories, mockStorageTodoLists } from '@/app/stories/mock'
 import type { Meta, StoryObj } from '@storybook/react'
 
-const storageList = {
-  title: 'Example/Storage/StorageList',
+const StoragePage = {
+  title: 'Example/Storage/UseCase/Page',
   component: StorageListDisplay,
   parameters: {
     layout: 'fullscreen',
-    docs: {
-      description: {
-        component: 'StorageList에 해당하는 컴포넌트입니다. \n\n 완료된 투두리스트들 중 날짜별로 데이터를 구분해서 보여주는 기능입니다.'
-      }
-    }
+    tags: ['!autodocs']
   },
   argTypes: {},
   args: {
@@ -20,26 +16,22 @@ const storageList = {
   decorators: (Story) => (
     <Container>
       <StorageSection>
+        <StorageHeader category={mockCategories[0]} />
         <Story />
       </StorageSection>
     </Container>
   )
 } satisfies Meta<typeof StorageListDisplay>
 
-export default storageList
-type Story = StoryObj<typeof storageList>
+export default StoragePage
+type Story = StoryObj<typeof StoragePage>
 
-/**
- * 가장 기본적인 형태의 storageList 입니다.
- */
 export const Styles1Tablet: Story = {
   parameters: {
     viewport: {
       defaultViewport: 'tablet'
     }
-  },
-  tags: ['autodocs'],
-  args: {}
+  }
 }
 
 export const Styles2Desktop: Story = {
@@ -47,9 +39,7 @@ export const Styles2Desktop: Story = {
     viewport: {
       defaultViewport: 'desktop'
     }
-  },
-  tags: ['!autodocs'],
-  args: {}
+  }
 }
 
 export const Styles3Mobile: Story = {
@@ -57,7 +47,5 @@ export const Styles3Mobile: Story = {
     viewport: {
       defaultViewport: 'iphone14'
     }
-  },
-  tags: ['!autodocs'],
-  args: {}
+  }
 }

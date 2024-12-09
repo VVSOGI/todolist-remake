@@ -1,21 +1,21 @@
-import { Container, StorageListDisplay, StorageSection } from '@/app/ui'
-import { mockStorageTodoLists } from '@/app/stories/mock'
+import { Container, StorageHeader, StorageSection } from '@/app/ui'
+import { mockCategories } from '@/app/stories/mock'
 import type { Meta, StoryObj } from '@storybook/react'
 
-const storageList = {
-  title: 'Example/Storage/StorageList',
-  component: StorageListDisplay,
+const storageHeader = {
+  title: 'Example/Storage/StorageHeader',
+  component: StorageHeader,
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: 'StorageList에 해당하는 컴포넌트입니다. \n\n 완료된 투두리스트들 중 날짜별로 데이터를 구분해서 보여주는 기능입니다.'
+        component: 'StorageHeader에 해당하는 컴포넌트입니다. \n\n 우측 상단의 X 버튼을 누르면 이전 투두리스트 화면으로 넘어갑니다.'
       }
     }
   },
   argTypes: {},
   args: {
-    list: mockStorageTodoLists
+    category: mockCategories[0]
   },
   decorators: (Story) => (
     <Container>
@@ -24,13 +24,13 @@ const storageList = {
       </StorageSection>
     </Container>
   )
-} satisfies Meta<typeof StorageListDisplay>
+} satisfies Meta<typeof StorageHeader>
 
-export default storageList
-type Story = StoryObj<typeof storageList>
+export default storageHeader
+type Story = StoryObj<typeof storageHeader>
 
 /**
- * 가장 기본적인 형태의 storageList 입니다.
+ * 가장 기본적인 형태의 storageHeader 입니다.
  */
 export const Styles1Tablet: Story = {
   parameters: {
