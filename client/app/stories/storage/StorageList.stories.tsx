@@ -1,4 +1,4 @@
-import { Container, StorageListDisplay, TodolistSection } from '@/app/ui'
+import { Container, StorageListDisplay, StorageSection } from '@/app/ui'
 import { mockStorageTodoLists } from '@/app/stories/mock'
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -19,9 +19,9 @@ const storageList = {
   },
   decorators: (Story) => (
     <Container>
-      <TodolistSection>
+      <StorageSection>
         <Story />
-      </TodolistSection>
+      </StorageSection>
     </Container>
   )
 } satisfies Meta<typeof StorageListDisplay>

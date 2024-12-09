@@ -1,4 +1,4 @@
-import { Container, StorageHeader, TodolistSection } from '@/app/ui'
+import { Container, StorageHeader, StorageSection } from '@/app/ui'
 import { mockCategories } from '@/app/stories/mock'
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -19,9 +19,9 @@ const storageHeader = {
   },
   decorators: (Story) => (
     <Container>
-      <TodolistSection>
+      <StorageSection>
         <Story />
-      </TodolistSection>
+      </StorageSection>
     </Container>
   )
 } satisfies Meta<typeof StorageHeader>
