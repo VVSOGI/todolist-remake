@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BORDER_RADIUS_SIZES, BOX_SHADOWS, colors } from '@/app/styles'
-import { SECTION_MEDIA_QUERY } from '@/app/styles/sections'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, SECTION_MEDIA_QUERY, colors } from '@/app/styles'
 
 const Main = styled.section`
   height: 30rem;
