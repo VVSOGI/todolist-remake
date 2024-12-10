@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { Title } from '@/app/ui'
 import { Category } from '@/app/types'
-import { changeToLocaleTime } from '@/app/utils'
+import { changeToLocaleTime, changeToTime } from '@/app/utils'
 import { TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 import { FaBox } from 'react-icons/fa'
 import { IoClose } from 'react-icons/io5'
@@ -62,7 +62,7 @@ export function TodolistHeader({ category }: Props) {
     <Header>
       <div>
         <Title style={{ margin: 0, fontSize: '1.5rem' }}>{category.title.toUpperCase()}</Title>
-        <Time>{changeToLocaleTime(category.updatedAt)}</Time>
+        <Time>{changeToLocaleTime(category.updatedAt, changeToTime)}</Time>
       </div>
       <IconsWrapper>
         <LinkWrapper href={`/storage/${category.id}`}>
