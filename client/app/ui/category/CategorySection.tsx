@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BORDER_RADIUS_SIZES, BOX_SHADOWS, COLORS, CATEGORY_MEDIA_QUERY } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, COLORS, COMMON_MEDIA_QUERY } from '@/app/styles'
 
 const Section = styled.section`
   height: 30rem;
@@ -10,7 +10,7 @@ const Section = styled.section`
   background-color: ${COLORS.WHITE};
   ${BOX_SHADOWS.primary};
   ${BORDER_RADIUS_SIZES.medium};
-  ${CATEGORY_MEDIA_QUERY.section};
+  ${COMMON_MEDIA_QUERY.section};
 `
 
 interface Props {
