@@ -28,6 +28,8 @@ export enum sectionWidth {
   DESKTOP = '75rem'
 }
 
+export type categoryComponents = 'title' | 'time'
+
 /** Button **/
 
 export interface buttonStyleProps {
