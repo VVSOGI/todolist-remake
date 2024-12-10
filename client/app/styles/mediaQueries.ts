@@ -1,17 +1,19 @@
 import { RuleSet, css } from 'styled-components'
-import { MediaQueryStandard, SectionWidth } from '../types'
+import { mediaQueryStandard, sectionWidth } from '../types'
 
 export const SECTION_MEDIA_QUERY: RuleSet = css`
-  width: ${SectionWidth.TABLET};
+  width: ${sectionWidth.TABLET};
 
-  @media only screen and (max-width: ${MediaQueryStandard.MOBILE}) {
+  @media only screen and (max-width: ${mediaQueryStandard.MOBILE}) {
     width: 100%;
     height: 100%;
     border-radius: 0rem;
-    min-width: ${SectionWidth.MOBILE};
+    min-width: ${sectionWidth.MOBILE};
   }
 
-  @media only screen and (min-width: ${MediaQueryStandard.DESKTOP}) {
-    width: ${SectionWidth.DESKTOP};
+  @media only screen and (min-width: ${mediaQueryStandard.DESKTOP}) {
+    width: ${sectionWidth.DESKTOP};
   }
 `
+
+export const CATEGORY_MEDIA_QUERY = {}

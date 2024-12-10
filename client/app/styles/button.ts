@@ -1,9 +1,9 @@
 import { css } from 'styled-components'
 import { RuleSet } from 'styled-components/dist/types'
 import { colors } from '@/app/styles'
-import { ButtonSize, ButtonStyleProps, ButtonsTheme } from '@/app/types'
+import { buttonSize, buttonStyleProps, buttonsTheme } from '@/app/types'
 
-export const BUTTON_DEFAULT_STYLE = css<ButtonStyleProps>`
+export const BUTTON_DEFAULT_STYLE = css<buttonStyleProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,23 +12,23 @@ export const BUTTON_DEFAULT_STYLE = css<ButtonStyleProps>`
   user-select: none;
 
   background-color: ${(props) => {
-    return props.stylestheme === ButtonsTheme.BRIGHT ? colors.red_600 : colors.gray_500
+    return props.stylestheme === buttonsTheme.BRIGHT ? colors.red_600 : colors.gray_500
   }};
 
   &:hover {
     background-color: ${(props) => {
-      return props.stylestheme === ButtonsTheme.BRIGHT ? colors.red_500 : colors.gray_400
+      return props.stylestheme === buttonsTheme.BRIGHT ? colors.red_500 : colors.gray_400
     }};
   }
 
   &:active {
     background-color: ${(props) => {
-      return props.stylestheme === ButtonsTheme.BRIGHT ? colors.red_600 : colors.gray_500
+      return props.stylestheme === buttonsTheme.BRIGHT ? colors.red_600 : colors.gray_500
     }};
   }
 `
 
-export const BUTTON_SIZES: Record<ButtonSize, RuleSet> = {
+export const BUTTON_SIZES: Record<buttonSize, RuleSet> = {
   small: css`
     padding: 0.8rem 0.4rem;
     width: fit-content;
