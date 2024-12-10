@@ -1,7 +1,7 @@
 import { RuleSet, css } from 'styled-components'
-import { BorderRadius, BoxShadow, TodolistHeights } from '@/app/types'
+import { borderRadius, boxShadow, todolistHeights } from '@/app/types'
 
-export const BORDER_RADIUS_SIZES: Record<BorderRadius, RuleSet> = {
+export const BORDER_RADIUS_SIZES: Record<borderRadius, RuleSet> = {
   small: css`
     border-radius: 0.25rem;
   `,
@@ -15,13 +15,13 @@ export const BORDER_RADIUS_SIZES: Record<BorderRadius, RuleSet> = {
   `
 }
 
-export const BOX_SHADOWS: Record<BoxShadow, RuleSet> = {
+export const BOX_SHADOWS: Record<boxShadow, RuleSet> = {
   primary: css`
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
   `
 }
 
-export const TODOLIST_HEIGHTS: Record<TodolistHeights, string> = {
+export const TODOLIST_HEIGHTS: Record<todolistHeights, string> = {
   HEADER: '4.21875rem',
   CREATE_INPUT: '2.5rem'
 }

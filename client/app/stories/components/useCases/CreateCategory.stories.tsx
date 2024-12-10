@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import { CreateCategory } from '@/app/ui'
 import { colors } from '@/app/styles'
-import { MediaQueryStandard } from '@/app/types'
+import { mediaQueryStandard } from '@/app/types'
 
 const usecaseCatagoryButton = {
   title: 'Example/Components/UseCases',
@@ -25,7 +25,7 @@ const usecaseCatagoryButton = {
       <div
         style={{
           position: 'absolute',
-          maxWidth: MediaQueryStandard.TABLET,
+          maxWidth: mediaQueryStandard.TABLET,
           width: '100%',
           height: '80vh'
         }}
