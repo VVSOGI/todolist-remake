@@ -7,7 +7,7 @@ const Section = styled.section`
   height: 30rem;
   display: flex;
   flex-direction: column;
-  background-color: ${COLORS.white};
+  background-color: ${COLORS.WHITE};
   overflow-y: hidden;
   ${BORDER_RADIUS_SIZES.medium};
   ${BOX_SHADOWS.primary};

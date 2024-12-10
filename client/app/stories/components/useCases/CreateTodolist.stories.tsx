@@ -20,7 +20,7 @@ const usecaseTodolistButton = {
           maxWidth: mediaQueryStandard.TABLET,
           width: '100%',
           height: '80vh',
-          border: `1px solid ${COLORS.gray_200}`,
+          border: `1px solid ${COLORS.GRAY_200}`,
           borderRadius: '0.5rem'
         }}
       >

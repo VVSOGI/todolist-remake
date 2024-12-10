@@ -14,7 +14,7 @@ const ListWrapper = styled.div`
 
 const Contents = styled.div`
   padding: 1rem;
-  border-bottom: 1px solid ${COLORS.gray_200};
+  border-bottom: 1px solid ${COLORS.GRAY_200};
 `
 
 const Date = styled.div`
@@ -32,12 +32,12 @@ const UnorderList = styled.ul`
 const ListItemUpdatedAt = styled.div`
   margin-bottom: 0.25rem;
   font-size: 0.875rem;
-  color: ${COLORS.gray_500};
+  color: ${COLORS.GRAY_500};
 `
 
 const ListItemTitle = styled.div`
   font-size: 1.125rem;
-  color: ${COLORS.black};
+  color: ${COLORS.BLACK};
 `
 
 interface Props {

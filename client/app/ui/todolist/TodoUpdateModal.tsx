@@ -35,7 +35,7 @@ export function TodoUpdateModal({ placeholder, makeUpdatedTodo, handleEditModalC
       <EditModalContents>
         <div>Change Todo Title</div>
         <Input
-          style={{ width: '100%', border: `1px solid ${COLORS.gray_200}`, borderRadius: '0.25rem' }}
+          style={{ width: '100%', border: `1px solid ${COLORS.GRAY_200}`, borderRadius: '0.25rem' }}
           value={updateTitle}
           changeValue={(value) => setUpdateTitle(value)}
           handleSubmit={() => {}}

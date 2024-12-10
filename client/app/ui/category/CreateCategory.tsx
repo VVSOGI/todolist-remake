@@ -19,7 +19,7 @@ const Create = styled.div`
   min-height: 2.5rem;
   display: flex;
   justify-content: space-between;
-  border: 1px solid ${COLORS.gray_200};
+  border: 1px solid ${COLORS.GRAY_200};
   overflow: hidden;
   ${BORDER_RADIUS_SIZES.small}
 `
@@ -27,7 +27,7 @@ const Create = styled.div`
 const CreateError = styled.p`
   margin: 0.5625rem 0;
   font-size: 0.875rem;
-  color: ${COLORS.red_600};
+  color: ${COLORS.RED_600};
 `
 
 export function CreateCategory() {

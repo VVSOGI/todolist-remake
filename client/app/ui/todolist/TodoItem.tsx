@@ -14,12 +14,12 @@ const TodoWrapper = styled.div<TodolistWrapperStylesProps>`
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1rem;
-  background-color: ${COLORS.white};
+  background-color: ${COLORS.WHITE};
   opacity: ${({ isDragging }) => (isDragging ? 0.5 : 1)};
   transform: ${({ stringTransform }) => CSS.Translate.toString(stringTransform)};
   transition: ${({ transition }) => transition};
   border: ${({ isDragging }) => (isDragging ? '1px solid red' : 'none')};
-  border-bottom: ${({ isDragging }) => (isDragging ? '1px solid red' : `1px solid ${COLORS.gray_200}`)};
+  border-bottom: ${({ isDragging }) => (isDragging ? '1px solid red' : `1px solid ${COLORS.GRAY_200}`)};
   z-index: ${({ isDragging }) => (isDragging ? '100' : `1`)};
   user-select: none;
   cursor: move;
@@ -45,11 +45,11 @@ const TodoIcons = styled.i`
     font-size: 1.5rem;
 
     &:hover {
-      background-color: ${COLORS.gray_200};
+      background-color: ${COLORS.GRAY_200};
     }
 
     &:active {
-      background-color: ${COLORS.gray_100};
+      background-color: ${COLORS.GRAY_100};
     }
 
     ${BORDER_RADIUS_SIZES.medium}

@@ -7,7 +7,7 @@ const Paragraph = styled.h1`
   width: 100%;
   margin-bottom: 1.5rem;
   font-size: 1.125rem;
-  color: ${COLORS.red_600};
+  color: ${COLORS.RED_600};
 `
 
 interface Props {

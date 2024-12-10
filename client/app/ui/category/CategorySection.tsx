@@ -7,7 +7,7 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
-  background-color: ${COLORS.white};
+  background-color: ${COLORS.WHITE};
   ${BOX_SHADOWS.primary};
   ${BORDER_RADIUS_SIZES.medium};
   ${SECTION_MEDIA_QUERY};

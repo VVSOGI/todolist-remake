@@ -34,7 +34,7 @@ const usecaseCatagoryButton = {
         <div
           style={{
             height: '50%',
-            border: `1px solid ${COLORS.gray_200}`,
+            border: `1px solid ${COLORS.GRAY_200}`,
             borderRadius: '0.25rem'
           }}
         />

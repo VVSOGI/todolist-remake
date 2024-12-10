@@ -8,7 +8,7 @@ const Section = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${COLORS.cloudBlue_200};
+  background-color: ${COLORS.CLOUD_BLUE_200};
 `
 
 interface Props {

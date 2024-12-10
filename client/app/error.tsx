@@ -12,7 +12,7 @@ const ErrorSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: ${COLORS.white};
+  background-color: ${COLORS.WHITE};
   ${BOX_SHADOWS.primary};
   ${BORDER_RADIUS_SIZES.medium};
 `

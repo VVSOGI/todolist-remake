@@ -12,7 +12,7 @@ const CreateTodolistWrapper = styled.div`
   min-height: ${TODOLIST_HEIGHTS.CREATE_INPUT};
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid ${COLORS.gray_200};
+  border-top: 1px solid ${COLORS.GRAY_200};
   border-bottom-right-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
   overflow: hidden;

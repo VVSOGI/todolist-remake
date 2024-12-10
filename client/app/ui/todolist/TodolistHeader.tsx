@@ -13,8 +13,8 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid ${COLORS.gray_200};
-  background-color: ${COLORS.white};
+  border-bottom: 1px solid ${COLORS.GRAY_200};
+  background-color: ${COLORS.WHITE};
   z-index: 100;
 `
 
@@ -39,16 +39,16 @@ const LinkWrapper = styled(Link)`
   cursor: pointer;
 
   &:hover {
-    background-color: ${COLORS.gray_100};
+    background-color: ${COLORS.GRAY_100};
     svg {
-      color: ${COLORS.red_600};
+      color: ${COLORS.RED_600};
     }
   }
 
   &:active {
-    background-color: ${COLORS.white};
+    background-color: ${COLORS.WHITE};
     svg {
-      color: ${COLORS.red_500};
+      color: ${COLORS.RED_500};
     }
   }
 `
@@ -69,7 +69,7 @@ export function TodolistHeader({ category }: Props) {
           <FaBox />
         </LinkWrapper>
         <LinkWrapper href={`/`}>
-          <IoClose color={COLORS.red_600} fontSize={`1.25rem`} />
+          <IoClose color={COLORS.RED_600} fontSize={`1.25rem`} />
         </LinkWrapper>
       </IconsWrapper>
     </Header>

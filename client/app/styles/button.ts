@@ -7,23 +7,23 @@ export const BUTTON_DEFAULT_STYLE = css<buttonStyleProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${COLORS.white};
+  color: ${COLORS.WHITE};
   cursor: pointer;
   user-select: none;
 
   background-color: ${(props) => {
-    return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.red_600 : COLORS.gray_500
+    return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.RED_600 : COLORS.GRAY_500
   }};
 
   &:hover {
     background-color: ${(props) => {
-      return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.red_500 : COLORS.gray_400
+      return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.RED_500 : COLORS.GRAY_400
     }};
   }
 
   &:active {
     background-color: ${(props) => {
-      return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.red_600 : COLORS.gray_500
+      return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.RED_600 : COLORS.GRAY_500
     }};
   }
 `

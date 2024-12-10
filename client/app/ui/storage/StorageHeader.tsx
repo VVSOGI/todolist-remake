@@ -12,7 +12,7 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid ${COLORS.gray_200};
+  border-bottom: 1px solid ${COLORS.GRAY_200};
 `
 
 const Time = styled.div`
@@ -30,19 +30,19 @@ const LinkWrapper = styled(Link)`
   cursor: pointer;
 
   &:hover {
-    background-color: ${COLORS.gray_100};
+    background-color: ${COLORS.GRAY_100};
   }
 
   &:active {
-    background-color: ${COLORS.white};
+    background-color: ${COLORS.WHITE};
     svg {
-      color: ${COLORS.red_500};
+      color: ${COLORS.RED_500};
     }
   }
 
   svg {
     font-size: 1.25rem;
-    color: ${COLORS.red_600};
+    color: ${COLORS.RED_600};
   }
 `
 

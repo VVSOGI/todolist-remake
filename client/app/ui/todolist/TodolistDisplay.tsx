@@ -17,7 +17,7 @@ const EmptyTodolist = styled.div`
   align-items: center;
   gap: 0.875rem;
   padding: 0.75rem 1rem;
-  color: ${COLORS.gray_300};
+  color: ${COLORS.GRAY_300};
 `
 interface Props {
   categoryId: string
