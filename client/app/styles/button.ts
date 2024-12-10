@@ -1,29 +1,29 @@
 import { css } from 'styled-components'
 import { RuleSet } from 'styled-components/dist/types'
-import { colors } from '@/app/styles'
+import { COLORS } from '@/app/styles'
 import { buttonSize, buttonStyleProps, buttonsTheme } from '@/app/types'
 
 export const BUTTON_DEFAULT_STYLE = css<buttonStyleProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${colors.white};
+  color: ${COLORS.white};
   cursor: pointer;
   user-select: none;
 
   background-color: ${(props) => {
-    return props.stylestheme === buttonsTheme.BRIGHT ? colors.red_600 : colors.gray_500
+    return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.red_600 : COLORS.gray_500
   }};
 
   &:hover {
     background-color: ${(props) => {
-      return props.stylestheme === buttonsTheme.BRIGHT ? colors.red_500 : colors.gray_400
+      return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.red_500 : COLORS.gray_400
     }};
   }
 
   &:active {
     background-color: ${(props) => {
-      return props.stylestheme === buttonsTheme.BRIGHT ? colors.red_600 : colors.gray_500
+      return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.red_600 : COLORS.gray_500
     }};
   }
 `

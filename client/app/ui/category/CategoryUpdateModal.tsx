@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { AgreementModal, Input } from '@/app/ui'
-import { colors } from '@/app/styles'
+import { COLORS } from '@/app/styles'
 
 const UpdateModalContents = styled.div`
   width: 100%;
@@ -25,7 +25,7 @@ export function CategoryUpdateModal({ placeholder, closeModal, onClickUpdateButt
       <UpdateModalContents>
         <div>Change Title this category</div>
         <Input
-          style={{ width: '100%', border: `1px solid ${colors.gray_200}`, borderRadius: '0.25rem' }}
+          style={{ width: '100%', border: `1px solid ${COLORS.gray_200}`, borderRadius: '0.25rem' }}
           value={updateTitle}
           changeValue={(value) => setUpdateTitle(value)}
           handleSubmit={() => {}}

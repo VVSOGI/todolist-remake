@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Title } from '@/app/ui'
 import { Category } from '@/app/types'
 import { changeToLocaleTime } from '@/app/utils'
-import { TODOLIST_HEIGHTS, colors } from '@/app/styles'
+import { TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 import { FaBox } from 'react-icons/fa'
 import { IoClose } from 'react-icons/io5'
 
@@ -13,8 +13,8 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid ${colors.gray_200};
-  background-color: ${colors.white};
+  border-bottom: 1px solid ${COLORS.gray_200};
+  background-color: ${COLORS.white};
   z-index: 100;
 `
 
@@ -39,16 +39,16 @@ const LinkWrapper = styled(Link)`
   cursor: pointer;
 
   &:hover {
-    background-color: ${colors.gray_100};
+    background-color: ${COLORS.gray_100};
     svg {
-      color: ${colors.red_600};
+      color: ${COLORS.red_600};
     }
   }
 
   &:active {
-    background-color: ${colors.white};
+    background-color: ${COLORS.white};
     svg {
-      color: ${colors.red_500};
+      color: ${COLORS.red_500};
     }
   }
 `
@@ -69,7 +69,7 @@ export function TodolistHeader({ category }: Props) {
           <FaBox />
         </LinkWrapper>
         <LinkWrapper href={`/`}>
-          <IoClose color={colors.red_600} fontSize={`1.25rem`} />
+          <IoClose color={COLORS.red_600} fontSize={`1.25rem`} />
         </LinkWrapper>
       </IconsWrapper>
     </Header>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BORDER_RADIUS_SIZES, BOX_SHADOWS, SECTION_MEDIA_QUERY, colors } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, SECTION_MEDIA_QUERY, COLORS } from '@/app/styles'
 
 const Section = styled.section`
   position: relative;
@@ -8,7 +8,7 @@ const Section = styled.section`
   height: 30rem;
   display: flex;
   flex-direction: column;
-  background-color: ${colors.white};
+  background-color: ${COLORS.white};
   ${BOX_SHADOWS.primary};
   ${BORDER_RADIUS_SIZES.medium}
   ${SECTION_MEDIA_QUERY};

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useRouter } from 'next/navigation'
 import { fetchToWebServer } from '@/app/utils/customFetch'
 import { Button, Input } from '@/app/ui'
-import { BORDER_RADIUS_SIZES, colors } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, COLORS } from '@/app/styles'
 import { buttonSize } from '@/app/types'
 
 const CreateCategoryWrapper = styled.div`
@@ -19,7 +19,7 @@ const Create = styled.div`
   min-height: 2.5rem;
   display: flex;
   justify-content: space-between;
-  border: 1px solid ${colors.gray_200};
+  border: 1px solid ${COLORS.gray_200};
   overflow: hidden;
   ${BORDER_RADIUS_SIZES.small}
 `
@@ -27,7 +27,7 @@ const Create = styled.div`
 const CreateError = styled.p`
   margin: 0.5625rem 0;
   font-size: 0.875rem;
-  color: ${colors.red_600};
+  color: ${COLORS.red_600};
 `
 
 export function CreateCategory() {

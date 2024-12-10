@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { colors } from '@/app/styles'
+import { COLORS } from '@/app/styles'
 import { D2CodingBold } from '@/public/fonts'
 
 const Paragraph = styled.h1`
   width: 100%;
   margin-bottom: 1.5rem;
   font-size: 1.125rem;
-  color: ${colors.red_600};
+  color: ${COLORS.red_600};
 `
 
 interface Props {

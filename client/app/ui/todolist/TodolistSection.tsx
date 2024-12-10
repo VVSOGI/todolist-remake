@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BORDER_RADIUS_SIZES, BOX_SHADOWS, SECTION_MEDIA_QUERY, colors } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, SECTION_MEDIA_QUERY, COLORS } from '@/app/styles'
 
 const Section = styled.section`
   position: relative;
   height: 30rem;
   display: flex;
   flex-direction: column;
-  background-color: ${colors.white};
+  background-color: ${COLORS.white};
   overflow-y: hidden;
   ${BORDER_RADIUS_SIZES.medium};
   ${BOX_SHADOWS.primary};
