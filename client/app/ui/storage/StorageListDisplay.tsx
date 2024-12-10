@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { SCROLL_BAR_SETTINGS, COLORS } from '@/app/styles'
 import { TodolistsBySortedDates } from '@/app/types'
 import { D2CodingLight } from '@/public/fonts'
-import { changeToLocaleTime } from '@/app/utils'
+import { changeToLocaleTime, changeToTime } from '@/app/utils'
 
 const ListWrapper = styled.div`
   display: flex;
@@ -53,7 +53,9 @@ export function StorageListDisplay({ list }: Props) {
           <UnorderList>
             {item.todolists.map((todolist) => (
               <div key={todolist.id}>
-                <ListItemUpdatedAt className={D2CodingLight.className}>{changeToLocaleTime(todolist.updatedAt)}</ListItemUpdatedAt>
+                <ListItemUpdatedAt className={D2CodingLight.className}>
+                  {changeToLocaleTime(todolist.updatedAt, changeToTime)}
+                </ListItemUpdatedAt>
                 <ListItemTitle>{todolist.title}</ListItemTitle>
               </div>
             ))}
