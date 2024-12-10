@@ -1,7 +1,7 @@
 import { RuleSet, css } from 'styled-components'
-import { categoryComponents, mediaQueryStandard, sectionWidth } from '@/app/types'
+import { categoryComponents, commonComponents, mediaQueryStandard, sectionWidth } from '@/app/types'
 
-export const CATEGORY_MEDIA_QUERY: Record<categoryComponents, RuleSet> = {
+export const COMMON_MEDIA_QUERY: Record<commonComponents, RuleSet> = {
   section: css`
     width: ${sectionWidth.TABLET};
 
@@ -15,8 +15,10 @@ export const CATEGORY_MEDIA_QUERY: Record<categoryComponents, RuleSet> = {
     @media only screen and (min-width: ${mediaQueryStandard.DESKTOP}) {
       width: ${sectionWidth.DESKTOP};
     }
-  `,
+  `
+}
 
+export const CATEGORY_MEDIA_QUERY: Record<categoryComponents, RuleSet> = {
   title: css`
     @media only screen and (max-width: ${mediaQueryStandard.MOBILE}) {
       font-size: 0.875rem;
