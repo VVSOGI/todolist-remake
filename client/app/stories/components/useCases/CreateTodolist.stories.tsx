@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import { CreateTodolist } from '@/app/ui'
-import { colors } from '@/app/styles'
+import { COLORS } from '@/app/styles'
 import { mediaQueryStandard } from '@/app/types'
 
 const usecaseTodolistButton = {
@@ -20,7 +20,7 @@ const usecaseTodolistButton = {
           maxWidth: mediaQueryStandard.TABLET,
           width: '100%',
           height: '80vh',
-          border: `1px solid ${colors.gray_200}`,
+          border: `1px solid ${COLORS.GRAY_200}`,
           borderRadius: '0.5rem'
         }}
       >

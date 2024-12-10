@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { AgreementModal, Input } from '@/app/ui'
-import { colors } from '@/app/styles'
+import { COLORS } from '@/app/styles'
 import { UpdateTodoDTO } from '@/app/types'
 
 const EditModalContents = styled.div`
@@ -35,7 +35,7 @@ export function TodoUpdateModal({ placeholder, makeUpdatedTodo, handleEditModalC
       <EditModalContents>
         <div>Change Todo Title</div>
         <Input
-          style={{ width: '100%', border: `1px solid ${colors.gray_200}`, borderRadius: '0.25rem' }}
+          style={{ width: '100%', border: `1px solid ${COLORS.GRAY_200}`, borderRadius: '0.25rem' }}
           value={updateTitle}
           changeValue={(value) => setUpdateTitle(value)}
           handleSubmit={() => {}}

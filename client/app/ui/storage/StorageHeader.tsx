@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Title } from '@/app/ui'
 import { Category } from '@/app/types'
 import { changeToLocaleTime } from '@/app/utils'
-import { TODOLIST_HEIGHTS, colors } from '@/app/styles'
+import { TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 import { IoClose } from 'react-icons/io5'
 
 const Header = styled.div`
@@ -12,7 +12,7 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid ${colors.gray_200};
+  border-bottom: 1px solid ${COLORS.GRAY_200};
 `
 
 const Time = styled.div`
@@ -30,19 +30,19 @@ const LinkWrapper = styled(Link)`
   cursor: pointer;
 
   &:hover {
-    background-color: ${colors.gray_100};
+    background-color: ${COLORS.GRAY_100};
   }
 
   &:active {
-    background-color: ${colors.white};
+    background-color: ${COLORS.WHITE};
     svg {
-      color: ${colors.red_500};
+      color: ${COLORS.RED_500};
     }
   }
 
   svg {
     font-size: 1.25rem;
-    color: ${colors.red_600};
+    color: ${COLORS.RED_600};
   }
 `
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { TODOLIST_HEIGHTS, colors } from '@/app/styles'
+import { TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 import { Button, Input } from '@/app/ui'
 import { buttonSize } from '@/app/types'
 
@@ -12,7 +12,7 @@ const CreateTodolistWrapper = styled.div`
   min-height: ${TODOLIST_HEIGHTS.CREATE_INPUT};
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid ${colors.gray_200};
+  border-top: 1px solid ${COLORS.GRAY_200};
   border-bottom-right-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
   overflow: hidden;

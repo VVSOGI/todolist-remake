@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Todo } from '@/app/types'
-import { SCROLL_BAR_SETTINGS, TODOLIST_HEIGHTS, colors } from '@/app/styles'
+import { SCROLL_BAR_SETTINGS, TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 import { CreateTodolist, DraggableTodolist, TodoUpdateModal } from '@/app/ui'
 import { useTodolist, useTodolistEditModal } from '@/app/utils'
 
@@ -17,7 +17,7 @@ const EmptyTodolist = styled.div`
   align-items: center;
   gap: 0.875rem;
   padding: 0.75rem 1rem;
-  color: ${colors.gray_300};
+  color: ${COLORS.GRAY_300};
 `
 interface Props {
   categoryId: string

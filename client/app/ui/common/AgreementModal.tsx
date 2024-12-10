@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { IoMdClose } from 'react-icons/io'
-import { BORDER_RADIUS_SIZES, colors } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, COLORS } from '@/app/styles'
 import { buttonSize, buttonsTheme } from '@/app/types'
 import { Button } from '.'
 
@@ -24,7 +24,7 @@ const ModalWrapper = styled.div`
   min-height: 18.75rem;
   display: flex;
   flex-direction: column;
-  background-color: ${colors.white};
+  background-color: ${COLORS.WHITE};
   box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.2);
   ${BORDER_RADIUS_SIZES.medium}
 `
@@ -35,7 +35,7 @@ const ModalHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem;
-  border-bottom: 1px solid ${colors.gray_200};
+  border-bottom: 1px solid ${COLORS.GRAY_200};
 `
 
 const ModalTitle = styled.span`
@@ -53,11 +53,11 @@ const ModalCloseIcon = styled.div`
   cursor: pointer;
 
   &:hover {
-    color: ${colors.gray_400};
+    color: ${COLORS.GRAY_400};
   }
 
   &:active {
-    color: ${colors.gray_500};
+    color: ${COLORS.GRAY_500};
   }
 `
 
@@ -66,7 +66,7 @@ const ModalContentsWrapper = styled.div`
   flex: 1;
   padding: 0rem 1.5rem;
   font-size: 1.125rem;
-  border-bottom: 1px solid ${colors.gray_200};
+  border-bottom: 1px solid ${COLORS.GRAY_200};
 `
 
 const ModalButtonsWrapper = styled.div`

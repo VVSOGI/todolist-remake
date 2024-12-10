@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import { CreateCategory } from '@/app/ui'
-import { colors } from '@/app/styles'
+import { COLORS } from '@/app/styles'
 import { mediaQueryStandard } from '@/app/types'
 
 const usecaseCatagoryButton = {
@@ -34,7 +34,7 @@ const usecaseCatagoryButton = {
         <div
           style={{
             height: '50%',
-            border: `1px solid ${colors.gray_200}`,
+            border: `1px solid ${COLORS.GRAY_200}`,
             borderRadius: '0.25rem'
           }}
         />

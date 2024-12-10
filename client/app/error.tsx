@@ -1,7 +1,7 @@
 'use client'
 
 import styled from 'styled-components'
-import { BORDER_RADIUS_SIZES, BOX_SHADOWS, colors } from './styles'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, COLORS } from './styles'
 import { Button, Container } from './ui'
 import { useEffect, useState } from 'react'
 import { InternalError, buttonSize, mediaQueryStandard } from './types'
@@ -12,7 +12,7 @@ const ErrorSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: ${colors.white};
+  background-color: ${COLORS.WHITE};
   ${BOX_SHADOWS.primary};
   ${BORDER_RADIUS_SIZES.medium};
 `

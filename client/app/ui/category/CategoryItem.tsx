@@ -1,6 +1,6 @@
 import React, { memo, useRef } from 'react'
 import styled from 'styled-components'
-import { colors } from '@/app/styles'
+import { CATEGORY_MEDIA_QUERY, COLORS } from '@/app/styles'
 import { mouseEvent, changeToLocaleTime } from '@/app/utils'
 import { Category, buttonSize, buttonsTheme } from '@/app/types'
 import { Button } from '@/app/ui'
@@ -14,7 +14,7 @@ const CategoryWrapper = styled.div`
   height: 3rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid ${colors.gray_200};
+  border-bottom: 1px solid ${COLORS.GRAY_200};
 `
 
 const CategoryButton = styled.button`
@@ -27,15 +27,15 @@ const CategoryButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: ${colors.gray_100};
+    background-color: ${COLORS.GRAY_100};
 
     h2 {
-      color: ${colors.black};
+      color: ${COLORS.BLACK};
     }
   }
 
   &:active {
-    background-color: ${colors.gray_200};
+    background-color: ${COLORS.GRAY_200};
   }
 `
 
@@ -53,18 +53,21 @@ const ContentsWrapper = styled.div`
 const CategoryTitle = styled.h2`
   font-size: 1rem;
   font-weight: 500;
-  color: ${colors.gray_500};
+  color: ${COLORS.GRAY_500};
+  ${CATEGORY_MEDIA_QUERY.title}
 `
 
 const CategoryTime = styled.div`
   display: flex;
   gap: 0.5rem;
   font-size: 0.875rem;
-  color: ${colors.gray_500};
+  color: ${COLORS.GRAY_500};
   span {
-    color: ${colors.red_600};
+    color: ${COLORS.RED_600};
     font-weight: 400;
   }
+
+  ${CATEGORY_MEDIA_QUERY.time}
 `
 
 const HiddenButtonsWrapper = styled.div`

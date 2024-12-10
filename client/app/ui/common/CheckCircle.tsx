@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { colors } from '@/app/styles'
+import { COLORS } from '@/app/styles'
 import { GiCheckMark } from 'react-icons/gi'
 
 const Circle = styled.div`
@@ -9,20 +9,20 @@ const Circle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${colors.white};
-  border: 1px solid ${colors.gray_300};
+  background-color: ${COLORS.WHITE};
+  border: 1px solid ${COLORS.GRAY_300};
   border-radius: 50%;
   cursor: pointer;
 
   &:hover {
     svg {
-      color: ${colors.red_400};
+      color: ${COLORS.RED_400};
     }
   }
 `
 
 const CheckIcon = styled(GiCheckMark)`
-  color: ${colors.white};
+  color: ${COLORS.WHITE};
   font-size: 0.625rem;
   transition: 0.2s;
 `
