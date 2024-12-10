@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BORDER_RADIUS_SIZES, BOX_SHADOWS, COLORS, CATEGORY_MEDIA_QUERY } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, COLORS, COMMON_MEDIA_QUERY } from '@/app/styles'
 
 const Section = styled.section`
   position: relative;
@@ -11,7 +11,7 @@ const Section = styled.section`
   overflow-y: hidden;
   ${BORDER_RADIUS_SIZES.medium};
   ${BOX_SHADOWS.primary};
-  ${CATEGORY_MEDIA_QUERY.section};
+  ${COMMON_MEDIA_QUERY.section};
 `
 
 interface Props {

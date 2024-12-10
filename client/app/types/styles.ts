@@ -10,6 +10,8 @@ export enum boxShadow {
   PRIMARY = 'primary'
 }
 
+export type commonComponents = 'section'
+
 /** Todolist **/
 
 export type todolistHeights = 'HEADER' | 'CREATE_INPUT'
@@ -28,7 +30,7 @@ export enum sectionWidth {
   DESKTOP = '75rem'
 }
 
-export type categoryComponents = 'section' | 'title' | 'time'
+export type categoryComponents = 'title' | 'time'
 
 /** Button **/
 
