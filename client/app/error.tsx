@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { BORDER_RADIUS_SIZES, BOX_SHADOWS, COLORS } from './styles'
 import { Button, Container } from './ui'
 import { useEffect, useState } from 'react'
-import { InternalError, buttonSize, mediaQueryStandard } from './types'
+import { InternalError, mediaQueryStandard } from './types'
 
 const ErrorSection = styled.section`
   width: ${mediaQueryStandard.TABLET};
@@ -49,7 +49,7 @@ export default function error(err: any) {
         <ErrorMessage>{error && error.message}</ErrorMessage>
         <ErrorStatus>Error Status {error && error.status}</ErrorStatus>
         <ButtonWrapper>
-          <Button size={buttonSize.MEDIUM} style={{ width: '9rem', borderRadius: '0.5rem' }} onClick={err.reset}>
+          <Button size="medium" style={{ width: '9rem', borderRadius: '0.5rem' }} onClick={err.reset}>
             Try Reset
           </Button>
         </ButtonWrapper>

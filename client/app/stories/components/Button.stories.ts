@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
-import { buttonSize, buttonsTheme } from '@/app/types'
+import { buttonsTheme } from '@/app/types'
 import { Button } from '@/app/ui/common'
 
 const meta = {
@@ -22,7 +22,7 @@ const meta = {
     size: {
       control: 'select',
       description: 'Choose your size',
-      options: [buttonSize.SMALL, buttonSize.MEDIUM, buttonSize.LARGE]
+      options: ['small', 'medium', 'large']
     },
     onClick: {
       description: 'Event occur when clicked'
@@ -50,19 +50,19 @@ type Story = StoryObj<typeof meta>
  */
 export const Small: Story = {
   args: {
-    size: buttonSize.SMALL
+    size: 'small'
   }
 }
 
 export const Medium: Story = {
   args: {
-    size: buttonSize.MEDIUM
+    size: 'medium'
   }
 }
 
 export const Large: Story = {
   args: {
-    size: buttonSize.LARGE
+    size: 'large'
   }
 }
 

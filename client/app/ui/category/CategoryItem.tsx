@@ -2,7 +2,7 @@ import React, { memo, useRef } from 'react'
 import styled from 'styled-components'
 import { CATEGORY_MEDIA_QUERY, COLORS } from '@/app/styles'
 import { mouseEvent, changeToLocaleTime } from '@/app/utils'
-import { Category, buttonSize, buttonsTheme } from '@/app/types'
+import { Category, buttonsTheme } from '@/app/types'
 import { Button } from '@/app/ui'
 import { useRouter } from 'next/navigation'
 import { FaTrashAlt } from 'react-icons/fa'
@@ -135,10 +135,10 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal }: Props
         </ContentsWrapper>
       </CategoryButton>
       <HiddenButtonsWrapper id={`${category.id}-hidden`}>
-        <Button size={buttonSize.SMALL} theme={buttonsTheme.DARK} onClick={() => openTargetModal(category)}>
+        <Button size="small" theme={buttonsTheme.DARK} onClick={() => openTargetModal(category)}>
           <IoSettings />
         </Button>
-        <Button size={buttonSize.SMALL} onClick={() => openDeleteModal(category)}>
+        <Button size="small" onClick={() => openDeleteModal(category)}>
           <FaTrashAlt />
         </Button>
       </HiddenButtonsWrapper>
