@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { IoMdClose } from 'react-icons/io'
 import { BORDER_RADIUS_SIZES, COLORS } from '@/app/styles'
 import { buttonsTheme } from '@/app/types'
-import { Button } from '.'
+import { Button } from '@/app/ui'
 
 const ModalContainer = styled.div`
   position: fixed;
