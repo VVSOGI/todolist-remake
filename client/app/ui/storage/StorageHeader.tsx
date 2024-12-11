@@ -7,7 +7,7 @@ import { TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 import { IoClose } from 'react-icons/io5'
 
 const Header = styled.div`
-  height: ${TODOLIST_HEIGHTS.HEADER};
+  height: ${TODOLIST_HEIGHTS.header};
   display: flex;
   justify-content: space-between;
   align-items: center;

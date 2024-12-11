@@ -6,7 +6,7 @@ import { CreateTodolist, DraggableTodolist, TodoUpdateModal } from '@/app/ui'
 import { useTodolist, useTodolistEditModal } from '@/app/utils'
 
 const TodolistWrapper = styled.div`
-  height: calc(100% - (${TODOLIST_HEIGHTS.HEADER} + ${TODOLIST_HEIGHTS.CREATE_INPUT}));
+  height: calc(100% - (${TODOLIST_HEIGHTS.header} + ${TODOLIST_HEIGHTS.createInput}));
   ${SCROLL_BAR_SETTINGS};
 `
 
