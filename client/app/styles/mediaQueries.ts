@@ -15,6 +15,18 @@ export const COMMON_MEDIA_QUERY: Record<commonComponents, RuleSet> = {
     @media only screen and (min-width: ${mediaQueryStandard.DESKTOP}) {
       width: ${sectionWidth.DESKTOP};
     }
+  `,
+
+  title: css`
+    font-size: 1.125rem;
+
+    @media only screen and (max-width: ${mediaQueryStandard.MOBILE}) {
+      font-size: 1rem;
+    }
+
+    @media only screen and (min-width: ${mediaQueryStandard.DESKTOP}) {
+      font-size: 1.25rem;
+    }
   `
 }
 

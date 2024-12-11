@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { COLORS } from '@/app/styles'
+import { COLORS, COMMON_MEDIA_QUERY } from '@/app/styles'
 import { D2CodingBold } from '@/public/fonts'
 
 const Paragraph = styled.h1`
   width: 100%;
   margin-bottom: 1.5rem;
-  font-size: 1.125rem;
   color: ${COLORS.RED_600};
+  ${COMMON_MEDIA_QUERY.title}
 `
 
 interface Props {
