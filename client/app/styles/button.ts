@@ -1,9 +1,9 @@
 import { css } from 'styled-components'
 import { RuleSet } from 'styled-components/dist/types'
 import { COLORS } from '@/app/styles'
-import { buttonSize, buttonStyleProps, buttonsTheme } from '@/app/types'
+import { buttonSize, ButtonStyleProps, buttonsTheme } from '@/app/types'
 
-export const BUTTON_DEFAULT_STYLE = css<buttonStyleProps>`
+export const BUTTON_DEFAULT_STYLE = css<ButtonStyleProps>`
   display: flex;
   justify-content: center;
   align-items: center;

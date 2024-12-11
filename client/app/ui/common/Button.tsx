@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { BUTTON_SIZES, BUTTON_DEFAULT_STYLE } from '@/app/styles/button'
-import { buttonStyleProps, buttonsTheme, buttonSize } from '@/app/types'
+import { ButtonStyleProps, buttonsTheme, buttonSize } from '@/app/types'
 
-const StyledButton = styled.button<buttonStyleProps>`
+const StyledButton = styled.button<ButtonStyleProps>`
   ${BUTTON_DEFAULT_STYLE};
   ${(props) => {
     return BUTTON_SIZES[props.size]
