@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { SCROLL_BAR_SETTINGS, COLORS } from '@/app/styles'
+import { SCROLL_BAR_SETTINGS, COLORS, FONT_SIZES } from '@/app/styles'
 import { TodolistsBySortedDates } from '@/app/types'
 import { D2CodingLight } from '@/public/fonts'
 import { changeToLocaleTime, changeToTime } from '@/app/utils'
@@ -19,7 +19,7 @@ const Contents = styled.div`
 
 const Date = styled.div`
   margin-bottom: 1.125rem;
-  font-size: 1.5rem;
+  font-size: ${FONT_SIZES.xl};
 `
 
 const UnorderList = styled.ul`
@@ -31,12 +31,12 @@ const UnorderList = styled.ul`
 
 const ListItemUpdatedAt = styled.div`
   margin-bottom: 0.25rem;
-  font-size: 0.875rem;
+  font-size: ${FONT_SIZES.xs};
   color: ${COLORS.GRAY_500};
 `
 
 const ListItemTitle = styled.div`
-  font-size: 1.125rem;
+  font-size: ${FONT_SIZES.md};
   color: ${COLORS.BLACK};
 `
 

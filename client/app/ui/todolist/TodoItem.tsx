@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import styled from 'styled-components'
-import { BORDER_RADIUS_SIZES, COLORS } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
 import { CheckCircle } from '@/app/ui'
 import { CiEdit } from 'react-icons/ci'
 import { Todo } from '@/app/types'
@@ -42,7 +42,7 @@ const TodoIcons = styled.i`
   cursor: pointer;
 
   svg {
-    font-size: 1.5rem;
+    font-size: ${FONT_SIZES.xl};
 
     &:hover {
       background-color: ${COLORS.GRAY_200};

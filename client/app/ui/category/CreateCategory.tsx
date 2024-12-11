@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useRouter } from 'next/navigation'
 import { fetchToWebServer } from '@/app/utils/customFetch'
 import { Button, Input } from '@/app/ui'
-import { BORDER_RADIUS_SIZES, COLORS } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
 
 const CreateCategoryWrapper = styled.div`
   width: 100%;
@@ -25,7 +25,7 @@ const Create = styled.div`
 
 const CreateError = styled.p`
   margin: 0.5625rem 0;
-  font-size: 0.875rem;
+  font-size: ${FONT_SIZES.xs};
   color: ${COLORS.RED_600};
 `
 

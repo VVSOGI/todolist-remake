@@ -1,6 +1,6 @@
 import React, { memo, useRef } from 'react'
 import styled from 'styled-components'
-import { CATEGORY_MEDIA_QUERY, COLORS } from '@/app/styles'
+import { CATEGORY_MEDIA_QUERY, COLORS, FONT_SIZES } from '@/app/styles'
 import { mouseEvent, changeToLocaleTime } from '@/app/utils'
 import { Category, buttonsTheme } from '@/app/types'
 import { Button } from '@/app/ui'
@@ -51,7 +51,7 @@ const ContentsWrapper = styled.div`
 `
 
 const CategoryTitle = styled.h2`
-  font-size: 1rem;
+  font-size: ${FONT_SIZES.sm};
   font-weight: 500;
   color: ${COLORS.GRAY_500};
   ${CATEGORY_MEDIA_QUERY.title}
@@ -60,7 +60,7 @@ const CategoryTitle = styled.h2`
 const CategoryTime = styled.div`
   display: flex;
   gap: 0.5rem;
-  font-size: 0.875rem;
+  font-size: ${FONT_SIZES.xs};
   color: ${COLORS.GRAY_500};
   span {
     color: ${COLORS.RED_600};
@@ -82,7 +82,7 @@ const HiddenButtonsWrapper = styled.div`
   cursor: pointer;
 
   button {
-    font-size: 0.875rem;
+    font-size: ${FONT_SIZES.xs};
   }
 `
 
