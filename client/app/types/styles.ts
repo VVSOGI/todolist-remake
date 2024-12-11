@@ -10,7 +10,7 @@ export enum boxShadow {
   PRIMARY = 'primary'
 }
 
-export type commonComponents = 'section'
+export type commonComponents = 'section' | 'title'
 
 /** Todolist **/
 
