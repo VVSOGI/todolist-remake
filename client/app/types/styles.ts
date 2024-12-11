@@ -1,26 +1,14 @@
 /** Common **/
 
-export enum borderRadius {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-  LARGE = 'large'
-}
+export type borderRadius = 'small' | 'medium' | 'large'
 
-export enum boxShadow {
-  PRIMARY = 'primary'
-}
+export type boxShadow = 'primary'
 
 export type commonComponents = 'section' | 'title'
 
-/** Todolist **/
-
-export type todolistHeights = 'HEADER' | 'CREATE_INPUT'
-
-/** Category **/
-
 export enum mediaQueryStandard {
-  MOBILE = '37.5rem',
   TABLET = '45rem',
+  MOBILE = '37.5rem',
   DESKTOP = '90.125rem'
 }
 
@@ -29,6 +17,12 @@ export enum sectionWidth {
   MOBILE = '20rem',
   DESKTOP = '75rem'
 }
+
+/** Todolist **/
+
+export type todolistHeights = 'HEADER' | 'CREATE_INPUT'
+
+/** Category **/
 
 export type categoryComponents = 'title' | 'time'
 
