@@ -1,26 +1,22 @@
-/** Common **/
-
-export enum borderRadius {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-  LARGE = 'large'
-}
-
-export enum boxShadow {
-  PRIMARY = 'primary'
-}
-
-export type commonComponents = 'section' | 'title'
-
 /** Todolist **/
 
 export type todolistHeights = 'HEADER' | 'CREATE_INPUT'
 
 /** Category **/
 
+export type categoryComponents = 'title' | 'time'
+
+/** Common **/
+
+export type borderRadius = 'small' | 'medium' | 'large'
+
+export type boxShadow = 'primary'
+
+export type commonComponents = 'section' | 'title'
+
 export enum mediaQueryStandard {
-  MOBILE = '37.5rem',
   TABLET = '45rem',
+  MOBILE = '37.5rem',
   DESKTOP = '90.125rem'
 }
 
@@ -30,22 +26,14 @@ export enum sectionWidth {
   DESKTOP = '75rem'
 }
 
-export type categoryComponents = 'title' | 'time'
-
-/** Button **/
-
 export interface buttonStyleProps {
   stylestheme: buttonsTheme
   size: buttonSize
 }
 
 export enum buttonsTheme {
-  BRIGHT = 'BRIGHT',
-  DARK = 'DARK'
+  BRIGHT = 'bright',
+  DARK = 'dark'
 }
 
-export enum buttonSize {
-  SMALL = 'small',
-  MEDIUM = 'medium',
-  LARGE = 'large'
-}
+export type buttonSize = 'small' | 'medium' | 'large'
