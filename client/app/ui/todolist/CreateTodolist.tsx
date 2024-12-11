@@ -8,8 +8,8 @@ const CreateTodolistWrapper = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: ${TODOLIST_HEIGHTS.CREATE_INPUT};
-  min-height: ${TODOLIST_HEIGHTS.CREATE_INPUT};
+  height: ${TODOLIST_HEIGHTS.createInput};
+  min-height: ${TODOLIST_HEIGHTS.createInput};
   display: flex;
   justify-content: space-between;
   border-top: 1px solid ${COLORS.GRAY_200};

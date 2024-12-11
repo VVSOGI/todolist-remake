@@ -22,8 +22,8 @@ export const BOX_SHADOWS: Record<boxShadow, RuleSet> = {
 }
 
 export const TODOLIST_HEIGHTS: Record<todolistHeights, string> = {
-  HEADER: '4.21875rem',
-  CREATE_INPUT: '2.5rem'
+  header: '4.21875rem',
+  createInput: '2.5rem'
 }
 
 export const SCROLL_BAR_SETTINGS = css`

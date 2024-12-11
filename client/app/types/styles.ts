@@ -1,6 +1,6 @@
 /** Todolist **/
 
-export type todolistHeights = 'HEADER' | 'CREATE_INPUT'
+export type todolistHeights = 'header' | 'createInput'
 
 /** Category **/
 
