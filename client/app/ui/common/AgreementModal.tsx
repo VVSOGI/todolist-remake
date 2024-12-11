@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { IoMdClose } from 'react-icons/io'
-import { BORDER_RADIUS_SIZES, COLORS } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
 import { buttonsTheme } from '@/app/types'
 import { Button } from '@/app/ui'
 
@@ -39,7 +39,7 @@ const ModalHeader = styled.div`
 `
 
 const ModalTitle = styled.span`
-  font-size: 1.5rem;
+  font-size: ${FONT_SIZES.xl};
   font-weight: 400;
 `
 
@@ -49,7 +49,7 @@ const ModalCloseIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: ${FONT_SIZES.xl};
   cursor: pointer;
 
   &:hover {
@@ -65,7 +65,7 @@ const ModalContentsWrapper = styled.div`
   display: flex;
   flex: 1;
   padding: 0rem 1.5rem;
-  font-size: 1.125rem;
+  font-size: ${FONT_SIZES.md};
   border-bottom: 1px solid ${COLORS.GRAY_200};
 `
 

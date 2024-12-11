@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Title } from '@/app/ui'
 import { Category } from '@/app/types'
 import { changeToLocaleTime, changeToTime } from '@/app/utils'
-import { TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
+import { TODOLIST_HEIGHTS, COLORS, FONT_SIZES } from '@/app/styles'
 import { IoClose } from 'react-icons/io5'
 
 const Header = styled.div`
@@ -41,7 +41,7 @@ const LinkWrapper = styled(Link)`
   }
 
   svg {
-    font-size: 1.25rem;
+    font-size: ${FONT_SIZES.lg};
     color: ${COLORS.RED_600};
   }
 `

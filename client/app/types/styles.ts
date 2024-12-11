@@ -26,7 +26,7 @@ export enum sectionWidth {
   DESKTOP = '75rem'
 }
 
-export interface buttonStyleProps {
+export interface ButtonStyleProps {
   stylestheme: buttonsTheme
   size: buttonSize
 }
@@ -37,3 +37,5 @@ export enum buttonsTheme {
 }
 
 export type buttonSize = 'small' | 'medium' | 'large'
+
+export type fontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'

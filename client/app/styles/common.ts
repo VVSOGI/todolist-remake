@@ -1,5 +1,5 @@
 import { RuleSet, css } from 'styled-components'
-import { borderRadius, boxShadow, todolistHeights } from '@/app/types'
+import { borderRadius, boxShadow, fontSize, todolistHeights } from '@/app/types'
 
 export const BORDER_RADIUS_SIZES: Record<borderRadius, RuleSet> = {
   small: css`
@@ -36,3 +36,11 @@ export const SCROLL_BAR_SETTINGS = css`
     background: #ccc;
   }
 `
+
+export const FONT_SIZES: Record<fontSize, string> = {
+  xs: '0.875rem',
+  sm: '1rem',
+  md: '1.125rem',
+  lg: '1.25rem',
+  xl: '1.5rem'
+}

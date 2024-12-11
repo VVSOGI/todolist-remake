@@ -1,7 +1,7 @@
 'use client'
 
 import styled from 'styled-components'
-import { BORDER_RADIUS_SIZES, BOX_SHADOWS, COLORS } from './styles'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, COLORS, FONT_SIZES } from './styles'
 import { Button, Container } from './ui'
 import { useEffect, useState } from 'react'
 import { InternalError, mediaQueryStandard } from './types'
@@ -20,7 +20,7 @@ const ErrorSection = styled.section`
 const ErrorMessage = styled.div`
   display: flex;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: ${FONT_SIZES.xl};
   font-weight: 700;
 `
 
