@@ -3,7 +3,6 @@ import { fetchToBackend } from '@/app/utils'
 
 export async function GET(req: Request) {
   const { data, status } = await fetchToBackend('/category?deleted=false', { method: 'GET', headers: req.headers })
-
   return NextResponse.json(data, { status })
 }
 

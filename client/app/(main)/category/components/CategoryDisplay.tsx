@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Categories, CategoryDeleteModal, CategoryUpdateModal } from '@/app/ui'
+import { Categories, CategoryDeleteModal, CategoryUpdateModal } from '@/app/(main)/category/components'
 import { Category } from '@/app/types'
 import { useCategoryModal } from '@/app/utils'
 

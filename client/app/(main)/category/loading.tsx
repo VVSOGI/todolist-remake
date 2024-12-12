@@ -1,4 +1,5 @@
-import { Container, CategorySection, Title, CreateCategory, Skeleton } from '@/app/ui'
+import { Container, Title, Skeleton } from '@/app/ui'
+import { CategorySection, CreateCategory } from './components'
 
 export default function HomeLoading() {
   return (
