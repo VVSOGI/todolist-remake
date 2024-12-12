@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { AgreementModal, Input } from '@/app/ui'
-import { COLORS } from '@/app/styles'
 import { UpdateTodoDTO } from '@/app/types'
+import { COLORS } from '@/app/styles'
 
 const EditModalContents = styled.div`
   width: 100%;

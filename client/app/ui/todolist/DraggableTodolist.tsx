@@ -1,9 +1,9 @@
 import React from 'react'
 import { DndContext } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
+import { SortableOverlay, TodoItem } from '@/app/ui'
 import { saveTodolistOrder, useDragDndKit } from '@/app/utils'
 import { Todo } from '@/app/types'
-import { SortableOverlay, TodoItem } from '@/app/ui'
 
 interface Props {
   list: Todo[]

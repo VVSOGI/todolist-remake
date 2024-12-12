@@ -1,6 +1,6 @@
-import { UUID } from '@/app/types'
 import { TodolistHeader, TodolistDisplay, TodolistSection } from '@/app/ui'
 import { getCategoryById, getTodolistByCategoryId } from '@/app/utils'
+import { UUID } from '@/app/types'
 
 interface Props {
   params: { categoryId: UUID }

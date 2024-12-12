@@ -1,11 +1,11 @@
 import React, { memo } from 'react'
 import styled from 'styled-components'
-import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
-import { CheckCircle } from '@/app/ui'
-import { CiEdit } from 'react-icons/ci'
-import { Todo } from '@/app/types'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS, Transform } from '@dnd-kit/utilities'
+import { CiEdit } from 'react-icons/ci'
+import { CheckCircle } from '@/app/ui'
+import { Todo } from '@/app/types'
+import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
 
 const TodoWrapper = styled.div<TodolistWrapperStylesProps>`
   position: relative;

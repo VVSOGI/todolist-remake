@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 import { Button, Input } from '@/app/ui'
+import { TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 
 const CreateTodolistWrapper = styled.div`
   position: absolute;

@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Todo } from '@/app/types'
-import { SCROLL_BAR_SETTINGS, TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 import { CreateTodolist, DraggableTodolist, TodoUpdateModal } from '@/app/ui'
 import { useTodolist, useTodolistEditModal } from '@/app/utils'
+import { Todo } from '@/app/types'
+import { SCROLL_BAR_SETTINGS, TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${TODOLIST_HEIGHTS.header} + ${TODOLIST_HEIGHTS.createInput}));

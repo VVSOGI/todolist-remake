@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { createTodolist, updateTodolist } from '@/app/utils'
+import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 
 interface Props {
   categoryId: string
