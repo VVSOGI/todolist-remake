@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CategorySection, Container } from '@/app/ui'
+import { Container } from '@/app/ui'
+import { CategorySection } from '@/app/(main)/category/components'
 
 const categorySection = {
   title: 'Example/Category/CategorySection',
