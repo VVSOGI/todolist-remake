@@ -3,7 +3,7 @@ import { mockCategories, mockStorageTodoLists } from '@/app/stories/mock'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const StoragePage = {
-  title: 'Example/Storage/UseCase/Page',
+  title: 'Example/Storage/1. Pages/Pages',
   component: StorageListDisplay,
   parameters: {
     layout: 'fullscreen',

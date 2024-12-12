@@ -4,7 +4,7 @@ import { mockCategories, mockTodoItems } from '@/app/stories/mock'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const TodolistPage = {
-  title: 'Example/Todolist/UseCase/Page',
+  title: 'Example/Todolist/1. Pages/Pages',
   component: TodolistDisplay,
   parameters: {
     layout: 'fullscreen',
