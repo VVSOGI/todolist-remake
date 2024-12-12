@@ -3,7 +3,7 @@ import { mockCategories } from '@/app/stories/mock'
 import type { StoryObj } from '@storybook/react'
 
 const categoryPage = {
-  title: 'Example/Category/UseCases/Page',
+  title: 'Example/Category/1. Pages/Pages',
   parameters: {
     layout: 'center'
   },
