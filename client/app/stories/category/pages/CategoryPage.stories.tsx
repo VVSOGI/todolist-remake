@@ -1,5 +1,6 @@
 import type { StoryObj } from '@storybook/react'
-import { CategoryDisplay, CategorySection, Container, CreateCategory, Title } from '@/app/ui'
+import { Container, Title } from '@/app/ui'
+import { CategoryDisplay, CategorySection, CreateCategory } from '@/app/(main)/category/components'
 import { mockCategories } from '@/app/stories/mock'
 
 const categoryPage = {
