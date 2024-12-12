@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { SCROLL_BAR_SETTINGS, COLORS, FONT_SIZES } from '@/app/styles'
-import { TodolistsBySortedDates } from '@/app/types'
-import { D2CodingLight } from '@/public/fonts'
 import { changeToLocaleTime, changeToTime } from '@/app/utils'
+import { TodolistsBySortedDates } from '@/app/types'
+import { SCROLL_BAR_SETTINGS, COLORS, FONT_SIZES } from '@/app/styles'
+import { D2CodingLight } from '@/public/fonts'
 
 const ListWrapper = styled.div`
   display: flex;
