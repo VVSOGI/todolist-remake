@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { UUID } from '@/app/types'
 import { fetchToBackend } from '@/app/utils'
+import { UUID } from '@/app/types'
 
 interface Params {
   params: {
