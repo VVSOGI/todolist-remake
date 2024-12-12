@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/react'
 import { CreateTodolist } from '@/app/ui'
-import { COLORS } from '@/app/styles'
 import { mediaQueryStandard } from '@/app/types'
+import { COLORS } from '@/app/styles'
 
 const usecaseTodolistButton = {
   title: 'Example/Components/UseCases',

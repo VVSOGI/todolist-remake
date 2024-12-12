@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react'
 import { Container, StorageHeader, StorageSection } from '@/app/ui'
 import { mockCategories } from '@/app/stories/mock'
-import type { Meta, StoryObj } from '@storybook/react'
 
 const storageHeader = {
   title: 'Example/Storage/StorageHeader',

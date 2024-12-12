@@ -1,7 +1,7 @@
-import { Container, TodoItem, TodolistSection } from '@/app/ui'
-import { mockTodoItems } from '@/app/stories/mock'
 import { fn } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/react'
+import { Container, TodoItem, TodolistSection } from '@/app/ui'
+import { mockTodoItems } from '@/app/stories/mock'
 
 const todoItem = {
   title: 'Example/Todolist/TodoItem',

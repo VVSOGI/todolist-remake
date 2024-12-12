@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test'
-import { CategorySection, Container, CreateCategory } from '@/app/ui'
 import type { Meta, StoryObj } from '@storybook/react'
+import { CategorySection, Container, CreateCategory } from '@/app/ui'
 
 const createCategory = {
   title: 'Example/Category/CreateCategory',
