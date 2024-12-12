@@ -1,5 +1,5 @@
 import { CreateTodoDto, GetResponseTodolist, GetResponseTodolistByDates, Todo, UUID, UpdateTodoDTO } from '@/app/types'
-import { fetchToWebServer } from '..'
+import { fetchToWebServer } from '@/app/utils'
 
 export async function createTodolist(createTodo: CreateTodoDto) {
   const response = await fetchToWebServer(`/api/todolist`, {
