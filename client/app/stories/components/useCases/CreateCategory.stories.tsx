@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/react'
 import { CreateCategory } from '@/app/ui'
-import { COLORS } from '@/app/styles'
 import { mediaQueryStandard } from '@/app/types'
+import { COLORS } from '@/app/styles'
 
 const usecaseCatagoryButton = {
   title: 'Example/Components/UseCases',

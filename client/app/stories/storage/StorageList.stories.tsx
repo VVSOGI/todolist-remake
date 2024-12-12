@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react'
 import { Container, StorageListDisplay, StorageSection } from '@/app/ui'
 import { mockStorageTodoLists } from '@/app/stories/mock'
-import type { Meta, StoryObj } from '@storybook/react'
 
 const storageList = {
   title: 'Example/Storage/StorageList',

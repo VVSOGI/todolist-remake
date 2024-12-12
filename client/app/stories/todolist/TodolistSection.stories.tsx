@@ -1,5 +1,5 @@
-import { Container, TodolistSection } from '@/app/ui'
 import type { Meta, StoryObj } from '@storybook/react'
+import { Container, TodolistSection } from '@/app/ui'
 
 const todolistSection = {
   title: 'Example/Todolist/TodolistSection',

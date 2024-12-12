@@ -1,7 +1,7 @@
 import { fn } from '@storybook/test'
+import type { Meta, StoryObj } from '@storybook/react'
 import { CategorySection, Container } from '@/app/ui'
 import { CategoryItem } from '@/app/ui/category/CategoryItem'
-import type { Meta, StoryObj } from '@storybook/react'
 
 const categoryItem = {
   title: 'Example/Category/CategoryItem',
