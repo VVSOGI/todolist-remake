@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Category } from '@/app/types'
 import { Categories, CategoryDeleteModal, CategoryUpdateModal } from '@/app/ui'
+import { Category } from '@/app/types'
 import { useCategoryModal } from '@/app/utils'
 
 const CategoryDisplayContainer = styled.div`

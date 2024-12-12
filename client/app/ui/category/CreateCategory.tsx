@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/navigation'
-import { fetchToWebServer } from '@/app/utils/customFetch'
 import { Button, Input } from '@/app/ui'
+import { fetchToWebServer } from '@/app/utils/customFetch'
 import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
 
 const CreateCategoryWrapper = styled.div`
