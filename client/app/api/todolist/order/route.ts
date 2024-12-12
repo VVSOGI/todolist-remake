@@ -1,5 +1,5 @@
-import { fetchToBackend } from '@/app/utils'
 import { NextResponse } from 'next/server'
+import { fetchToBackend } from '@/app/utils'
 
 export async function PATCH(req: Request) {
   const body = await req.json()

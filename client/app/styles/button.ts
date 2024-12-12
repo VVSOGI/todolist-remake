@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 import { RuleSet } from 'styled-components/dist/types'
-import { COLORS } from '@/app/styles'
 import { buttonSize, ButtonStyleProps, buttonsTheme } from '@/app/types'
+import { COLORS } from '@/app/styles'
 
 export const BUTTON_DEFAULT_STYLE = css<ButtonStyleProps>`
   display: flex;

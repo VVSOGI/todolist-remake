@@ -1,10 +1,10 @@
 'use client'
 
-import styled from 'styled-components'
-import { BORDER_RADIUS_SIZES, BOX_SHADOWS, COLORS, FONT_SIZES } from './styles'
-import { Button, Container } from './ui'
 import { useEffect, useState } from 'react'
-import { InternalError, mediaQueryStandard } from './types'
+import styled from 'styled-components'
+import { Button, Container } from '@/app/ui'
+import { InternalError, mediaQueryStandard } from '@/app/types'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS, COLORS, FONT_SIZES } from '@/app/styles'
 
 const ErrorSection = styled.section`
   width: ${mediaQueryStandard.TABLET};
