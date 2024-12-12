@@ -1,13 +1,13 @@
 import React, { memo, useRef } from 'react'
 import styled from 'styled-components'
-import { CATEGORY_MEDIA_QUERY, COLORS, FONT_SIZES } from '@/app/styles'
-import { mouseEvent, changeToLocaleTime } from '@/app/utils'
-import { Category, buttonsTheme } from '@/app/types'
-import { Button } from '@/app/ui'
 import { useRouter } from 'next/navigation'
 import { FaTrashAlt } from 'react-icons/fa'
 import { IoSettings } from 'react-icons/io5'
 import { D2CodingBold } from '@/public/fonts'
+import { Button } from '@/app/ui'
+import { mouseEvent, changeToLocaleTime } from '@/app/utils'
+import { Category, buttonsTheme } from '@/app/types'
+import { CATEGORY_MEDIA_QUERY, COLORS, FONT_SIZES } from '@/app/styles'
 
 const CategoryWrapper = styled.div`
   width: 100%;
