@@ -1,4 +1,4 @@
-import { TodolistHeader, TodolistDisplay, TodolistSection } from '@/app/ui'
+import { TodolistHeader, TodolistDisplay, TodolistSection } from '@/app/(main)/todolist/components'
 import { getCategoryById, getTodolistByCategoryId } from '@/app/utils'
 import { UUID } from '@/app/types'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { CreateTodolist, DraggableTodolist, TodoUpdateModal } from '@/app/ui'
+import { CreateTodolist, DraggableTodolist, TodoUpdateModal } from '@/app/(main)/todolist/components'
 import { useTodolist, useTodolistEditModal } from '@/app/utils'
 import { Todo } from '@/app/types'
 import { SCROLL_BAR_SETTINGS, TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
