@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/react'
-import { CreateCategory } from '@/app/ui'
+import { CreateCategory } from '@/app/(main)/category/components'
 import { mediaQueryStandard } from '@/app/types'
 import { COLORS } from '@/app/styles'
 

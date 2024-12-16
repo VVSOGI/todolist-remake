@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Button } from '@/app/ui/common'
+import { Button } from '@/app/ui'
 import { buttonsTheme } from '@/app/types'
 
 const meta = {
