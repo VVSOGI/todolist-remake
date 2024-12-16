@@ -3,7 +3,8 @@ import { DndContext } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
 import { SortableOverlay } from '@/app/components'
 import { TodoItem } from '@/app/(main)/todolist/components'
-import { saveTodolistOrder, useDragDndKit } from '@/app/utils'
+import { useDragDndKit } from '@/app/(main)/todolist/hooks'
+import { saveTodolistOrder } from '@/app/utils'
 import { Todo } from '@/app/types'
 
 interface Props {
