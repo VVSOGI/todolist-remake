@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/react'
-import { CreateTodolist } from '@/app/ui'
+import { CreateTodolist } from '@/app/(main)/todolist/components'
 import { mediaQueryStandard } from '@/app/types'
 import { COLORS } from '@/app/styles'
 
