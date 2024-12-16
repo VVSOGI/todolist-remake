@@ -1,7 +1,7 @@
-import { Category } from '@/app/types'
-import { useRouter } from 'next/navigation'
 import { useCallback, useState } from 'react'
-import { deleteCategory, updateCategory } from '@/app/utils'
+import { useRouter } from 'next/navigation'
+import { deleteCategory, updateCategory } from '@/app/(main)/category/api'
+import { Category } from '@/app/types'
 
 export function useCategoryModal() {
   const router = useRouter()

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { createTodolist, updateTodolist } from '@/app/utils'
+import { createTodolist, updateTodolist } from '@/app/(main)/todolist/api'
 import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 
 interface Props {

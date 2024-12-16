@@ -1,5 +1,6 @@
 import { TodolistHeader, TodolistDisplay, TodolistSection } from '@/app/(main)/todolist/components'
-import { getCategoryById, getTodolistByCategoryId } from '@/app/utils'
+import { getCategoryById } from '@/app/(main)/category/api'
+import { getTodolistByCategoryId } from '@/app/(main)/todolist/api'
 import { UUID } from '@/app/types'
 
 interface Props {

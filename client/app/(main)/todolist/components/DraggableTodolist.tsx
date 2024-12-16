@@ -4,7 +4,7 @@ import { SortableContext } from '@dnd-kit/sortable'
 import { SortableOverlay } from '@/app/components'
 import { TodoItem } from '@/app/(main)/todolist/components'
 import { useDragDndKit } from '@/app/(main)/todolist/hooks'
-import { saveTodolistOrder } from '@/app/utils'
+import { saveTodolistOrder } from '@/app/(main)/todolist/api'
 import { Todo } from '@/app/types'
 
 interface Props {
