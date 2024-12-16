@@ -1,6 +1,7 @@
 import React from 'react'
-import { getCategoryById, getTodolistByDates } from '@/app/utils'
 import { StorageHeader, StorageListDisplay, StorageSection } from '@/app/(main)/storage/components'
+import { getCategoryById } from '@/app/(main)/category/api'
+import { getTodolistByDates } from '@/app/(main)/todolist/api'
 import { UUID } from '@/app/types'
 
 interface Props {

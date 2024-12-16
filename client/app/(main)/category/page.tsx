@@ -1,6 +1,6 @@
 import { Title } from '@/app/components'
-import { getCategoryList } from '@/app/utils'
 import { CategoryDisplay, CategorySection, CreateCategory } from '@/app/(main)/category/components'
+import { getCategoryList } from '@/app/(main)/category/api'
 
 export default async function page() {
   const { data } = await getCategoryList()
