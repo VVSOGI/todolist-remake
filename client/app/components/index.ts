@@ -1,3 +1,5 @@
+'use client'
+
 export * from './dnd-kit'
 
 export * from './AgreementModal'

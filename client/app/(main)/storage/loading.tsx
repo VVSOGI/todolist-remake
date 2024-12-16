@@ -1,11 +1,12 @@
 import React from 'react'
-import { Container, TodolistHeader, TodolistSection } from '@/app/components'
+import { Container } from '@/app/components'
+import { StorageHeader, StorageSection } from '@/app/(main)/storage/components'
 
 export default function loading() {
   return (
     <Container>
-      <TodolistSection>
-        <TodolistHeader
+      <StorageSection>
+        <StorageHeader
           category={{
             id: '',
             title: '...Loading',
@@ -13,7 +14,7 @@ export default function loading() {
             createdAt: new Date('2000.01.01')
           }}
         />
-      </TodolistSection>
+      </StorageSection>
     </Container>
   )
 }
