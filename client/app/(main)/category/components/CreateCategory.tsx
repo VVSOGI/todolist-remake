@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/navigation'
-import { Button, Input } from '@/app/ui'
+import { Button, Input } from '@/app/components'
 import { fetchToWebServer } from '@/app/utils/customFetch'
 import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
 

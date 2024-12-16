@@ -1,7 +1,7 @@
 import React from 'react'
 import { DndContext } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
-import { SortableOverlay } from '@/app/ui'
+import { SortableOverlay } from '@/app/components'
 import { TodoItem } from '@/app/(main)/todolist/components'
 import { saveTodolistOrder, useDragDndKit } from '@/app/utils'
 import { Todo } from '@/app/types'

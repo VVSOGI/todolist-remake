@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Container } from '@/app/ui'
+import { Container } from '@/app/components'
 import { CategoryItem } from '@/app/(main)/category/components/CategoryItem'
 import { CategorySection } from '@/app/(main)/category/components'
 

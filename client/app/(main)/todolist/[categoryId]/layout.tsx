@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from '@/app/ui'
+import { Container } from '@/app/components'
 
 export default function layout({
   children

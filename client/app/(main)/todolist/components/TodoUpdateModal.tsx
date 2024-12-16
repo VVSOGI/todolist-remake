@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { AgreementModal, Input } from '@/app/ui'
+import { AgreementModal, Input } from '@/app/components'
 import { UpdateTodoDTO } from '@/app/types'
 import { COLORS } from '@/app/styles'
 

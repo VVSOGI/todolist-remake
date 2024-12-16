@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Container } from '@/app/ui'
+import { Container } from '@/app/components'
 import { StorageHeader, StorageListDisplay, StorageSection } from '@/app/(main)/storage/components'
 import { mockCategories, mockStorageTodoLists } from '@/app/stories/mock'
 
