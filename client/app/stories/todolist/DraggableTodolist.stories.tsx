@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Container, DraggableTodolist, TodolistSection } from '@/app/ui'
+import { Container, DraggableTodolist, TodolistSection } from '@/app/components'
 import { mockTodoItems } from '@/app/stories/mock'
 
 const draggableTodolist = {

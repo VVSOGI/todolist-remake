@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Container } from '@/app/ui'
+import { Container } from '@/app/components'
 import { CategorySection } from '@/app/(main)/category/components'
 
 const categorySection = {
