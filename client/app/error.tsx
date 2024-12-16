@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Container } from '@/app/ui'
+import { Button, Container } from '@/app/components'
 import { InternalError, mediaQueryStandard } from '@/app/types'
 import { BORDER_RADIUS_SIZES, BOX_SHADOWS, COLORS, FONT_SIZES } from '@/app/styles'
 

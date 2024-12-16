@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { AgreementModal, Input } from '@/app/ui'
+import { AgreementModal, Input } from '@/app/components'
 import { COLORS } from '@/app/styles'
 
 const UpdateModalContents = styled.div`

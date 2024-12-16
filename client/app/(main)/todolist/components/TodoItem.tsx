@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS, Transform } from '@dnd-kit/utilities'
 import { CiEdit } from 'react-icons/ci'
-import { CheckCircle } from '@/app/ui'
+import { CheckCircle } from '@/app/components'
 import { Todo } from '@/app/types'
 import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
 

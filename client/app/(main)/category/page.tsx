@@ -1,4 +1,4 @@
-import { Title } from '@/app/ui'
+import { Title } from '@/app/components'
 import { getCategoryList } from '@/app/utils'
 import { CategoryDisplay, CategorySection, CreateCategory } from '@/app/(main)/category/components'
 
