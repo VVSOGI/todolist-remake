@@ -5,7 +5,7 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { IoSettings } from 'react-icons/io5'
 import { D2CodingBold } from '@/public/fonts'
 import { Button } from '@/app/components'
-import { mouseEvent, changeToLocaleTime } from '@/app/utils'
+import { changeToLocaleTime, dragHorizon } from '@/app/utils'
 import { Category, buttonsTheme } from '@/app/types'
 import { CATEGORY_MEDIA_QUERY, COLORS, FONT_SIZES } from '@/app/styles'
 
@@ -110,7 +110,7 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal }: Props
     const HiddenButtonsWrapper = document.getElementById(`${categoryId}-hidden`)
     if (!HiddenButtonsWrapper) return
 
-    mouseEvent.dragHorizon({
+    dragHorizon({
       event: e,
       leftCallback: () => {
         isDragging.current = true
