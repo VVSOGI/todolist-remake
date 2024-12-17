@@ -4,14 +4,13 @@ import { Todo, UpdateTodoDTO } from '@/app/types'
 export function useTodolistEditModal() {
   const [modal, setModal] = useState<'edit'>()
   const [targetTodo, setTargetTodo] = useState<Todo>()
-  const [updateTitle, setUpdateTitle] = useState('')
 
-  const makeUpdatedTodo = () => {
+  const makeUpdatedTodo = (title: string) => {
     if (!targetTodo) return
 
     const updated: UpdateTodoDTO = {
       id: targetTodo.id,
-      title: updateTitle,
+      title,
       checked: targetTodo.checked
     }
 
@@ -26,14 +25,11 @@ export function useTodolistEditModal() {
   const handleEditModalClose = () => {
     setModal(undefined)
     setTargetTodo(undefined)
-    setUpdateTitle('')
   }
 
   return {
     modal,
     targetTodo,
-    updateTitle,
-    setUpdateTitle,
     makeUpdatedTodo,
     handleEditModalOpen,
     handleEditModalClose

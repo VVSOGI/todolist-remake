@@ -14,7 +14,7 @@ const EditModalContents = styled.div`
 
 interface Props {
   placeholder?: string
-  makeUpdatedTodo: () => UpdateTodoDTO | undefined
+  makeUpdatedTodo: (title: string) => UpdateTodoDTO | undefined
   handleEditTodo: (updated: UpdateTodoDTO) => Promise<void>
   handleEditModalClose: () => void
 }
@@ -26,7 +26,7 @@ export function TodoUpdateModal({ placeholder, makeUpdatedTodo, handleEditModalC
     <AgreementModal
       title="Edit"
       handleAgree={() => {
-        const updated = makeUpdatedTodo()
+        const updated = makeUpdatedTodo(updateTitle)
         if (updated) handleEditTodo(updated)
         handleEditModalClose()
       }}
