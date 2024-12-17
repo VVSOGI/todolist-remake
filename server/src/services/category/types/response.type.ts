@@ -1,4 +1,3 @@
-import { Category } from 'src/entities/category.entity'
 import { tags } from 'typia'
 
 export interface GetCategoriesResponseType {

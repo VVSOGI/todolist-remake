@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Patch, Post, Query } from '@nestjs/common'
+import { Controller, Get, Patch, Post, Query } from '@nestjs/common'
 import { TodolistService } from './todolist.service'
 import {
   CreateTodolistDto,
