@@ -107,18 +107,18 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal }: Props
   const onCategoryDrag = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, categoryId: string) => {
     isDragging.current = false
 
-    const HiddenButtonsWrapper = document.getElementById(`${categoryId}-hidden`)
-    if (!HiddenButtonsWrapper) return
+    const hiddenButton = document.getElementById(`${categoryId}-hidden`)
+    if (!hiddenButton) return
 
     dragHorizon({
       event: e,
       leftCallback: () => {
         isDragging.current = true
-        HiddenButtonsWrapper.style.minWidth = '6rem'
+        hiddenButton.style.minWidth = '6rem'
       },
       rightCallback: () => {
         isDragging.current = true
-        HiddenButtonsWrapper.style.minWidth = '0rem'
+        hiddenButton.style.minWidth = '0rem'
       }
     })
   }
