@@ -14,7 +14,7 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js', './dist/**/*'],
   rules: {
-    'no-unused-vars': 'error',
+    'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/no-require-imports': 'off',
