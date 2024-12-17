@@ -1,5 +1,5 @@
 import { RuleSet, css } from 'styled-components'
-import { categoryComponents, commonComponents, mediaQueryStandard, sectionWidth } from '@/app/types'
+import { categoryComponents, commonComponents, mediaQueryStandard, sectionWidth, todolistComponents } from '@/app/types'
 import { FONT_SIZES } from '@/app/styles'
 
 export const COMMON_MEDIA_QUERY: Record<commonComponents, RuleSet> = {
@@ -52,6 +52,17 @@ export const CATEGORY_MEDIA_QUERY: Record<categoryComponents, RuleSet> = {
 
     @media only screen and (min-width: ${mediaQueryStandard.DESKTOP}) {
       font-size: ${FONT_SIZES.sm};
+    }
+  `
+}
+
+export const TODOLIST_MEDIA_QUERY: Record<todolistComponents, RuleSet> = {
+  createButtonWrapper: css`
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+
+    @media only screen and (max-width: ${mediaQueryStandard.MOBILE}) {
+      border-radius: 0rem;
     }
   `
 }
