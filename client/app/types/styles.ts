@@ -2,6 +2,8 @@
 
 export type todolistHeights = 'header' | 'createInput'
 
+export type todolistComponents = 'createButtonWrapper'
+
 /** Category **/
 
 export type categoryComponents = 'title' | 'time'

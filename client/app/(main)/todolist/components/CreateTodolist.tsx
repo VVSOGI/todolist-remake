@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Button, Input } from '@/app/components'
-import { TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
+import { TODOLIST_HEIGHTS, COLORS, TODOLIST_MEDIA_QUERY } from '@/app/styles'
 
 const CreateTodolistWrapper = styled.div`
   position: absolute;
@@ -12,10 +12,9 @@ const CreateTodolistWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   border-top: 1px solid ${COLORS.GRAY_200};
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
   overflow: hidden;
   z-index: 100;
+  ${TODOLIST_MEDIA_QUERY.createButtonWrapper}
 `
 
 interface Props {
