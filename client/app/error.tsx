@@ -37,17 +37,19 @@ const ButtonWrapper = styled.div`
 `
 
 export default function error(err: any) {
-  const [error, setError] = useState<InternalError>()
+  const [receive, setReceive] = useState<InternalError>()
 
   useEffect(() => {
-    setError(JSON.parse(err.error.message))
-  }, [])
+    if (!receive) {
+      setReceive(JSON.parse(err.error.message))
+    }
+  }, [err, receive])
 
   return (
     <Container>
       <ErrorSection>
-        <ErrorMessage>{error && error.message}</ErrorMessage>
-        <ErrorStatus>Error Status {error && error.status}</ErrorStatus>
+        <ErrorMessage>{receive && receive.message}</ErrorMessage>
+        <ErrorStatus>Error Status {receive && receive.status}</ErrorStatus>
         <ButtonWrapper>
           <Button size="medium" style={{ width: '9rem', borderRadius: '0.5rem' }} onClick={err.reset}>
             Try Reset

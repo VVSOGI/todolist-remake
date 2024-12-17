@@ -13,8 +13,8 @@ export default async function page({ params: { categoryId: categoryId } }: Props
 
   const getTodolist = async () => {
     'use server'
-    const getTodolist = await getTodolistByCategoryId(categoryId)
-    return getTodolist.data
+    const result = await getTodolistByCategoryId(categoryId)
+    return result.data
   }
 
   return (
