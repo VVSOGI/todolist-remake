@@ -1,6 +1,6 @@
 import { RuleSet, css } from 'styled-components'
 import { categoryComponents, commonComponents, mediaQueryStandard, sectionWidth, todolistComponents } from '@/app/types'
-import { FONT_SIZES } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, FONT_SIZES } from '@/app/styles'
 
 export const COMMON_MEDIA_QUERY: Record<commonComponents, RuleSet> = {
   section: css`
@@ -58,8 +58,8 @@ export const CATEGORY_MEDIA_QUERY: Record<categoryComponents, RuleSet> = {
 
 export const TODOLIST_MEDIA_QUERY: Record<todolistComponents, RuleSet> = {
   createButtonWrapper: css`
-    border-bottom-right-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: ${BORDER_RADIUS_SIZES.medium};
+    border-bottom-left-radius: ${BORDER_RADIUS_SIZES.medium};
 
     @media only screen and (max-width: ${mediaQueryStandard.MOBILE}) {
       border-radius: 0rem;
