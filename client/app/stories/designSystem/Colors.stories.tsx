@@ -45,7 +45,7 @@ export const GRAY: Story = {
 export const CLOUD_BLUE: Story = {
   decorators: () => (
     <div>
-      <GrayColors />
+      <CloudBlues />
       GRAY
     </div>
   )
