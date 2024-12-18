@@ -92,8 +92,8 @@ interface Props {
 
 export function AgreementModal({ title, children, handleAgree, handleRefuse }: Props) {
   return (
-    <ModalContainer>
-      <ModalWrapper>
+    <ModalContainer onClick={handleRefuse}>
+      <ModalWrapper onClick={(e) => e.stopPropagation()}>
         <ModalHeader>
           <ModalTitle>{title}</ModalTitle>
           <ModalCloseIcon onClick={handleRefuse}>
