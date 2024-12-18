@@ -18,6 +18,7 @@ export const COLORS = {
   CLOUD_BLUE_300: '#a3bae3',
   CLOUD_BLUE_400: '#86a8e3',
   CLOUD_BLUE_500: '#608fe0',
+  CLOUD_BLUE_600: '#427adb',
 
   WHITE: '#ffffff',
   BLACK: '#0d0d0d'
