@@ -1,21 +1,34 @@
+import styled from 'styled-components'
 import type { Meta, StoryObj } from '@storybook/react'
+import { getColorsByGroup } from '@/app/utils'
+
+const Container = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+`
 
 function RedColors() {
-  return <div></div>
+  const colors = Object.entries(getColorsByGroup('RED'))
+  return <Container></Container>
 }
 
 function GrayColors() {
-  return <div></div>
+  const colors = Object.entries(getColorsByGroup('GRAY'))
+  return <Container></Container>
 }
 
 function CloudBlues() {
-  return <div></div>
+  const colors = Object.entries(getColorsByGroup('CLOUD_BLUE'))
+  return <Container></Container>
 }
 
 const meta = {
   title: 'Example/DesignSystem/Colors',
   parameters: {
-    layout: 'centered',
     viewport: {}
   },
   tags: ['!autodocs'],
