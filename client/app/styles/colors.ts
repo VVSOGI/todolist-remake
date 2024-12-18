@@ -1,22 +1,4 @@
-export type HexColor = `#${string}`
-
-export type ColorGroup = 'RED' | 'GRAY' | 'CLOUD_BLUE'
-export type ColorShade = '100' | '200' | '300' | '400' | '500' | '600'
-export type BasicColor = 'WHITE' | 'BLACK'
-
-export type Colors = {
-  [K in `${ColorGroup}_${ColorShade}`]: HexColor
-} & {
-  [K in BasicColor]: HexColor
-}
-
-type ColorsByGroup<T extends ColorGroup> = {
-  [K in `${T}_${ColorShade}`]: HexColor
-}
-
-type BasicColors = {
-  [K in BasicColor]: HexColor
-}
+import { Colors } from '@/app/types'
 
 export const COLORS: Colors = {
   RED_100: '#fcc7c5',
@@ -42,54 +24,4 @@ export const COLORS: Colors = {
 
   WHITE: '#ffffff',
   BLACK: '#0d0d0d'
-}
-
-export const getColorsByGroup = {
-  getReds: (): ColorsByGroup<'RED'> => {
-    return Object.entries(COLORS)
-      .filter(([key]) => key.startsWith('RED_'))
-      .reduce(
-        (acc, [key, value]) => ({
-          ...acc,
-          [key]: value
-        }),
-        {} as ColorsByGroup<'RED'>
-      )
-  },
-
-  getGrays: (): ColorsByGroup<'GRAY'> => {
-    return Object.entries(COLORS)
-      .filter(([key]) => key.startsWith('GRAY_'))
-      .reduce(
-        (acc, [key, value]) => ({
-          ...acc,
-          [key]: value
-        }),
-        {} as ColorsByGroup<'GRAY'>
-      )
-  },
-
-  getCloudBlues: (): ColorsByGroup<'CLOUD_BLUE'> => {
-    return Object.entries(COLORS)
-      .filter(([key]) => key.startsWith('CLOUD_BLUE_'))
-      .reduce(
-        (acc, [key, value]) => ({
-          ...acc,
-          [key]: value
-        }),
-        {} as ColorsByGroup<'CLOUD_BLUE'>
-      )
-  },
-
-  getBasicColors: (): BasicColors => {
-    return Object.entries(COLORS)
-      .filter(([key]) => !key.includes('_'))
-      .reduce(
-        (acc, [key, value]) => ({
-          ...acc,
-          [key]: value
-        }),
-        {} as BasicColors
-      )
-  }
 }
