@@ -19,7 +19,7 @@ function Title({ children }: Props) {
 }
 
 const meta = {
-  title: 'Example/Components/Title',
+  title: 'Example/Common/Title',
   component: Title,
   parameters: {
     viewport: {
