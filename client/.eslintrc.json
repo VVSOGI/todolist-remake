@@ -1,14 +1,18 @@
 {
   "plugins": ["prettier", "@typescript-eslint"],
-  "extends": ["next/core-web-vitals", "airbnb-typescript", "prettier", "plugin:storybook/recommended", "next"],
+  "extends": ["next/core-web-vitals", "airbnb-typescript", "prettier", "plugin:storybook/recommended", "next", "plugin:mdx/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "settings": {
     "import/resolver": {
       "node": {
-        "moduleDirectory": ["node_modules", "app/"]
+        "moduleDirectory": ["node_modules", "app/"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".mdx"]
       },
       "typescript": {
         "alwaysTryTypes": true
@@ -16,7 +20,9 @@
     },
     "next": {
       "rootDir": "packages/todolist/"
-    }
+    },
+    "mdx/code-blocks": true,
+    "mdx/language-mapper": {}
   },
   "rules": {
     "no-unused-vars": 0,
@@ -54,5 +60,11 @@
         "caseSensitive": false
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.mdx"],
+      "extends": ["plugin:mdx/recommended"]
+    }
+  ]
 }
