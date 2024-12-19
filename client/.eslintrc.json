@@ -1,6 +1,6 @@
 {
   "plugins": ["prettier", "@typescript-eslint"],
-  "extends": ["next/core-web-vitals", "airbnb-typescript", "prettier", "plugin:storybook/recommended"],
+  "extends": ["next/core-web-vitals", "airbnb-typescript", "prettier", "plugin:storybook/recommended", "next"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
@@ -13,6 +13,9 @@
       "typescript": {
         "alwaysTryTypes": true
       }
+    },
+    "next": {
+      "rootDir": "packages/todolist/"
     }
   },
   "rules": {
