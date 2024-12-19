@@ -4,7 +4,7 @@ import { Button } from '@/app/components'
 import { buttonsTheme } from '@/app/types'
 
 const meta = {
-  title: 'Example/Components/Button',
+  title: 'Example/Common/Button',
   component: Button,
   parameters: {
     layout: 'centered',
