@@ -12,7 +12,7 @@ export type categoryComponents = 'title' | 'time'
 
 export type borderRadius = 'small' | 'medium' | 'large'
 
-export type boxShadow = 'primary'
+export type boxShadow = 'primary' | 'secondary'
 
 export type commonComponents = 'section' | 'title'
 

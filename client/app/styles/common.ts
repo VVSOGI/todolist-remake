@@ -18,6 +18,10 @@ export const BORDER_RADIUS_SIZES: Record<borderRadius, RuleSet> = {
 export const BOX_SHADOWS: Record<boxShadow, RuleSet> = {
   primary: css`
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  `,
+
+  secondary: css`
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4);
   `
 }
 
