@@ -1,11 +1,11 @@
-import { BORDER_RADIUS_SIZES, COLORS } from '@/app/styles'
-import { borderRadius } from '@/app/types'
 import React from 'react'
 import styled from 'styled-components'
+import { borderRadius } from '@/app/types'
+import { BORDER_RADIUS_SIZES, COLORS } from '@/app/styles'
 
 const Components = styled.div<ComponentStyleProps>`
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
