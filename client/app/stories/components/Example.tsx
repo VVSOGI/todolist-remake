@@ -16,12 +16,12 @@ const Components = styled.div<ComponentStyleProps>`
 `
 
 interface ComponentStyleProps {
-  styles: RuleSet
+  styles: RuleSet[]
 }
 
 interface Props {
   children: React.ReactNode
-  styles: RuleSet
+  styles: RuleSet[]
 }
 
 export function Example({ children, styles }: Props) {
