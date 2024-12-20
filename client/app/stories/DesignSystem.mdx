@@ -1,0 +1,29 @@
+import { Meta, ColorPalette, ColorItem, Description } from '@storybook/blocks'
+import { getColorsByGroup } from '@/app/utils'
+import { COLORS } from '@/app/styles'
+import { BorderRadiuses } from '@/app/stories/components'
+
+<Meta title="Design System" />
+
+# Design System
+
+<br />
+<br />
+
+## Colors
+
+<br />
+
+<ColorPalette>
+  <ColorItem title="RED" subtitle="Red colors" colors={getColorsByGroup('RED')} />
+  <ColorItem title="CLOUD_BLUE" subtitle="Cloud blue colors" colors={getColorsByGroup('CLOUD_BLUE')} />
+  <ColorItem title="GRAY" subtitle="Gray colors" colors={getColorsByGroup('GRAY')} />
+  <ColorItem title="WHITE" subtitle="Default white color" colors={{ WHITE: COLORS.WHITE }} />
+  <ColorItem title="BLACK" subtitle="Default black color" colors={{ BLACK: COLORS.BLACK }} />
+</ColorPalette>
+
+## Border Radius
+
+<br />
+
+<BorderRadiuses />

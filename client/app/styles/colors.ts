@@ -9,8 +9,8 @@ export const COLORS: Colors = {
   RED_600: '#e82f2c',
 
   GRAY_100: '#f7f7f7',
-  GRAY_200: '#f2f2f2',
-  GRAY_300: '#e6e6e6',
+  GRAY_200: '#e6e6e6',
+  GRAY_300: '#c2c2c2',
   GRAY_400: '#969696',
   GRAY_500: '#5c5c5c',
   GRAY_600: '#363636',
