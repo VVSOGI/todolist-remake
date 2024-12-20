@@ -1,8 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
-import { RadiusExample } from '@/app/stories/components'
+import styled, { RuleSet } from 'styled-components'
+import { Example } from '@/app/stories/components'
 import { borderRadius } from '@/app/types'
-import { COLORS } from '@/app/styles'
+import { BORDER_RADIUS_SIZES, COLORS } from '@/app/styles'
 
 const Components = styled.div`
   width: 100%;
@@ -26,37 +26,40 @@ const Title = styled.div`
 `
 
 const SubTitle = styled.div`
-  color: ${COLORS.GRAY_600};
+  color: ${COLORS.GRAY_500};
 `
 
 export function BorderRadiuses() {
-  const sizes: { size: borderRadius; value: string; description: string }[] = [
+  const sizes: { name: borderRadius; value: string; description: string; styles: RuleSet }[] = [
     {
-      size: 'small',
+      name: 'small',
       value: '0.25rem',
-      description: 'Small size border radius'
+      description: 'Small size border radius',
+      styles: BORDER_RADIUS_SIZES.small
     },
     {
-      size: 'medium',
+      name: 'medium',
       value: '0.5rem',
-      description: 'Medium size border radius'
+      description: 'Medium size border radius',
+      styles: BORDER_RADIUS_SIZES.medium
     },
     {
-      size: 'large',
+      name: 'large',
       value: '0.75rem',
-      description: 'Large size border radius'
+      description: 'Large size border radius',
+      styles: BORDER_RADIUS_SIZES.large
     }
   ]
 
   return (
     <Components>
       {sizes.map((size) => (
-        <CirclesWrapper key={size.size}>
+        <CirclesWrapper key={size.name}>
           <TitleWrapper>
-            <Title>{size.size.toUpperCase()}</Title>
+            <Title>{size.name.toUpperCase()}</Title>
             <SubTitle>{size.description}</SubTitle>
           </TitleWrapper>
-          <RadiusExample size={size.size}>{size.value}</RadiusExample>
+          <Example styles={size.styles}>{size.value}</Example>
         </CirclesWrapper>
       ))}
     </Components>
