@@ -1,3 +1,3 @@
 export * from './designSystem/BorderRadiuses'
 
-export * from './RadiusExample'
+export * from './Example'
