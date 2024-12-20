@@ -10,7 +10,7 @@ const Components = styled.div<ComponentStyleProps>`
   justify-content: center;
   align-items: center;
   background-color: ${COLORS.WHITE};
-  border: 1px solid ${COLORS.GRAY_400};
+  border: 1px solid ${COLORS.GRAY_300};
   ${(props) => BORDER_RADIUS_SIZES[props.borderRadius]}
 `
 
@@ -23,6 +23,6 @@ interface Props {
   size: borderRadius
 }
 
-export function Circle({ children, size }: Props) {
+export function RadiusExample({ children, size }: Props) {
   return <Components borderRadius={size}>{children}</Components>
 }
