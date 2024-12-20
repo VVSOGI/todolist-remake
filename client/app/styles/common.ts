@@ -21,7 +21,7 @@ export const BOX_SHADOWS: Record<boxShadow, RuleSet> = {
   `,
 
   secondary: css`
-    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
   `
 }
 
