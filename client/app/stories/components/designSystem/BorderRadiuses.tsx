@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Circle } from '@/app/stories/components'
+import { RadiusExample } from '@/app/stories/components'
 import { borderRadius } from '@/app/types'
 import { COLORS } from '@/app/styles'
 
@@ -9,7 +9,7 @@ const Components = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 2.5rem;
 `
 
 const CirclesWrapper = styled.div`
@@ -56,7 +56,7 @@ export function BorderRadiuses() {
             <Title>{size.size.toUpperCase()}</Title>
             <SubTitle>{size.description}</SubTitle>
           </TitleWrapper>
-          <Circle size={size.size}>{size.value}</Circle>
+          <RadiusExample size={size.size}>{size.value}</RadiusExample>
         </CirclesWrapper>
       ))}
     </Components>
