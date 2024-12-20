@@ -1,7 +1,7 @@
 import React from 'react'
 import { DesignSystemComponent, borderRadius } from '@/app/types'
 import { BORDER_RADIUS_SIZES } from '@/app/styles'
-import { DesignSystemPlate } from '@/app/stories/components'
+import { DesignSystemGuideRow } from '@/app/stories/components'
 
 export function BorderRadiuses() {
   const sizes: DesignSystemComponent<borderRadius>[] = [
@@ -25,5 +25,5 @@ export function BorderRadiuses() {
     }
   ]
 
-  return <DesignSystemPlate list={sizes} />
+  return <DesignSystemGuideRow list={sizes} />
 }

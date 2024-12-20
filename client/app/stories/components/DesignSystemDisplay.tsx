@@ -19,11 +19,10 @@ interface ComponentStyleProps {
   styles: RuleSet[]
 }
 
-interface Props {
+interface Props extends ComponentStyleProps {
   children: React.ReactNode
-  styles: RuleSet[]
 }
 
-export function Example({ children, styles }: Props) {
+export function DesignSystemDisplay({ children, styles }: Props) {
   return <Components styles={styles}>{children}</Components>
 }
