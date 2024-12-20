@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Example } from '@/app/stories/components'
+import { DesignSystemDisplay } from '@/app/stories/components'
 import { COLORS } from '@/app/styles'
 import { DesignSystemComponent } from '@/app/types'
 
@@ -33,7 +33,7 @@ interface Props<T extends string> {
   list: DesignSystemComponent<T>[]
 }
 
-export function DesignSystemPlate<T extends string>({ list }: Props<T>) {
+export function DesignSystemGuideRow<T extends string>({ list }: Props<T>) {
   return (
     <Components>
       {list.map((item) => (
@@ -42,7 +42,7 @@ export function DesignSystemPlate<T extends string>({ list }: Props<T>) {
             <Title>{item.name.toUpperCase()}</Title>
             <SubTitle>{item.description}</SubTitle>
           </TitleWrapper>
-          <Example styles={item.styles}>{item.value}</Example>
+          <DesignSystemDisplay styles={item.styles}>{item.value}</DesignSystemDisplay>
         </Component>
       ))}
     </Components>
