@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { DesignSystemDisplay } from '@/app/stories/components'
-import { COLORS } from '@/app/styles'
 import { DesignSystemComponent } from '@/app/types'
+import { COLORS } from '@/app/styles'
 
-const Components = styled.div`
+const ComponentWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@ interface Props<T extends string> {
 
 export function DesignSystemGuideRow<T extends string>({ list }: Props<T>) {
   return (
-    <Components>
+    <ComponentWrapper>
       {list.map((item) => (
         <Component key={item.name}>
           <TitleWrapper>
@@ -45,6 +45,6 @@ export function DesignSystemGuideRow<T extends string>({ list }: Props<T>) {
           <DesignSystemDisplay styles={item.styles}>{item.value}</DesignSystemDisplay>
         </Component>
       ))}
-    </Components>
+    </ComponentWrapper>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { DesignSystemComponent, boxShadow } from '@/app/types'
-import { BORDER_RADIUS_SIZES, BOX_SHADOWS } from '@/app/styles'
 import { DesignSystemGuideRow } from '@/app/stories/components'
+import { BORDER_RADIUS_SIZES, BOX_SHADOWS } from '@/app/styles'
 
 export function BoxShadows() {
   const shadows: DesignSystemComponent<boxShadow>[] = [
