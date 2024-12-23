@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { DesignSystemDisplay } from '@/app/stories/components'
-import { COLORS } from '@/app/styles'
 import { DesignSystemComponent } from '@/app/types'
+import { COLORS } from '@/app/styles'
 
 const ComponentWrapper = styled.div`
   width: 100%;
