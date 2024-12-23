@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { RuleSet } from 'styled-components'
 import { COLORS } from '@/app/styles'
 
-const Components = styled.div<ComponentStyleProps>`
+const Component = styled.div<ComponentStyleProps>`
   width: 100%;
   height: 3rem;
   display: flex;
@@ -24,5 +24,5 @@ interface Props extends ComponentStyleProps {
 }
 
 export function DesignSystemDisplay({ children, styles }: Props) {
-  return <Components styles={styles}>{children}</Components>
+  return <Component styles={styles}>{children}</Component>
 }
