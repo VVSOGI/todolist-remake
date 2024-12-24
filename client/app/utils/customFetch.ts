@@ -48,3 +48,23 @@ export async function fetchToBackend<T>(
     return { data: { message: err.message }, status: 500 }
   }
 }
+
+export async function newFetchToBackend<T>(
+  endpoint: EndPoint,
+  init?: CustomRequestInit | undefined
+): Promise<{ response: T; status: number }> {
+  const response = await fetch(`${BACKEND_SERVER_URL}${endpoint}`, init)
+
+  if (response.ok) {
+    const data = await response.json()
+    return { response: data, status: response.status }
+  }
+
+  const { message, statusCode } = await response.json()
+
+  const error = {
+    message: message || 'Unknown Error'
+  }
+
+  throw new Error(JSON.stringify({ response: error, status: statusCode || response.status }))
+}
