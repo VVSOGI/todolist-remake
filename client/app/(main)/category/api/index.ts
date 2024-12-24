@@ -1,4 +1,4 @@
-import { fetchToWebServer } from '@/app/utils/customFetch'
+import { fetchToWebServer, newFetchToBackend } from '@/app/utils/customFetch'
 import { Category, GetResponseCategories, UUID } from '@/app/types'
 
 export async function getCategoryList() {
@@ -23,8 +23,18 @@ export async function getCategoryById(categoryId: UUID) {
   return response
 }
 
+export async function createCategory(body: { title: string }) {
+  await newFetchToBackend(`/category`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  })
+}
+
 export async function deleteCategory(categoryId: string) {
-  await fetchToWebServer(`/api/category/${categoryId}`, {
+  await newFetchToBackend(`/category/soft/${categoryId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -33,7 +43,7 @@ export async function deleteCategory(categoryId: string) {
 }
 
 export async function updateCategory(categoryId: string, body: { title: string }) {
-  await fetchToWebServer(`/api/category/${categoryId}`, {
+  await newFetchToBackend(`/category/${categoryId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'

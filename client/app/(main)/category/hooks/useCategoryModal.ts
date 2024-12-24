@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { deleteCategory } from '@/app/(main)/category/api'
+import { deleteCategory, updateCategory } from '@/app/(main)/category/api'
 import { Category } from '@/app/types'
-import { newFetchToBackend } from '@/app/utils'
 
 export function useCategoryModal() {
   const router = useRouter()
@@ -42,13 +41,7 @@ export function useCategoryModal() {
   const onClickUpdateButton = useCallback(
     async (title: string) => {
       if (!targetCategory) return
-      await newFetchToBackend(`/category/${targetCategory.id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ title })
-      })
+      await updateCategory(targetCategory.id, { title })
       closeModal()
       router.refresh()
     },
