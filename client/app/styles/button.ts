@@ -12,18 +12,18 @@ export const BUTTON_DEFAULT_STYLE = css<ButtonStyleProps>`
   user-select: none;
 
   background-color: ${(props) => {
-    return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.RED_600 : COLORS.GRAY_500
+    return props.$stylestheme === buttonsTheme.BRIGHT ? COLORS.RED_600 : COLORS.GRAY_500
   }};
 
   &:hover {
     background-color: ${(props) => {
-      return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.RED_500 : COLORS.GRAY_400
+      return props.$stylestheme === buttonsTheme.BRIGHT ? COLORS.RED_500 : COLORS.GRAY_400
     }};
   }
 
   &:active {
     background-color: ${(props) => {
-      return props.stylestheme === buttonsTheme.BRIGHT ? COLORS.RED_600 : COLORS.GRAY_500
+      return props.$stylestheme === buttonsTheme.BRIGHT ? COLORS.RED_600 : COLORS.GRAY_500
     }};
   }
 `

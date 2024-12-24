@@ -31,7 +31,7 @@ export enum sectionWidth {
 }
 
 export interface ButtonStyleProps {
-  stylestheme: buttonsTheme
+  $stylestheme: buttonsTheme
   size: buttonSize
 }
 
