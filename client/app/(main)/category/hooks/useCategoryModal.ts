@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { deleteCategory } from '@/app/(main)/category/api'
 import { Category } from '@/app/types'
 import { newFetchToBackend } from '@/app/utils'
 
@@ -34,7 +33,12 @@ export function useCategoryModal() {
 
   const onClickDeleteButton = useCallback(async () => {
     if (!targetCategory) return
-    await deleteCategory(targetCategory.id)
+    await newFetchToBackend(`/category/${targetCategory.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     closeModal()
     router.refresh()
   }, [targetCategory, closeModal, router])

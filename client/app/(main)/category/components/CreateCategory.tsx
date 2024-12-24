@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/navigation'
 import { Button, Input } from '@/app/components'
-import { fetchToWebServer } from '@/app/utils/customFetch'
+import { newFetchToBackend } from '@/app/utils/customFetch'
 import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
 
 const CreateCategoryWrapper = styled.div`
@@ -44,14 +44,14 @@ export function CreateCategory() {
       setError('')
       setCategoryTitle('')
 
-      await fetchToWebServer('/api/category', {
+      await newFetchToBackend(`/category`, {
         method: 'POST',
-        body: JSON.stringify({
-          title: value
-        }),
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify({
+          title: value
+        })
       })
 
       router.refresh()
