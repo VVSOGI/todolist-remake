@@ -15,12 +15,12 @@ const TodoWrapper = styled.div<TodolistWrapperStylesProps>`
   justify-content: space-between;
   padding: 0.75rem 1rem;
   background-color: ${COLORS.WHITE};
-  opacity: ${({ isDragging }) => (isDragging ? 0.5 : 1)};
+  opacity: ${({ $isDragging }) => ($isDragging ? 0.5 : 1)};
   transform: ${({ stringTransform }) => CSS.Translate.toString(stringTransform)};
   transition: ${({ transition }) => transition};
-  border: ${({ isDragging }) => (isDragging ? '1px solid red' : 'none')};
-  border-bottom: ${({ isDragging }) => (isDragging ? '1px solid red' : `1px solid ${COLORS.GRAY_200}`)};
-  z-index: ${({ isDragging }) => (isDragging ? '100' : `1`)};
+  border: ${({ $isDragging }) => ($isDragging ? '1px solid red' : 'none')};
+  border-bottom: ${({ $isDragging }) => ($isDragging ? '1px solid red' : `1px solid ${COLORS.GRAY_200}`)};
+  z-index: ${({ $isDragging }) => ($isDragging ? '100' : `1`)};
   user-select: none;
   cursor: move;
 
@@ -57,7 +57,7 @@ const TodoIcons = styled.i`
 `
 
 interface TodolistWrapperStylesProps {
-  isDragging: boolean
+  $isDragging: boolean
   stringTransform: Transform | null
   transition?: string
 }
@@ -76,7 +76,7 @@ function TodoItemComponent({ todo, handleCompleteTodo, handleEditModalOpen }: Pr
       id={`${todo.id}-todo`}
       {...attributes}
       {...listeners}
-      isDragging={isDragging}
+      $isDragging={isDragging}
       stringTransform={transform}
       transition={transition}
       ref={setNodeRef}
