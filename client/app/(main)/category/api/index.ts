@@ -1,8 +1,8 @@
-import { fetchToWebServer, newFetchToBackend } from '@/app/utils/customFetch'
+import { newFetchToBackend } from '@/app/utils/customFetch'
 import { Category, GetResponseCategories, UUID } from '@/app/types'
 
 export async function getCategoryList() {
-  const response = await fetchToWebServer<GetResponseCategories>('/api/category', {
+  const response = await newFetchToBackend<GetResponseCategories>('/category?deleted=false', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -13,7 +13,7 @@ export async function getCategoryList() {
 }
 
 export async function getCategoryById(categoryId: UUID) {
-  const response = await fetchToWebServer<Category>(`/api/category/${categoryId}`, {
+  const response = await newFetchToBackend<Category>(`/category/${categoryId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

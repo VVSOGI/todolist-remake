@@ -8,8 +8,10 @@ interface Props {
 }
 
 export default async function page({ params: { categoryId: categoryId } }: Props) {
-  const category = await getCategoryById(categoryId)
-  const todolist = await getTodolistByCategoryId(categoryId)
+  const responseCategory = await getCategoryById(categoryId)
+  const responseTodolist = await getTodolistByCategoryId(categoryId)
+
+  const { response: category } = responseCategory
 
   const getTodolist = async () => {
     'use server'
@@ -20,7 +22,7 @@ export default async function page({ params: { categoryId: categoryId } }: Props
   return (
     <TodolistSection>
       <TodolistHeader category={category} />
-      <TodolistDisplay categoryId={category.id} todolist={todolist.data} getTodolist={getTodolist} />
+      <TodolistDisplay categoryId={category.id} todolist={responseTodolist.data} getTodolist={getTodolist} />
     </TodolistSection>
   )
 }
