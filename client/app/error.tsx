@@ -48,7 +48,7 @@ export default function error(err: any) {
   return (
     <Container>
       <ErrorSection>
-        <ErrorMessage>{receive && receive.message}</ErrorMessage>
+        <ErrorMessage>{receive && receive.response.message}</ErrorMessage>
         <ErrorStatus>Error Status {receive && receive.status}</ErrorStatus>
         <ButtonWrapper>
           <Button size="medium" style={{ width: '9rem', borderRadius: '0.5rem' }} onClick={err.reset}>
