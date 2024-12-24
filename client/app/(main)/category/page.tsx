@@ -1,16 +1,9 @@
 import { Title } from '@/app/components'
 import { CategoryDisplay, CategorySection, CreateCategory } from '@/app/(main)/category/components'
-import { newFetchToBackend } from '@/app/utils'
-import { GetResponseCategories } from '@/app/types'
+import { getCategoryList } from '@/app/(main)/category/api'
 
 export default async function page() {
-  const { response } = await newFetchToBackend<GetResponseCategories>('/category?deleted=false', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    cache: 'no-cache'
-  })
+  const { response } = await getCategoryList()
   const { data } = response
 
   return (
