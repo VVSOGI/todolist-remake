@@ -20,7 +20,7 @@ interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLB
 
 export function Button({ children, size, style, theme = buttonsTheme.BRIGHT, onClick, ...rest }: Props) {
   return (
-    <StyledButton size={size} stylestheme={theme} style={style} onClick={onClick} {...rest}>
+    <StyledButton size={size} $stylestheme={theme} style={style} onClick={onClick} {...rest}>
       {children}
     </StyledButton>
   )
