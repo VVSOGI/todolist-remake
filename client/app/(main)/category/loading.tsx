@@ -1,3 +1,5 @@
+'use client'
+
 import { Container, Title, Skeleton } from '@/app/components'
 import { CategorySection, CreateCategory } from './components'
 

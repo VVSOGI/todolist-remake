@@ -1,3 +1,5 @@
+'use client'
+
 /** MouseEvent */
 
 import { ColorsByGroup, ColorGroup } from '@/app/types'
