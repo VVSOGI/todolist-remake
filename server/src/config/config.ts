@@ -14,5 +14,9 @@ export const Config = {
     username: getString('DB_USERNAME'),
     password: getString('DB_PASSWORD'),
     database: getString('DB_DATABASE')
+  },
+
+  client: {
+    url: getString('CLIENT_URL')
   }
 }
