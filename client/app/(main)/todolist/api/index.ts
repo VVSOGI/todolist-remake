@@ -1,8 +1,8 @@
-import { fetchToWebServer } from '@/app/utils'
+import { fetchToWebServer, newFetchToBackend } from '@/app/utils'
 import { CreateTodoDto, GetResponseTodolist, GetResponseTodolistByDates, Todo, UUID, UpdateTodoDTO } from '@/app/types'
 
 export async function createTodolist(createTodo: CreateTodoDto) {
-  const response = await fetchToWebServer(`/api/todolist`, {
+  const response = await newFetchToBackend(`/todolist`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -14,7 +14,7 @@ export async function createTodolist(createTodo: CreateTodoDto) {
 }
 
 export async function getTodolistByCategoryId(categoryId: UUID) {
-  const response = await fetchToWebServer<GetResponseTodolist>(`/api/todolist/${categoryId}?checked=false`, {
+  const response = await newFetchToBackend<GetResponseTodolist>(`/todolist/${categoryId}?checked=false`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -37,13 +37,13 @@ export async function getTodolistByDates(categoryId: UUID) {
   return response
 }
 
-export async function updateTodolist(updatedTodo: UpdateTodoDTO) {
-  const response = await fetchToWebServer(`/api/todolist`, {
+export async function updateTodolist(updated: UpdateTodoDTO) {
+  const response = await newFetchToBackend(`/todolist`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(updatedTodo)
+    body: JSON.stringify(updated)
   })
 
   return response
@@ -58,7 +58,7 @@ export async function saveTodolistOrder(todolist: Todo[]) {
     }
   })
 
-  const response = await fetchToWebServer(`/api/todolist/order`, {
+  const response = await newFetchToBackend(`/todolist/order`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
