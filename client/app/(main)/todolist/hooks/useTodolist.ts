@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { updateTodolist } from '@/app/(main)/todolist/api'
-import { newFetchToBackend } from '@/app/utils'
+import { createTodolist, updateTodolist } from '@/app/(main)/todolist/api'
 import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 
 interface Props {
@@ -40,15 +39,7 @@ export function useTodolist({ categoryId, todolist, getTodolist }: Props) {
       title,
       categoryId
     }
-
-    await newFetchToBackend(`/todolist`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(createTodo)
-    })
-
+    await createTodolist(createTodo)
     await setNewTodolist()
   }
 

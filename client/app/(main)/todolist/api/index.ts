@@ -2,7 +2,7 @@ import { fetchToWebServer, newFetchToBackend } from '@/app/utils'
 import { CreateTodoDto, GetResponseTodolist, GetResponseTodolistByDates, Todo, UUID, UpdateTodoDTO } from '@/app/types'
 
 export async function createTodolist(createTodo: CreateTodoDto) {
-  const response = await fetchToWebServer(`/api/todolist`, {
+  const response = await newFetchToBackend(`/todolist`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
