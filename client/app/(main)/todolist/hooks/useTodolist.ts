@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
+import { updateTodolist } from '@/app/(main)/todolist/api'
 import { newFetchToBackend } from '@/app/utils'
+import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 
 interface Props {
   categoryId: string
@@ -17,14 +18,7 @@ export function useTodolist({ categoryId, todolist, getTodolist }: Props) {
   }
 
   const handleEditTodo = async (updated: UpdateTodoDTO) => {
-    await newFetchToBackend(`/todolist`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(updated)
-    })
-
+    await updateTodolist(updated)
     await setNewTodolist()
   }
 
@@ -34,14 +28,7 @@ export function useTodolist({ categoryId, todolist, getTodolist }: Props) {
       title: todo.title,
       checked: !todo.checked
     }
-
-    await newFetchToBackend(`/todolist`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(updated)
-    })
+    await updateTodolist(updated)
     await setNewTodolist()
 
     const audio = document.getElementById('audio') as HTMLAudioElement

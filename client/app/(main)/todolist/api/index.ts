@@ -37,13 +37,13 @@ export async function getTodolistByDates(categoryId: UUID) {
   return response
 }
 
-export async function updateTodolist(updatedTodo: UpdateTodoDTO) {
-  const response = await fetchToWebServer(`/api/todolist`, {
+export async function updateTodolist(updated: UpdateTodoDTO) {
+  const response = await newFetchToBackend(`/todolist`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(updatedTodo)
+    body: JSON.stringify(updated)
   })
 
   return response
