@@ -9,8 +9,11 @@ interface Props {
 }
 
 export default async function page({ params: { id: categoryId } }: Props) {
-  const category = await getCategoryById(categoryId)
-  const todolistsByDate = await getTodolistByDates(categoryId)
+  const categoryResponse = await getCategoryById(categoryId)
+  const todolistsByDateResponse = await getTodolistByDates(categoryId)
+
+  const { response: category } = categoryResponse
+  const { response: todolistsByDate } = todolistsByDateResponse
 
   return (
     <StorageSection>
