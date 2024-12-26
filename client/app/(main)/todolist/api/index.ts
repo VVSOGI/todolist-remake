@@ -1,4 +1,4 @@
-import { fetchToWebServer, newFetchToBackend } from '@/app/utils'
+import { newFetchToBackend } from '@/app/utils'
 import { CreateTodoDto, GetResponseTodolist, GetResponseTodolistByDates, Todo, UUID, UpdateTodoDTO } from '@/app/types'
 
 export async function createTodolist(createTodo: CreateTodoDto) {
@@ -26,7 +26,7 @@ export async function getTodolistByCategoryId(categoryId: UUID) {
 }
 
 export async function getTodolistByDates(categoryId: UUID) {
-  const response = await fetchToWebServer<GetResponseTodolistByDates>(`/api/todolist/dates/${categoryId}`, {
+  const response = await newFetchToBackend<GetResponseTodolistByDates>(`/todolist/dates/${categoryId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
