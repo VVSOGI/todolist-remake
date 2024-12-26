@@ -24,30 +24,33 @@ export async function getCategoryById(categoryId: UUID) {
 }
 
 export async function createCategory(body: { title: string }) {
-  await newFetchToBackend(`/category`, {
+  const response = await newFetchToBackend(`/category`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(body)
   })
+  return response
 }
 
 export async function deleteCategory(categoryId: string) {
-  await newFetchToBackend(`/category/soft/${categoryId}`, {
+  const response = await newFetchToBackend(`/category/soft/${categoryId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     }
   })
+  return response
 }
 
 export async function updateCategory(categoryId: string, body: { title: string }) {
-  await newFetchToBackend(`/category/${categoryId}`, {
+  const response = await newFetchToBackend(`/category/${categoryId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(body)
   })
+  return response
 }
