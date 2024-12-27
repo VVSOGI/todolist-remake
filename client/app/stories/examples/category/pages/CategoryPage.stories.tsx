@@ -4,7 +4,7 @@ import { CategoryDisplay, CategorySection, CreateCategory } from '@/app/(main)/c
 import { mockCategories } from '@/app/stories/mock'
 
 const categoryPage = {
-  title: 'Example/Category/1. Pages/Pages',
+  title: 'Example/Category/1. Pages',
   parameters: {
     layout: 'center'
   },

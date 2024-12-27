@@ -5,7 +5,7 @@ import { TodolistDisplay, TodolistHeader, TodolistSection } from '@/app/(main)/t
 import { mockCategories, mockTodoItems } from '@/app/stories/mock'
 
 const TodolistPage = {
-  title: 'Example/Todolist/1. Pages/Pages',
+  title: 'Example/Todolist/1. Pages',
   component: TodolistDisplay,
   parameters: {
     layout: 'fullscreen',

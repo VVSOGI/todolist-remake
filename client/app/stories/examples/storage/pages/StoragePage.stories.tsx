@@ -4,7 +4,7 @@ import { StorageHeader, StorageListDisplay, StorageSection } from '@/app/(main)/
 import { mockCategories, mockStorageTodoLists } from '@/app/stories/mock'
 
 const StoragePage = {
-  title: 'Example/Storage/1. Pages/Pages',
+  title: 'Example/Storage/1. Pages',
   component: StorageListDisplay,
   parameters: {
     layout: 'fullscreen',
