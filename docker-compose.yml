@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres
+    env_file:
+      - .server.env
+    profiles:
+      - infra
+      - all
+    container_name: ${DB_CONTAINER_NAME}
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    expose:
+      - "${DB_PORT}"
+    volumes:
+      - ${DB_VOLUME_NAME}:/var/lib/postgresql/data
+    networks:
+      - todolist
+    restart: always
+
+  backend:
+    env_file:
+      - .server.env
+    image: ${SERVICE_BACKEND_CONTAINER_NAME}
+    build: ./server/.
+    profiles:
+      - services
+      - all
+    container_name: ${SERVICE_BACKEND_CONTAINER_NAME}
+    expose:
+      - "${SERVER_PORT}"
+    networks:
+      - todolist
+    restart: always
+
+  client:
+    env_file:
+      - .client.env
+    image: ${SERVICE_FRONTEND_CONTAINER_NAME}
+    build: ./client/.
+    profiles:
+      - services
+      - all
+    container_name: ${SERVICE_FRONTEND_CONTAINER_NAME}
+    expose:
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+    networks:
+      - todolist
+    restart: always
+
+networks:
+  todolist:
+    external: true
