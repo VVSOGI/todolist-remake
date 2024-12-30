@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   postgres:
-    image: postgres
+    image: postgres:16.6-alpine
     env_file:
       - .env
     profiles:
@@ -22,13 +22,15 @@ services:
     restart: always
 
   backend:
+    depends_on:
+      - postgres
     env_file:
       - .env
       - .env.server
     image: ${SERVICE_BACKEND_CONTAINER_NAME}
     build: ./server/.
     profiles:
-      - services
+      - infra
       - all
     container_name: ${SERVICE_BACKEND_CONTAINER_NAME}
     expose:
