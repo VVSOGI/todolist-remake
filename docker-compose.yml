@@ -4,7 +4,7 @@ services:
   postgres:
     image: postgres
     env_file:
-      - .server.env
+      - .env
     profiles:
       - infra
       - all
@@ -23,7 +23,8 @@ services:
 
   backend:
     env_file:
-      - .server.env
+      - .env
+      - .env.server
     image: ${SERVICE_BACKEND_CONTAINER_NAME}
     build: ./server/.
     profiles:
@@ -38,7 +39,8 @@ services:
 
   client:
     env_file:
-      - .client.env
+      - .env
+      - .env.client
     image: ${SERVICE_FRONTEND_CONTAINER_NAME}
     build: ./client/.
     profiles:
