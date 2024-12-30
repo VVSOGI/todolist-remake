@@ -1,0 +1,11 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "Make todolist free",
+  "repository": "https://github.com/VVSOGI/todolist-remake.git",
+  "author": "benny <vvsogi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "compose-up": "docker-compose --profile infra up -d && docker-compose --profile services up -d"
+  }
+}
