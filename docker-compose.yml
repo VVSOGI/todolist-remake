@@ -36,7 +36,12 @@ services:
 
   client:
     image: ${SERVICE_FRONTEND_CONTAINER_NAME}
-    build: ./client/.
+    build:
+      context: ./client
+      args:
+        NODE_ENV: ${NODE_ENV}
+    environment:
+      - NODE_ENV=${NODE_ENV}
     profiles:
       - services
     container_name: ${SERVICE_FRONTEND_CONTAINER_NAME}
