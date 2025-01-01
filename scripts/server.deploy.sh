@@ -4,7 +4,16 @@ cd "$(dirname "$0")"
 source ../envs/.client.env
 source ../envs/.server.env
 
-export DOCKER_HOST="unix:///Users/benny/.docker/run/docker.sock" 
+case "$(uname -s)" in
+    Darwin*)    # macOS
+        if [ -S "/Users/$USER/.docker/run/docker.sock" ]; then
+            export DOCKER_HOST="unix:///Users/$USER/.docker/run/docker.sock"
+        else
+            export DOCKER_HOST="unix:///var/run/docker.sock"
+        fi
+        ;;
+esac
+
 
 export DB_CONTAINER_NAME=$DB_CONTAINER_NAME
 export DB_PORT=$DB_PORT
