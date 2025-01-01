@@ -3,6 +3,7 @@ set -e
 cd "$(dirname "$0")"
 source ../envs/.client.env
 source ../envs/.server.env
+
 export DOCKER_HOST="unix:///Users/benny/.docker/run/docker.sock" 
 
 export DB_CONTAINER_NAME=$DB_CONTAINER_NAME
