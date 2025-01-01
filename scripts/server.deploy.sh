@@ -12,6 +12,9 @@ case "$(uname -s)" in
             export DOCKER_HOST="unix:///var/run/docker.sock"
         fi
         ;;
+    Linux*)     # Linux
+        export DOCKER_HOST="unix:///var/run/docker.sock"
+        ;;
 esac
 
 
