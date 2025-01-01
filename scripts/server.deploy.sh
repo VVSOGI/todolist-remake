@@ -15,6 +15,13 @@ case "$(uname -s)" in
     Linux*)     # Linux
         export DOCKER_HOST="unix:///var/run/docker.sock"
         ;;
+    CYGWIN*|MINGW32*|MSYS*|MINGW*)  # Windows
+        export DOCKER_HOST="npipe:////./pipe/docker_engine"
+        ;;
+    *)
+        echo "Unsupported operating system"
+        exit 1
+        ;;
 esac
 
 
