@@ -9,7 +9,7 @@ export const Config = {
   },
 
   db: {
-    host: getString('RUN_ENVIRONMENT') === 'local' ? getString('LOCAL_HOST') : getString('DOCKER_HOST'),
+    host: getString('RUN_ENVIRONMENT') === 'local' ? getString('LOCAL_HOST') : getString('DOCKER_CONTAINER_NAME'),
     port: getNumber('DB_PORT'),
     username: getString('DB_USERNAME'),
     password: getString('DB_PASSWORD'),
