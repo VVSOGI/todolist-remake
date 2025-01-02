@@ -34,7 +34,7 @@ cat ../envs/.client.env ../envs/.server.env ../envs/.infra.env  > ../.env
 cat ../envs/.server.env ../envs/.infra.env > ../server/.env
 cat ../envs/.client.env ../envs/.infra.env > ../client/.env
 
-sudo mkdir -p /var/lib/todolist2/data
+sudo mkdir -p $DB_VOLUME_NAME/data
 sudo chown -R $USER /var/lib/todolist2
 
 docker-compose -f ../docker-compose.yml --profile infra up -d

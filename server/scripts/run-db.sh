@@ -14,7 +14,7 @@ docker run \
   -e POSTGRES_PASSWORD=$DB_PASSWORD \
   -e POSTGRES_USER=$DB_USERNAME \
   -e POSTGRES_DB=$DB_DATABASE \
-  -v $DB_VOLUME_NAME:/var/lib/postgresql/data \
+  -v $DB_VOLUME_NAME/data:/var/lib/postgresql/data \
   -d postgres:16.6-alpine
 
 echo "Waiting for PostgreSQL server [$DB_CONTAINER_NAME] to start."
