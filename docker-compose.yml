@@ -13,7 +13,7 @@ services:
     expose:
       - "${DB_PORT}"
     volumes:
-      - ${DB_VOLUME_NAME}:/var/lib/postgresql/data
+      - ${DB_VOLUME_NAME}/data:/var/lib/postgresql/data
     networks:
       - todolist
     restart: always
