@@ -2,32 +2,41 @@
 set -e
 cd "$(dirname "$0")"
 source ../envs/.server.env
+source ../envs/.infra.env
 
-case "$(uname -s)" in
-    Darwin*)    # macOS
-        if [ -S "/Users/$USER/.docker/run/docker.sock" ]; then
-            export DOCKER_HOST="unix:///Users/$USER/.docker/run/docker.sock"
-        else
-            export DOCKER_HOST="unix:///var/run/docker.sock"
+infra_setting() {
+    while ! docker exec $DB_CONTAINER_NAME pg_isready -U $DB_USERNAME -d $DB_DATABASE -h localhost >/dev/null 2>&1; do
+        echo "PostgreSQL is unavailable - sleeping"
+        sleep 1
+    done
+
+    docker exec $SERVICE_BACKEND_CONTAINER_NAME /bin/bash -c '
+        counter=0
+        while [ ! -f /app/dist/database/data-source.js ] && [ $counter -lt 30 ]; do
+            echo "Waiting for data-source.js to be created..."
+            sleep 2
+            counter=$((counter + 1))
+        done
+        if [ ! -f /app/dist/database/data-source.js ]; then
+            echo "Timeout waiting for data-source.js"
+            exit 1
         fi
-        ;;
-    Linux*)     # Linux
-        export DOCKER_HOST="unix:///var/run/docker.sock"
-        ;;
-    CYGWIN*|MINGW32*|MSYS*|MINGW*)  # Windows
-        export DOCKER_HOST="npipe:////./pipe/docker_engine"
-        ;;
-    *)
-        echo "Unsupported operating system"
-        exit 1
-        ;;
-esac
-
-docker network create todolist || true
+    '
+    
+    docker exec $SERVICE_BACKEND_CONTAINER_NAME yarn migration:show
+    docker exec $SERVICE_BACKEND_CONTAINER_NAME yarn migration:run
+    docker exec $SERVICE_BACKEND_CONTAINER_NAME yarn migration:show
+    docker exec -i $DB_CONTAINER_NAME psql -U $DB_USERNAME -d $DB_DATABASE -c '\dt'
+}
+docker network create $DOCKER_NETWORK || true
 
 cat ../envs/.client.env ../envs/.server.env ../envs/.infra.env  > ../.env
 cat ../envs/.server.env ../envs/.infra.env > ../server/.env
 cat ../envs/.client.env ../envs/.infra.env > ../client/.env
 
+sudo mkdir -p /var/lib/todolist2/data
+sudo chown -R $USER /var/lib/todolist2
+
 docker-compose -f ../docker-compose.yml --profile infra up -d
+infra_setting
 docker-compose -f ../docker-compose.yml --profile services up -d
