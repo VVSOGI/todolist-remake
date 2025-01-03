@@ -12,12 +12,12 @@ infra_setting() {
 
     docker exec $SERVICE_BACKEND_CONTAINER_NAME /bin/bash -c '
         counter=0
-        while [ ! -f /app/dist/database/data-source.js ] && [ $counter -lt 30 ]; do
+        while ! { [ -f ./dist/database/data-source.js ] || [ -f /app/dist/database/data-source.js ]; } && [ $counter -lt 30 ]; do
             echo "Waiting for data-source.js to be created..."
             sleep 2
             counter=$((counter + 1))
         done
-        if [ ! -f /app/dist/database/data-source.js ]; then
+        if ! { [ -f ./dist/database/data-source.js ] || [ -f /app/dist/database/data-source.js ]; }; then
             echo "Timeout waiting for data-source.js"
             exit 1
         fi
@@ -35,7 +35,7 @@ cat ../envs/.server.env ../envs/.infra.env > ../server/.env
 cat ../envs/.client.env ../envs/.infra.env > ../client/.env
 
 sudo mkdir -p $DB_VOLUME_NAME/data
-sudo chown -R $USER /var/lib/todolist2
+sudo chown -R $USER $DB_VOLUME_NAME
 
 docker-compose -f ../docker-compose.yml --profile infra up -d
 infra_setting
