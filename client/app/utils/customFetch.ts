@@ -7,7 +7,7 @@ const UrlMap = {
   production: process.env.NEXT_PUBLIC_BACKEND_PRODUCTION
 }
 
-const environment = process.env.RUN_ENVIRONMENT as 'test' | 'development' | 'production'
+const environment = process.env.NEXT_PUBLIC_RUN_ENVIRONMENT as 'test' | 'development' | 'production'
 export const BACKEND_SERVER_URL = UrlMap[environment]
 
 interface CustomRequestInit extends RequestInit {
