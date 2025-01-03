@@ -3,7 +3,7 @@ set -e
 cd "$(dirname "$0")"
 source ../.env
 
-NEW_VALUE="http://backend:3000"
+NEW_VALUE="http://localhost:3000"
 ENV_FILE="../.env"
 
 if [ -f "$ENV_FILE" ]; then
