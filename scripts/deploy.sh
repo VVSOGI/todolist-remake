@@ -41,4 +41,4 @@ docker-compose -f ../docker-compose.yml --profile infra up -d
 infra_setting
 docker-compose -f ../docker-compose.yml --profile services up -d
 
-docker exec $SERVICE_FRONTEND_CONTAINER_NAME bash ./scripts/docker.development.deploy.sh
+# docker exec $SERVICE_FRONTEND_CONTAINER_NAME bash ./scripts/docker.development.deploy.sh

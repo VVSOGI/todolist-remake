@@ -1,7 +1,7 @@
 export type EndPoint = string
 export type HTTPMethods = 'GET' | 'POST' | 'PATCH' | 'DELETE'
 
-export const BACKEND_SERVER_URL = process.env.NEXT_PUBLIC_BACKEND_URL
+export const BACKEND_SERVER_URL = typeof window === 'undefined' ? process.env.NEXT_PUBLIC_BACKEND_URL : 'http://localhost:3000'
 
 interface CustomRequestInit extends RequestInit {
   method: HTTPMethods
