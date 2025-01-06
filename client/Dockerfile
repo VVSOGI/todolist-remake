@@ -12,4 +12,4 @@ RUN yarn build
 
 EXPOSE 3001
 
-CMD ["tail", "-f", "/dev/null"]
+CMD ["yarn", "start"]
