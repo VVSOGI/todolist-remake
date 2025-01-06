@@ -32,7 +32,7 @@ docker network create $DOCKER_NETWORK || true
 
 cat ../envs/.client.env ../envs/.server.env ../envs/.infra.env  > ../.env
 cat ../envs/.server.env ../envs/.infra.env > ../server/.env
-cat ../envs/.client.env ../envs/.infra.env > ../client/.env
+cat ../envs/.client.env > ../client/.env
 
 sudo mkdir -p $DB_VOLUME_NAME/data
 sudo chown -R $USER $DB_VOLUME_NAME
@@ -40,5 +40,3 @@ sudo chown -R $USER $DB_VOLUME_NAME
 docker-compose -f ../docker-compose.yml --profile infra up -d
 infra_setting
 docker-compose -f ../docker-compose.yml --profile services up -d
-
-# docker exec $SERVICE_FRONTEND_CONTAINER_NAME bash ./scripts/docker.development.deploy.sh
