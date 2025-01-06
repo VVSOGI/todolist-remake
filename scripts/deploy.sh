@@ -10,24 +10,10 @@ infra_setting() {
         sleep 1
     done
 
-    docker exec $SERVICE_BACKEND_CONTAINER_NAME /bin/bash -c '
-        counter=0
-        while ! { [ -f ./dist/database/data-source.js ] || [ -f /app/dist/database/data-source.js ]; } && [ $counter -lt 30 ]; do
-            echo "Waiting for data-source.js to be created..."
-            sleep 2
-            counter=$((counter + 1))
-        done
-        if ! { [ -f ./dist/database/data-source.js ] || [ -f /app/dist/database/data-source.js ]; }; then
-            echo "Timeout waiting for data-source.js"
-            exit 1
-        fi
-    '
-    
-    docker exec $SERVICE_BACKEND_CONTAINER_NAME yarn migration:show
-    docker exec $SERVICE_BACKEND_CONTAINER_NAME yarn migration:run
-    docker exec $SERVICE_BACKEND_CONTAINER_NAME yarn migration:show
-    docker exec -i $DB_CONTAINER_NAME psql -U $DB_USERNAME -d $DB_DATABASE -c '\dt'
+    docker cp ../temp/dump.sql postgres:/home/
+    docker exec postgres psql -U benny -d postgres -f /home/dump.sql
 }
+
 docker network create $DOCKER_NETWORK || true
 
 cat ../envs/.client.env ../envs/.server.env ../envs/.infra.env  > ../.env
