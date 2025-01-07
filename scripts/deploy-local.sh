@@ -12,6 +12,7 @@ infra_setting() {
 
     docker cp ../temp/dump.sql $DB_CONTAINER_NAME:/home/
     docker exec $DB_CONTAINER_NAME psql -U $DB_USERNAME -d $DB_CONTAINER_NAME -f /home/dump.sql
+    docker exec -it $DB_CONTAINER_NAME psql -U $DB_USERNAME -d $DB_DATABASE -c "ALTER USER $DB_USERNAME WITH PASSWORD '$DB_PASSWORD'"
 }
 
 docker network create $DOCKER_NETWORK || true
