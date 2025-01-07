@@ -20,7 +20,7 @@ fi
 
 echo "The reset task is going."
 
-rm ../.env ../client/.env ../server/.env || true
+rm ../.env ../packages/client/.env ../packages/server/.env || true
 docker rm -f frontend backend postgres
 docker system prune -a -f
 
