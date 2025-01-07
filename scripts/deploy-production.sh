@@ -32,8 +32,8 @@ infra_setting() {
 docker network create $DOCKER_NETWORK || true
 
 cat ../envs/.client.env ../envs/.server.env ../envs/.infra.env  > ../.env
-cat ../envs/.server.env ../envs/.infra.env > ../server/.env
-cat ../envs/.client.env > ../client/.env
+cat ../envs/.server.env ../envs/.infra.env > ../packages/server/.env
+cat ../envs/.client.env > ../packages/client/.env
 
 sudo mkdir -p $DB_VOLUME_NAME/data
 sudo chown -R $USER $DB_VOLUME_NAME

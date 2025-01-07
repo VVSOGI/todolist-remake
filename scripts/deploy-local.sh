@@ -10,15 +10,15 @@ infra_setting() {
         sleep 1
     done
 
-    docker cp ../temp/dump.sql postgres:/home/
-    docker exec postgres psql -U benny -d postgres -f /home/dump.sql
+    docker cp ../temp/dump.sql $DB_CONTAINER_NAME:/home/
+    docker exec $DB_CONTAINER_NAME psql -U $DB_USERNAME -d $DB_CONTAINER_NAME -f /home/dump.sql
 }
 
 docker network create $DOCKER_NETWORK || true
 
 cat ../envs/.client.env ../envs/.server.env ../envs/.infra.env  > ../.env
-cat ../envs/.server.env ../envs/.infra.env > ../server/.env
-cat ../envs/.client.env > ../client/.env
+cat ../envs/.server.env ../envs/.infra.env > ../packages/server/.env
+cat ../envs/.client.env > ../packages/client/.env
 
 sudo mkdir -p $DB_VOLUME_NAME/data
 sudo chown -R $USER $DB_VOLUME_NAME
