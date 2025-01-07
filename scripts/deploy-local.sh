@@ -10,8 +10,8 @@ infra_setting() {
         sleep 1
     done
 
-    docker cp ../temp/dump.sql postgres:/home/
-    docker exec postgres psql -U benny -d postgres -f /home/dump.sql
+    docker cp ../temp/dump.sql $DB_CONTAINER_NAME:/home/
+    docker exec $DB_CONTAINER_NAME psql -U $DB_USERNAME -d $DB_CONTAINER_NAME -f /home/dump.sql
 }
 
 docker network create $DOCKER_NETWORK || true
