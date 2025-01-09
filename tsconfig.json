@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@todolist/client": ["packages/client"],
-      "@todolist/client/*": ["packages/client/*"]
+      "@todolist/client/*": ["packages/client/*"],
+      "@/app/*": ["packages/client/app/*"]
     }
   }
 }
