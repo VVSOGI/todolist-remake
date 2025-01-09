@@ -46,6 +46,18 @@ services:
       - todolist
     restart: always
 
+    # stories:
+    #   image: ${SERVICE_STORYBOOK_CONTAINER_NAME}
+    #   build: ./packages/stories
+    #   profiles:
+    #     - services
+    #   container_name: ${SERVICE_STORYBOOK_CONTAINER_NAME}
+    #   ports:
+    #     - "${STORIES_PORT}:${STORIES_PORT}"
+    #   networks:
+    #     - todolist
+    #   restart: always
+
 networks:
   todolist:
     external: true
