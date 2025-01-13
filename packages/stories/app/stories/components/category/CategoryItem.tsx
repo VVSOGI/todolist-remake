@@ -1,13 +1,13 @@
-import React, { memo, useRef } from 'react'
-import styled from 'styled-components'
-import { useRouter } from 'next/navigation'
-import { FaTrashAlt } from 'react-icons/fa'
-import { IoSettings } from 'react-icons/io5'
-import { D2CodingBold } from '@/public/fonts'
-import { Button } from '@/app/components'
-import { changeToLocaleTime, dragHorizon } from '@/app/utils'
-import { Category, buttonsTheme } from '@/app/types'
-import { CATEGORY_MEDIA_QUERY, COLORS, FONT_SIZES } from '@/app/styles'
+import React, { memo, useRef } from "react";
+import styled from "styled-components";
+import { useRouter } from "next/navigation";
+import { FaTrashAlt } from "react-icons/fa";
+import { IoSettings } from "react-icons/io5";
+import { D2CodingBold } from "@/public/fonts";
+import { Button } from "@/app/stories/components";
+import { changeToLocaleTime, dragHorizon } from "@/app/utils";
+import { Category, buttonsTheme } from "@/app/types";
+import { CATEGORY_MEDIA_QUERY, COLORS, FONT_SIZES } from "@/app/styles";
 
 const CategoryWrapper = styled.div`
   width: 100%;
@@ -15,7 +15,7 @@ const CategoryWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid ${COLORS.GRAY_200};
-`
+`;
 
 const CategoryButton = styled.button`
   width: 100%;
@@ -37,7 +37,7 @@ const CategoryButton = styled.button`
   &:active {
     background-color: ${COLORS.GRAY_200};
   }
-`
+`;
 
 const ContentsWrapper = styled.div`
   width: 100%;
@@ -48,14 +48,14 @@ const ContentsWrapper = styled.div`
   padding-left: 0.5rem;
   padding-right: 1rem;
   user-select: none;
-`
+`;
 
 const CategoryTitle = styled.h2`
   font-size: ${FONT_SIZES.sm};
   font-weight: 500;
   color: ${COLORS.GRAY_500};
   ${CATEGORY_MEDIA_QUERY.title}
-`
+`;
 
 const CategoryTime = styled.div`
   display: flex;
@@ -68,7 +68,7 @@ const CategoryTime = styled.div`
   }
 
   ${CATEGORY_MEDIA_QUERY.time}
-`
+`;
 
 const HiddenButtonsWrapper = styled.div`
   width: 0rem;
@@ -84,44 +84,44 @@ const HiddenButtonsWrapper = styled.div`
   button {
     font-size: ${FONT_SIZES.xs};
   }
-`
+`;
 
 interface Props {
-  category: Category
-  openTargetModal: (category: Category) => void
-  openDeleteModal: (category: Category) => void
+  category: Category;
+  openTargetModal: (category: Category) => void;
+  openDeleteModal: (category: Category) => void;
 }
 
 function CategoryComponent({ category, openDeleteModal, openTargetModal }: Props) {
-  const router = useRouter()
-  const isDragging = useRef(false)
+  const router = useRouter();
+  const isDragging = useRef(false);
 
   const onClickCategory = (id: string) => {
     if (isDragging.current) {
-      return
+      return;
     }
 
-    router.push(`/todolist/${id}`)
-  }
+    router.push(`/todolist/${id}`);
+  };
 
   const onCategoryDrag = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, categoryId: string) => {
-    isDragging.current = false
+    isDragging.current = false;
 
-    const hiddenButton = document.getElementById(`${categoryId}-hidden`)
-    if (!hiddenButton) return
+    const hiddenButton = document.getElementById(`${categoryId}-hidden`);
+    if (!hiddenButton) return;
 
     dragHorizon({
       event: e,
       leftCallback: () => {
-        isDragging.current = true
-        hiddenButton.style.minWidth = '6rem'
+        isDragging.current = true;
+        hiddenButton.style.minWidth = "6rem";
       },
       rightCallback: () => {
-        isDragging.current = true
-        hiddenButton.style.minWidth = '0rem'
-      }
-    })
-  }
+        isDragging.current = true;
+        hiddenButton.style.minWidth = "0rem";
+      },
+    });
+  };
 
   return (
     <CategoryWrapper key={category.id}>
@@ -143,7 +143,7 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal }: Props
         </Button>
       </HiddenButtonsWrapper>
     </CategoryWrapper>
-  )
+  );
 }
 
-export const CategoryItem = memo(CategoryComponent)
+export const CategoryItem = memo(CategoryComponent);

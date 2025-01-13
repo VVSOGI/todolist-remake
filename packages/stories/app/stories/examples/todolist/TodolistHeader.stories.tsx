@@ -1,25 +1,25 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Container } from '@/app/components'
-import { TodolistHeader, TodolistSection } from '@/app/(main)/todolist/components'
-import { mockCategories } from '@/app/stories/mock'
+import type { Meta, StoryObj } from "@storybook/react";
+import { Container } from "@/app/stories/components";
+import { TodolistHeader, TodolistSection } from "@/app/stories/components/todolist";
+import { mockCategories } from "@/app/stories/mock";
 
 const todolistHeader = {
-  title: 'Example/Todolist/TodolistHeader',
+  title: "Example/Todolist/TodolistHeader",
   component: TodolistHeader,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     docs: {
       description: {
         component: `투두리스트에 들어가는 TodolistHeader 입니다. 
         \n\n 해당 투두리스트의 카테고리 제목을 상단에서 보여줍니다.
         \n\n 우측 상단 상자 버튼을 누르면 Storage page로 이동합니다.
-        \n\n 우측 상단 X 버튼을 누르면 Category page로 이동합니다.`
-      }
-    }
+        \n\n 우측 상단 X 버튼을 누르면 Category page로 이동합니다.`,
+      },
+    },
   },
   argTypes: {},
   args: {
-    category: mockCategories[0]
+    category: mockCategories[0],
   },
   decorators: (Story) => (
     <Container>
@@ -27,11 +27,11 @@ const todolistHeader = {
         <Story />
       </TodolistSection>
     </Container>
-  )
-} satisfies Meta<typeof TodolistHeader>
+  ),
+} satisfies Meta<typeof TodolistHeader>;
 
-export default todolistHeader
-type Story = StoryObj<typeof todolistHeader>
+export default todolistHeader;
+type Story = StoryObj<typeof todolistHeader>;
 
 /**
  * 가장 기본적인 형태의 TodolistHeader 입니다.
@@ -39,29 +39,29 @@ type Story = StoryObj<typeof todolistHeader>
 export const Styles1Tablet: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'tablet'
-    }
+      defaultViewport: "tablet",
+    },
   },
-  tags: ['autodocs'],
-  args: {}
-}
+  tags: ["autodocs"],
+  args: {},
+};
 
 export const Styles2Desktop: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'desktop'
-    }
+      defaultViewport: "desktop",
+    },
   },
-  tags: ['!autodocs'],
-  args: {}
-}
+  tags: ["!autodocs"],
+  args: {},
+};
 
 export const Styles3Mobile: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'iphone14'
-    }
+      defaultViewport: "iphone14",
+    },
   },
-  tags: ['!autodocs'],
-  args: {}
-}
+  tags: ["!autodocs"],
+  args: {},
+};

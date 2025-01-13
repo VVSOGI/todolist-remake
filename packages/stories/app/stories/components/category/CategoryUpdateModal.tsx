@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { AgreementModal, Input } from '@/app/components'
-import { COLORS } from '@/app/styles'
+import React, { useState } from "react";
+import styled from "styled-components";
+import { AgreementModal, Input } from "@/app/stories/components";
+import { COLORS } from "@/app/styles";
 
 const UpdateModalContents = styled.div`
   width: 100%;
@@ -9,23 +9,23 @@ const UpdateModalContents = styled.div`
   flex-direction: column;
   padding: 3rem 0;
   gap: 0.75rem;
-`
+`;
 
 interface Props {
-  placeholder?: string
-  closeModal: () => void
-  onClickUpdateButton: (title: string) => Promise<void>
+  placeholder?: string;
+  closeModal: () => void;
+  onClickUpdateButton: (title: string) => Promise<void>;
 }
 
 export function CategoryUpdateModal({ placeholder, closeModal, onClickUpdateButton }: Props) {
-  const [updateTitle, setUpdateTitle] = useState('')
+  const [updateTitle, setUpdateTitle] = useState("");
 
   return (
     <AgreementModal title="Update" handleRefuse={closeModal} handleAgree={() => onClickUpdateButton(updateTitle)}>
       <UpdateModalContents>
         <div>Change Title this category</div>
         <Input
-          style={{ width: '100%', border: `1px solid ${COLORS.GRAY_200}`, borderRadius: '0.25rem' }}
+          style={{ width: "100%", border: `1px solid ${COLORS.GRAY_200}`, borderRadius: "0.25rem" }}
           value={updateTitle}
           changeValue={(value) => setUpdateTitle(value)}
           handleSubmit={() => {}}
@@ -33,5 +33,5 @@ export function CategoryUpdateModal({ placeholder, closeModal, onClickUpdateButt
         />
       </UpdateModalContents>
     </AgreementModal>
-  )
+  );
 }

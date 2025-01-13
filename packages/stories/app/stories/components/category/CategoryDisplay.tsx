@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Categories, CategoryDeleteModal, CategoryUpdateModal } from '@/app/(main)/category/components'
-import { useCategoryModal } from '@/app/(main)/category/hooks'
-import { Category } from '@/app/types'
+import React from "react";
+import styled from "styled-components";
+import { Categories, CategoryDeleteModal, CategoryUpdateModal } from "@/app/stories/components/category";
+import { useCategoryModal } from "@/app/stories/components/category/hooks";
+import { Category } from "@/app/types";
 
 const CategoryDisplayContainer = styled.div`
   overflow-y: scroll;
@@ -14,10 +14,10 @@ const CategoryDisplayContainer = styled.div`
     border-radius: 0.125rem;
     background: #ccc;
   }
-`
+`;
 
 interface Props {
-  categories: Category[]
+  categories: Category[];
 }
 
 export function CategoryDisplay({ categories }: Props) {
@@ -28,18 +28,22 @@ export function CategoryDisplay({ categories }: Props) {
     openDeleteModal,
     openTargetModal,
     onClickDeleteButton,
-    onClickUpdateButton
-  } = useCategoryModal()
+    onClickUpdateButton,
+  } = useCategoryModal();
 
   return (
     <CategoryDisplayContainer>
-      {isModalOpen === 'update' && (
-        <CategoryUpdateModal placeholder={targetCategory?.title} closeModal={closeModal} onClickUpdateButton={onClickUpdateButton} />
+      {isModalOpen === "update" && (
+        <CategoryUpdateModal
+          placeholder={targetCategory?.title}
+          closeModal={closeModal}
+          onClickUpdateButton={onClickUpdateButton}
+        />
       )}
-      {isModalOpen === 'delete' && ( //
+      {isModalOpen === "delete" && ( //
         <CategoryDeleteModal closeModal={closeModal} onClickDeleteButton={onClickDeleteButton} />
       )}
       <Categories categories={categories} openTargetModal={openTargetModal} openDeleteModal={openDeleteModal} />
     </CategoryDisplayContainer>
-  )
+  );
 }
