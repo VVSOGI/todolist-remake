@@ -1,27 +1,27 @@
-import { fn } from '@storybook/test'
-import type { Meta, StoryObj } from '@storybook/react'
-import { CreateTodolist } from '@/app/(main)/todolist/components'
-import { mediaQueryStandard } from '@/app/types'
-import { COLORS } from '@/app/styles'
+import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/react";
+import { CreateTodolist } from "@/app/stories/components/todolist";
+import { mediaQueryStandard } from "@/app/types";
+import { COLORS } from "@/app/styles";
 
 const usecaseTodolistButton = {
-  title: 'Example/Common/UseCases',
+  title: "Example/Common/UseCases",
   component: CreateTodolist,
   parameters: {
-    layout: 'left'
+    layout: "left",
   },
-  tags: ['!autodocs'],
+  tags: ["!autodocs"],
   argTypes: {},
   decorators: (Story) => (
-    <div style={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div style={{ width: "100%", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
       <div
         style={{
-          position: 'relative',
+          position: "relative",
           maxWidth: mediaQueryStandard.TABLET,
-          width: '100%',
-          height: '80vh',
+          width: "100%",
+          height: "80vh",
           border: `1px solid ${COLORS.GRAY_200}`,
-          borderRadius: '0.5rem'
+          borderRadius: "0.5rem",
         }}
       >
         <Story handleCreateTodo={() => {}} />
@@ -29,13 +29,13 @@ const usecaseTodolistButton = {
     </div>
   ),
   args: {
-    handleCreateTodo: fn()
-  }
-} satisfies Meta<typeof CreateTodolist>
+    handleCreateTodo: fn(),
+  },
+} satisfies Meta<typeof CreateTodolist>;
 
-export default usecaseTodolistButton
-type Story = StoryObj<typeof usecaseTodolistButton>
+export default usecaseTodolistButton;
+type Story = StoryObj<typeof usecaseTodolistButton>;
 
 export const UsecaseTodolistButton: Story = {
-  args: {}
-}
+  args: {},
+};

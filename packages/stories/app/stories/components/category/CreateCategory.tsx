@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
-import { Button, Input } from "@/app/components";
+import { Button, Input } from "@/app/stories/components";
 import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from "@/app/styles";
 
 const CreateCategoryWrapper = styled.div`

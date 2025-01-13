@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Button, Input } from '@/app/components'
-import { TODOLIST_HEIGHTS, COLORS, TODOLIST_MEDIA_QUERY } from '@/app/styles'
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Button, Input } from "@/app/stories/components";
+import { TODOLIST_HEIGHTS, COLORS, TODOLIST_MEDIA_QUERY } from "@/app/styles";
 
 const CreateTodolistWrapper = styled.div`
   position: absolute;
@@ -15,23 +15,23 @@ const CreateTodolistWrapper = styled.div`
   overflow: hidden;
   z-index: 100;
   ${TODOLIST_MEDIA_QUERY.createButtonWrapper}
-`
+`;
 
 interface Props {
-  handleCreateTodo: (title: string) => Promise<void>
+  handleCreateTodo: (title: string) => Promise<void>;
 }
 
 export function CreateTodolist({ handleCreateTodo }: Props) {
-  const [title, setTitle] = useState('')
+  const [title, setTitle] = useState("");
 
   const changeValue = (value: string) => {
-    setTitle(value)
-  }
+    setTitle(value);
+  };
 
   const handleSubmit = async () => {
-    await handleCreateTodo(title)
-    setTitle('')
-  }
+    await handleCreateTodo(title);
+    setTitle("");
+  };
 
   return (
     <CreateTodolistWrapper>
@@ -40,5 +40,5 @@ export function CreateTodolist({ handleCreateTodo }: Props) {
         POST
       </Button>
     </CreateTodolistWrapper>
-  )
+  );
 }

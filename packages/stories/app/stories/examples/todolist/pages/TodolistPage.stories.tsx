@@ -1,21 +1,21 @@
-import { fn } from '@storybook/test'
-import type { Meta, StoryObj } from '@storybook/react'
-import { Container } from '@/app/components'
-import { TodolistDisplay, TodolistHeader, TodolistSection } from '@/app/(main)/todolist/components'
-import { mockCategories, mockTodoItems } from '@/app/stories/mock'
+import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/react";
+import { Container } from "@/app/stories/components";
+import { TodolistDisplay, TodolistHeader, TodolistSection } from "@/app/stories/components/todolist";
+import { mockCategories, mockTodoItems } from "@/app/stories/mock";
 
 const TodolistPage = {
-  title: 'Example/Todolist/1. Pages',
+  title: "Example/Todolist/1. Pages",
   component: TodolistDisplay,
   parameters: {
-    layout: 'fullscreen',
-    tags: ['!autodocs']
+    layout: "fullscreen",
+    tags: ["!autodocs"],
   },
   argTypes: {},
   args: {
     categoryId: mockCategories[0].id,
     todolist: mockTodoItems,
-    getTodolist: fn()
+    getTodolist: fn(),
   },
   decorators: (Story) => (
     <Container>
@@ -24,32 +24,32 @@ const TodolistPage = {
         <Story />
       </TodolistSection>
     </Container>
-  )
-} satisfies Meta<typeof TodolistDisplay>
+  ),
+} satisfies Meta<typeof TodolistDisplay>;
 
-export default TodolistPage
-type Story = StoryObj<typeof TodolistPage>
+export default TodolistPage;
+type Story = StoryObj<typeof TodolistPage>;
 
 export const Styles1Tablet: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'tablet'
-    }
-  }
-}
+      defaultViewport: "tablet",
+    },
+  },
+};
 
 export const Styles2Desktop: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'desktop'
-    }
-  }
-}
+      defaultViewport: "desktop",
+    },
+  },
+};
 
 export const Styles3Mobile: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'iphone14'
-    }
-  }
-}
+      defaultViewport: "iphone14",
+    },
+  },
+};

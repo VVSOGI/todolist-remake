@@ -1,11 +1,11 @@
-import React, { memo } from 'react'
-import styled from 'styled-components'
-import { useSortable } from '@dnd-kit/sortable'
-import { CSS, Transform } from '@dnd-kit/utilities'
-import { CiEdit } from 'react-icons/ci'
-import { CheckCircle } from '@/app/components'
-import { Todo } from '@/app/types'
-import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
+import React, { memo } from "react";
+import styled from "styled-components";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS, Transform } from "@dnd-kit/utilities";
+import { CiEdit } from "react-icons/ci";
+import { CheckCircle } from "@/app/stories/components";
+import { Todo } from "@/app/types";
+import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from "@/app/styles";
 
 const TodoWrapper = styled.div<TodolistWrapperStylesProps>`
   position: relative;
@@ -18,9 +18,9 @@ const TodoWrapper = styled.div<TodolistWrapperStylesProps>`
   opacity: ${({ $isDragging }) => ($isDragging ? 0.5 : 1)};
   transform: ${({ $stringTransform }) => CSS.Translate.toString($stringTransform)};
   transition: ${({ $transition }) => $transition};
-  border: ${({ $isDragging }) => ($isDragging ? '1px solid red' : 'none')};
-  border-bottom: ${({ $isDragging }) => ($isDragging ? '1px solid red' : `1px solid ${COLORS.GRAY_200}`)};
-  z-index: ${({ $isDragging }) => ($isDragging ? '100' : `1`)};
+  border: ${({ $isDragging }) => ($isDragging ? "1px solid red" : "none")};
+  border-bottom: ${({ $isDragging }) => ($isDragging ? "1px solid red" : `1px solid ${COLORS.GRAY_200}`)};
+  z-index: ${({ $isDragging }) => ($isDragging ? "100" : `1`)};
   user-select: none;
   cursor: move;
 
@@ -29,13 +29,13 @@ const TodoWrapper = styled.div<TodolistWrapperStylesProps>`
       display: block;
     }
   }
-`
+`;
 
 const TodoContents = styled.div`
   display: flex;
   align-items: center;
   gap: 0.875rem;
-`
+`;
 
 const TodoIcons = styled.i`
   display: none;
@@ -54,22 +54,22 @@ const TodoIcons = styled.i`
 
     ${BORDER_RADIUS_SIZES.medium}
   }
-`
+`;
 
 interface TodolistWrapperStylesProps {
-  $isDragging: boolean
-  $stringTransform: Transform | null
-  $transition?: string
+  $isDragging: boolean;
+  $stringTransform: Transform | null;
+  $transition?: string;
 }
 
 interface Props {
-  todo: Todo
-  handleCompleteTodo: (todo: Todo) => void
-  handleEditModalOpen: (todo: Todo) => void
+  todo: Todo;
+  handleCompleteTodo: (todo: Todo) => void;
+  handleEditModalOpen: (todo: Todo) => void;
 }
 
 function TodoItemComponent({ todo, handleCompleteTodo, handleEditModalOpen }: Props) {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: todo.id })
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: todo.id });
 
   return (
     <TodoWrapper
@@ -90,7 +90,7 @@ function TodoItemComponent({ todo, handleCompleteTodo, handleEditModalOpen }: Pr
         <CiEdit onClick={() => handleEditModalOpen(todo)} />
       </TodoIcons>
     </TodoWrapper>
-  )
+  );
 }
 
-export const TodoItem = memo(TodoItemComponent)
+export const TodoItem = memo(TodoItemComponent);

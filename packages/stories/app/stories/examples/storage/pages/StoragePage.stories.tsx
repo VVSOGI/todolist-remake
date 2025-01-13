@@ -1,18 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Container } from '@/app/components'
-import { StorageHeader, StorageListDisplay, StorageSection } from '@/app/(main)/storage/components'
-import { mockCategories, mockStorageTodoLists } from '@/app/stories/mock'
+import type { Meta, StoryObj } from "@storybook/react";
+import { Container } from "@/app/stories/components";
+import { StorageHeader, StorageListDisplay, StorageSection } from "@/app/stories/components/storage";
+import { mockCategories, mockStorageTodoLists } from "@/app/stories/mock";
 
 const StoragePage = {
-  title: 'Example/Storage/1. Pages',
+  title: "Example/Storage/1. Pages",
   component: StorageListDisplay,
   parameters: {
-    layout: 'fullscreen',
-    tags: ['!autodocs']
+    layout: "fullscreen",
+    tags: ["!autodocs"],
   },
   argTypes: {},
   args: {
-    list: mockStorageTodoLists
+    list: mockStorageTodoLists,
   },
   decorators: (Story) => (
     <Container>
@@ -21,32 +21,32 @@ const StoragePage = {
         <Story />
       </StorageSection>
     </Container>
-  )
-} satisfies Meta<typeof StorageListDisplay>
+  ),
+} satisfies Meta<typeof StorageListDisplay>;
 
-export default StoragePage
-type Story = StoryObj<typeof StoragePage>
+export default StoragePage;
+type Story = StoryObj<typeof StoragePage>;
 
 export const Styles1Tablet: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'tablet'
-    }
-  }
-}
+      defaultViewport: "tablet",
+    },
+  },
+};
 
 export const Styles2Desktop: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'desktop'
-    }
-  }
-}
+      defaultViewport: "desktop",
+    },
+  },
+};
 
 export const Styles3Mobile: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'iphone14'
-    }
-  }
-}
+      defaultViewport: "iphone14",
+    },
+  },
+};

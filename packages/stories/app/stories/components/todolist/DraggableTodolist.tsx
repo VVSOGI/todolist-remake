@@ -1,9 +1,9 @@
 import React from "react";
 import { DndContext } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
-import { SortableOverlay } from "@/app/components";
-import { TodoItem } from "@/app/(main)/todolist/components";
-import { useDragDndKit } from "@/app/(main)/todolist/hooks";
+import { SortableOverlay } from "@/app/stories/components";
+import { TodoItem } from "@/app/stories/components/todolist";
+import { useDragDndKit } from "@/app/stories/components/todolist/hooks";
 import { Todo } from "@/app/types";
 
 interface Props {

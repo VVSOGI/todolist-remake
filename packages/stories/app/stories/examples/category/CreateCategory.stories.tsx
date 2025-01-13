@@ -1,23 +1,23 @@
-import { fn } from '@storybook/test'
-import type { Meta, StoryObj } from '@storybook/react'
-import { Container } from '@/app/components'
-import { CategorySection, CreateCategory } from '@/app/(main)/category/components'
+import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/react";
+import { Container } from "@/app/stories/components";
+import { CategorySection, CreateCategory } from "@/app/stories/components/category";
 
 const createCategory = {
-  title: 'Example/Category/CreateCategory',
+  title: "Example/Category/CreateCategory",
   component: CreateCategory,
   parameters: {
-    layout: 'center',
+    layout: "center",
     docs: {
       description: {
         component:
-          '카테고리 생성 Input입니다. \n\n Input안에 들어갈 문자는 생성하려는 카테고리의 제목이 됩니다. \n\n  버튼 클릭 및 Enter 키 입력이 가능합니다.'
-      }
-    }
+          "카테고리 생성 Input입니다. \n\n Input안에 들어갈 문자는 생성하려는 카테고리의 제목이 됩니다. \n\n  버튼 클릭 및 Enter 키 입력이 가능합니다.",
+      },
+    },
   },
   argTypes: {},
   args: {
-    handleCreateTodo: fn()
+    handleCreateTodo: fn(),
   },
   decorators: (Story) => (
     <Container>
@@ -25,11 +25,11 @@ const createCategory = {
         <Story handleCreateTodo={() => {}} />
       </CategorySection>
     </Container>
-  )
-} satisfies Meta<typeof CreateCategory>
+  ),
+} satisfies Meta<typeof CreateCategory>;
 
-export default createCategory
-type Story = StoryObj<typeof createCategory>
+export default createCategory;
+type Story = StoryObj<typeof createCategory>;
 
 /**
  * 가장 기본적인 형태의 CreateCategory입니다.
@@ -37,29 +37,29 @@ type Story = StoryObj<typeof createCategory>
 export const Styles1Tablet: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'tablet'
-    }
+      defaultViewport: "tablet",
+    },
   },
-  tags: ['autodocs'],
-  args: {}
-}
+  tags: ["autodocs"],
+  args: {},
+};
 
 export const Styles2Desktop: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'desktop'
-    }
+      defaultViewport: "desktop",
+    },
   },
-  tags: ['!autodocs'],
-  args: {}
-}
+  tags: ["!autodocs"],
+  args: {},
+};
 
 export const Styles3Mobile: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'iphone14'
-    }
+      defaultViewport: "iphone14",
+    },
   },
-  tags: ['!autodocs'],
-  args: {}
-}
+  tags: ["!autodocs"],
+  args: {},
+};

@@ -1,9 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import { IoMdClose } from 'react-icons/io'
-import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
-import { buttonsTheme } from '@/app/types'
-import { Button } from '@/app/components'
+import React from "react";
+import styled from "styled-components";
+import { IoMdClose } from "react-icons/io";
+import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from "@/app/styles";
+import { buttonsTheme } from "@/app/types";
+import { Button } from "@/app/stories/components";
 
 const ModalContainer = styled.div`
   position: fixed;
@@ -17,7 +17,7 @@ const ModalContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   user-select: none;
   z-index: 100000;
-`
+`;
 
 const ModalWrapper = styled.div`
   width: 50rem;
@@ -27,7 +27,7 @@ const ModalWrapper = styled.div`
   background-color: ${COLORS.WHITE};
   box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.2);
   ${BORDER_RADIUS_SIZES.medium}
-`
+`;
 
 const ModalHeader = styled.div`
   display: flex;
@@ -36,12 +36,12 @@ const ModalHeader = styled.div`
   justify-content: space-between;
   padding: 1.5rem;
   border-bottom: 1px solid ${COLORS.GRAY_200};
-`
+`;
 
 const ModalTitle = styled.span`
   font-size: ${FONT_SIZES.xl};
   font-weight: 400;
-`
+`;
 
 const ModalCloseIcon = styled.div`
   width: 1.875rem;
@@ -59,7 +59,7 @@ const ModalCloseIcon = styled.div`
   &:active {
     color: ${COLORS.GRAY_500};
   }
-`
+`;
 
 const ModalContentsWrapper = styled.div`
   display: flex;
@@ -67,7 +67,7 @@ const ModalContentsWrapper = styled.div`
   padding: 0rem 1.5rem;
   font-size: ${FONT_SIZES.md};
   border-bottom: 1px solid ${COLORS.GRAY_200};
-`
+`;
 
 const ModalButtonsWrapper = styled.div`
   display: flex;
@@ -75,19 +75,19 @@ const ModalButtonsWrapper = styled.div`
   flex: 1;
   gap: 0.75rem;
   padding: 1.5rem;
-`
+`;
 
 const ModalButtonWrapper = styled.div`
   ${BORDER_RADIUS_SIZES.small}
   height: 2.5rem;
   overflow: hidden;
-`
+`;
 
 interface Props {
-  title: string
-  children: React.ReactNode
-  handleAgree: () => void
-  handleRefuse: () => void
+  title: string;
+  children: React.ReactNode;
+  handleAgree: () => void;
+  handleRefuse: () => void;
 }
 
 export function AgreementModal({ title, children, handleAgree, handleRefuse }: Props) {
@@ -115,5 +115,5 @@ export function AgreementModal({ title, children, handleAgree, handleRefuse }: P
         </ModalButtonsWrapper>
       </ModalWrapper>
     </ModalContainer>
-  )
+  );
 }
