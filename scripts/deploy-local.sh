@@ -27,3 +27,4 @@ sudo chown -R $USER $DB_VOLUME_NAME
 docker-compose -f ../docker-compose.yml --profile infra up -d
 infra_setting
 docker-compose -f ../docker-compose.yml --profile services up -d
+docker-compose -f ../docker-compose.yml --profile development up -d
