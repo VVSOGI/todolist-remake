@@ -2,11 +2,9 @@ FROM node:20.12-buster-slim
 
 WORKDIR /app
 
-COPY yarn*.json ./
-
-RUN yarn install
-
 COPY . .
+
+RUN yarn install --immutable --immutable-cache --check-cache
 
 RUN yarn build
 
