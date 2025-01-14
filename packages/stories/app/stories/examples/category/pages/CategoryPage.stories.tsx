@@ -1,7 +1,21 @@
 import type { StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import styled from "styled-components";
 import { Container, Title } from "@/app/stories/components";
-import { CategoryDisplay, CategorySection, CreateCategory } from "@/app/stories/components/category";
+import { Categories, CategorySection, CreateCategory } from "@/app/stories/components/category";
 import { mockCategories } from "@/app/stories/mock";
+
+const CategoryDisplayContainer = styled.div`
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.125rem;
+    background: #ccc;
+  }
+`;
 
 const categoryPage = {
   title: "Example/Category/1. Pages",
@@ -15,7 +29,9 @@ const categoryPage = {
       <CategorySection>
         <Title>{String("Make Your Own Business To-Do List").toUpperCase()}</Title>
         <CreateCategory />
-        <CategoryDisplay categories={mockCategories} />
+        <CategoryDisplayContainer>
+          <Categories categories={mockCategories} openTargetModal={fn()} openDeleteModal={fn()} />
+        </CategoryDisplayContainer>
       </CategorySection>
     </Container>
   ),
