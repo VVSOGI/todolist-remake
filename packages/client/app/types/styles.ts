@@ -1,5 +1,3 @@
-import { RuleSet } from 'styled-components'
-
 /** Todolist **/
 
 export type todolistHeights = 'header' | 'createInput'
@@ -64,7 +62,3 @@ export type ColorsByGroup<T extends ColorGroup> = {
 export type BasicColors = {
   [K in BasicColor]: HexColor
 }
-
-/** Storybook */
-
-export type DesignSystemComponent<T extends string> = { name: T; value: string; description: string; styles: RuleSet[] }
