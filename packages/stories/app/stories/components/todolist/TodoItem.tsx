@@ -68,7 +68,7 @@ interface Props {
   handleEditModalOpen: (todo: Todo) => void;
 }
 
-function TodoItemComponent({ todo, handleCompleteTodo, handleEditModalOpen }: Props) {
+function TodoItemComponent({ todo, handleEditModalOpen }: Props) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: todo.id });
 
   return (
@@ -83,7 +83,7 @@ function TodoItemComponent({ todo, handleCompleteTodo, handleEditModalOpen }: Pr
       ref={setNodeRef}
     >
       <TodoContents>
-        <CheckCircle onAnimationEnd={() => handleCompleteTodo(todo)} />
+        <CheckCircle onAnimationEnd={() => {}} />
         <div>{todo.title}</div>
       </TodoContents>
       <TodoIcons>
