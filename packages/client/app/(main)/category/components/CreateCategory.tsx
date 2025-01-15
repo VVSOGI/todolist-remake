@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/navigation'
 import { Button, Input } from '@/app/components'
-import { createCategory } from '@/app/(main)/category/api'
 import { BORDER_RADIUS_SIZES, COLORS, FONT_SIZES } from '@/app/styles'
 
 const CreateCategoryWrapper = styled.div`
@@ -29,7 +28,14 @@ const CreateError = styled.p`
   color: ${COLORS.RED_600};
 `
 
-export function CreateCategory() {
+interface Props {
+  createCategory: (body: { title: string }) => Promise<{
+    response: unknown
+    status: number
+  }>
+}
+
+export function CreateCategory({ createCategory }: Props) {
   const [categoryTitle, setCategoryTitle] = useState('')
   const [error, setError] = useState('')
 
@@ -39,14 +45,14 @@ export function CreateCategory() {
     setCategoryTitle(value)
   }
 
-  const handleSubmit = async (value: string) => {
+  const handleSubmit = async (title: string) => {
     try {
       setError('')
       setCategoryTitle('')
-      await createCategory({ title: value })
+      await createCategory({ title })
       router.refresh()
     } catch (e: any) {
-      setError(JSON.parse(e.message).message)
+      setError(JSON.parse(e.message).response.message)
     }
   }
 
