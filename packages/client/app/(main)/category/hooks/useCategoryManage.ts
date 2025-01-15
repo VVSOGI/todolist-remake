@@ -1,9 +1,13 @@
 import { useCallback, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { deleteCategory, updateCategory } from '@/app/(main)/category/api'
-import { Category } from '@/app/types'
+import { APIResponse, Category } from '@/app/types'
 
-export function useCategoryModal() {
+interface Props {
+  deleteCategory: (categoryId: string) => Promise<APIResponse>
+  updateCategory: (categoryId: string, body: { title: string }) => Promise<APIResponse>
+}
+
+export function useCategoryManage({ deleteCategory, updateCategory }: Props) {
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState<'delete' | 'update' | undefined>()
   const [targetCategory, setTargetCategory] = useState<Category | null>(null)
@@ -36,7 +40,7 @@ export function useCategoryModal() {
     await deleteCategory(targetCategory.id)
     closeModal()
     router.refresh()
-  }, [targetCategory, closeModal, router])
+  }, [targetCategory, closeModal, deleteCategory, router])
 
   const onClickUpdateButton = useCallback(
     async (title: string) => {
@@ -45,7 +49,7 @@ export function useCategoryModal() {
       closeModal()
       router.refresh()
     },
-    [targetCategory, closeModal, router]
+    [targetCategory, closeModal, updateCategory, router]
   )
 
   const onClickCategory = useCallback(

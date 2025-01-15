@@ -1,3 +1,3 @@
 'use client'
 
-export * from './useCategoryModal'
+export * from './useCategoryManage'
