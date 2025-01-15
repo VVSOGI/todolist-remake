@@ -48,12 +48,21 @@ export function useCategoryModal() {
     [targetCategory, closeModal, router]
   )
 
+  const onClickCategory = useCallback(
+    (id: string, isDragging: boolean) => {
+      if (isDragging) return
+      router.push(`/todolist/${id}`)
+    },
+    [router]
+  )
+
   return {
     isModalOpen,
     targetCategory,
     closeModal,
     openDeleteModal,
     openTargetModal,
+    onClickCategory,
     onClickDeleteButton,
     onClickUpdateButton
   }
