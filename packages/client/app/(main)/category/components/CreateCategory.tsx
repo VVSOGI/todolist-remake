@@ -29,7 +29,7 @@ const CreateError = styled.p`
 `
 
 interface Props {
-  createCategory: (title: string) => Promise<{
+  createCategory: (body: { title: string }) => Promise<{
     response: unknown
     status: number
   }>
@@ -45,11 +45,11 @@ export function CreateCategory({ createCategory }: Props) {
     setCategoryTitle(value)
   }
 
-  const handleSubmit = async (value: string) => {
+  const handleSubmit = async (title: string) => {
     try {
       setError('')
       setCategoryTitle('')
-      await createCategory(value)
+      await createCategory({ title })
       router.refresh()
     } catch (e: any) {
       setError(JSON.parse(e.message).response.message)
