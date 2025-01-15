@@ -1,6 +1,5 @@
 import React, { memo, useRef } from 'react'
 import styled from 'styled-components'
-import { useRouter } from 'next/navigation'
 import { FaTrashAlt } from 'react-icons/fa'
 import { IoSettings } from 'react-icons/io5'
 import { D2CodingBold } from '@/public/fonts'
@@ -90,19 +89,11 @@ interface Props {
   category: Category
   openTargetModal: (category: Category) => void
   openDeleteModal: (category: Category) => void
+  onClickCategory: (id: string, isDragging: boolean) => void
 }
 
-function CategoryComponent({ category, openDeleteModal, openTargetModal }: Props) {
-  const router = useRouter()
+function CategoryComponent({ category, openDeleteModal, openTargetModal, onClickCategory }: Props) {
   const isDragging = useRef(false)
-
-  const onClickCategory = (id: string) => {
-    if (isDragging.current) {
-      return
-    }
-
-    router.push(`/todolist/${id}`)
-  }
 
   const onCategoryDrag = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, categoryId: string) => {
     isDragging.current = false
@@ -125,7 +116,7 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal }: Props
 
   return (
     <CategoryWrapper key={category.id}>
-      <CategoryButton onMouseDown={(e) => onCategoryDrag(e, category.id)} onClick={() => onClickCategory(category.id)}>
+      <CategoryButton onMouseDown={(e) => onCategoryDrag(e, category.id)} onClick={() => onClickCategory(category.id, isDragging.current)}>
         <ContentsWrapper>
           <CategoryTitle className={D2CodingBold.className}>{category.title}</CategoryTitle>
           <CategoryTime>
