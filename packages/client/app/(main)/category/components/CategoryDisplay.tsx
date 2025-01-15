@@ -27,6 +27,7 @@ export function CategoryDisplay({ categories }: Props) {
     closeModal,
     openDeleteModal,
     openTargetModal,
+    onClickCategory,
     onClickDeleteButton,
     onClickUpdateButton
   } = useCategoryModal()
@@ -39,7 +40,12 @@ export function CategoryDisplay({ categories }: Props) {
       {isModalOpen === 'delete' && ( //
         <CategoryDeleteModal closeModal={closeModal} onClickDeleteButton={onClickDeleteButton} />
       )}
-      <Categories categories={categories} openTargetModal={openTargetModal} openDeleteModal={openDeleteModal} />
+      <Categories
+        categories={categories}
+        openTargetModal={openTargetModal}
+        openDeleteModal={openDeleteModal}
+        onClickCategory={onClickCategory}
+      />
     </CategoryDisplayContainer>
   )
 }
