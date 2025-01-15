@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Categories, CategoryDeleteModal, CategoryUpdateModal } from '@/app/(main)/category/components'
-import { useCategoryModal } from '@/app/(main)/category/hooks'
-import { Category } from '@/app/types'
+import { useCategoryManage } from '@/app/(main)/category/hooks'
+import { APIResponse, Category } from '@/app/types'
 
 const CategoryDisplayContainer = styled.div`
   overflow-y: scroll;
@@ -18,9 +18,11 @@ const CategoryDisplayContainer = styled.div`
 
 interface Props {
   categories: Category[]
+  deleteCategory: (categoryId: string) => Promise<APIResponse>
+  updateCategory: (categoryId: string, body: { title: string }) => Promise<APIResponse>
 }
 
-export function CategoryDisplay({ categories }: Props) {
+export function CategoryDisplay({ categories, deleteCategory, updateCategory }: Props) {
   const {
     isModalOpen, //
     targetCategory,
@@ -30,7 +32,7 @@ export function CategoryDisplay({ categories }: Props) {
     onClickCategory,
     onClickDeleteButton,
     onClickUpdateButton
-  } = useCategoryModal()
+  } = useCategoryManage({ deleteCategory, updateCategory })
 
   return (
     <CategoryDisplayContainer>
