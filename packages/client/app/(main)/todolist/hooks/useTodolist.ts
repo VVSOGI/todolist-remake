@@ -1,14 +1,15 @@
 import { useState } from 'react'
-import { createTodolist, updateTodolist } from '@/app/(main)/todolist/api'
-import { CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
+import { APIResponse, CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 
 interface Props {
   categoryId: string
   todolist: Todo[]
   getTodolist: () => Promise<Todo[]>
+  createTodolist: (createTodo: CreateTodoDto) => Promise<APIResponse>
+  updateTodolist: (updated: UpdateTodoDTO) => Promise<APIResponse>
 }
 
-export function useTodolist({ categoryId, todolist, getTodolist }: Props) {
+export function useTodolist({ categoryId, todolist, getTodolist, createTodolist, updateTodolist }: Props) {
   const [list, setList] = useState<Todo[]>(todolist)
 
   const setNewTodolist = async () => {

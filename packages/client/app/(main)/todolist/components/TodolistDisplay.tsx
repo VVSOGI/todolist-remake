@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { CreateTodolist, DraggableTodolist, TodoUpdateModal } from '@/app/(main)/todolist/components'
 import { useTodolist, useTodolistEditModal } from '@/app/(main)/todolist/hooks'
-import { Todo } from '@/app/types'
+import { APIResponse, CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { SCROLL_BAR_SETTINGS, TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 
 const TodolistWrapper = styled.div`
@@ -23,10 +23,18 @@ interface Props {
   categoryId: string
   todolist: Todo[]
   getTodolist: () => Promise<Todo[]>
+  createTodolist: (createTodo: CreateTodoDto) => Promise<APIResponse>
+  updateTodolist: (updated: UpdateTodoDTO) => Promise<APIResponse>
 }
 
-export function TodolistDisplay({ categoryId, todolist, getTodolist }: Props) {
-  const { list, setList, handleCompleteTodo, handleCreateTodo, handleEditTodo } = useTodolist({ categoryId, todolist, getTodolist })
+export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodolist, updateTodolist }: Props) {
+  const { list, setList, handleCompleteTodo, handleCreateTodo, handleEditTodo } = useTodolist({
+    categoryId,
+    todolist,
+    getTodolist,
+    createTodolist,
+    updateTodolist
+  })
   const {
     modal,
     targetTodo,

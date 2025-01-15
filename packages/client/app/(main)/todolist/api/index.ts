@@ -1,3 +1,5 @@
+'use server'
+
 import { fetchToBackend } from '@/app/utils'
 import { CreateTodoDto, GetResponseTodolist, GetResponseTodolistByDates, Todo, UUID, UpdateTodoDTO } from '@/app/types'
 
