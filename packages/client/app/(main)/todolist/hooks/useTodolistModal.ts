@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Todo, UpdateTodoDTO } from '@/app/types'
 
-export function useTodolistEditModal() {
+export function useTodolistModal() {
   const [modal, setModal] = useState<'edit'>()
   const [targetTodo, setTargetTodo] = useState<Todo>()
 

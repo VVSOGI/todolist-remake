@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { CreateTodolist, DraggableTodolist, TodoUpdateModal } from '@/app/(main)/todolist/components'
-import { useTodolist, useTodolistEditModal } from '@/app/(main)/todolist/hooks'
+import { useTodolistManage, useTodolistModal } from '@/app/(main)/todolist/hooks'
 import { APIResponse, CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { SCROLL_BAR_SETTINGS, TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
 
@@ -28,7 +28,7 @@ interface Props {
 }
 
 export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodolist, updateTodolist }: Props) {
-  const { list, setList, editTodo, createTodo, completeTodo } = useTodolist({
+  const { list, setList, editTodo, createTodo, completeTodo } = useTodolistManage({
     categoryId,
     todolist,
     getTodolist,
@@ -41,7 +41,7 @@ export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodol
     makeUpdatedTodo,
     handleEditModalOpen,
     handleEditModalClose //
-  } = useTodolistEditModal()
+  } = useTodolistModal()
 
   return (
     <TodolistWrapper>

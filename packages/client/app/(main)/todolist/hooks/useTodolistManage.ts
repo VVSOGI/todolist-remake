@@ -9,7 +9,7 @@ interface Props {
   updateTodolist: (updated: UpdateTodoDTO) => Promise<APIResponse>
 }
 
-export function useTodolist({ categoryId, todolist, getTodolist, createTodolist, updateTodolist }: Props) {
+export function useTodolistManage({ categoryId, todolist, getTodolist, createTodolist, updateTodolist }: Props) {
   const [list, setList] = useState<Todo[]>(todolist)
 
   const setNewTodolist = async () => {
