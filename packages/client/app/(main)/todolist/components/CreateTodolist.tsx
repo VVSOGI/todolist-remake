@@ -26,11 +26,12 @@ export function CreateTodolist({ create }: Props) {
 
   const handleCreate = useCallback(() => {
     create(title)
+    setTitle('')
   }, [create, title])
 
   return (
     <CreateTodolistWrapper>
-      <Input value={title} handleSubmit={create} changeValue={setTitle} />
+      <Input value={title} handleSubmit={handleCreate} changeValue={setTitle} />
       <Button size="medium" onClick={handleCreate}>
         POST
       </Button>
