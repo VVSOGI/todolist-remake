@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styled from 'styled-components'
 import { BUTTON_SIZES, BUTTON_DEFAULT_STYLE } from '@/app/styles/button'
 import { ButtonStyleProps, buttonsTheme, buttonSize } from '@/app/types'
@@ -18,10 +18,12 @@ interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLB
   onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 
-export function Button({ children, size, style, theme = buttonsTheme.BRIGHT, onClick, ...rest }: Props) {
+function ButtonComponent({ children, size, style, theme = buttonsTheme.BRIGHT, onClick, ...rest }: Props) {
   return (
     <StyledButton size={size} $stylestheme={theme} style={style} onClick={onClick} {...rest}>
       {children}
     </StyledButton>
   )
 }
+
+export const Button = memo(ButtonComponent)

@@ -11,7 +11,6 @@ interface Props {
 
 export function useTodolistManage({ categoryId, todolist, getTodolist, createTodolist, updateTodolist }: Props) {
   const [list, setList] = useState<Todo[]>(todolist)
-  const [createTitle, setCreateTitle] = useState('')
 
   const setNewTodolist = async () => {
     const todos = await getTodolist()
@@ -36,9 +35,9 @@ export function useTodolistManage({ categoryId, todolist, getTodolist, createTod
     audio.play()
   }
 
-  const createTodo = async () => {
+  const createTodo = async (title: string) => {
     const newTodo: CreateTodoDto = {
-      title: createTitle,
+      title,
       categoryId
     }
     await createTodolist(newTodo)
@@ -47,11 +46,9 @@ export function useTodolistManage({ categoryId, todolist, getTodolist, createTod
 
   return {
     list,
-    createTitle,
     setList,
     editTodo,
     createTodo,
-    completeTodo,
-    setCreateTitle
+    completeTodo
   }
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import { Button, Input } from '@/app/components'
 import { TODOLIST_HEIGHTS, COLORS, TODOLIST_MEDIA_QUERY } from '@/app/styles'
@@ -18,16 +18,20 @@ const CreateTodolistWrapper = styled.div`
 `
 
 interface Props {
-  createTitle: string
-  setCreateTitle: (title: string) => void
-  create: () => Promise<void>
+  create: (title: string) => Promise<void>
 }
 
-export function CreateTodolist({ createTitle, create, setCreateTitle }: Props) {
+export function CreateTodolist({ create }: Props) {
+  const [title, setTitle] = useState('')
+
+  const handleCreate = useCallback(() => {
+    create(title)
+  }, [create, title])
+
   return (
     <CreateTodolistWrapper>
-      <Input value={createTitle} handleSubmit={create} changeValue={setCreateTitle} />
-      <Button size="medium" onClick={create}>
+      <Input value={title} handleSubmit={create} changeValue={setTitle} />
+      <Button size="medium" onClick={handleCreate}>
         POST
       </Button>
     </CreateTodolistWrapper>
