@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { AgreementModal, Input } from '@/app/components'
-import { UpdateTodoDTO } from '@/app/types'
 import { COLORS } from '@/app/styles'
 
 const EditModalContents = styled.div`
@@ -14,24 +13,15 @@ const EditModalContents = styled.div`
 
 interface Props {
   placeholder?: string
-  editTodo: (updated: UpdateTodoDTO) => Promise<void>
-  makeUpdatedTodo: (title: string) => UpdateTodoDTO | undefined
-  handleEditModalClose: () => void
+  updateTitle: string
+  handleAgree: () => void
+  handleRefuse: () => void
+  setUpdateTitle: (updated: string) => void
 }
 
-export function TodoUpdateModal({ placeholder, makeUpdatedTodo, handleEditModalClose, editTodo }: Props) {
-  const [updateTitle, setUpdateTitle] = useState('')
-
+export function TodoUpdateModal({ placeholder, updateTitle, setUpdateTitle, handleAgree, handleRefuse }: Props) {
   return (
-    <AgreementModal
-      title="Edit"
-      handleAgree={() => {
-        const updated = makeUpdatedTodo(updateTitle)
-        if (updated) editTodo(updated)
-        handleEditModalClose()
-      }}
-      handleRefuse={handleEditModalClose}
-    >
+    <AgreementModal title="Edit" handleAgree={handleAgree} handleRefuse={handleRefuse}>
       <EditModalContents>
         <div>Change Todo Title</div>
         <Input

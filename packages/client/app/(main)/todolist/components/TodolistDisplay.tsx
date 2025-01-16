@@ -28,20 +28,15 @@ interface Props {
 }
 
 export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodolist, updateTodolist }: Props) {
-  const { list, setList, editTodo, createTodo, completeTodo } = useTodolistManage({
+  const { list, createTitle, setList, editTodo, createTodo, completeTodo, setCreateTitle } = useTodolistManage({
     categoryId,
     todolist,
     getTodolist,
     createTodolist,
     updateTodolist
   })
-  const {
-    modal,
-    targetTodo,
-    makeUpdatedTodo,
-    handleEditModalOpen,
-    handleEditModalClose //
-  } = useTodolistModal()
+  const { modal, targetTodo, updateTitle, setUpdateTitle, handleEditModalOpen, handleEditModalClose, handleEditModalAgree } =
+    useTodolistModal({ editTodo })
 
   return (
     <TodolistWrapper>
@@ -49,14 +44,15 @@ export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodol
       {modal === 'edit' && (
         <TodoUpdateModal
           placeholder={targetTodo?.title}
-          editTodo={editTodo}
-          makeUpdatedTodo={makeUpdatedTodo}
-          handleEditModalClose={handleEditModalClose}
+          updateTitle={updateTitle}
+          setUpdateTitle={setUpdateTitle}
+          handleAgree={handleEditModalAgree}
+          handleRefuse={handleEditModalClose}
         />
       )}
       {!list.length && <EmptyTodolist>Nothing in list 😅</EmptyTodolist>}
       <DraggableTodolist list={list} setList={setList} handleCompleteTodo={completeTodo} handleEditModalOpen={handleEditModalOpen} />
-      <CreateTodolist createTodo={createTodo} />
+      <CreateTodolist createTitle={createTitle} create={createTodo} setCreateTitle={setCreateTitle} />
     </TodolistWrapper>
   )
 }
