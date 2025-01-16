@@ -17,12 +17,12 @@ export function useTodolist({ categoryId, todolist, getTodolist, createTodolist,
     setList(todos)
   }
 
-  const handleEditTodo = async (updated: UpdateTodoDTO) => {
+  const editTodo = async (updated: UpdateTodoDTO) => {
     await updateTodolist(updated)
     await setNewTodolist()
   }
 
-  const handleCompleteTodo = async (todo: Todo) => {
+  const completeTodo = async (todo: Todo) => {
     const updated: UpdateTodoDTO = {
       id: todo.id,
       title: todo.title,
@@ -35,20 +35,20 @@ export function useTodolist({ categoryId, todolist, getTodolist, createTodolist,
     audio.play()
   }
 
-  const handleCreateTodo = async (title: string) => {
-    const createTodo: CreateTodoDto = {
+  const createTodo = async (title: string) => {
+    const newTodo: CreateTodoDto = {
       title,
       categoryId
     }
-    await createTodolist(createTodo)
+    await createTodolist(newTodo)
     await setNewTodolist()
   }
 
   return {
     list,
     setList,
-    handleCompleteTodo,
-    handleCreateTodo,
-    handleEditTodo
+    editTodo,
+    createTodo,
+    completeTodo
   }
 }
