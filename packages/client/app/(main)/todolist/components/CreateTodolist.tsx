@@ -18,25 +18,25 @@ const CreateTodolistWrapper = styled.div`
 `
 
 interface Props {
-  handleCreateTodo: (title: string) => Promise<void>
+  createTodo: (title: string) => Promise<void>
 }
 
-export function CreateTodolist({ handleCreateTodo }: Props) {
+export function CreateTodolist({ createTodo }: Props) {
   const [title, setTitle] = useState('')
 
   const changeValue = (value: string) => {
     setTitle(value)
   }
 
-  const handleSubmit = async () => {
-    await handleCreateTodo(title)
+  const create = async () => {
+    await createTodo(title)
     setTitle('')
   }
 
   return (
     <CreateTodolistWrapper>
-      <Input value={title} handleSubmit={handleSubmit} changeValue={changeValue} />
-      <Button size="medium" onClick={handleSubmit}>
+      <Input value={title} handleSubmit={create} changeValue={changeValue} />
+      <Button size="medium" onClick={create}>
         POST
       </Button>
     </CreateTodolistWrapper>

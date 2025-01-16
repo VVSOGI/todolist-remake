@@ -14,12 +14,12 @@ const EditModalContents = styled.div`
 
 interface Props {
   placeholder?: string
+  editTodo: (updated: UpdateTodoDTO) => Promise<void>
   makeUpdatedTodo: (title: string) => UpdateTodoDTO | undefined
-  handleEditTodo: (updated: UpdateTodoDTO) => Promise<void>
   handleEditModalClose: () => void
 }
 
-export function TodoUpdateModal({ placeholder, makeUpdatedTodo, handleEditModalClose, handleEditTodo }: Props) {
+export function TodoUpdateModal({ placeholder, makeUpdatedTodo, handleEditModalClose, editTodo }: Props) {
   const [updateTitle, setUpdateTitle] = useState('')
 
   return (
@@ -27,7 +27,7 @@ export function TodoUpdateModal({ placeholder, makeUpdatedTodo, handleEditModalC
       title="Edit"
       handleAgree={() => {
         const updated = makeUpdatedTodo(updateTitle)
-        if (updated) handleEditTodo(updated)
+        if (updated) editTodo(updated)
         handleEditModalClose()
       }}
       handleRefuse={handleEditModalClose}
