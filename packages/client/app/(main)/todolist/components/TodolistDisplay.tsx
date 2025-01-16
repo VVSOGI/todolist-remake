@@ -35,13 +35,8 @@ export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodol
     createTodolist,
     updateTodolist
   })
-  const {
-    modal,
-    targetTodo,
-    makeUpdatedTodo,
-    handleEditModalOpen,
-    handleEditModalClose //
-  } = useTodolistModal()
+  const { modal, targetTodo, updateTitle, setUpdateTitle, handleEditModalOpen, handleEditModalClose, handleEditModalAgree } =
+    useTodolistModal({ editTodo })
 
   return (
     <TodolistWrapper>
@@ -49,9 +44,10 @@ export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodol
       {modal === 'edit' && (
         <TodoUpdateModal
           placeholder={targetTodo?.title}
-          editTodo={editTodo}
-          makeUpdatedTodo={makeUpdatedTodo}
-          handleEditModalClose={handleEditModalClose}
+          updateTitle={updateTitle}
+          setUpdateTitle={setUpdateTitle}
+          handleAgree={handleEditModalAgree}
+          handleRefuse={handleEditModalClose}
         />
       )}
       {!list.length && <EmptyTodolist>Nothing in list 😅</EmptyTodolist>}
