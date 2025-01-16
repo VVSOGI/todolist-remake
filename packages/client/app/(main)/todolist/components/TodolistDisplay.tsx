@@ -28,7 +28,7 @@ interface Props {
 }
 
 export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodolist, updateTodolist }: Props) {
-  const { list, setList, editTodo, createTodo, completeTodo } = useTodolistManage({
+  const { list, createTitle, setList, editTodo, createTodo, completeTodo, setCreateTitle } = useTodolistManage({
     categoryId,
     todolist,
     getTodolist,
@@ -52,7 +52,7 @@ export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodol
       )}
       {!list.length && <EmptyTodolist>Nothing in list 😅</EmptyTodolist>}
       <DraggableTodolist list={list} setList={setList} handleCompleteTodo={completeTodo} handleEditModalOpen={handleEditModalOpen} />
-      <CreateTodolist createTodo={createTodo} />
+      <CreateTodolist createTitle={createTitle} create={createTodo} setCreateTitle={setCreateTitle} />
     </TodolistWrapper>
   )
 }
