@@ -4,11 +4,15 @@ import { Container, Title, Skeleton } from '@/app/components'
 import { CategorySection, CreateCategory } from './components'
 
 export default function HomeLoading() {
+  async function mock() {
+    return { response: {}, status: 100 }
+  }
+
   return (
     <Container>
       <CategorySection>
         <Title>{String('Make Your Own Business To-Do List').toUpperCase()}</Title>
-        <CreateCategory />
+        <CreateCategory createCategory={mock} />
         <div
           style={{
             width: '100%',
