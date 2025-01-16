@@ -1,8 +1,9 @@
+'use server'
+
 import { fetchToBackend } from '@/app/utils/customFetch'
 import { Category, GetResponseCategories, UUID } from '@/app/types'
 
 export async function getCategoryList() {
-  'use server'
   const response = await fetchToBackend<GetResponseCategories>('/category?deleted=false', {
     method: 'GET',
     headers: {
@@ -14,7 +15,6 @@ export async function getCategoryList() {
 }
 
 export async function getCategoryById(categoryId: UUID) {
-  'use server'
   const response = await fetchToBackend<Category>(`/category/${categoryId}`, {
     method: 'GET',
     headers: {
@@ -26,7 +26,6 @@ export async function getCategoryById(categoryId: UUID) {
 }
 
 export async function createCategory(body: { title: string }) {
-  'use server'
   const response = await fetchToBackend(`/category`, {
     method: 'POST',
     headers: {
@@ -38,7 +37,6 @@ export async function createCategory(body: { title: string }) {
 }
 
 export async function deleteCategory(categoryId: string) {
-  'use server'
   const response = await fetchToBackend(`/category/soft/${categoryId}`, {
     method: 'DELETE',
     headers: {
@@ -49,7 +47,6 @@ export async function deleteCategory(categoryId: string) {
 }
 
 export async function updateCategory(categoryId: string, body: { title: string }) {
-  'use server'
   const response = await fetchToBackend(`/category/${categoryId}`, {
     method: 'PATCH',
     headers: {
