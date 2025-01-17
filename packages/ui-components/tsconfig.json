@@ -13,8 +13,11 @@
     "isolatedModules": true,
     "jsx": "react",
     "declaration": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
-  "include": ["src"],
+  "include": ["app"],
   "exclude": ["node_modules", "dist"]
 }
