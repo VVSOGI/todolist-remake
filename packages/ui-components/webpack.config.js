@@ -5,7 +5,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "index.js",
-    libraryTarget: "umd",
+    libraryTarget: "commonjs",
     clean: true,
   },
   resolve: {
@@ -17,19 +17,45 @@ module.exports = {
   externals: {
     react: "react",
     "react-dom": "react-dom",
-    "styled-components": "styled-components",
+    "styled-components": {
+      commonjs: "styled-components",
+      commonjs2: "styled-components",
+      amd: "styled-components",
+    },
   },
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
+        use: [
+          {
+            loader: "swc-loader",
+            options: {
+              jsc: {
+                experimental: {
+                  plugins: [
+                    [
+                      "@swc/plugin-styled-components",
+                      {
+                        ssr: true,
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
           },
-        },
+          {
+            loader: "ts-loader",
+            options: {
+              compilerOptions: {
+                declaration: true,
+                declarationDir: "./dist",
+              },
+            },
+          },
+        ],
       },
     ],
   },
