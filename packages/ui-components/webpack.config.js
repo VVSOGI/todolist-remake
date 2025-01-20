@@ -5,7 +5,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "index.js",
-    libraryTarget: "commonjs",
     clean: true,
   },
   resolve: {
@@ -29,21 +28,13 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: [
+          "style-loader",
+          "css-loader",
+          "postcss-loader",
           {
-            loader: "swc-loader",
+            loader: "babel-loader",
             options: {
-              jsc: {
-                experimental: {
-                  plugins: [
-                    [
-                      "@swc/plugin-styled-components",
-                      {
-                        ssr: true,
-                      },
-                    ],
-                  ],
-                },
-              },
+              presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
             },
           },
           {
