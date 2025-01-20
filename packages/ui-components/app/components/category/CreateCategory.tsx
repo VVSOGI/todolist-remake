@@ -35,8 +35,10 @@ export function CreateCategory({ createCategory }: Props) {
   return (
     <div>
       <div
-        className={`flex w-full min-h-[2.5rem] h-[2.5rem] justify-between border border-[${COLORS.GRAY_200}] overflow-hidden rounded-[0.25rem]`}
-      ></div>
+        className={`flex w-full min-h-[2.5rem] h-[2.5rem] justify-between border border-[${COLORS.GRAY_200}] overflow-hidden rounded-[0.25rem] bg-zinc-400`}
+      >
+        aoaoaosdfoasaspdapdp
+      </div>
       <div className={`my-[0.5625rem]`}>{error}</div>
     </div>
   );
