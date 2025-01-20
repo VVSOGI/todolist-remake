@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -8,6 +12,14 @@ button {
   outline: none;
   border: none;
   background-color: transparent;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-size: 12px;
 }
 
 a {
