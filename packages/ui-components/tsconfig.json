@@ -12,13 +12,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react",
-    "declaration": true,
-    "declarationDir": "dist",
-    "outDir": "dist",
+    "incremental": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "outDir": "./dist",
+    "declaration": true
   },
-  "include": ["app"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["app/**/*.ts", "app/**/*.tsx"],
+  "exclude": ["node_modules"]
 }
