@@ -1,3 +1,2 @@
-export * from './colors'
-export * from './common'
-export * from './mediaQueries'
+export * from "./colors";
+export * from "./button";

@@ -1,5 +1,5 @@
-import { buttonSize, buttonsTheme } from "@/app/types";
-import { COLORS } from "@/app/styles";
+import { buttonSize, buttonsTheme } from "../types";
+import { COLORS } from ".";
 
 export const BUTTON_DEFAULT_STYLES: Record<buttonsTheme, string> = {
   bright: `
