@@ -12,11 +12,11 @@ module.exports = {
       desktop: "90.125rem",
     },
     fontSize: {
-      xs: "0.75rem",
-      sm: "0.875rem",
-      md: "1rem",
-      lg: "1.125rem",
-      xl: "1.25rem",
+      xs: "0.875rem",
+      sm: "1rem",
+      md: "1.125rem",
+      lg: "1.25rem",
+      xl: "1.5rem",
     },
     colors: {
       RED_100: "#fcc7c5",
@@ -45,6 +45,14 @@ module.exports = {
         "section-mobile": "20rem",
         "section-tablet": "45rem",
         "section-desktop": "75rem",
+      },
+      boxShadow: {
+        primary: "0 0.25rem 0.5rem rgba(0, 0, 0, 0.2)",
+        secondary: "0 0.25rem 0.5rem rgba(0, 0, 0, 0.15)",
+      },
+      height: {
+        "todolist-headers": "4.21875rem",
+        "todolist-create": "2.5rem",
       },
     },
   },
