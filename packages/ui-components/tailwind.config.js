@@ -46,6 +46,16 @@ module.exports = {
         "section-tablet": "45rem",
         "section-desktop": "75rem",
       },
+      minWidth: {
+        "section-mobile": "20rem",
+        "section-tablet": "45rem",
+        "section-desktop": "75rem",
+      },
+      maxWidth: {
+        "section-mobile": "20rem",
+        "section-tablet": "45rem",
+        "section-desktop": "75rem",
+      },
       boxShadow: {
         primary: "0 0.25rem 0.5rem rgba(0, 0, 0, 0.2)",
         secondary: "0 0.25rem 0.5rem rgba(0, 0, 0, 0.15)",
@@ -53,6 +63,11 @@ module.exports = {
       height: {
         "todolist-headers": "4.21875rem",
         "todolist-create": "2.5rem",
+      },
+      borderRadius: {
+        small: "0.25rem",
+        medium: "0.5rem",
+        large: "0.75rem",
       },
     },
   },
