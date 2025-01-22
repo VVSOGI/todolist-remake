@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { COLORS } from "../../styles";
 import { Button, Input } from "../../components";
 
 interface Props {
@@ -34,16 +33,14 @@ export function CreateCategory({ createCategory }: Props) {
   };
 
   return (
-    <div className={`w-full h-fit flex flex-col`}>
-      <div
-        className={`w-full min-h-[2.5rem] h-[2.5rem] flex justify-between border border-[${COLORS.GRAY_200}] overflow-hidden rounded-[0.25rem]`}
-      >
+    <div className="w-full h-fit flex flex-col">
+      <div className="w-full min-h-[2.5rem] h-[2.5rem] flex justify-between border border-gray-200 overflow-hidden rounded-[0.25rem]">
         <Input handleSubmit={handleSubmit} changeValue={changeValue} value={categoryTitle} />
         <Button size="small" onClick={() => handleSubmit(categoryTitle)}>
           +
         </Button>
       </div>
-      <div className={`my-[0.5625rem]`}>{error}</div>
+      <div className="my-[0.5625rem]">{error}</div>
     </div>
   );
 }
