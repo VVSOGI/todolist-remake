@@ -1,9 +1,9 @@
 import { borderRadius, boxShadow, fontSize, todolistHeights } from "@/app/types";
 
 export const BORDER_RADIUS_STYLES: Record<borderRadius, string> = {
-  small: "border-[0.25rem]",
-  medium: "border-[0.5rem]",
-  large: "border-[0.75rem]",
+  small: "rounded-[0.25rem]",
+  medium: "rounded-[0.5rem]",
+  large: "rounded-[0.75rem]",
 };
 
 export const BOX_SHADOWS_STYLES: Record<boxShadow, string> = {
