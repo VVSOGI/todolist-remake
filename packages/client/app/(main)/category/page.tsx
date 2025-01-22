@@ -1,5 +1,6 @@
 import { Title } from '@/app/components'
-import { CategoryDisplay, CategorySection, CreateCategory } from '@/app/(main)/category/components'
+import { CategoryDisplay, CategorySection } from '@/app/(main)/category/components'
+import { CreateCategory } from '@todolist/ui-components/app'
 import { createCategory, deleteCategory, getCategoryList, updateCategory } from '@/app/(main)/category/api'
 
 export default async function page() {

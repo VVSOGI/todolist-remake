@@ -1,6 +1,7 @@
 'use client'
 
-import { Container, Title, Skeleton } from '@/app/components'
+import { Container, Title } from '@/app/components'
+import { Skeleton } from '@todolist/ui-components/app'
 import { CategorySection, CreateCategory } from './components'
 
 export default function HomeLoading() {
@@ -19,7 +20,7 @@ export default function HomeLoading() {
             height: '60%',
             display: 'flex',
             flexDirection: 'column',
-            gap: '0.25rem'
+            gap: '0.5rem'
           }}
         >
           <Skeleton />
