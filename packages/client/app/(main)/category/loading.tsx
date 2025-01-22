@@ -1,8 +1,8 @@
 'use client'
 
 import { Container, Title } from '@/app/components'
-import { Skeleton } from '@todolist/ui-components/app'
-import { CategorySection, CreateCategory } from './components'
+import { Skeleton, CreateCategory } from '@todolist/ui-components/app'
+import { CategorySection } from './components'
 
 export default function HomeLoading() {
   async function mock() {

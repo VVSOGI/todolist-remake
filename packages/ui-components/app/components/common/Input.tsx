@@ -11,7 +11,7 @@ interface Props {
   changeValue: (value: string) => void;
 }
 
-export function Input({ value, placeholder = "Make your todolist aaaa", style, handleSubmit, changeValue }: Props) {
+export function Input({ value, placeholder = "Make your todolist", style, handleSubmit, changeValue }: Props) {
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {

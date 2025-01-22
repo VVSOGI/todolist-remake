@@ -1,7 +1,7 @@
 "use client";
 
-import { BORDER_RADIUS_STYLES } from "../../styles";
 import React from "react";
+import { BORDER_RADIUS_STYLES } from "../../styles";
 
 interface SkeletonProps {
   className?: string;
