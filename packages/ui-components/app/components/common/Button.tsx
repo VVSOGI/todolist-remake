@@ -1,8 +1,8 @@
 "use client";
 
 import React, { memo } from "react";
-import { BUTTON_DEFAULT_STYLES, BUTTON_SIZES_STYLES } from "../../styles";
 import { buttonsTheme, buttonSize } from "../../types";
+import { BUTTON_DEFAULT_STYLES, BUTTON_SIZES_STYLES } from "../../styles";
 
 interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   children: React.ReactNode;
