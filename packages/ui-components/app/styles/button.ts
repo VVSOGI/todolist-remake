@@ -1,17 +1,16 @@
 import { buttonSize, buttonsTheme } from "../types";
-import { COLORS } from ".";
 
 export const BUTTON_DEFAULT_STYLES: Record<buttonsTheme, string> = {
   bright: `
-    flex justify-center items-center bg-[${COLORS.RED_600}] select-none cursor-pointer text-[${COLORS.WHITE}]
-    hover:bg-[${COLORS.RED_500}]
-    active:bg-[${COLORS.RED_600}]
+    flex justify-center items-center bg-red-600 select-none cursor-pointer text-white
+    hover:bg-red-500
+    active:bg-red-600
   `,
 
   dark: `
-    flex justify-center items-center bg-[${COLORS.GRAY_500}] select-none cursor-pointer text-[${COLORS.WHITE}]
-    hover:bg-[${COLORS.GRAY_400}]
-    active:bg-[${COLORS.GRAY_500}]
+    flex justify-center items-center bg-gray-500 select-none cursor-pointer text-white
+    hover:bg-gray-400
+    active:bg-gray-500
   `,
 };
 
