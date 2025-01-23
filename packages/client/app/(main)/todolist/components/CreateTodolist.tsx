@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Input } from '@/app/components'
+import { Button, Input } from '@todolist/ui-components/app'
 import { TODOLIST_HEIGHTS, COLORS, TODOLIST_MEDIA_QUERY } from '@/app/styles'
 
 const CreateTodolistWrapper = styled.div`

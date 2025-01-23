@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import { IoClose } from 'react-icons/io5'
-import { Title } from '@/app/components'
+import { Title } from '@todolist/ui-components/app'
 import { changeToLocaleTime, changeToTime } from '@/app/utils'
 import { Category } from '@/app/types'
 import { TODOLIST_HEIGHTS, COLORS, FONT_SIZES } from '@/app/styles'
