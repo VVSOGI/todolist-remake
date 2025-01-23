@@ -62,7 +62,7 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal, onClick
             className={`
               flex gap-[0.5rem] text-xs
               last:text-red-600 last:font-[400]
-              desktop:text-md
+              desktop:text-sm
           `}
           >
             <p
