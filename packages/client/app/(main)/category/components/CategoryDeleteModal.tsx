@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { AgreementModal } from '@/app/components'
+import { AgreementModal } from '@todolist/ui-components/app'
 
 const DeleteModalContents = styled.div`
   width: 100%;
