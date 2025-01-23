@@ -14,11 +14,11 @@ interface Props {
 export function AgreementModal({ title, children, handleAgree, handleRefuse }: Props) {
   return (
     <div
-      className={`fixed left-0 top-0 w-full h-screen flex justify-center items-center bg-[rgba(0, 0, 0, 0.5)] select-none z-[100000]`}
+      className={`fixed left-0 top-0 w-full h-screen flex justify-center items-center bg-[#00000050] select-none z-[100000]`}
       onClick={handleRefuse}
     >
       <div
-        className={`w-[50rem] min-h-[18.75rem] flex flex-col bg-white shadow-[0 0.3125rem 0.625rem rgba(0, 0, 0, 0.2)] ${BORDER_RADIUS_STYLES.medium}`}
+        className={`w-[50rem] min-h-[18.75rem] flex flex-col bg-white shadow-primary ${BORDER_RADIUS_STYLES.medium}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-1 items-center justify-between p-[1.5rem] border-b border-gray-200">

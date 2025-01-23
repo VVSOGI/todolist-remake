@@ -30,7 +30,10 @@ export function Input({ value, placeholder = "Make your todolist", style, handle
       onKeyDown={handleKeyPress}
       onChange={(e) => changeValue(e.target.value)}
       disabled={disabled}
-      className={`flex-1 p-[0.75rem] border-none outline-none`}
+      className={`
+        flex-1 p-[0.75rem] border-none outline-none 
+        placeholder:text-xs
+      `}
       placeholder={disabled ? "loading..." : placeholder}
       style={style}
     />

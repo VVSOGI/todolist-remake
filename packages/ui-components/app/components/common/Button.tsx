@@ -1,18 +1,18 @@
 "use client";
 
-import React, { memo } from "react";
+import React from "react";
 import { buttonsTheme, buttonSize } from "../../types";
 import { BUTTON_DEFAULT_STYLES, BUTTON_SIZES_STYLES } from "../../styles";
 
-interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  children: React.ReactNode;
+interface Props {
+  children?: React.ReactNode;
   size: buttonSize;
   style?: React.CSSProperties;
   theme?: buttonsTheme;
   onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-function ButtonComponent({ children, size, style, theme = buttonsTheme.BRIGHT, onClick, ...rest }: Props) {
+export function Button({ children, size, style, theme = buttonsTheme.BRIGHT, onClick, ...rest }: Props) {
   return (
     <button
       className={`${BUTTON_DEFAULT_STYLES[theme]} ${BUTTON_SIZES_STYLES[size]}`}
@@ -24,5 +24,3 @@ function ButtonComponent({ children, size, style, theme = buttonsTheme.BRIGHT, o
     </button>
   );
 }
-
-export const Button = memo(ButtonComponent);
