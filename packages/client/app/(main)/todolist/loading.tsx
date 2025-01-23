@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from '@/app/components'
+import { Container } from '@todolist/ui-components/app'
 import { TodolistHeader, TodolistSection } from '@/app/(main)/todolist/components'
 
 export default function loading() {
