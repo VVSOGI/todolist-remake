@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { AgreementModal, Input } from "..";
 import { COLORS } from "../../styles";

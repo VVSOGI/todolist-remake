@@ -1,5 +1,5 @@
 import React from "react";
-import { BORDER_RADIUS_STYLES, COMMON_MEDIA_QUERY_STYLES } from "@/app/styles";
+import { BORDER_RADIUS_STYLES, COMMON_MEDIA_QUERY_STYLES } from "../../styles";
 
 interface Props {
   children: React.ReactNode;

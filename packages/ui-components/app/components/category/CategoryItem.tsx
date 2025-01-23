@@ -1,3 +1,5 @@
+"use client";
+
 import React, { memo, useRef } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
@@ -5,7 +7,6 @@ import { Button } from "..";
 import { D2CodingBold } from "../../../public/fonts";
 import { changeToLocaleTime, dragHorizon } from "../../utils";
 import { Category, buttonsTheme } from "../../types";
-import { CATEGORY_MEDIA_QUERY_STYLES } from "../../styles";
 
 interface Props {
   category: Category;
@@ -40,10 +41,10 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal, onClick
     <div className="w-full h-[3rem] flex justify-between border-b border-gray-200" key={category.id}>
       <button
         className={`
-        w-full flex justify-center items-center overflow-hidden bg-[transparent] cursor-pointer
-        hover:bg-gray-100 hover:first:first:text-black
-        active:bg-gray-200
-      `}
+          w-full flex justify-center items-center overflow-hidden bg-[transparent] cursor-pointer
+          hover:bg-gray-100 hover:first:first:text-black
+          active:bg-gray-200
+        `}
         onMouseDown={(e) => onCategoryDrag(e, category.id)}
         onClick={() => onClickCategory(category.id, isDragging.current)}
       >
@@ -51,19 +52,27 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal, onClick
           <h2
             className={` 
               text-sm font-[500] text-gray-500
-              ${CATEGORY_MEDIA_QUERY_STYLES.title}
-              ${D2CodingBold.className}`}
+              desktop:text-md
+              ${D2CodingBold.className}
+            `}
           >
             {category.title}
           </h2>
           <div
             className={`
-              flex gap-[0.5rem] text-xs text-gray-500
+              flex gap-[0.5rem] text-xs
               last:text-red-600 last:font-[400]
-              ${CATEGORY_MEDIA_QUERY_STYLES.time}
+              desktop:text-md
           `}
           >
-            <p>최종 수정일</p>
+            <p
+              className={`
+                text-gray-500 hidden
+                tablet:block
+              `}
+            >
+              최종 수정일
+            </p>
             <span>{changeToLocaleTime(category.updatedAt)}</span>
           </div>
         </div>
