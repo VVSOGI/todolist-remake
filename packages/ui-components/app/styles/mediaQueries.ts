@@ -14,19 +14,6 @@ export const COMMON_MEDIA_QUERY_STYLES: Record<commonComponents, string> = {
   `,
 };
 
-export const CATEGORY_MEDIA_QUERY_STYLES: Record<categoryComponents, string> = {
-  title: `
-    mobile:text-xs
-    desktop:text-md
-  `,
-
-  time: `
-    mobile:text-xs mobile:first:hidden
-    tablet:block
-    desktop:text-sm
-  `,
-};
-
 export const TODOLIST_MEDIA_QUERY_STYLES: Record<todolistComponents, string> = {
   createButtonWrapper: `
     mobile:rounded-none

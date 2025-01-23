@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { IoMdClose } from "react-icons/io";
 import { Button } from "../../components";
