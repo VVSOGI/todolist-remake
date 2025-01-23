@@ -27,6 +27,49 @@ a {
   color: #000;
 }
 
+@layer utilities {
+  .custom-scrollbar {
+    &::-webkit-scrollbar {
+      width: 0.25rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 0.125rem;
+      background: #ccc;
+    }
+  }
+}
+
+@keyframes shine {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+.skeleton::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 255, 255, 0.8) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shine 2s infinite;
+  content: '';
+}
+
 @keyframes pulse {
   0% {
     transform: scale(1);

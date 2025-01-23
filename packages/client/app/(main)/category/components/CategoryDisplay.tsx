@@ -1,20 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Categories, CategoryDeleteModal, CategoryUpdateModal } from '@/app/(main)/category/components'
+import { Categories, CategoryDeleteModal, CategoryUpdateModal } from '@todolist/ui-components/app'
 import { useCategoryManage } from '@/app/(main)/category/hooks'
 import { APIResponse, Category } from '@/app/types'
-
-const CategoryDisplayContainer = styled.div`
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    width: 0.25rem;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 0.125rem;
-    background: #ccc;
-  }
-`
 
 interface Props {
   categories: Category[]
@@ -35,7 +22,7 @@ export function CategoryDisplay({ categories, deleteCategory, updateCategory }: 
   } = useCategoryManage({ deleteCategory, updateCategory })
 
   return (
-    <CategoryDisplayContainer>
+    <div className="overflow-y-scroll custom-scrollbar">
       {isModalOpen === 'update' && (
         <CategoryUpdateModal placeholder={targetCategory?.title} closeModal={closeModal} onClickUpdateButton={onClickUpdateButton} />
       )}
@@ -48,6 +35,6 @@ export function CategoryDisplay({ categories, deleteCategory, updateCategory }: 
         openDeleteModal={openDeleteModal}
         onClickCategory={onClickCategory}
       />
-    </CategoryDisplayContainer>
+    </div>
   )
 }

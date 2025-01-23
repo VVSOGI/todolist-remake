@@ -31,6 +31,7 @@ export const TODOLIST_HEIGHTS: Record<todolistHeights, string> = {
 }
 
 export const SCROLL_BAR_SETTINGS = css`
+  overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 0.25rem;
   }
