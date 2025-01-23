@@ -1,7 +1,7 @@
 'use client'
 
-import { Container, Title } from '@/app/components'
-import { Skeleton, CreateCategory } from '@todolist/ui-components/app'
+import { Container } from '@/app/components'
+import { Skeleton, CreateCategory, Title } from '@todolist/ui-components/app'
 import { CategorySection } from './components'
 
 export default function HomeLoading() {
