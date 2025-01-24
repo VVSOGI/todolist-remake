@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { CreateTodolist, DraggableTodolist, TodoUpdateModal } from '@/app/(main)/todolist/components'
+import { DraggableTodolist, TodoUpdateModal } from '@/app/(main)/todolist/components'
 import { useTodolistManage, useTodolistModal } from '@/app/(main)/todolist/hooks'
 import { APIResponse, CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { SCROLL_BAR_SETTINGS, TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
+import { CreateTodolist } from '@todolist/ui-components/app'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${TODOLIST_HEIGHTS.header} + ${TODOLIST_HEIGHTS.createInput}));
