@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { COMMON_MEDIA_QUERY_STYLES } from "@/app/styles";
+import { COMMON_MEDIA_QUERY_STYLES } from "../../styles";
 
 interface Props {
   children: React.ReactNode;
