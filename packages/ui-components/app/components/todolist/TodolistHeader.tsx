@@ -5,8 +5,8 @@ import Link from "next/link";
 import { FaBox } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { Title } from "..";
-import { changeToLocaleTime, changeToTime } from "@/app/utils";
-import { Category } from "@/app/types";
+import { changeToLocaleTime, changeToTime } from "../../utils";
+import { Category } from "../../types";
 
 interface Props {
   category: Category;
