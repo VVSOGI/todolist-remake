@@ -1,4 +1,4 @@
-import { categoryComponents, commonComponents, todolistComponents } from "@/app/types";
+import { commonComponents } from "@/app/types";
 
 export const COMMON_MEDIA_QUERY_STYLES: Record<commonComponents, string> = {
   section: `
@@ -11,12 +11,5 @@ export const COMMON_MEDIA_QUERY_STYLES: Record<commonComponents, string> = {
     mobile:text-sm
     tablet:text-md
     desktop:text-lg
-  `,
-};
-
-export const TODOLIST_MEDIA_QUERY_STYLES: Record<todolistComponents, string> = {
-  createButtonWrapper: `
-    mobile:rounded-none
-    tablet:rounded-bl-medium tablet:rounded-br-medium
   `,
 };
