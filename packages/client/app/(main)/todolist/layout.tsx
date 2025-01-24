@@ -1,6 +1,5 @@
 import React from 'react'
-import { Container } from '@todolist/ui-components/app'
-import { TodolistSection } from '@/app/(main)/todolist/components'
+import { Container, TodolistSection } from '@todolist/ui-components/app'
 
 export default function layout({
   children
@@ -9,7 +8,9 @@ export default function layout({
 }>) {
   return (
     <Container>
-      <TodolistSection>{children}</TodolistSection>
+      <TodolistSection>
+        <>{children}</>
+      </TodolistSection>
     </Container>
   )
 }
