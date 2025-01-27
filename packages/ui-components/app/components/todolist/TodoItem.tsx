@@ -4,8 +4,8 @@ import React, { memo } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { CiEdit } from "react-icons/ci";
-import { CheckCircle } from "..";
 import { Todo } from "@/app/types";
+import { CheckCircle } from "@/app/components";
 
 interface Props {
   todo: Todo;
@@ -23,9 +23,14 @@ function TodoItemComponent({ todo, handleCompleteTodo, handleEditModalOpen }: Pr
       {...listeners}
       className={`
         relative min-h-[3.375rem] flex items-center justify-between py-[0.75rem] px-[1rem] bg-white
-        opacity-[${isDragging ? 0.5 : 1}] transform-[${CSS.Translate.toString(transform)}] transition-[${transition}]
         border-b border-${isDragging ? "red-500" : "gray-200"} z-[${isDragging ? 100 : 1}] select-none cursor-move
+        [&>i]:hover:block
       `}
+      style={{
+        transform: CSS.Translate.toString(transform),
+        transition: transition,
+        opacity: isDragging ? 0.5 : 1,
+      }}
       aria-describedby={todo.id}
       ref={setNodeRef}
     >
@@ -37,8 +42,8 @@ function TodoItemComponent({ todo, handleCompleteTodo, handleEditModalOpen }: Pr
         <CiEdit
           className={`
             text-xl rounded-md
-            hover:text-gray-200
-            active:text-gray-100
+            hover:text-gray-400
+            active:text-gray-300
           `}
           onClick={() => handleEditModalOpen(todo)}
         />
