@@ -6,12 +6,12 @@ interface Props {
   value: string;
   placeholder?: string;
   buttonContents?: string;
-  style?: React.CSSProperties;
+  className?: string;
   handleSubmit: (value: string) => void;
   changeValue: (value: string) => void;
 }
 
-export function Input({ value, placeholder = "Make your todolist", style, handleSubmit, changeValue }: Props) {
+export function Input({ value, placeholder = "Make your todolist", className, handleSubmit, changeValue }: Props) {
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
@@ -33,9 +33,9 @@ export function Input({ value, placeholder = "Make your todolist", style, handle
       className={`
         flex-1 p-[0.75rem] border-none outline-none 
         placeholder:text-xs
+        ${className}
       `}
       placeholder={disabled ? "loading..." : placeholder}
-      style={style}
     />
   );
 }

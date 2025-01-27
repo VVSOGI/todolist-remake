@@ -3,8 +3,7 @@
 import React from "react";
 import { IoMdClose } from "react-icons/io";
 import { Button } from "../../components";
-import { buttonsTheme } from "../../types";
-import { BORDER_RADIUS_STYLES } from "../../styles";
+import { ButtonsTheme } from "../../styles";
 
 interface Props {
   title: string;
@@ -20,7 +19,7 @@ export function AgreementModal({ title, children, handleAgree, handleRefuse }: P
       onClick={handleRefuse}
     >
       <div
-        className={`w-[50rem] min-h-[18.75rem] flex flex-col bg-white shadow-primary ${BORDER_RADIUS_STYLES.medium}`}
+        className={`w-[50rem] min-h-[18.75rem] flex flex-col bg-white shadow-primary rounded-medium`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-1 items-center justify-between p-[1.5rem] border-b border-gray-200">
@@ -38,13 +37,13 @@ export function AgreementModal({ title, children, handleAgree, handleRefuse }: P
         </div>
         <div className="flex flex-1 py-0 px-[1.5rem] text-md border-b border-gray-200">{children}</div>
         <div className="flex justify-end flex-1 gap-[0.75rem] p-[1.5rem]">
-          <div className={`h-[2.5rem] overflow-hidden ${BORDER_RADIUS_STYLES.small}`}>
-            <Button size="medium" theme={buttonsTheme.DARK} onClick={handleRefuse}>
+          <div className={`h-[2.5rem] overflow-hidden rounded-small`}>
+            <Button size="medium" theme={ButtonsTheme.DARK} onClick={handleRefuse}>
               NO
             </Button>
           </div>
-          <div className={`h-[2.5rem] overflow-hidden ${BORDER_RADIUS_STYLES.small}`}>
-            <Button size="medium" theme={buttonsTheme.BRIGHT} onClick={handleAgree}>
+          <div className={`h-[2.5rem] overflow-hidden rounded-small`}>
+            <Button size="medium" theme={ButtonsTheme.BRIGHT} onClick={handleAgree}>
               YES
             </Button>
           </div>

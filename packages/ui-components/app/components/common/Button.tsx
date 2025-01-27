@@ -1,18 +1,17 @@
 "use client";
 
 import React from "react";
-import { buttonsTheme, buttonSize } from "../../types";
-import { BUTTON_DEFAULT_STYLES, BUTTON_SIZES_STYLES } from "../../styles";
+import { BUTTON_DEFAULT_STYLES, BUTTON_SIZES_STYLES, ButtonsTheme, ButtonSize } from "../../styles";
 
 interface Props {
   children?: React.ReactNode;
-  size: buttonSize;
+  size: ButtonSize;
   style?: React.CSSProperties;
-  theme?: buttonsTheme;
+  theme?: ButtonsTheme;
   onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-export function Button({ children, size, style, theme = buttonsTheme.BRIGHT, onClick, ...rest }: Props) {
+export function Button({ children, size, style, theme = ButtonsTheme.BRIGHT, onClick, ...rest }: Props) {
   return (
     <button
       className={`${BUTTON_DEFAULT_STYLES[theme]} ${BUTTON_SIZES_STYLES[size]}`}

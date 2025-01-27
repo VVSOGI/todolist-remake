@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { BORDER_RADIUS_STYLES } from "../../styles";
 
 interface SkeletonProps {
   className?: string;
@@ -13,8 +12,7 @@ export function Skeleton({ className = "", width = "100%", height = "3.5rem" }: 
   return (
     <div
       className={`
-        skeleton 
-        ${BORDER_RADIUS_STYLES.medium}
+        skeleton rounded-medium
         ${className}
       `}
       style={{
