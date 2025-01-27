@@ -1,8 +1,7 @@
 import React from 'react'
 import { DndContext } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
-import { SortableOverlay } from '@/app/components'
-import { TodoItem } from '@/app/(main)/todolist/components'
+import { TodoItem, SortableOverlay } from '@todolist/ui-components/app'
 import { useDragDndKit } from '@/app/(main)/todolist/hooks'
 import { saveTodolistOrder } from '@/app/(main)/todolist/api'
 import { Todo } from '@/app/types'
@@ -16,6 +15,7 @@ interface Props {
 
 export function DraggableTodolist({ list, setList, handleCompleteTodo, handleEditModalOpen }: Props) {
   const { activeItem, sensors, handleDragStart, handleDragEnd } = useDragDndKit<Todo>({ list, setList })
+
   return (
     <DndContext
       sensors={sensors}
