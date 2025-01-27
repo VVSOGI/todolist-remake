@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { COMMON_MEDIA_QUERY_STYLES } from "../../styles";
 
 interface Props {
   children: React.ReactNode;
@@ -11,8 +10,9 @@ export function TodolistSection({ children }: Props) {
   return (
     <section
       className={`
-        relative h-[30rem] flex flex-col bg-white overflow-y-hidden rounded-medium shadow-primary
-        ${COMMON_MEDIA_QUERY_STYLES.section}
+        relative w-full h-full flex flex-col rounded-none shadow-primary bg-white overflow-hidden
+        tablet:w-section-tablet tablet:h-[30rem] tablet:rounded-medium
+        desktop:w-section-desktop
       `}
     >
       {children}
