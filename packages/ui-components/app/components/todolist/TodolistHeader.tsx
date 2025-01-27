@@ -16,7 +16,7 @@ export function TodolistHeader({ category }: Props) {
   return (
     <div className="h-todolist-headers flex justify-between items-center py-[0.75rem] px-[1rem] border-b border-gray-200 bg-white z-[100]">
       <div>
-        <Title style={{ margin: 0, fontSize: "1.5rem" }}>{category.title.toUpperCase()}</Title>
+        <Title style={{ margin: 0 }}>{category.title.toUpperCase()}</Title>
         <div className="text-xs">{changeToLocaleTime(category.updatedAt, changeToTime)}</div>
       </div>
       <div className="flex items-center gap-[0.75rem]">

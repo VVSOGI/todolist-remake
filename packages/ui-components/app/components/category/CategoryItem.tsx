@@ -6,7 +6,8 @@ import { IoSettings } from "react-icons/io5";
 import { Button } from "..";
 import { D2CodingBold } from "../../../public/fonts";
 import { changeToLocaleTime, dragHorizon } from "../../utils";
-import { Category, buttonsTheme } from "../../types";
+import { ButtonsTheme } from "../../styles";
+import { Category } from "../../types";
 
 interface Props {
   category: Category;
@@ -84,7 +85,7 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal, onClick
         <Button
           style={{ fontSize: "0.875rem" }}
           size="small"
-          theme={buttonsTheme.DARK}
+          theme={ButtonsTheme.DARK}
           onClick={() => openTargetModal(category)}
         >
           <IoSettings />

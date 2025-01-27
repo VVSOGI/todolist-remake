@@ -1,6 +1,5 @@
 import React from "react";
 import { D2CodingBold } from "../../../public/fonts";
-import { COMMON_MEDIA_QUERY_STYLES } from "../../styles";
 
 interface Props {
   children: React.ReactNode;
@@ -10,7 +9,11 @@ interface Props {
 export function Title({ children, style }: Props) {
   return (
     <div
-      className={`w-full mb-[1.5rem] text-red-600 ${COMMON_MEDIA_QUERY_STYLES.title} ${D2CodingBold.className}`}
+      className={`
+        w-full mb-[1.5rem] text-red-600 text-lg
+        desktop:text-xl
+        ${D2CodingBold.className}
+      `}
       style={style}
     >
       {children}
