@@ -31,7 +31,7 @@ export function Input({ value, placeholder = "Make your todolist", className, ha
       onChange={(e) => changeValue(e.target.value)}
       disabled={disabled}
       className={`
-        flex-1 p-[0.75rem] border-none outline-none 
+        flex-1 p-[0.75rem]
         placeholder:text-xs
         ${className}
       `}
