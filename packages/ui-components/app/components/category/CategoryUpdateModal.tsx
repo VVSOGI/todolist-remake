@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { AgreementModal, Input } from "..";
-import { COLORS } from "../../styles";
 
 interface Props {
   placeholder?: string;
@@ -18,11 +17,11 @@ export function CategoryUpdateModal({ placeholder, closeModal, onClickUpdateButt
       <div className="w-full flex flex-col py-[3rem] px-0 gap-[0.75rem]">
         <div>Change Title this category</div>
         <Input
-          style={{ width: "100%", border: `1px solid ${COLORS.GRAY_200}`, borderRadius: "0.25rem" }}
           value={updateTitle}
           changeValue={(value) => setUpdateTitle(value)}
           handleSubmit={() => {}}
           placeholder={placeholder}
+          className="w-full border border-gray-200 rounded-small"
         />
       </div>
     </AgreementModal>
