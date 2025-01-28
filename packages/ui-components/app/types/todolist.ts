@@ -9,3 +9,5 @@ export interface Todo {
   updatedAt: Date;
   order: number;
 }
+
+export type TodolistsBySortedDates = { date: string; todolists: Todo[] }[];

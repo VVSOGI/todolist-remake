@@ -1,6 +1,5 @@
 import React from 'react'
-import { Container } from '@todolist/ui-components/app'
-import { StorageSection } from './components'
+import { Container, StorageSection } from '@todolist/ui-components/app'
 
 export default function layout({
   children
