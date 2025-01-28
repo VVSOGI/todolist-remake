@@ -1,5 +1,5 @@
 import React from 'react'
-import { StorageHeader } from '@/app/(main)/storage/components'
+import { StorageHeader } from '@todolist/ui-components/app'
 
 export default function loading() {
   return (

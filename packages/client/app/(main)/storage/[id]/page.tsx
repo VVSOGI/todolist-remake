@@ -1,5 +1,6 @@
 import React from 'react'
-import { StorageHeader, StorageListDisplay } from '@/app/(main)/storage/components'
+import { StorageHeader } from '@todolist/ui-components/app'
+import { StorageListDisplay } from '@/app/(main)/storage/components'
 import { getCategoryById } from '@/app/(main)/category/api'
 import { getTodolistByDates } from '@/app/(main)/todolist/api'
 import { UUID } from '@/app/types'
