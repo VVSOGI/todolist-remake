@@ -1,7 +1,7 @@
 import { TodolistHeader } from '@todolist/ui-components/app'
 import { TodolistDisplay } from '@/app/(main)/todolist/components'
 import { getCategoryById } from '@/app/(main)/category/api'
-import { createTodolist, getTodolistByCategoryId, updateTodolist } from '@/app/(main)/todolist/api'
+import { createTodolist, getTodolistByCategoryId, updateTodolist, saveTodolistOrder } from '@/app/(main)/todolist/api'
 import { UUID } from '@/app/types'
 
 interface Props {
@@ -31,6 +31,7 @@ export default async function page({ params: { categoryId: categoryId } }: Props
         getTodolist={getTodolist}
         createTodolist={createTodolist}
         updateTodolist={updateTodolist}
+        saveTodolistOrder={saveTodolistOrder}
       />
     </>
   )
