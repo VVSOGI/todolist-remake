@@ -7,6 +7,7 @@ import { IoClose } from "react-icons/io5";
 import { Title } from "..";
 import { changeToLocaleTime, changeToTime } from "../../utils";
 import { Category } from "../../types";
+import { SECTION_LINK_STYLES } from "../../styles";
 
 interface Props {
   category: Category;
@@ -20,24 +21,10 @@ export function TodolistHeader({ category }: Props) {
         <div className="text-xs">{changeToLocaleTime(category.updatedAt, changeToTime)}</div>
       </div>
       <div className="flex items-center gap-[0.75rem]">
-        <Link
-          className={`
-            w-[2.5rem] h-[2.5rem] flex justify-center items-center gap-[0.75rem] rounded-full cursor-pointer
-            hover:bg-gray-100
-            first:hover:text-red-600
-          `}
-          href={`/storage/${category.id}`}
-        >
+        <Link className={SECTION_LINK_STYLES} href={`/storage/${category.id}`}>
           <FaBox />
         </Link>
-        <Link
-          className={`
-            w-[2.5rem] h-[2.5rem] flex justify-center items-center gap-[0.75rem] rounded-full cursor-pointer
-            hover:bg-white
-            first:hover:text-red-500
-          `}
-          href={`/`}
-        >
+        <Link className={SECTION_LINK_STYLES} href={`/`}>
           <IoClose className="text-red-600" fontSize={`1.25rem`} />
         </Link>
       </div>
