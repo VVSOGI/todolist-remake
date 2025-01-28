@@ -26,7 +26,12 @@ export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodol
     useTodolistModal({ editTodo })
 
   return (
-    <div className={`h-[calc(100%-(${TODOLIST_HEIGHTS.header}+${TODOLIST_HEIGHTS.createInput}))] custom-scrollbar`}>
+    <div
+      className="custom-scrollbar"
+      style={{
+        height: `calc(100% - (${TODOLIST_HEIGHTS.header} + ${TODOLIST_HEIGHTS.createInput}))`
+      }}
+    >
       <audio id="audio" src="/poped.wav"></audio>
       {modal === 'edit' && (
         <TodoUpdateModal
