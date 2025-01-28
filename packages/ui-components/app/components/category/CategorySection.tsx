@@ -6,14 +6,5 @@ interface Props {
 }
 
 export function CategorySection({ children }: Props) {
-  return (
-    <section
-      className={`
-        h-[30rem] flex flex-col p-[1.5rem] bg-white shadow-primary rounded-medium
-        ${COMMON_MEDIA_QUERY_STYLES.section}
-      `}
-    >
-      {children}
-    </section>
-  );
+  return <section className={`${COMMON_MEDIA_QUERY_STYLES.section} p-[1.5rem]`}>{children}</section>;
 }
