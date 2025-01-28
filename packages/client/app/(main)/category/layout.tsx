@@ -1,6 +1,5 @@
 import React from 'react'
-import { Container, Title } from '@todolist/ui-components/app'
-import { CategorySection } from '@/app/(main)/category/components'
+import { Container, Title, CategorySection } from '@todolist/ui-components/app'
 
 export default function layout({
   children
