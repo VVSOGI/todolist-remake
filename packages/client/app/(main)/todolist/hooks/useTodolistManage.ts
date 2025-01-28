@@ -7,9 +7,10 @@ interface Props {
   getTodolist: () => Promise<Todo[]>
   createTodolist: (createTodo: CreateTodoDto) => Promise<APIResponse>
   updateTodolist: (updated: UpdateTodoDTO) => Promise<APIResponse>
+  saveTodolistOrder: (todolist: Todo[]) => Promise<APIResponse>
 }
 
-export function useTodolistManage({ categoryId, todolist, getTodolist, createTodolist, updateTodolist }: Props) {
+export function useTodolistManage({ categoryId, todolist, getTodolist, createTodolist, updateTodolist, saveTodolistOrder }: Props) {
   const [list, setList] = useState<Todo[]>(todolist)
 
   const setNewTodolist = async () => {
@@ -44,11 +45,16 @@ export function useTodolistManage({ categoryId, todolist, getTodolist, createTod
     await setNewTodolist()
   }
 
+  const saveListOrder = async (newOrderLists: Todo[]) => {
+    await saveTodolistOrder(newOrderLists)
+  }
+
   return {
     list,
     setList,
     editTodo,
     createTodo,
-    completeTodo
+    completeTodo,
+    saveListOrder
   }
 }
