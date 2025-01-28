@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { DraggableTodolist } from '@/app/(main)/todolist/components'
 import { useTodolistManage, useTodolistModal } from '@/app/(main)/todolist/hooks'
 import { APIResponse, CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 import { SCROLL_BAR_SETTINGS, TODOLIST_HEIGHTS, COLORS } from '@/app/styles'
-import { CreateTodolist, TodoUpdateModal } from '@todolist/ui-components/app'
+import { CreateTodolist, TodoUpdateModal, DraggableTodolist } from '@todolist/ui-components/app'
 
 const TodolistWrapper = styled.div`
   height: calc(100% - (${TODOLIST_HEIGHTS.header} + ${TODOLIST_HEIGHTS.createInput}));
@@ -26,15 +25,17 @@ interface Props {
   getTodolist: () => Promise<Todo[]>
   createTodolist: (createTodo: CreateTodoDto) => Promise<APIResponse>
   updateTodolist: (updated: UpdateTodoDTO) => Promise<APIResponse>
+  saveTodolistOrder: (todolist: Todo[]) => Promise<APIResponse>
 }
 
-export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodolist, updateTodolist }: Props) {
-  const { list, setList, editTodo, createTodo, completeTodo } = useTodolistManage({
+export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodolist, updateTodolist, saveTodolistOrder }: Props) {
+  const { list, setList, editTodo, createTodo, completeTodo, saveListOrder } = useTodolistManage({
     categoryId,
     todolist,
     getTodolist,
     createTodolist,
-    updateTodolist
+    updateTodolist,
+    saveTodolistOrder
   })
   const { modal, targetTodo, updateTitle, setUpdateTitle, handleEditModalOpen, handleEditModalClose, handleEditModalAgree } =
     useTodolistModal({ editTodo })
@@ -52,7 +53,13 @@ export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodol
         />
       )}
       {!list.length && <EmptyTodolist>Nothing in list 😅</EmptyTodolist>}
-      <DraggableTodolist list={list} setList={setList} handleCompleteTodo={completeTodo} handleEditModalOpen={handleEditModalOpen} />
+      <DraggableTodolist
+        list={list}
+        setList={setList}
+        handleCompleteTodo={completeTodo}
+        handleEditModalOpen={handleEditModalOpen}
+        saveTodolistOrder={saveListOrder}
+      />
       <CreateTodolist create={createTodo} />
     </TodolistWrapper>
   )
