@@ -2,7 +2,6 @@ import React from 'react'
 import { CreateTodolist, TodoUpdateModal, DraggableTodolist } from '@todolist/ui-components/app'
 import { useTodolistManage, useTodolistModal } from '@/app/(main)/todolist/hooks'
 import { APIResponse, CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
-import { TODOLIST_HEIGHTS } from '@/app/styles'
 
 interface Props {
   categoryId: string
@@ -29,7 +28,7 @@ export function TodolistDisplay({ categoryId, todolist, getTodolist, createTodol
     <div
       className="custom-scrollbar"
       style={{
-        height: `calc(100% - (${TODOLIST_HEIGHTS.header} + ${TODOLIST_HEIGHTS.createInput}))`
+        height: `calc(100% - (4.21875rem + 2.5rem))`
       }}
     >
       <audio id="audio" src="/poped.wav"></audio>
