@@ -34,7 +34,7 @@ function TodoItemComponent({ todo, handleCompleteTodo, handleEditModalOpen }: Pr
       aria-describedby={todo.id}
       ref={setNodeRef}
     >
-      <div className="flex items-center gap-[0.875rem]">
+      <div className="flex items-center gap-sm">
         <CheckCircle onAnimationEnd={() => handleCompleteTodo(todo)} />
         <div>{todo.title}</div>
       </div>

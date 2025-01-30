@@ -22,7 +22,7 @@ export function AgreementModal({ title, children, handleAgree, handleRefuse }: P
         className={`w-[50rem] min-h-[18.75rem] flex flex-col bg-white shadow-primary rounded-medium`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex flex-1 items-center justify-between p-[1.5rem] border-b border-gray-200">
+        <div className="flex flex-1 items-center justify-between p-xl border-b border-gray-200">
           <span className={`font-[400] text-xl`}>{title}</span>
           <div
             className={`
@@ -36,7 +36,7 @@ export function AgreementModal({ title, children, handleAgree, handleRefuse }: P
           </div>
         </div>
         <div className="flex flex-1 py-0 px-[1.5rem] text-md border-b border-gray-200">{children}</div>
-        <div className="flex justify-end flex-1 gap-[0.75rem] p-[1.5rem]">
+        <div className="flex justify-end flex-1 gap-[0.75rem] p-xl">
           <div className={`h-[2.5rem] overflow-hidden rounded-small`}>
             <Button size="medium" theme={ButtonsTheme.DARK} onClick={handleRefuse}>
               NO
