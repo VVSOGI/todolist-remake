@@ -20,9 +20,9 @@ export const BUTTON_DEFAULT_STYLES: Record<ButtonsTheme, string> = {
 };
 
 export const BUTTON_SIZES_STYLES: Record<ButtonSize, string> = {
-  small: "w-fit min-w-[3rem] h-full min-h-[2rem] py-sm px-xs text-sm font-[600]",
-  medium: "w-fit min-w-[5rem] h-full min-h-[2.5rem] py-md px-sm text-[1rem] font-[700]",
-  large: "w-fit min-w-[8rem] h-full min-h-[4rem] py-lg px-md text-lg font-[700]",
+  small: "w-fit min-w-[3rem] h-full min-h-[2rem] py-sm px-xs text-xs font-[600]",
+  medium: "w-fit min-w-[5rem] h-full min-h-[2.5rem] py-md px-sm text-sm font-[700]",
+  large: "w-fit min-w-[8rem] h-full min-h-[4rem] py-lg px-md text-md font-[700]",
 };
 
 export const SECTION_LINK_STYLES = `
