@@ -40,7 +40,7 @@ export function CreateCategory({ createCategory }: Props) {
           +
         </Button>
       </div>
-      <div className="my-[0.5625rem]">{error}</div>
+      <div className="my-xs">{error}</div>
     </div>
   );
 }
