@@ -4,8 +4,8 @@ import React, { memo } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { CiEdit } from "react-icons/ci";
-import { Todo } from "@/app/types";
-import { CheckCircle } from "@/app/components";
+import { CheckCircle } from "../../";
+import { Todo } from "../../types";
 
 interface Props {
   todo: Todo;
