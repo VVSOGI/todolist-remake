@@ -14,7 +14,7 @@ export function CategoryUpdateModal({ placeholder, closeModal, onClickUpdateButt
 
   return (
     <AgreementModal title="Update" handleRefuse={closeModal} handleAgree={() => onClickUpdateButton(updateTitle)}>
-      <div className="w-full flex flex-col py-[3rem] px-0 gap-[0.75rem]">
+      <div className="w-full flex flex-col py-[3rem] px-0 gap-sm">
         <div>Change Title this category</div>
         <Input
           value={updateTitle}

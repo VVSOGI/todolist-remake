@@ -35,8 +35,8 @@ export function AgreementModal({ title, children, handleAgree, handleRefuse }: P
             <IoMdClose />
           </div>
         </div>
-        <div className="flex flex-1 py-0 px-[1.5rem] text-md border-b border-gray-200">{children}</div>
-        <div className="flex justify-end flex-1 gap-[0.75rem] p-xl">
+        <div className="flex flex-1 py-0 px-xl text-md border-b border-gray-200">{children}</div>
+        <div className="flex justify-end flex-1 gap-sm p-xl">
           <div className={`h-[2.5rem] overflow-hidden rounded-small`}>
             <Button size="medium" theme={ButtonsTheme.DARK} onClick={handleRefuse}>
               NO

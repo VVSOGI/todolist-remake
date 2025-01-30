@@ -49,7 +49,7 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal, onClick
         onMouseDown={(e) => onCategoryDrag(e, category.id)}
         onClick={() => onClickCategory(category.id, isDragging.current)}
       >
-        <div className="w-full h-full flex justify-between items-center pl-[0.5rem] pr-[1rem] select-none">
+        <div className="w-full h-full flex justify-between items-center pl-xs pr-md select-none">
           <h2
             className={` 
               text-sm font-[500] text-gray-500
@@ -61,7 +61,7 @@ function CategoryComponent({ category, openDeleteModal, openTargetModal, onClick
           </h2>
           <div
             className={`
-              flex gap-[0.5rem] text-xs
+              flex gap-xs text-xs
               last:text-red-600 last:font-[400]
               desktop:text-sm
           `}
