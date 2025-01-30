@@ -34,7 +34,7 @@ export function CreateCategory({ createCategory }: Props) {
 
   return (
     <div className="w-full h-fit flex flex-col">
-      <div className="w-full min-h-[2.5rem] h-[2.5rem] flex justify-between border border-gray-200 overflow-hidden rounded-[0.25rem]">
+      <div className="w-full min-h-[2.5rem] h-[2.5rem] flex justify-between border border-gray-200 overflow-hidden rounded-small">
         <Input handleSubmit={handleSubmit} changeValue={changeValue} value={categoryTitle} />
         <Button size="small" onClick={() => handleSubmit(categoryTitle)}>
           +

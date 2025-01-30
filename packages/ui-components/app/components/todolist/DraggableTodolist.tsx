@@ -5,7 +5,7 @@ import { DndContext } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 import { TodoItem, SortableOverlay } from "../..";
 import { useDragDndKit } from "./hooks/useDragDndKit";
-import { Todo } from "@/app/types";
+import { Todo } from "../../types";
 
 interface Props {
   list: Todo[];

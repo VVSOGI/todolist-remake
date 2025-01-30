@@ -6,6 +6,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    padding: {
+      xs: "0.5rem",
+      sm: "0.75rem",
+      md: "1rem",
+      lg: "1.25rem",
+      xl: "1.5rem",
+    },
     screens: {
       mobile: "37.5rem",
       tablet: "45rem",
