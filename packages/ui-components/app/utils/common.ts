@@ -1,5 +1,3 @@
-"use client";
-
 /** MouseEvent */
 interface DragHorizonProps {
   event: MouseEvent | React.MouseEvent<HTMLButtonElement, MouseEvent>;
