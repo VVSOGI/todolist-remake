@@ -6,5 +6,5 @@ interface Props {
 }
 
 export function CategorySection({ children }: Props) {
-  return <section className={`${COMMON_MEDIA_QUERY_STYLES.section} p-[1.5rem]`}>{children}</section>;
+  return <section className={`${COMMON_MEDIA_QUERY_STYLES.section} p-xl`}>{children}</section>;
 }
