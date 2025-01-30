@@ -22,7 +22,7 @@ function TodoItemComponent({ todo, handleCompleteTodo, handleEditModalOpen }: Pr
       {...attributes}
       {...listeners}
       className={`
-        relative min-h-[3.375rem] flex items-center justify-between py-[0.75rem] px-[1rem] bg-white
+        relative min-h-[3.375rem] flex items-center justify-between py-sm px-md bg-white
         border-b ${isDragging ? "border-red-500" : "border-gray-200"} z-[${isDragging ? 100 : 1}] select-none cursor-move
         [&>i]:hover:block
       `}

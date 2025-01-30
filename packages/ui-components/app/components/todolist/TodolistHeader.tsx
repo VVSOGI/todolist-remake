@@ -15,7 +15,7 @@ interface Props {
 
 export function TodolistHeader({ category }: Props) {
   return (
-    <div className="h-todolist-headers flex justify-between items-center py-sm px-[1rem] border-b border-gray-200 bg-white z-[100]">
+    <div className="h-todolist-headers flex justify-between items-center py-sm px-md border-b border-gray-200 bg-white z-[100]">
       <div>
         <Title style={{ margin: 0 }}>{category.title.toUpperCase()}</Title>
         <div className="text-xs">{changeToLocaleTime(category.updatedAt, changeToTime)}</div>

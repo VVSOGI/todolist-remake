@@ -14,7 +14,7 @@ interface Props {
 
 export function StorageHeader({ category }: Props) {
   return (
-    <div className="flex justify-between items-center py-[0.75rem] px-[1rem] border-b border-gray-200">
+    <div className="flex justify-between items-center py-sm px-md border-b border-gray-200">
       <div>
         <Title style={{ margin: 0, fontSize: "1.5rem" }}>{category.title.toUpperCase()}</Title>
         <div className="text-xs">{changeToLocaleTime(category.updatedAt, changeToTime)}</div>
