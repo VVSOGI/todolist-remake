@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { COMMON_MEDIA_QUERY_STYLES } from "../../styles";
 
