@@ -3,7 +3,7 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
-  transpilePackages: ['@todolist/ui-components']
+  transpilePackages: ['@vvsogi/ui-components']
 }
 
 export default nextConfig

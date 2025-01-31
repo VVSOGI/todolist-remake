@@ -610,6 +610,19 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
+"@vvsogi/ui-components@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@vvsogi/ui-components/-/ui-components-1.1.1.tgz#79096188ea2f7d5cf99f949a745b433f6029d963"
+  integrity sha512-eYIHABYI7j8zdlXZGxRgRISMl7LlVGaDYnBqIqbh9lYmHvVTzP+f+IhYazPbOo4RI0B9CahvtcIo2i+osOfJng==
+  dependencies:
+    "@dnd-kit/core" "^6.1.0"
+    "@dnd-kit/sortable" "^8.0.0"
+    next "14.2.14"
+    prettier "^3.3.3"
+    react "^18"
+    react-dom "^18"
+    react-icons "^5.3.0"
+
 abbrev@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-2.0.0.tgz#cf59829b8b4f03f89dda2771cb7f3653828c89bf"
