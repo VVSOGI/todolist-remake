@@ -1,11 +1,15 @@
 {
-  "name": "@todolist/ui-components",
-  "version": "1.1.0",
+  "name": "@vvsogi/ui-components",
+  "version": "1.1.1",
   "main": "app/index.ts",
   "files": [
-    "app"
+    "app",
+    "public"
   ],
   "scripts": {},
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
     "@dnd-kit/sortable": "^8.0.0",
