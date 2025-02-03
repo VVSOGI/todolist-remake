@@ -1,5 +1,5 @@
 import React from 'react'
-import { CreateTodolist, TodoUpdateModal, DraggableTodolist } from '@todolist/ui-components/app'
+import { CreateTodolist, TodoUpdateModal, DraggableTodolist } from '@vvsogi/ui-components/app'
 import { useTodolistManage, useTodolistModal } from '@/app/(main)/todolist/hooks'
 import { APIResponse, CreateTodoDto, Todo, UpdateTodoDTO } from '@/app/types'
 
