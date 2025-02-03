@@ -23,3 +23,5 @@ I love using libraries like Recoil, Redux, and react-query, but lately I've been
 I think I will feel the need for something only when the project gets bigger and there are too many states to manage, but I think I will probably manage it with Context or Reducer even if the states increase.
 
 Also, I think the issue with props drilling might be a problem caused by abstracting the component too much, but this is just my opinion and I will definitely change my opinion in a few years, so don't care sir!.
+
+<img width="1552" alt="client" src="https://github.com/user-attachments/assets/d7b2efbd-9588-42cd-b8ab-4d414b6668f8" />
