@@ -1,71 +1,137 @@
-## server
+# Todo List Application
 
-1. End points
+A full-stack todo list application designed for practice, focusing on improving architectural skills and testing various design patterns (container-presenter, layered ...) in both frontend and backend development.
 
-   - Category: **/category**
-     - Create category: **POST** /category
-     - Get categories: **GET** /category
-     - Get category by id: **GET** /category/:categoryId
-     - Update category: **PATCH** /category/:categoryId
-     - Delete category: **DELETE** /category/:categoryId
-   - Todolist: **/todolist**
-     - Create todo: **POST** /todolist
-     - Get todo's: **GET** /todolist
-     - Get todo's by categoryId: **GET** /todolist/:categoryId
-     - Get todo's by dates: **GET** /todolist/dates/:categoryId
-     - Update todo: **PATCH** /todolist
-     - Update todo's order: **PATCH** /todolist/order
+## [Backend (Server)](https://github.com/VVSOGI/todolist-remake/blob/main/packages/server/README.md)
 
-2. Use specs
+### Tech-Stack
 
-   - NestJS
-   - Typia
-   - Jest
-   - PostgreSQL
-   - Typeorm
+- Nestjs
+- PostgreSQL
+- TypeORM
+- Typia
+- Jest
 
-3. UML Flow
-   - [Category uml flow](https://github.com/VVSOGI/todolist-remake/blob/main/server/docs/category/category.md)
-   - [Todolist uml flow](https://github.com/VVSOGI/todolist-remake/blob/main/server/docs/todolist/todolist.md)
+### API Endpoints
 
-## Server testing in progress
+#### Category Endpoints (`/category`)
+
+- `POST /category` - Create new category
+- `GET /category` - Retrieve all categories
+- `GET /category/:categoryId` - Retrieve specific category
+- `PATCH /category/:categoryId` - Update category
+- `DELETE /category/:categoryId` - Delete category
+
+#### Todo List Endpoints (`/todolist`)
+
+- `POST /todolist` - Create new todo
+- `GET /todolist` - Retrieve all todos
+- `GET /todolist/:categoryId` - Retrieve todos by category
+- `GET /todolist/dates/:categoryId` - Retrieve todos by dates
+- `PATCH /todolist` - Update todo
+- `PATCH /todolist/order` - Update todos order
+
+### Documentation
+
+Detailed UML flow diagrams are available for both modules:
+
+- [Category Flow Documentation](https://github.com/VVSOGI/todolist-remake/blob/main/packages/server/docs/category/category.md)
+- [Todolist Flow Documentation](https://github.com/VVSOGI/todolist-remake/blob/main/packages/server/docs/todolist/todolist.md)
+
+### Testing
 
 <img width="778" alt="스크린샷 2024-11-20 오후 11 54 19" src="https://github.com/user-attachments/assets/561a9522-8fd9-4e6c-9e9a-ac3907bee970">
 
-## client
+## [Frontend (Client)](https://github.com/VVSOGI/todolist-remake/blob/main/packages/client/README.md)
 
-1. Routing
+### Tech-Stack
 
-   - MAIN: **/**
-     - get categories
-     - create category
-     - categories of todolist
-   - TODOLIST: **/:categoryId**
-     - get todo's
-     - create todo
-     - complete todo
-     - update todo title
-     - update todo's order
-     - move storage page that contain completed todo's
-   - STORAGE: **/storage/:todolistId**
-     - get completed todo's by dates
+- Nextjs
+- Tailwind CSS
+- dnd-kit
 
-2. API routing
+#### Main Features
 
-   - Category
-     - Get categories: **GET** /api/category
-     - Create category: **POST** /api/category
-     - Get category by id: **GET** /api/category/:categoryId
-     - Update category by id: **PATCH** /api/category/:categoryId
-     - Delete category by id: **DELETE** /api/category/:categoryId
-   - Todolist
-     - Get todo's list by category Id: **GET** /api/todolist/:categoryId
-     - Create todo: **POST** /api/todolist
-     - Update todo: **PATCH** /api/todolist
-     - Get todo's list by dates: **GET** /api/todolist/dates/:categoryId
-     - Update todo's order: **PATCH** /api/todolist/order
+1. Category Management (`/category`)
 
-3. Use specs
-   - NextJS
-   - Styled-components
-   - dnd-kit
+   - CategoryDisplay component for category management
+   - Custom hooks for category state management
+
+2. Todo List Management (`/todolist/[categoryId]`)
+
+   - TodolistDisplay component for todolist management
+   - Custom hooks:
+     - useTodolistManage for todo management
+     - useTodolistModal for modal interactions
+
+3. Storage Feature (`/storage/[id]`)
+   - StorageListDisplay component for showing display
+   - Completed todos organization by date
+
+### Page Routes
+
+- `/category`
+  - Category management
+  - Todolist overview
+  - Category creation, delete, update
+- `/todolist/:categoryId`
+  - Todo management
+  - Todo completion
+  - Order management
+  - Storage access
+- `/storage/:todolistId` (Storage)
+  - View completed todos by date
+
+## [Storybook (Stories)](https://github.com/VVSOGI/todolist-remake/blob/main/packages/stories/README.md)
+
+### Tech-Stack
+
+- Nextjs
+- Storybook
+- ~~Styled-components~~ Tailwind CSS
+- @vvsogi/ui-components
+
+### Main Features
+
+1. Design System
+2. Example
+
+- Cateogry
+  - Pages
+  - Categories
+  - CategoryItem
+  - CreateCategory
+- Common
+  - Button
+  - Modal
+  - Title
+  - Use Cases
+- Storage
+  - Pages
+  - StorageHeader
+  - StorageList
+- Todolist
+  - Pages
+  - DraggableTodolist
+  - TodoItem
+  - TodolistHeader
+  - TodolistSection
+
+Storybook testing is complete for all page components. We are currently using styled-components, which will be replaced with the introduction of the ui-components package.
+
+## [Ui-components](https://github.com/VVSOGI/todolist-remake/blob/main/packages/ui-components/README.md)
+
+This package is a collection of purely presentational components stripped of business logic. This library is intended to be useful for use in other packages as well, as it is purely UI semantic.
+
+### Tech-Stack
+
+- Nextjs
+- Tailwind CSS
+- dnd-kit
+
+### How to use
+
+1. yarn add @vvsogi/ui-components
+2. Must have add this line to next.config.mjs "transpilePackages: ['@vvsogi/ui-components']" because transpile typescript in '@vvsogi/ui-components' packages
+3. Must have add this line to tailwind.config.js "content: ['./node_modules/@vvsogi/ui-components/app/**/*.{js,jsx,ts,tsx}'] because add css bundle tailwind in ui-components to client tailwind css
+4. use like this "import { CreateCategory } from '@vvsogi/ui-components/app'"
