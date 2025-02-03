@@ -19,3 +19,5 @@ For now, I'd like to see a feature that allows designers to simply change settin
 This shouldn't be too difficult to create, as it's a feature of storybook itself that the code is immediately applied when a value inside the component changes.
 
 However, it's a bit of a problem whether to continue using storybook, but I'd rather find another library that's good or make my own, so I'd like to continue to find out the inconveniences and organize them, and then make a library that takes the advantages of storybook and complements the disadvantages.
+
+<img width="1440" alt="stories" src="https://github.com/user-attachments/assets/66dbdb04-371a-449d-a809-44c40d7879ad" />
