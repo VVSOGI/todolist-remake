@@ -1,6 +1,6 @@
 'use client'
 
-import { Skeleton, CreateCategory } from '@todolist/ui-components/app'
+import { Skeleton, CreateCategory } from '@vvsogi/ui-components/app'
 
 export default function HomeLoading() {
   async function mock() {

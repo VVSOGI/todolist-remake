@@ -1,5 +1,5 @@
 import React from 'react'
-import { Categories, CategoryDeleteModal, CategoryUpdateModal } from '@todolist/ui-components/app'
+import { Categories, CategoryDeleteModal, CategoryUpdateModal } from '@vvsogi/ui-components/app'
 import { useCategoryManage } from '@/app/(main)/category/hooks'
 import { APIResponse, Category } from '@/app/types'
 

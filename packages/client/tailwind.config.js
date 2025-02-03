@@ -5,7 +5,7 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/@vvsogi/ui-components/app/**/*.{js,jsx,ts,tsx}' // ui-components 경로 추가
+    './node_modules/@vvsogi/ui-components/app/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
     screens: {
