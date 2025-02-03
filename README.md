@@ -1,4 +1,4 @@
-# Todo List Application
+# Free Todolist
 
 A full-stack todo list application designed for practice, focusing on improving architectural skills and testing various design patterns (container-presenter, layered ...) in both frontend and backend development.
 
