@@ -2,17 +2,17 @@
 
 ## Why separate components ui-components packages?
 
-Originally, all components were tied to the client, but after the stories package was added, we had a problem with adding the same components to stories, so we decided to manage them separately. tried to apply a ui-component package based on styled-component, but styled-component is not next js friendly by default (SSR related issue), so just switched to tailwind css and created a ui components package.
+Originally, all components were tied to the client, but after the stories package was added, I had a problem with adding the same components to stories, so I decided to manage them separately. tried to apply a ui-component package based on styled-component, but styled-component is not next js friendly by default (SSR related issue), so just switched to tailwind css and created a ui components package.
 
 ## But still, the components folder remains on the client, why?
 
-I don't think it's possible to completely separate components from the client. Currently, the separated components are all presenters that receive and use logic, but we need to have a component that is used as a container, so we left the components folder to account for that.
+I don't think it's possible to completely separate components from the client. Currently, the separated components are all presenters that receive and use logic, but I need to have a component that is used as a container, so I left the components folder to account for that.
 
-## Previous projects usually called next js own server before calling the Backend API, why did we change it?
+## Previous projects usually called next js own server before calling the Backend API, why did change it?
 
 Using your own next js server and making API calls to the server certainly sidesteps the issue with CORS, and it's nice to have more areas where the frontend can do things. However, it also means more code to write, and most importantly, more problems when you build it. If you can't access the server when building, next js can't build (SSR), so in order to build in production, you have to do a dev start on the production server, build, and then do a production start again, which I don't think is natural.
 
-Rather, we decided that it would be much more natural to focus on a single backend that is thoroughly defended against CORS and relies on the client's API calls.
+Rather, I decided that it would be much more natural to focus on a single backend that is thoroughly defended against CORS and relies on the client's API calls.
 
 [#162 issue](https://github.com/VVSOGI/todolist-remake/issues/162)
 
