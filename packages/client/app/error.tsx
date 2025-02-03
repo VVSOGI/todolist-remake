@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Button, Container } from '@todolist/ui-components/app'
+import { Button, Container } from '@vvsogi/ui-components/app'
 import { InternalError } from '@/app/types'
 
 export default function error(err: any) {
