@@ -1,7 +1,7 @@
-import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button } from "@/app/stories/components";
-import { buttonsTheme } from "@/app/types";
+import { fn } from "@storybook/test";
+import { Button } from "@vvsogi/ui-components/app";
+import { ButtonsTheme } from "@vvsogi/ui-components/app/styles";
 
 const meta = {
   title: "Example/Common/Button",
@@ -17,7 +17,7 @@ const meta = {
     theme: {
       control: "select",
       description: "Choose your theme",
-      options: [buttonsTheme.BRIGHT, buttonsTheme.DARK],
+      options: [ButtonsTheme.BRIGHT, ButtonsTheme.DARK],
     },
     size: {
       control: "select",
@@ -33,8 +33,9 @@ const meta = {
     },
   },
   args: {
+    size: "medium",
     onClick: fn(),
-    theme: buttonsTheme.BRIGHT,
+    theme: ButtonsTheme.BRIGHT,
     children: "버튼",
   },
 } satisfies Meta<typeof Button>;
