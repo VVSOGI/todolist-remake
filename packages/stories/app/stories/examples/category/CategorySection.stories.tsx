@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Container } from "@/app/stories/components";
-import { CategorySection } from "@/app/stories/components/category";
+import { Container, CategorySection } from "@vvsogi/ui-components/app";
 
 const categorySection = {
   title: "Example/Category/CategorySection",
