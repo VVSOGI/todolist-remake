@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Container } from "@/app/stories/components";
-import { TodolistHeader, TodolistSection } from "@/app/stories/components/todolist";
+import { Container, TodolistHeader, TodolistSection } from "@vvsogi/ui-components/app";
 import { mockCategories } from "@/app/stories/mock";
 
 const todolistHeader = {
@@ -43,7 +42,6 @@ export const Styles1Tablet: Story = {
     },
   },
   tags: ["autodocs"],
-  args: {},
 };
 
 export const Styles2Desktop: Story = {
@@ -53,7 +51,6 @@ export const Styles2Desktop: Story = {
     },
   },
   tags: ["!autodocs"],
-  args: {},
 };
 
 export const Styles3Mobile: Story = {
@@ -63,5 +60,4 @@ export const Styles3Mobile: Story = {
     },
   },
   tags: ["!autodocs"],
-  args: {},
 };
