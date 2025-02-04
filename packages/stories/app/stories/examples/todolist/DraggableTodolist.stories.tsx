@@ -1,7 +1,6 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Container } from "@/app/stories/components";
-import { DraggableTodolist, TodolistSection } from "@/app/stories/components/todolist";
+import { Container, DraggableTodolist, TodolistSection } from "@vvsogi/ui-components/app";
 import { mockTodoItems } from "@/app/stories/mock";
 
 const draggableTodolist = {
@@ -26,6 +25,7 @@ const draggableTodolist = {
     setList: fn(),
     handleCompleteTodo: fn(),
     handleEditModalOpen: fn(),
+    saveTodolistOrder: fn(),
   },
   decorators: (Story) => (
     <Container>
@@ -49,7 +49,6 @@ export const Styles1Tablet: Story = {
     },
   },
   tags: ["autodocs"],
-  args: {},
 };
 
 export const Styles2Desktop: Story = {
@@ -59,7 +58,6 @@ export const Styles2Desktop: Story = {
     },
   },
   tags: ["!autodocs"],
-  args: {},
 };
 
 export const Styles3Mobile: Story = {
@@ -69,5 +67,4 @@ export const Styles3Mobile: Story = {
     },
   },
   tags: ["!autodocs"],
-  args: {},
 };

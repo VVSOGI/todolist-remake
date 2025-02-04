@@ -1,34 +1,47 @@
 import { fn } from "@storybook/test";
-import type { Meta, StoryObj } from "@storybook/react";
-import { Container } from "@/app/stories/components";
-import { TodolistDisplay, TodolistHeader, TodolistSection } from "@/app/stories/components/todolist";
+import type { StoryObj } from "@storybook/react";
+import {
+  Container,
+  CreateTodolist,
+  DraggableTodolist,
+  TodolistHeader,
+  TodolistSection,
+} from "@vvsogi/ui-components/app";
 import { mockCategories, mockTodoItems } from "@/app/stories/mock";
 
-const TodolistPage = {
+const todolistPage = {
   title: "Example/Todolist/1. Pages",
-  component: TodolistDisplay,
   parameters: {
     layout: "fullscreen",
     tags: ["!autodocs"],
   },
   argTypes: {},
-  args: {
-    categoryId: mockCategories[0].id,
-    todolist: mockTodoItems,
-    getTodolist: fn(),
-  },
-  decorators: (Story) => (
+  decorators: () => (
     <Container>
       <TodolistSection>
         <TodolistHeader category={mockCategories[0]} />
-        <Story />
+        <div
+          className="custom-scrollbar"
+          style={{
+            height: `calc(100% - (4.21875rem + 2.5rem))`,
+          }}
+        >
+          <DraggableTodolist
+            list={mockTodoItems}
+            setList={fn()}
+            handleCompleteTodo={fn()}
+            handleEditModalOpen={fn()}
+            saveTodolistOrder={fn()}
+          />
+          <CreateTodolist create={fn()} />
+        </div>
       </TodolistSection>
     </Container>
   ),
-} satisfies Meta<typeof TodolistDisplay>;
+};
 
-export default TodolistPage;
-type Story = StoryObj<typeof TodolistPage>;
+export default todolistPage;
+type Story = StoryObj<typeof todolistPage>;
 
 export const Styles1Tablet: Story = {
   parameters: {

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Container } from "@/app/stories/components";
-import { TodolistSection } from "@/app/stories/components/todolist";
+import { Container, TodolistSection } from "@vvsogi/ui-components/app";
 
 const todolistSection = {
   title: "Example/Todolist/TodolistSection",
@@ -37,7 +36,6 @@ export const Styles1Tablet: Story = {
     },
   },
   tags: ["autodocs"],
-  args: {},
 };
 
 export const Styles2Desktop: Story = {
@@ -47,7 +45,6 @@ export const Styles2Desktop: Story = {
     },
   },
   tags: ["!autodocs"],
-  args: {},
 };
 
 export const Styles3Mobile: Story = {
@@ -57,5 +54,4 @@ export const Styles3Mobile: Story = {
     },
   },
   tags: ["!autodocs"],
-  args: {},
 };
