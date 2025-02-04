@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Container } from "@/app/stories/components";
-import { StorageHeader, StorageSection } from "@/app/stories/components/storage";
+import { Container, StorageHeader, StorageSection } from "@vvsogi/ui-components/app";
 import { mockCategories } from "@/app/stories/mock";
 
 const storageHeader = {
