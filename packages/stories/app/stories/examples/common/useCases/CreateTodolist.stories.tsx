@@ -1,8 +1,6 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
-import { CreateTodolist } from "@/app/stories/components/todolist";
-import { mediaQueryStandard } from "@/app/types";
-import { COLORS } from "@/app/styles";
+import { CreateTodolist } from "@vvsogi/ui-components/app";
 
 const usecaseTodolistButton = {
   title: "Example/Common/UseCases",
@@ -13,23 +11,14 @@ const usecaseTodolistButton = {
   tags: ["!autodocs"],
   argTypes: {},
   decorators: (Story) => (
-    <div style={{ width: "100%", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
-      <div
-        style={{
-          position: "relative",
-          maxWidth: mediaQueryStandard.TABLET,
-          width: "100%",
-          height: "80vh",
-          border: `1px solid ${COLORS.GRAY_200}`,
-          borderRadius: "0.5rem",
-        }}
-      >
+    <div className="w-full h-screen flex justify-center items-center">
+      <div className="relative max-w-section-tablet w-full h-[80vh] border border-gray-200 rounded-medium">
         <Story handleCreateTodo={() => {}} />
       </div>
     </div>
   ),
   args: {
-    handleCreateTodo: fn(),
+    create: fn(),
   },
 } satisfies Meta<typeof CreateTodolist>;
 

@@ -1,8 +1,6 @@
-import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
-import { CreateCategory } from "@/app/stories/components/category";
-import { mediaQueryStandard } from "@/app/types";
-import { COLORS } from "@/app/styles";
+import { fn } from "@storybook/test";
+import { CreateCategory } from "@vvsogi/ui-components/app";
 
 const usecaseCatagoryButton = {
   title: "Example/Common/UseCases",
@@ -16,28 +14,13 @@ const usecaseCatagoryButton = {
   tags: ["!autodocs"],
   argTypes: {},
   args: {
-    categoryTitle: "",
-    changeValue: fn(),
-    handleSubmit: fn(),
+    createCategory: fn(),
   },
   decorators: (Story) => (
-    <div style={{ width: "100%", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
-      <div
-        style={{
-          position: "absolute",
-          maxWidth: mediaQueryStandard.TABLET,
-          width: "100%",
-          height: "80vh",
-        }}
-      >
+    <div className="w-full h-screen flex justify-center items-center">
+      <div className="absolute max-w-section-tablet w-full h-[80vh]">
         <Story />
-        <div
-          style={{
-            height: "50%",
-            border: `1px solid ${COLORS.GRAY_200}`,
-            borderRadius: "0.25rem",
-          }}
-        />
+        <div className="h-[50%] border border-gray-200 rounded-small" />
       </div>
     </div>
   ),

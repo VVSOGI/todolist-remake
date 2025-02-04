@@ -1,6 +1,6 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
-import { AgreementModal } from "@/app/stories/components";
+import { AgreementModal } from "@vvsogi/ui-components/app";
 
 const ModalContents = () => {
   return <div style={{ padding: "2rem 0rem" }}>This is example Modal</div>;
