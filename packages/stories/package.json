@@ -8,20 +8,23 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@vvsogi/ui-components": "^1.1.1",
     "next": "14.2.14",
     "react": "^18",
-    "react-dom": "^18",
-    "@vvsogi/ui-components": "^1.1.1"
+    "react-dom": "^18"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.26.7",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/preset-typescript": "^7.26.0",
     "@chromatic-com/storybook": "^3.2.2",
     "@dnd-kit/core": "^6.1.0",
     "@dnd-kit/sortable": "^8.0.0",
     "@storybook/addon-essentials": "^8.4.5",
     "@storybook/addon-interactions": "^8.4.5",
     "@storybook/addon-onboarding": "^8.4.5",
+    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-viewport": "^8.4.5",
-    "@storybook/addon-styling-webpack": "^1.0.1",
     "@storybook/blocks": "^8.4.5",
     "@storybook/nextjs": "^8.4.5",
     "@storybook/react": "^8.4.5",
@@ -29,13 +32,15 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.20",
+    "babel-loader": "^9.2.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
     "eslint-plugin-mdx": "^3.1.5",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-storybook": "^0.11.1",
     "react-icons": "^5.3.0",
-    "storybook": "^8.4.5",
+    "storybook": "^8.5.3",
     "styled-components": "^6.1.14",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
