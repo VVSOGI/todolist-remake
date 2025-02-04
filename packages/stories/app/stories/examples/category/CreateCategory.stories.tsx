@@ -1,7 +1,6 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Container } from "@/app/stories/components";
-import { CategorySection, CreateCategory } from "@/app/stories/components/category";
+import { Container, CategorySection, CreateCategory } from "@vvsogi/ui-components/app";
 
 const createCategory = {
   title: "Example/Category/CreateCategory",
@@ -17,7 +16,7 @@ const createCategory = {
   },
   argTypes: {},
   args: {
-    handleCreateTodo: fn(),
+    createCategory: fn(),
   },
   decorators: (Story) => (
     <Container>

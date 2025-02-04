@@ -1,8 +1,6 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Container } from "@/app/stories/components";
-import { CategoryItem } from "@/app/stories/components/category/CategoryItem";
-import { CategorySection } from "@/app/stories/components/category";
+import { Container, CategoryItem, CategorySection } from "@vvsogi/ui-components/app";
 
 const categoryItem = {
   title: "Example/Category/CategoryItem",
@@ -27,6 +25,7 @@ const categoryItem = {
     },
     openDeleteModal: fn(),
     openTargetModal: fn(),
+    onClickCategory: fn(),
   },
   decorators: (Story) => (
     <Container>
