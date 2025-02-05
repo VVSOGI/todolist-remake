@@ -1,28 +1,21 @@
-import React from 'react'
-import styled, { RuleSet } from 'styled-components'
-import { COLORS } from '@/app/styles'
-
-const Component = styled.div<ComponentStyleProps>`
-  width: 100%;
-  height: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${COLORS.WHITE};
-  border: 1px solid ${COLORS.GRAY_300};
-  font-size: 14px !important;
-  color: ${COLORS.GRAY_500};
-  ${(props) => props.styles}
-`
-
+import React from "react";
 interface ComponentStyleProps {
-  styles: RuleSet[]
+  classNames: string;
 }
 
 interface Props extends ComponentStyleProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-export function DesignSystemDisplay({ children, styles }: Props) {
-  return <Component styles={styles}>{children}</Component>
+export function DesignSystemDisplay({ children, classNames }: Props) {
+  return (
+    <div
+      className={`
+        w-full h-[3rem] flex justify-center items-center bg-white border border-gray-300 text-[14px] text-gray-500 
+        ${classNames}
+      `}
+    >
+      {children}
+    </div>
+  );
 }
