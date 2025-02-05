@@ -1,47 +1,21 @@
-import React from 'react'
-import styled from 'styled-components'
-import { COLORS, FONT_SIZES } from '@/app/styles'
+import React from "react";
 
-const ComponentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-`
-
-const Component = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-const TitleWrapper = styled.div`
-  flex: 0 0 30%;
-`
-
-const Title = styled.div`
-  font-weight: 600;
-`
-
-const SubTitle = styled.div`
-  font-size: 0.875rem !important;
-  color: ${COLORS.GRAY_500};
-`
-
-const Contents = styled.div``
+import { FONT_SIZES } from "@/app/styles";
 
 export function FontSizes() {
-  const sizes = Object.entries(FONT_SIZES)
+  const sizes = Object.entries(FONT_SIZES);
 
   return (
-    <ComponentWrapper>
+    <div className="flex flex-col gap-[1.5rem]">
       {sizes.map(([key, value]: [key: string, value: string]) => (
-        <Component key={key}>
-          <TitleWrapper>
-            <Title>{key.toUpperCase()}</Title>
-            <SubTitle>{value}</SubTitle>
-          </TitleWrapper>
-          <Contents style={{ fontSize: value }}>HELLO WORLD!</Contents>
-        </Component>
+        <div className="flex items-center" key={key}>
+          <div className="flex-[0_0_30%]">
+            <div className="font-[600]">{key.toUpperCase()}</div>
+            <div className="text-xs text-gray-500">{value}</div>
+          </div>
+          <div style={{ fontSize: value }}>HELLO WORLD!</div>
+        </div>
       ))}
-    </ComponentWrapper>
-  )
+    </div>
+  );
 }
