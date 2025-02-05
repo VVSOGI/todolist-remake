@@ -1,50 +1,23 @@
-import React from 'react'
-import styled from 'styled-components'
-import { DesignSystemDisplay } from '@/app/stories/components'
-import { DesignSystemComponent } from '@/app/types'
-import { COLORS } from '@/app/styles'
-
-const ComponentWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2.5rem;
-`
-
-const Component = styled.div`
-  display: flex;
-`
-
-const TitleWrapper = styled.div`
-  font-size: 0.875rem !important;
-  flex: 0 0 30%;
-`
-
-const Title = styled.div`
-  font-weight: 700 !important;
-`
-
-const SubTitle = styled.div`
-  color: ${COLORS.GRAY_500};
-`
+import React from "react";
+import { DesignSystemDisplay } from "@/app/stories/components";
+import { DesignSystemComponent } from "@/app/types";
 
 interface Props<T extends string> {
-  list: DesignSystemComponent<T>[]
+  list: DesignSystemComponent<T>[];
 }
 
 export function DesignSystemGuideRow<T extends string>({ list }: Props<T>) {
   return (
-    <ComponentWrapper>
+    <div className="w-full flex flex-col justify-between gap-[2.5rem]">
       {list.map((item) => (
-        <Component key={item.name}>
-          <TitleWrapper>
-            <Title>{item.name.toUpperCase()}</Title>
-            <SubTitle>{item.description}</SubTitle>
-          </TitleWrapper>
-          <DesignSystemDisplay styles={item.styles}>{item.value}</DesignSystemDisplay>
-        </Component>
+        <div key={item.name} className="flex">
+          <div className="text-xs flex-[0_0_30%]">
+            <div className="font-[700]">{item.name.toUpperCase()}</div>
+            <div className="text-gray-500">{item.description}</div>
+          </div>
+          <DesignSystemDisplay classNames={item.classNames}>{item.value}</DesignSystemDisplay>
+        </div>
       ))}
-    </ComponentWrapper>
-  )
+    </div>
+  );
 }
