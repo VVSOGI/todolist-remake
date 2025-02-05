@@ -3,7 +3,6 @@ export * from "./BoxShadows";
 export * from "./DesignSystemGuideRow";
 export * from "./DesignSystemDisplay";
 export * from "./FontSizes";
-export * from "./dnd-kit";
 export * from "./AgreementModal";
 export * from "./Button";
 export * from "./Container";
