@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "compose-up": "docker-compose --profile infra up -d && docker-compose --profile services up -d",
+    "infra-up": "yarn workspace @todolist/server start:db",
     "client:dev": "yarn workspace @todolist/client dev",
     "server:dev": "yarn workspace @todolist/server start:dev"
   },
