@@ -17,6 +17,10 @@ infra_setting() {
 
 docker network create $DOCKER_NETWORK || true
 
+cat ../envs/.client.example.env > ../envs/.client.env
+cat ../envs/.server.example.env > ../envs/.server.env
+cat ../envs/.infra.example.env > ../envs/.infra.env
+
 cat ../envs/.client.env ../envs/.server.env ../envs/.infra.env  > ../.env
 cat ../envs/.server.env ../envs/.infra.env > ../packages/server/.env
 cat ../envs/.client.env > ../packages/client/.env
