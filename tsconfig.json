@@ -5,6 +5,11 @@
       "@todolist/client": ["packages/client"],
       "@todolist/client/*": ["packages/client/*"],
       "@/app/*": ["packages/client/app/*"]
-    }
+    },
+    "plugins": [
+      {
+        "transform": "typia/lib/transform"
+      }
+    ]
   }
 }
