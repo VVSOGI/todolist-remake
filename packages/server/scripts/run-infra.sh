@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
 cd "$(dirname "$0")"
-source ../.env
+source ../.env.local
+
+cat ../.env.local > ../.env
 
 docker network create $DOCKER_NETWORK | true
 
@@ -10,7 +12,7 @@ docker run \
   --network $DOCKER_NETWORK \
   --memory=2g \
   --memory-swap=3g \
-  -p 5432:5432 \
+  -p $DB_PORT:$DB_PORT \
   -e POSTGRES_PASSWORD=$DB_PASSWORD \
   -e POSTGRES_USER=$DB_USERNAME \
   -e POSTGRES_DB=$DB_DATABASE \

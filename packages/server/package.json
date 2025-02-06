@@ -8,9 +8,10 @@
   "scripts": {
     "build": "npm run lint && nest build",
     "start": "nest start",
-    "start:dev": "nest start --watch",
+    "start:dev": "bash ./scripts/run-infra.sh && nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
+    "start:db": "bash ./scripts/run-db.sh",
     "migration:create": "typeorm migration:create ./src/database/migration/mig",
     "migration:generate": "npm run build && typeorm migration:generate -d ./dist/database/data-source.js ./src/database/migration/mig",
     "migration:show": "typeorm migration:show -d ./dist/database/data-source.js",
