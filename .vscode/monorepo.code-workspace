@@ -1,13 +1,13 @@
 {
   "folders": [
     {
-      "path": "packages/client"
+      "path": "../packages/client",
     },
     {
-      "path": "packages/server"
+      "path": "../packages/server",
     },
     {
-      "path": "packages/stories"
-    }
-  ]
+      "path": "../packages/stories",
+    },
+  ],
 }
