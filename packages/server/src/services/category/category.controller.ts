@@ -16,7 +16,8 @@ import {
   ValidateUpdateDTO,
   SwaggerCreateCategory,
   SwaggerGetCategory,
-  SwaggerGetCategoryById
+  SwaggerGetCategoryById,
+  SwaggerUpdateCategory
 } from './decorator'
 import { ValidateIdParamDTO } from '../common'
 
@@ -46,6 +47,7 @@ export class CategoryController {
   }
 
   @Patch(':categoryId')
+  @SwaggerUpdateCategory()
   async updateCategory(
     @ValidateIdParamDTO() idParamsDto: CategoryIdParamsDto,
     @ValidateUpdateDTO() updateCategoryDto: UpdateCategoryDto
