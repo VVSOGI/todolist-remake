@@ -17,7 +17,7 @@ export function SwaggerCreateCategory() {
 ## POST API for creating a category.
 You must attach a title to the body as a required DTO.
 
-## Success case [201 status code]
+### Success case [201 status code]
 
     {
         "id": "UUID",
@@ -27,7 +27,7 @@ You must attach a title to the body as a required DTO.
         "deleted": false
     }
 
-## If you sent invalid type data [400 ERROR]
+### If you sent invalid type data [400 ERROR]
 POST 
 
     {
@@ -42,7 +42,7 @@ Response
         "statusCode": 400
     }
 
-## If you sent less than three characters [400 ERROR]
+### If you sent less than three characters [400 ERROR]
 POST 
 
     {
@@ -57,7 +57,7 @@ Response
         "statusCode": 400
     }
 
-## If you sent missing data [404 ERROR]
+### If you sent missing data [404 ERROR]
 
 POST 
 
