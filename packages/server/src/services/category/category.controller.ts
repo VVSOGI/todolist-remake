@@ -10,9 +10,15 @@ import {
   UpdateCategoryDto,
   UpdateCategoryResponseType
 } from './types'
-import { ValidateCreateDTO, ValidateDeletedCheckedDTO, ValidateUpdateDTO } from './decorator'
+import {
+  ValidateCreateDTO,
+  ValidateDeletedCheckedDTO,
+  ValidateUpdateDTO,
+  SwaggerCreateCategory,
+  SwaggerGetCategory,
+  SwaggerGetCategoryById
+} from './decorator'
 import { ValidateIdParamDTO } from '../common'
-import { SwaggerCreateCategory } from './decorator/swagger/createCategory.swagger'
 
 @ApiTags('Category')
 @Controller('category')
@@ -27,11 +33,13 @@ export class CategoryController {
   }
 
   @Get()
+  @SwaggerGetCategory()
   async getCategories(@ValidateDeletedCheckedDTO() categoryDeleteParamsDto: CategoryDeleteParamsDto): Promise<GetCategoriesResponseType> {
     return this.categoryService.getCategories(categoryDeleteParamsDto)
   }
 
   @Get(':categoryId')
+  @SwaggerGetCategoryById()
   async getCategoryById(@ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto): Promise<DefaultCategoryResponseType> {
     const { categoryId } = getCategoryDto
     return this.categoryService.getCategoryById(categoryId)
