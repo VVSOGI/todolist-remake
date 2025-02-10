@@ -12,6 +12,7 @@ import {
 } from './types'
 import { ValidateCreateDTO, ValidateDeletedCheckedDTO, ValidateUpdateDTO } from './decorator'
 import { ValidateIdParamDTO } from '../common'
+import { SwaggerCreateCategory } from './decorator/swagger/createCategory.swagger'
 
 @ApiTags('Category')
 @Controller('category')
@@ -19,6 +20,7 @@ export class CategoryController {
   constructor(private categoryService: CategoryService) {}
 
   @Post()
+  @SwaggerCreateCategory()
   async createCategory(@ValidateCreateDTO() createCategoryDto: CreateCategoryDto): Promise<DefaultCategoryResponseType> {
     const { title } = createCategoryDto
     return this.categoryService.createCategory(title)
