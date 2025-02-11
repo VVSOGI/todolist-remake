@@ -19,7 +19,7 @@ import {
   ValidateUpdateTodolistOrderDTO
 } from './decorator'
 import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
-import { SwaggerCreateTodolist } from './decorator/swagger'
+import { SwaggerCreateTodolist, SwaggerGetTodolist, SwaggerGetTodolistById } from './decorator/swagger'
 
 @ApiTags('Todolist')
 @Controller('todolist')
@@ -33,11 +33,13 @@ export class TodolistController {
   }
 
   @Get()
+  @SwaggerGetTodolist()
   async getTodolists(): Promise<GetTodolistsResponseType> {
     return this.todolistService.getTodolists()
   }
 
   @Get(':categoryId')
+  @SwaggerGetTodolistById()
   async getTodolistsByCategoryId(
     @ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto,
     @ValidateGetTodolistCheckedDTO() checked?: GetTodolistDto
