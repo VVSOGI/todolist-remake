@@ -1,4 +1,5 @@
 import { Controller, Get, Patch, Post, Query } from '@nestjs/common'
+import { ApiTags } from '@nestjs/swagger'
 import { TodolistService } from './todolist.service'
 import {
   CreateTodolistDto,
@@ -15,25 +16,33 @@ import {
   ValidateCreateTodolistDTO,
   ValidateGetTodolistCheckedDTO,
   ValidateUpdateTodolistDto,
-  ValidateUpdateTodolistOrderDTO
+  ValidateUpdateTodolistOrderDTO,
+  SwaggerCreateTodolist,
+  SwaggerGetTodolist,
+  SwaggerGetTodolistById,
+  SwaggerGetTodolistByDate
 } from './decorator'
 import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
 
+@ApiTags('Todolist')
 @Controller('todolist')
 export class TodolistController {
   constructor(private todolistService: TodolistService) {}
 
   @Post()
+  @SwaggerCreateTodolist()
   async createTodolist(@ValidateCreateTodolistDTO() createTodolistDto: CreateTodolistDto): Promise<TodolistResponseType> {
     return this.todolistService.createTodolist(createTodolistDto)
   }
 
   @Get()
+  @SwaggerGetTodolist()
   async getTodolists(): Promise<GetTodolistsResponseType> {
     return this.todolistService.getTodolists()
   }
 
   @Get(':categoryId')
+  @SwaggerGetTodolistById()
   async getTodolistsByCategoryId(
     @ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto,
     @ValidateGetTodolistCheckedDTO() checked?: GetTodolistDto
@@ -49,6 +58,7 @@ export class TodolistController {
   }
 
   @Get('/dates/:categoryId')
+  @SwaggerGetTodolistByDate()
   async getTodolistsByDate(
     @ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto,
     @Query('checked') checked: GetTodolistDatesDto = 'true'
