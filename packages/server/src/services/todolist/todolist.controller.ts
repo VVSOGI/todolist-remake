@@ -16,10 +16,13 @@ import {
   ValidateCreateTodolistDTO,
   ValidateGetTodolistCheckedDTO,
   ValidateUpdateTodolistDto,
-  ValidateUpdateTodolistOrderDTO
+  ValidateUpdateTodolistOrderDTO,
+  SwaggerCreateTodolist,
+  SwaggerGetTodolist,
+  SwaggerGetTodolistById,
+  SwaggerGetTodolistByDate
 } from './decorator'
 import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
-import { SwaggerCreateTodolist, SwaggerGetTodolist, SwaggerGetTodolistById } from './decorator/swagger'
 
 @ApiTags('Todolist')
 @Controller('todolist')
@@ -55,6 +58,7 @@ export class TodolistController {
   }
 
   @Get('/dates/:categoryId')
+  @SwaggerGetTodolistByDate()
   async getTodolistsByDate(
     @ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto,
     @Query('checked') checked: GetTodolistDatesDto = 'true'
