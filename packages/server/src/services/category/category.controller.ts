@@ -17,7 +17,8 @@ import {
   SwaggerCreateCategory,
   SwaggerGetCategory,
   SwaggerGetCategoryById,
-  SwaggerUpdateCategory
+  SwaggerUpdateCategory,
+  SwaggerDeleteCategory
 } from './decorator'
 import { ValidateIdParamDTO } from '../common'
 
@@ -58,6 +59,7 @@ export class CategoryController {
   }
 
   @Delete('/soft/:categoryId')
+  @SwaggerDeleteCategory()
   async softDeleteCategoryById(@ValidateIdParamDTO() deleteCategoryDto: CategoryIdParamsDto): Promise<DefaultCategoryResponseType> {
     const { categoryId } = deleteCategoryDto
     return this.categoryService.softDeleteCategoryById(categoryId)

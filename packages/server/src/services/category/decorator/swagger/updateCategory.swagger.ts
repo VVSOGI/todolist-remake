@@ -22,14 +22,6 @@ export function SwaggerUpdateCategory() {
       "deleted": false
     }
 
-### If doesn't exist data [404 ERROR]
-
-    {
-      "message": "Received unmatched data 'categoryId' [INVALID UUID TYPE ERROR]",
-      "error": "Bad Request",
-      "statusCode": 400
-    }
-
 ### If sent invalid data type [400 ERROR]
 
     {
@@ -52,6 +44,14 @@ export function SwaggerUpdateCategory() {
         "message": "You must enter at least three characters. [WRONG DATA SENT ERROR]",
         "error": "Bad Request",
         "statusCode": 400
+    }
+
+### If doesn't exist target categoryId [404 ERROR]
+
+    {
+      "message": "Received unmatched data 'categoryId' [INVALID UUID TYPE ERROR]",
+      "error": "Bad Request",
+      "statusCode": 400
     }
 
 ### If you sent missing data [404 ERROR]
