@@ -21,7 +21,8 @@ import {
   SwaggerGetTodolist,
   SwaggerGetTodolistById,
   SwaggerGetTodolistByDate,
-  SwaggerUpdateTodolist
+  SwaggerUpdateTodolist,
+  SwaggerUpdateTodolistOrder
 } from './decorator'
 import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
 
@@ -74,6 +75,7 @@ export class TodolistController {
   }
 
   @Patch('/order')
+  @SwaggerUpdateTodolistOrder()
   async updateTodoOrder(
     @ValidateUpdateTodolistOrderDTO() updateTodolistOrderDto: UpdateTodolistOrderDto[]
   ): Promise<UpdateTodolistsOrderResponseType> {

@@ -59,7 +59,7 @@ export function SwaggerUpdateTodolist() {
         "statusCode": 400
     }
 
-### If doesn't exist target categoryId [404 ERROR]
+### If doesn't exist properties [404 ERROR]
 
     {
         "message": "Received unexpected data 'id' [MISSING DATA ERROR]",
