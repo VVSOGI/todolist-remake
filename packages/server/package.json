@@ -12,6 +12,7 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "start:db": "bash ./scripts/run-infra.sh",
+    "generate-docs": "ts-node -r tsconfig-paths/register ./src/utils/generate-docs.ts",
     "migration:create": "typeorm migration:create ./src/database/migration/mig",
     "migration:generate": "npm run build && typeorm migration:generate -d ./dist/database/data-source.js ./src/database/migration/mig",
     "migration:show": "typeorm migration:show -d ./dist/database/data-source.js",
