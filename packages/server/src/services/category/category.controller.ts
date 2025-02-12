@@ -1,5 +1,6 @@
 import { Controller, Delete, Get, Patch, Post } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
+import { ApiDocsController } from 'src/common'
 import { CategoryService } from './category.service'
 import {
   CategoryDeleteParamsDto,
@@ -18,16 +19,22 @@ import {
   SwaggerGetCategory,
   SwaggerGetCategoryById,
   SwaggerUpdateCategory,
-  SwaggerDeleteCategory
+  SwaggerDeleteCategory,
+  DocsCreateCategory
 } from './decorator'
 import { ValidateIdParamDTO } from '../common'
 
 @ApiTags('Category')
+@ApiDocsController({
+  description: 'Category management API endpoints',
+  tags: ['Category']
+})
 @Controller('category')
 export class CategoryController {
   constructor(private categoryService: CategoryService) {}
 
   @Post()
+  @DocsCreateCategory()
   @SwaggerCreateCategory()
   async createCategory(@ValidateCreateDTO() createCategoryDto: CreateCategoryDto): Promise<DefaultCategoryResponseType> {
     const { title } = createCategoryDto
