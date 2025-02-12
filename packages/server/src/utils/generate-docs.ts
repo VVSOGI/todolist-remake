@@ -1,21 +1,26 @@
 import * as fs from 'fs'
 import * as path from 'path'
+
+import { NestFactory, DiscoveryService } from '@nestjs/core'
 import { RequestMethod } from '@nestjs/common'
-import { ApiController, ApiEndpoint } from 'src/common/types/api-docs.type'
+import { AppModule } from '../app.module'
+import { ApiController, ApiEndpoint } from '../common/types/api-docs.type'
 
 export class ApiDocsGenerator {
   static async generateDocs(app: any) {
-    const controllers = app.getControllers()
+    const discoveryService = app.get(DiscoveryService)
+    const controllers = discoveryService.getControllers()
     const docs: ApiController[] = []
 
-    for (const controller of controllers) {
-      const controllerInstance = app.get(controller)
-      const prototype = Object.getPrototypeOf(controllerInstance)
-      const controllerPath = Reflect.getMetadata('path', controller)
+    for (const wrapper of controllers) {
+      if (!wrapper.instance || !wrapper.metatype) continue
+
+      const prototype = Object.getPrototypeOf(wrapper.instance)
+      const controllerPath = Reflect.getMetadata('path', wrapper.metatype)
       const endpoints = this.getControllerEndpoints(prototype)
 
       docs.push({
-        controllerName: controller.name,
+        controllerName: wrapper.metatype.name,
         basePath: controllerPath,
         endpoints
       })
@@ -36,7 +41,7 @@ export class ApiDocsGenerator {
     )
 
     for (const methodName of methodNames) {
-      const endpoint: ApiEndpoint = this.getEndpointMetadata(prototype, methodName)
+      const endpoint = this.getEndpointMetadata(prototype, methodName)
       if (endpoint) {
         endpoints.push(endpoint)
       }
@@ -47,8 +52,8 @@ export class ApiDocsGenerator {
 
   private static getEndpointMetadata(prototype: any, methodName: string) {
     const metadata = Reflect.getMetadata('api:endpoint', prototype, methodName)
-    const path = Reflect.getMetadata('path', prototype, methodName)
-    const method = Reflect.getMetadata('method', prototype, methodName)
+    const path = Reflect.getMetadata('path', prototype[methodName])
+    const method = Reflect.getMetadata('method', prototype[methodName])
 
     if (!metadata || !path || !method) return null
 
@@ -60,3 +65,19 @@ export class ApiDocsGenerator {
     }
   }
 }
+
+async function generateDocs() {
+  const app = await NestFactory.create(AppModule)
+  await ApiDocsGenerator.generateDocs(app)
+  await app.close()
+}
+
+generateDocs()
+  .then(() => {
+    console.log('API documentation generated successfully!')
+    process.exit(0)
+  })
+  .catch((error) => {
+    console.error('Failed to generate API documentation:', error)
+    process.exit(1)
+  })
