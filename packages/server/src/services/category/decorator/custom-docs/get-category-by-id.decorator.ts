@@ -1,21 +1,20 @@
 import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'src/common'
 
-export const DocsCreateCategory = () => {
+export const DocsGetCategoryById = () => {
   const metadata: EndpointDecoratorMetadata<{
-    body: 'title'
+    params: 'categoryId'
     response: 'id' | 'title' | 'createdAt' | 'updatedAt' | 'deleted'
   }> = {
-    description: 'Create a new category',
+    description: '',
     request: {
-      body: {
-        type: 'object',
+      params: {
+        type: 'string',
         properties: {
-          title: {
+          categoryId: {
             type: 'string',
-            description: '카테고리 제목'
+            description: 'Target category Id that you find'
           }
-        },
-        required: ['title']
+        }
       }
     },
     response: {
@@ -23,27 +22,27 @@ export const DocsCreateCategory = () => {
       properties: {
         id: {
           type: 'string',
-          description: 'Created category ID'
+          description: 'Found category ID'
         },
         title: {
           type: 'string',
-          description: 'Created category title'
+          description: 'Found category title'
         },
         createdAt: {
           type: 'string',
-          description: 'Created category createdAt'
+          description: 'Found category createdAt'
         },
         updatedAt: {
           type: 'string',
-          description: 'Created category updatedAt'
+          description: 'Found category updatedAt'
         },
         deleted: {
           type: 'boolean',
-          description: 'Created category deleted'
+          description: 'Found category deleted'
         }
       },
       example: {
-        id: '98874008-8915-4d53-9239-3913f7ee2089',
+        id: '16874008-8915-4d53-9239-3913f7ee2089',
         title: 'Test title',
         createdAt: '2025-02-10T13:00:27.440Z',
         updatedAt: '2025-02-10T13:00:27.440Z',

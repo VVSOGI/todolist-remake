@@ -102,7 +102,9 @@ export interface EndpointDecoratorMetadata<P extends DefaultMetadataProperties> 
   response?: {
     type: string
     properties?: P['response'] extends string ? Record<P['response'], ApiProperty> : never
-    example?: P['response'] extends string ? Record<P['response'], any> : never
+    example?: P['response'] extends string
+      ? Record<P['response'], any> | Array<Record<P['response'], any>> //
+      : never
   }
   deprecated?: boolean
   tags?: string[]
