@@ -3,7 +3,7 @@ import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'src/common'
 export const DocsCreateCategory = () => {
   const metadata: EndpointDecoratorMetadata<{
     body: 'title'
-    response: 'id' | 'title' | 'createdAt' | 'updatedAt'
+    response: 'id' | 'title' | 'createdAt' | 'updatedAt' | 'deleted'
   }> = {
     description: 'Create a new category',
     request: {
@@ -23,26 +23,31 @@ export const DocsCreateCategory = () => {
       properties: {
         id: {
           type: 'string',
-          description: '카테고리 ID'
+          description: 'Created category ID'
         },
         title: {
           type: 'string',
-          description: '카테고리 제목'
+          description: 'Created category title'
         },
         createdAt: {
           type: 'string',
-          description: '생성 일시'
+          description: 'Created category createdAt'
         },
         updatedAt: {
           type: 'string',
-          description: '수정 일시'
+          description: 'Created category updatedAt'
+        },
+        deleted: {
+          type: 'boolean',
+          description: 'Created category deleted'
         }
       },
       example: {
-        id: 'uuid-example',
-        title: '새로운 카테고리',
-        createdAt: '2024-02-12T00:00:00.000Z',
-        updatedAt: '2024-02-12T00:00:00.000Z'
+        id: '98874008-8915-4d53-9239-3913f7ee2089',
+        title: 'Test title',
+        createdAt: '2025-02-10T13:00:27.440Z',
+        updatedAt: '2025-02-10T13:00:27.440Z',
+        deleted: false
       }
     }
   }
