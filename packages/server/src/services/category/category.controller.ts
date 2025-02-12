@@ -20,7 +20,8 @@ import {
   SwaggerGetCategoryById,
   SwaggerUpdateCategory,
   SwaggerDeleteCategory,
-  DocsCreateCategory
+  DocsCreateCategory,
+  DocsGetCategory
 } from './decorator'
 import { ValidateIdParamDTO } from '../common'
 
@@ -42,6 +43,7 @@ export class CategoryController {
   }
 
   @Get()
+  @DocsGetCategory()
   @SwaggerGetCategory()
   async getCategories(@ValidateDeletedCheckedDTO() categoryDeleteParamsDto: CategoryDeleteParamsDto): Promise<GetCategoriesResponseType> {
     return this.categoryService.getCategories(categoryDeleteParamsDto)
