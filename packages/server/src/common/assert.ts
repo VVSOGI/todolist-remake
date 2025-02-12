@@ -1,5 +1,5 @@
 import { BadRequestException, Logger, NotAcceptableException, NotFoundException } from '@nestjs/common'
-import { CustomIValidation } from './type'
+import { CustomIValidation } from './types/typia-validation.type'
 
 export class TypiaExceptionHandler {
   private readonly pattern = /\$input\./g
