@@ -55,7 +55,7 @@ export class ApiDocsGenerator {
     const path = Reflect.getMetadata('path', prototype[methodName])
     const method = Reflect.getMetadata('method', prototype[methodName])
 
-    if (!metadata || !path || !method) return null
+    if (!metadata || !path || method === undefined) return null
 
     return {
       path,
