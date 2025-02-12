@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
 import { Config } from './config'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+import { ApiDocsGenerator } from './utils/api-docs-generator'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -25,6 +26,8 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document, {
     swaggerOptions: {}
   })
+
+  await ApiDocsGenerator.generateDocs(app)
 
   await app.listen(Config.server.port)
 }
