@@ -18,36 +18,52 @@ export const DocsGetCategory = () => {
       }
     },
     response: {
-      type: 'object',
+      type: 'array',
       properties: {
         id: {
           type: 'string',
-          description: '카테고리 ID'
+          description: 'Found category ID'
         },
         title: {
           type: 'string',
-          description: '카테고리 제목'
+          description: 'Found category title'
         },
         createdAt: {
           type: 'string',
-          description: '생성 일시'
+          description: 'Found category createdAt'
         },
         updatedAt: {
           type: 'string',
-          description: '수정 일시'
+          description: 'Found category updatedAt'
         },
         deleted: {
           type: 'boolean',
-          description: '삭제된 카테고리 분별'
+          description: 'Found category deleted'
         }
       },
-      example: {
-        id: '16874008-8915-4d53-9239-3913f7ee2089',
-        title: 'Test title',
-        createdAt: '2025-02-10T13:00:27.440Z',
-        updatedAt: '2025-02-10T13:00:27.440Z',
-        deleted: false
-      }
+      example: [
+        {
+          id: '16874008-8915-4d53-9239-3913f7ee2089',
+          title: 'Test title',
+          createdAt: '2025-02-10T13:00:27.440Z',
+          updatedAt: '2025-02-10T13:00:27.440Z',
+          deleted: false
+        },
+        {
+          id: '40874008-8915-4d53-9239-3913f7ee2089',
+          title: 'Test title',
+          createdAt: '2025-02-10T13:00:27.440Z',
+          updatedAt: '2025-02-10T13:00:27.440Z',
+          deleted: false
+        },
+        {
+          id: '98874008-8915-4d53-9239-3913f7ee2089',
+          title: 'Test title',
+          createdAt: '2025-02-10T13:00:27.440Z',
+          updatedAt: '2025-02-10T13:00:27.440Z',
+          deleted: false
+        }
+      ]
     }
   }
 
