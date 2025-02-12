@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { EndpointDecoratorMetadata } from '..'
 
-export const ApiDocsEndpoint = (metadata: EndpointDecoratorMetadata): MethodDecorator => {
+export const ApiDocsEndpoint = (metadata: EndpointDecoratorMetadata<any>): MethodDecorator => {
   return (target: any, propertyKey: string | symbol, descriptor: PropertyDescriptor) => {
     Reflect.defineMetadata('api:endpoint', metadata, target, propertyKey)
     return descriptor
