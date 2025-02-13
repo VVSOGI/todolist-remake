@@ -22,7 +22,8 @@ import {
   SwaggerDeleteCategory,
   DocsCreateCategory,
   DocsGetCategory,
-  DocsUpdateCategory
+  DocsUpdateCategory,
+  DocsGetCategoryById
 } from './decorator'
 import { ValidateIdParamDTO } from '../common'
 
@@ -51,6 +52,7 @@ export class CategoryController {
   }
 
   @Get(':categoryId')
+  @DocsGetCategoryById()
   @SwaggerGetCategoryById()
   async getCategoryById(@ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto): Promise<DefaultCategoryResponseType> {
     const { categoryId } = getCategoryDto
