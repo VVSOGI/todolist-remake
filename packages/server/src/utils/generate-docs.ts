@@ -31,7 +31,9 @@ export class ApiDocsGenerator {
       fs.mkdirSync(docsPath)
     }
 
-    fs.writeFileSync(path.join(docsPath, 'api-documentation.json'), JSON.stringify(docs, null, 2))
+    for (const doc of docs) {
+      fs.writeFileSync(path.join(docsPath, `${doc.basePath}.json`), JSON.stringify(doc, null, 2))
+    }
   }
 
   private static getControllerEndpoints(prototype: any) {
