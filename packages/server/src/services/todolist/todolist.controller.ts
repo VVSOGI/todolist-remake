@@ -25,7 +25,7 @@ import {
   SwaggerUpdateTodolistOrder
 } from './decorator'
 import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
-import { DocsCreateTodolist, DocsGetTodolist, DocsGetTodolistById } from './decorator/custom-docs'
+import { DocsCreateTodolist, DocsGetTodolist, DocsGetTodolistByDate, DocsGetTodolistById } from './decorator/custom-docs'
 
 @ApiTags('Todolist')
 @Controller('todolist')
@@ -64,6 +64,7 @@ export class TodolistController {
   }
 
   @Get('/dates/:categoryId')
+  @DocsGetTodolistByDate()
   @SwaggerGetTodolistByDate()
   async getTodolistsByDate(
     @ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto,
