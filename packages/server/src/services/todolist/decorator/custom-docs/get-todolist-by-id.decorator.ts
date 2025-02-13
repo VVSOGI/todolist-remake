@@ -1,11 +1,32 @@
 import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'src/common'
 
-export const DocsGetTodolist = () => {
+export const DocsGetTodolistById = () => {
   const metadata: EndpointDecoratorMetadata<{
+    query: 'checked'
+    params: 'categoryId'
     response: 'id' | 'categoryId' | 'title' | 'checked' | 'order' | 'createdAt' | 'updatedAt'
   }> = {
     description: '',
-    request: {},
+    request: {
+      query: {
+        type: 'boolean',
+        properties: {
+          checked: {
+            type: 'boolean',
+            description: 'A status value that distinguishes completed from incomplete todolist'
+          }
+        }
+      },
+      params: {
+        type: 'string',
+        properties: {
+          categoryId: {
+            type: 'string',
+            description: `The location category's id for which you find todolist's`
+          }
+        }
+      }
+    },
     response: {
       type: 'array',
       properties: {
@@ -15,7 +36,7 @@ export const DocsGetTodolist = () => {
         },
         categoryId: {
           type: 'string',
-          description: 'The location category ID'
+          description: 'The location category ID for which you want to create a todolist'
         },
         title: {
           type: 'string',
