@@ -2,12 +2,12 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 import { NestFactory, DiscoveryService } from '@nestjs/core'
-import { RequestMethod } from '@nestjs/common'
+import { INestApplication, RequestMethod } from '@nestjs/common'
 import { AppModule } from '../app.module'
 import { ApiController, ApiEndpoint } from '../common/types/api-docs.type'
 
 export class ApiDocsGenerator {
-  static async generateDocs(app: any) {
+  static async generateDocs(app: INestApplication<any>) {
     const discoveryService = app.get(DiscoveryService)
     const controllers = discoveryService.getControllers()
     const docs: ApiController[] = []
