@@ -25,7 +25,13 @@ import {
   SwaggerUpdateTodolistOrder
 } from './decorator'
 import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
-import { DocsCreateTodolist, DocsGetTodolist, DocsGetTodolistByDate, DocsGetTodolistById } from './decorator/custom-docs'
+import {
+  DocsCreateTodolist,
+  DocsGetTodolist,
+  DocsGetTodolistByDate,
+  DocsGetTodolistById,
+  DocsUpdateTodolist
+} from './decorator/custom-docs'
 
 @ApiTags('Todolist')
 @Controller('todolist')
@@ -74,6 +80,7 @@ export class TodolistController {
   }
 
   @Patch()
+  @DocsUpdateTodolist()
   @SwaggerUpdateTodolist()
   async updateTodo(@ValidateUpdateTodolistDto() updateTodolistDto: UpdateTodolistDto): Promise<TodolistResponseType> {
     return this.todolistService.updateTodolist(updateTodolistDto)
