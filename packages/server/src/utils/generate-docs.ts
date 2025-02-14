@@ -6,11 +6,23 @@ import { INestApplication, RequestMethod } from '@nestjs/common'
 import { AppModule } from '../app.module'
 import { ApiController, ApiEndpoint } from '../common/types/api-docs.type'
 
+interface DocsDefaultMetadata {
+  name: string
+  description: string
+  version: string
+  routes?: string[]
+}
+
+interface CompleteDocsMetadata extends DocsDefaultMetadata {
+  routes: string[]
+}
+
 export class ApiDocsGenerator {
-  static async generateDocs(app: INestApplication<any>) {
+  static async generateDocs(app: INestApplication<any>, info: DocsDefaultMetadata) {
     const discoveryService = app.get(DiscoveryService)
     const controllers = discoveryService.getControllers()
     const docs: ApiController[] = []
+    const projects: CompleteDocsMetadata = { ...info, routes: [] }
 
     for (const wrapper of controllers) {
       if (!wrapper.instance || !wrapper.metatype) continue
@@ -18,6 +30,8 @@ export class ApiDocsGenerator {
       const prototype = Object.getPrototypeOf(wrapper.instance)
       const controllerPath = Reflect.getMetadata('path', wrapper.metatype)
       const endpoints = this.getControllerEndpoints(prototype)
+
+      projects.routes.push(controllerPath)
 
       docs.push({
         controllerName: wrapper.metatype.name,
@@ -27,12 +41,17 @@ export class ApiDocsGenerator {
     }
 
     const docsPath = path.join(process.cwd(), 'api-docs')
+    const routesPath = path.join(process.cwd(), 'api-docs', 'routes')
     if (!fs.existsSync(docsPath)) {
       fs.mkdirSync(docsPath)
     }
 
+    if (!fs.existsSync(routesPath)) {
+      fs.mkdirSync(routesPath)
+    }
+
     for (const doc of docs) {
-      fs.writeFileSync(path.join(docsPath, `${doc.basePath}.json`), JSON.stringify(doc, null, 2))
+      fs.writeFileSync(path.join(docsPath, `routes/${doc.basePath}.json`), JSON.stringify(doc, null, 2))
     }
   }
 
@@ -70,7 +89,13 @@ export class ApiDocsGenerator {
 
 async function generateDocs() {
   const app = await NestFactory.create(AppModule)
-  await ApiDocsGenerator.generateDocs(app)
+  const info: DocsDefaultMetadata = {
+    name: 'free-todolist',
+    description: `A full-stack todo list application designed for practice, focusing on improving architectural skills and testing various design patterns (container-presenter, layered ...) in both frontend and backend development.`,
+    version: '1.0.0'
+  }
+
+  await ApiDocsGenerator.generateDocs(app, info)
   await app.close()
 }
 
