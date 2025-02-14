@@ -30,7 +30,8 @@ import {
   DocsGetTodolist,
   DocsGetTodolistByDate,
   DocsGetTodolistById,
-  DocsUpdateTodolist
+  DocsUpdateTodolist,
+  DocsUpdateTodolistOrder
 } from './decorator/custom-docs'
 
 @ApiTags('Todolist')
@@ -87,6 +88,7 @@ export class TodolistController {
   }
 
   @Patch('/order')
+  @DocsUpdateTodolistOrder()
   @SwaggerUpdateTodolistOrder()
   async updateTodoOrder(
     @ValidateUpdateTodolistOrderDTO() updateTodolistOrderDto: UpdateTodolistOrderDto[]
