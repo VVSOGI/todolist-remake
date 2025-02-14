@@ -19,13 +19,9 @@ import {
   SwaggerGetCategory,
   SwaggerGetCategoryById,
   SwaggerUpdateCategory,
-  SwaggerDeleteCategory,
-  DocsCreateCategory,
-  DocsGetCategory,
-  DocsUpdateCategory,
-  DocsGetCategoryById,
-  DocsDeleteCategory
+  SwaggerDeleteCategory
 } from './decorator'
+import { DocsCreateCategory, DocsGetCategory, DocsUpdateCategory, DocsGetCategoryById, DocsDeleteCategory } from './decorator/custom-docs'
 import { ValidateIdParamDTO } from '../common'
 
 @ApiTags('Category')
