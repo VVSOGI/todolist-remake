@@ -24,7 +24,7 @@ export class ApiDocsGenerator {
   constructor(info: DocsDefaultMetadata, createPath: string) {
     this.docs = []
     this.projectsMetadata = { ...info, routes: [] }
-    this.path = path.join(process.cwd(), createPath)
+    this.path = path.isAbsolute(createPath) ? createPath + '/api-docs' : path.join(process.cwd(), createPath, 'api-docs')
   }
 
   async generateDocs(app: INestApplication<any>) {
@@ -111,7 +111,7 @@ async function generateDocs() {
     version: '1.0.0'
   }
 
-  await new ApiDocsGenerator(info, 'api-docs').generateDocs(app)
+  await new ApiDocsGenerator(info, './').generateDocs(app)
   await app.close()
 }
 
