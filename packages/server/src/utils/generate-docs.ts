@@ -10,7 +10,6 @@ interface DocsDefaultMetadata {
   name: string
   description: string
   version: string
-  routes?: string[]
 }
 
 interface CompleteDocsMetadata extends DocsDefaultMetadata {
@@ -18,7 +17,7 @@ interface CompleteDocsMetadata extends DocsDefaultMetadata {
 }
 
 export class ApiDocsGenerator {
-  static async generateDocs(app: INestApplication<any>, info: DocsDefaultMetadata) {
+  static async generateDocs(app: INestApplication<any>, info: DocsDefaultMetadata, createPath: string) {
     const discoveryService = app.get(DiscoveryService)
     const controllers = discoveryService.getControllers()
     const docs: ApiController[] = []
@@ -40,19 +39,21 @@ export class ApiDocsGenerator {
       })
     }
 
-    const docsPath = path.join(process.cwd(), 'api-docs')
-    const routesPath = path.join(process.cwd(), 'api-docs', 'routes')
-    if (!fs.existsSync(docsPath)) {
-      fs.mkdirSync(docsPath)
-    }
-
-    if (!fs.existsSync(routesPath)) {
-      fs.mkdirSync(routesPath)
-    }
+    const docsPath = path.join(process.cwd(), createPath)
+    this.createDirectory(docsPath)
 
     for (const doc of docs) {
       fs.writeFileSync(path.join(docsPath, `routes/${doc.basePath}.json`), JSON.stringify(doc, null, 2))
     }
+  }
+
+  private static createDirectory(docsPath: string) {
+    const pathes = [docsPath, docsPath + '/routes']
+    pathes.forEach((target) => {
+      if (!fs.existsSync(target)) {
+        fs.mkdirSync(target)
+      }
+    })
   }
 
   private static getControllerEndpoints(prototype: any) {
@@ -95,7 +96,7 @@ async function generateDocs() {
     version: '1.0.0'
   }
 
-  await ApiDocsGenerator.generateDocs(app, info)
+  await ApiDocsGenerator.generateDocs(app, info, 'api-docs')
   await app.close()
 }
 
