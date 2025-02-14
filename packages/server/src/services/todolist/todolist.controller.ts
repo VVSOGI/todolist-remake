@@ -24,7 +24,6 @@ import {
   SwaggerUpdateTodolist,
   SwaggerUpdateTodolistOrder
 } from './decorator'
-import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
 import {
   DocsCreateTodolist,
   DocsGetTodolist,
@@ -33,6 +32,7 @@ import {
   DocsUpdateTodolist,
   DocsUpdateTodolistOrder
 } from './decorator/custom-docs'
+import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
 
 @ApiTags('Todolist')
 @Controller('todolist')
