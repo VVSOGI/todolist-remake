@@ -48,13 +48,17 @@ export class ApiDocsGenerator {
     }
 
     this.createDirectory()
+    this.saveProjectMetadata()
     this.saveRouteDocs()
+  }
+
+  private saveProjectMetadata() {
+    fs.writeFileSync(this.path + `/projects.json`, JSON.stringify(this.projectsMetadata, null, 2))
   }
 
   private saveRouteDocs() {
     this.docs.forEach((doc) => {
-      const routePath = path.join(this.path, `routes/${doc.basePath}.json`)
-      fs.writeFileSync(routePath, JSON.stringify(doc, null, 2))
+      fs.writeFileSync(this.path + `/routes/${doc.basePath}.json`, JSON.stringify(doc, null, 2))
     })
   }
 
