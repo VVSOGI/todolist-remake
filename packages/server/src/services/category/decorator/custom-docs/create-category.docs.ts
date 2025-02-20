@@ -1,4 +1,4 @@
-import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'src/common'
+import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
 
 export const DocsCreateCategory = () => {
   const metadata: EndpointDecoratorMetadata<{
@@ -8,7 +8,6 @@ export const DocsCreateCategory = () => {
     description: 'Create a new category',
     request: {
       body: {
-        type: 'object',
         properties: {
           title: {
             type: 'string',
@@ -19,7 +18,6 @@ export const DocsCreateCategory = () => {
       }
     },
     response: {
-      type: 'object',
       properties: {
         id: {
           type: 'string',

@@ -1,4 +1,4 @@
-import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'src/common'
+import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
 
 export const DocsUpdateTodolist = () => {
   const metadata: EndpointDecoratorMetadata<{
@@ -8,7 +8,6 @@ export const DocsUpdateTodolist = () => {
     description: 'Update a todolist you want',
     request: {
       body: {
-        type: 'string',
         properties: {
           id: {
             type: 'string',
@@ -27,7 +26,6 @@ export const DocsUpdateTodolist = () => {
       }
     },
     response: {
-      type: 'object',
       properties: {
         id: {
           type: 'string',

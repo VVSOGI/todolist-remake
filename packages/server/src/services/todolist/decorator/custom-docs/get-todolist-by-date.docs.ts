@@ -1,4 +1,4 @@
-import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'src/common'
+import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
 
 export const DocsGetTodolistByDate = () => {
   const metadata: EndpointDecoratorMetadata<{
@@ -9,7 +9,6 @@ export const DocsGetTodolistByDate = () => {
     description: '',
     request: {
       query: {
-        type: 'boolean',
         properties: {
           checked: {
             type: 'boolean',
@@ -18,7 +17,6 @@ export const DocsGetTodolistByDate = () => {
         }
       },
       params: {
-        type: 'string',
         properties: {
           categoryId: {
             type: 'string',
@@ -28,7 +26,6 @@ export const DocsGetTodolistByDate = () => {
       }
     },
     response: {
-      type: 'object',
       properties: {
         data: {
           type: 'array',
