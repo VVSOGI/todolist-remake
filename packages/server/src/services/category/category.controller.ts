@@ -1,6 +1,6 @@
 import { Controller, Delete, Get, Patch, Post } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
-import { ApiDocsController } from 'src/common'
+import { ApiDocsController } from 'doke'
 import { CategoryService } from './category.service'
 import {
   CategoryDeleteParamsDto,

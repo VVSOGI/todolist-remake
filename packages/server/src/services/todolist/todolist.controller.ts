@@ -33,8 +33,13 @@ import {
   DocsUpdateTodolistOrder
 } from './decorator/custom-docs'
 import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
+import { ApiDocsController } from 'doke'
 
 @ApiTags('Todolist')
+@ApiDocsController({
+  description: 'Todolist management API endpoints',
+  tags: ['Todolist']
+})
 @Controller('todolist')
 export class TodolistController {
   constructor(private todolistService: TodolistService) {}
