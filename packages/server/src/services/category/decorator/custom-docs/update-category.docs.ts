@@ -1,4 +1,4 @@
-import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'src/common'
+import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
 
 export const DocsUpdateCategory = () => {
   const metadata: EndpointDecoratorMetadata<{
@@ -8,7 +8,6 @@ export const DocsUpdateCategory = () => {
     description: 'Update a category you want',
     request: {
       params: {
-        type: 'string',
         properties: {
           categoryId: {
             type: 'string',
@@ -19,7 +18,6 @@ export const DocsUpdateCategory = () => {
       }
     },
     response: {
-      type: 'object',
       properties: {
         id: {
           type: 'string',

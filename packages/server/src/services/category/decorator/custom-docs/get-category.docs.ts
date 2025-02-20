@@ -1,4 +1,4 @@
-import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'src/common'
+import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
 
 export const DocsGetCategory = () => {
   const metadata: EndpointDecoratorMetadata<{
@@ -8,7 +8,6 @@ export const DocsGetCategory = () => {
     description: '',
     request: {
       query: {
-        type: 'boolean',
         properties: {
           deleted: {
             type: 'boolean',
@@ -18,7 +17,6 @@ export const DocsGetCategory = () => {
       }
     },
     response: {
-      type: 'array',
       properties: {
         id: {
           type: 'string',
