@@ -11,18 +11,20 @@ export const DocsUpdateTodolist = () => {
         properties: {
           id: {
             type: 'string',
-            description: 'Target todolist id that you want update'
+            description: 'Target todolist id that you want update',
+            required: true
           },
           title: {
             type: 'string',
-            description: 'The title of the todolist you want to update'
+            description: 'The title of the todolist you want to update',
+            required: false
           },
           checked: {
             type: 'boolean',
-            description: 'Update the completion status of the todolist you want to update property'
+            description: 'Update the completion status of the todolist you want to update property',
+            required: false
           }
-        },
-        required: ['categoryId']
+        }
       }
     },
     response: {

@@ -10,14 +10,15 @@ export const DocsUpdateTodolistOrder = () => {
         properties: {
           id: {
             type: 'string',
-            description: 'Target todolist id that you want update'
+            description: 'Target todolist id that you want update',
+            required: true
           },
           order: {
             type: 'number',
-            description: 'The order number of the todolist you want to update'
+            description: 'The order number of the todolist you want to update',
+            required: true
           }
-        },
-        required: ['categoryId']
+        }
       }
     },
     response: {}

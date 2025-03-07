@@ -11,10 +11,10 @@ export const DocsCreateCategory = () => {
         properties: {
           title: {
             type: 'string',
-            description: '카테고리 제목'
+            description: '카테고리 제목',
+            required: true
           }
-        },
-        required: ['title']
+        }
       }
     },
     response: {

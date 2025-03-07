@@ -12,7 +12,8 @@ export const DocsGetTodolistByDate = () => {
         properties: {
           checked: {
             type: 'boolean',
-            description: 'A status value that distinguishes completed from incomplete todolist'
+            description: 'A status value that distinguishes completed from incomplete todolist',
+            required: false
           }
         }
       },
@@ -20,7 +21,8 @@ export const DocsGetTodolistByDate = () => {
         properties: {
           categoryId: {
             type: 'string',
-            description: `The location category's id for which you find todolist's`
+            description: `The location category's id for which you find todolist's`,
+            required: true
           }
         }
       }

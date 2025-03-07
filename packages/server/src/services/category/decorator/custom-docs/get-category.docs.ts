@@ -11,7 +11,8 @@ export const DocsGetCategory = () => {
         properties: {
           deleted: {
             type: 'boolean',
-            description: `Get all category Based on the query.`
+            description: `Get all category Based on the query.`,
+            required: false
           }
         }
       }

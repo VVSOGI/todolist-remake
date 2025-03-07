@@ -11,7 +11,8 @@ export const DocsGetCategoryById = () => {
         properties: {
           categoryId: {
             type: 'string',
-            description: 'Target category Id that you find'
+            description: 'Target category Id that you find',
+            required: true
           }
         }
       }

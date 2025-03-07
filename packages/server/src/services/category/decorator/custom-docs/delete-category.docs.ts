@@ -11,10 +11,10 @@ export const DocsDeleteCategory = () => {
         properties: {
           categoryId: {
             type: 'string',
-            description: 'Target category id that you want delete'
+            description: 'Target category id that you want delete',
+            required: true
           }
-        },
-        required: ['categoryId']
+        }
       }
     },
     response: {

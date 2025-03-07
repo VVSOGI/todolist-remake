@@ -11,14 +11,15 @@ export const DocsCreateTodolist = () => {
         properties: {
           title: {
             type: 'string',
-            description: 'Write title of todolist create you want'
+            description: 'Write title of todolist create you want',
+            required: true
           },
           categoryId: {
             type: 'string',
-            description: 'The location category ID for which you want to create a todolist'
+            description: 'The location category ID for which you want to create a todolist',
+            required: true
           }
-        },
-        required: ['title']
+        }
       }
     },
     response: {

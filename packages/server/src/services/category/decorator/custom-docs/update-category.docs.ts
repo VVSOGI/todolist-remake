@@ -11,10 +11,10 @@ export const DocsUpdateCategory = () => {
         properties: {
           categoryId: {
             type: 'string',
-            description: 'Target category id that you want update'
+            description: 'Target category id that you want update',
+            required: true
           }
-        },
-        required: ['categoryId']
+        }
       }
     },
     response: {
