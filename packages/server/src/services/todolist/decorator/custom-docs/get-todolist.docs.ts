@@ -4,7 +4,10 @@ export const DocsGetTodolist = () => {
   const metadata: EndpointDecoratorMetadata<{
     response: 'id' | 'categoryId' | 'title' | 'checked' | 'order' | 'createdAt' | 'updatedAt'
   }> = {
-    description: '',
+    description: `This endpoint retrieves all todolist items across all categories in the system.
+  It returns a comprehensive array of todolist objects containing complete details for each item.
+  Each todolist object includes its unique identifier, associated category, title, completion status, order position, and timestamp information.
+  This endpoint is useful for global views, dashboard displays, or administrative interfaces that need to show all todolist items regardless of category.`,
     request: {},
     response: {
       properties: {

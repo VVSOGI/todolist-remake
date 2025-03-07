@@ -5,7 +5,12 @@ export const DocsCreateTodolist = () => {
     body: 'title' | 'categoryId'
     response: 'id' | 'categoryId' | 'title' | 'checked' | 'order' | 'createdAt' | 'updatedAt'
   }> = {
-    description: 'Create a new todolist',
+    description: `
+      This endpoint creates a new todolist item within a specified category. 
+      Users must provide a title and a valid categoryId as required parameters. 
+      The newly created todolist will be automatically assigned an order value within its category, a unique ID, 
+      and will be set to unchecked (incomplete) status by default while timestamps for creation and updates are recorded.
+    `,
     request: {
       body: {
         properties: {

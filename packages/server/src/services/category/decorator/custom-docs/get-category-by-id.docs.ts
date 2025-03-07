@@ -5,7 +5,10 @@ export const DocsGetCategoryById = () => {
     params: 'categoryId'
     response: 'id' | 'title' | 'createdAt' | 'updatedAt' | 'deleted'
   }> = {
-    description: '',
+    description: `This endpoint retrieves detailed information about a specific category identified by its unique categoryId.
+  It returns the complete category object including its identifier, title, timestamps, and deletion status.
+  The endpoint will return information even for soft-deleted categories, allowing applications to check deletion status.
+  This endpoint is useful for viewing category details, verifying existence, or checking status before performing operations on the category.`,
     request: {
       params: {
         properties: {

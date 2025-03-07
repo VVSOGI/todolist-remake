@@ -6,7 +6,12 @@ export const DocsGetTodolistByDate = () => {
     params: 'categoryId'
     response: 'data' | 'total'
   }> = {
-    description: '',
+    description: `
+      This endpoint retrieves todolist items organized by date for a specific category. 
+      It allows filtering by completion status through the optional "checked" query parameter. The response returns todolist items grouped by date, 
+      with each date containing an array of todolist objects that were either created or updated on that date. 
+      This endpoint is particularly useful for displaying calendar views or tracking todolist activity over time.
+    `,
     request: {
       query: {
         properties: {

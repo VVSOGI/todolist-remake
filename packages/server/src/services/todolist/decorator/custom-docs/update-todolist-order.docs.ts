@@ -4,7 +4,10 @@ export const DocsUpdateTodolistOrder = () => {
   const metadata: EndpointDecoratorMetadata<{
     body: 'id' | 'order'
   }> = {
-    description: 'Update a todolist you want',
+    description: `This endpoint updates the display order of a specific todolist item within its category.
+  It requires both the todolist's unique identifier and the new numerical order position to be provided.
+  The order value determines the position of the todolist item when displayed in a sequence with other items.
+  This endpoint is essential for implementing drag-and-drop reordering functionality or manual sorting of todolist items.`,
     request: {
       body: {
         properties: {

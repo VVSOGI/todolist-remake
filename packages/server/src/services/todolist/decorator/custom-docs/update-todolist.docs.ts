@@ -5,7 +5,10 @@ export const DocsUpdateTodolist = () => {
     body: 'id' | 'title' | 'checked'
     response: 'id' | 'categoryId' | 'title' | 'checked' | 'order' | 'createdAt' | 'updatedAt'
   }> = {
-    description: 'Update a todolist you want',
+    description: `This endpoint updates the properties of a specific todolist item identified by its unique ID.
+  It allows modifying the title and/or completion status of the todolist item, with both fields being optional.
+  The response returns the complete updated todolist object with all its properties, including the modified fields and updated timestamp.
+  This endpoint supports partial updates, making it flexible for various editing scenarios like marking items complete or renaming tasks.`,
     request: {
       body: {
         properties: {

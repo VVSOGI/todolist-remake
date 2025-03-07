@@ -5,7 +5,10 @@ export const DocsGetCategory = () => {
     query: 'deleted'
     response: 'id' | 'title' | 'createdAt' | 'updatedAt' | 'deleted'
   }> = {
-    description: '',
+    description: `This endpoint retrieves a list of all categories in the system with optional filtering by deletion status.
+  It accepts an optional "deleted" query parameter that allows filtering results to show only active categories, only deleted categories, or all categories.
+  The response returns an array of category objects, each containing complete information including identifier, title, timestamps, and deletion status.
+  This endpoint is ideal for populating category selection dropdowns, displaying category management interfaces, or generating reports on category usage.`,
     request: {
       query: {
         properties: {

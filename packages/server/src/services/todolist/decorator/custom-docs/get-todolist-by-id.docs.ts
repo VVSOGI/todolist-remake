@@ -6,7 +6,12 @@ export const DocsGetTodolistById = () => {
     params: 'categoryId'
     response: 'id' | 'categoryId' | 'title' | 'checked' | 'order' | 'createdAt' | 'updatedAt'
   }> = {
-    description: '',
+    description: `
+      This endpoint retrieves a list of todolist items for a specific category identified by the categoryId parameter.
+      It allows optional filtering by completion status using the "checked" query parameter.
+      The response returns an array of todolist items with their complete details including ID, title, order, completion status, and timestamps.
+      This endpoint is ideal for displaying all todolist items within a specific category, supporting both complete and incomplete item views.
+    `,
     request: {
       query: {
         properties: {

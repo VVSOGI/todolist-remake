@@ -5,7 +5,10 @@ export const DocsUpdateCategory = () => {
     params: 'categoryId'
     response: 'id' | 'title' | 'createdAt' | 'updatedAt' | 'deleted'
   }> = {
-    description: 'Update a category you want',
+    description: `This endpoint updates the properties of a specific category identified by its unique categoryId parameter.
+  It allows modifying the category's title and potentially other properties (though the request body specification appears incomplete in this definition).
+  The response returns the complete updated category object with all its properties, including the modified fields and refreshed updatedAt timestamp.
+  Note that this endpoint appears to be missing the request body definition which would typically specify which fields can be updated.`,
     request: {
       params: {
         properties: {

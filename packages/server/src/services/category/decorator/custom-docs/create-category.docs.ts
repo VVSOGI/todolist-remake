@@ -5,7 +5,10 @@ export const DocsCreateCategory = () => {
     body: 'title'
     response: 'id' | 'title' | 'createdAt' | 'updatedAt' | 'deleted'
   }> = {
-    description: 'Create a new category',
+    description: `This endpoint creates a new category for organizing todolist items within the system.
+  It requires a title parameter which specifies the name of the category to be created.
+  The response returns the complete category object with its generated unique identifier, title, timestamps, and deletion status.
+  This endpoint is the first step in establishing a hierarchical organization system for todolists, allowing for logical grouping of related tasks.`,
     request: {
       body: {
         properties: {
