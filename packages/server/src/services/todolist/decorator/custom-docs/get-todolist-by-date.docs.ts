@@ -33,16 +33,6 @@ export const DocsGetTodolistByDate = () => {
       }
     },
     response: {
-      properties: {
-        data: {
-          type: 'array',
-          description: 'Contains a list of todolist that were modified or completed on a specific date.'
-        },
-        total: {
-          type: 'number',
-          description: 'The number of data that fits the date.'
-        }
-      },
       example: {
         data: [
           {

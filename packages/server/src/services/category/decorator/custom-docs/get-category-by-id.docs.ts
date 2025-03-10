@@ -21,28 +21,6 @@ export const DocsGetCategoryById = () => {
       }
     },
     response: {
-      properties: {
-        id: {
-          type: 'string',
-          description: 'Found category ID'
-        },
-        title: {
-          type: 'string',
-          description: 'Found category title'
-        },
-        createdAt: {
-          type: 'string',
-          description: 'Found category createdAt'
-        },
-        updatedAt: {
-          type: 'string',
-          description: 'Found category updatedAt'
-        },
-        deleted: {
-          type: 'boolean',
-          description: 'Found category deleted'
-        }
-      },
       example: {
         id: '16874008-8915-4d53-9239-3913f7ee2089',
         title: 'Test title',

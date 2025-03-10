@@ -21,28 +21,6 @@ export const DocsCreateCategory = () => {
       }
     },
     response: {
-      properties: {
-        id: {
-          type: 'string',
-          description: 'Created category ID'
-        },
-        title: {
-          type: 'string',
-          description: 'Created category title'
-        },
-        createdAt: {
-          type: 'string',
-          description: 'Created category createdAt'
-        },
-        updatedAt: {
-          type: 'string',
-          description: 'Created category updatedAt'
-        },
-        deleted: {
-          type: 'boolean',
-          description: 'Created category deleted'
-        }
-      },
       example: {
         id: '98874008-8915-4d53-9239-3913f7ee2089',
         title: 'Test title',

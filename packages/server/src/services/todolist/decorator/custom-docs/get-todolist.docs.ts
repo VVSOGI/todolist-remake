@@ -10,36 +10,6 @@ export const DocsGetTodolist = () => {
   This endpoint is useful for global views, dashboard displays, or administrative interfaces that need to show all todolist items regardless of category.`,
     request: {},
     response: {
-      properties: {
-        id: {
-          type: 'string',
-          description: 'Created category ID'
-        },
-        categoryId: {
-          type: 'string',
-          description: 'The location category ID'
-        },
-        title: {
-          type: 'string',
-          description: 'Created todolist title'
-        },
-        checked: {
-          type: 'boolean',
-          description: 'Check todolist completion status'
-        },
-        createdAt: {
-          type: 'string',
-          description: 'Created todolist createdAt'
-        },
-        updatedAt: {
-          type: 'string',
-          description: 'Created todolist updatedAt'
-        },
-        order: {
-          type: 'number',
-          description: `The order of the generated todolists`
-        }
-      },
       example: [
         {
           id: 'ea2a1198-9b29-4258-9021-409b81f57caf',

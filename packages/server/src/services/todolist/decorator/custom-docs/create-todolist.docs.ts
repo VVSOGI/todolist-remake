@@ -28,36 +28,6 @@ export const DocsCreateTodolist = () => {
       }
     },
     response: {
-      properties: {
-        id: {
-          type: 'string',
-          description: 'Created category ID'
-        },
-        categoryId: {
-          type: 'string',
-          description: 'The location category ID for which you want to create a todolist'
-        },
-        title: {
-          type: 'string',
-          description: 'Created todolist title'
-        },
-        checked: {
-          type: 'boolean',
-          description: 'Check todolist completion status'
-        },
-        createdAt: {
-          type: 'string',
-          description: 'Created todolist createdAt'
-        },
-        updatedAt: {
-          type: 'string',
-          description: 'Created todolist updatedAt'
-        },
-        order: {
-          type: 'number',
-          description: `The order of the generated todolists`
-        }
-      },
       example: {
         id: 'ea2a1198-9b29-4258-9021-409b81f57caf',
         categoryId: 'f144cc78-34d9-4d0a-9e95-48cf7102dce3',
