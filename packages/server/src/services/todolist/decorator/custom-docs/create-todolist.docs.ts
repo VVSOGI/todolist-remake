@@ -3,6 +3,7 @@ import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
 export const DocsCreateTodolist = () => {
   const metadata: EndpointDecoratorMetadata<{
     body: 'title' | 'categoryId'
+    headers: 'Content-Type'
     response: 'id' | 'categoryId' | 'title' | 'checked' | 'order' | 'createdAt' | 'updatedAt'
   }> = {
     description: `
@@ -23,6 +24,13 @@ export const DocsCreateTodolist = () => {
             type: 'string',
             description: 'The location category ID for which you want to create a todolist',
             required: true
+          }
+        }
+      },
+      headers: {
+        properties: {
+          'Content-Type': {
+            default: 'application/json'
           }
         }
       }

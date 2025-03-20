@@ -3,6 +3,7 @@ import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
 export const DocsUpdateTodolistOrder = () => {
   const metadata: EndpointDecoratorMetadata<{
     body: 'id' | 'order'
+    headers: 'Content-Type'
   }> = {
     description: `This endpoint updates the display order of a specific todolist item within its category.
   It requires both the todolist's unique identifier and the new numerical order position to be provided.
@@ -20,6 +21,13 @@ export const DocsUpdateTodolistOrder = () => {
             type: 'number',
             description: 'The order number of the todolist you want to update',
             required: true
+          }
+        }
+      },
+      headers: {
+        properties: {
+          'Content-Type': {
+            default: 'application/json'
           }
         }
       }

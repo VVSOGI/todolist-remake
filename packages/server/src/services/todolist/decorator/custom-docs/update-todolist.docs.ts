@@ -3,6 +3,7 @@ import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
 export const DocsUpdateTodolist = () => {
   const metadata: EndpointDecoratorMetadata<{
     body: 'id' | 'title' | 'checked'
+    headers: 'Content-Type'
     response: 'id' | 'categoryId' | 'title' | 'checked' | 'order' | 'createdAt' | 'updatedAt'
   }> = {
     description: `This endpoint updates the properties of a specific todolist item identified by its unique ID.
@@ -26,6 +27,13 @@ export const DocsUpdateTodolist = () => {
             type: 'boolean',
             description: 'Update the completion status of the todolist you want to update property',
             required: false
+          }
+        }
+      },
+      headers: {
+        properties: {
+          'Content-Type': {
+            default: 'application/json'
           }
         }
       }
