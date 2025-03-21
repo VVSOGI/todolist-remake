@@ -3,6 +3,7 @@ import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
 export const DocsDeleteCategory = () => {
   const metadata: EndpointDecoratorMetadata<{
     params: 'categoryId'
+    headers: 'Authorization'
     response: 'id' | 'title' | 'createdAt' | 'updatedAt' | 'deleted'
   }> = {
     description: `This endpoint performs a soft delete on a specific category identified by its unique categoryId.
@@ -16,6 +17,16 @@ export const DocsDeleteCategory = () => {
             type: 'string',
             description: 'Target category id that you want delete',
             required: true
+          }
+        }
+      },
+      headers: {
+        properties: {
+          Authorization: {
+            default: '',
+            credentials: {
+              type: 'Bearer'
+            }
           }
         }
       }
