@@ -3,7 +3,7 @@ import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
 export const DocsCreateCategory = () => {
   const metadata: EndpointDecoratorMetadata<{
     body: 'title'
-    headers: 'Content-Type'
+    headers: 'Content-Type' | 'Authorization'
     response: 'id' | 'title' | 'createdAt' | 'updatedAt' | 'deleted'
   }> = {
     description: `This endpoint creates a new category for organizing todolist items within the system.
@@ -24,6 +24,12 @@ export const DocsCreateCategory = () => {
         properties: {
           'Content-Type': {
             default: 'application/json'
+          },
+          Authorization: {
+            default: '',
+            credentials: {
+              type: 'Bearer'
+            }
           }
         }
       }
