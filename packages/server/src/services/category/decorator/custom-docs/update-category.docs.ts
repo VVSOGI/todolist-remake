@@ -2,8 +2,9 @@ import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
 
 export const DocsUpdateCategory = () => {
   const metadata: EndpointDecoratorMetadata<{
-    params: 'categoryId'
     headers: 'Content-Type'
+    params: 'categoryId'
+    body: 'title'
     response: 'id' | 'title' | 'createdAt' | 'updatedAt' | 'deleted'
   }> = {
     description: `This endpoint updates the properties of a specific category identified by its unique categoryId parameter.
@@ -17,6 +18,15 @@ export const DocsUpdateCategory = () => {
             type: 'string',
             description: 'Target category id that you want update',
             required: true
+          }
+        }
+      },
+      body: {
+        properties: {
+          title: {
+            type: 'string',
+            description: 'Write title of category that you want update',
+            required: false
           }
         }
       },
