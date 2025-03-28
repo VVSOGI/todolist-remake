@@ -5,6 +5,8 @@ source ../.env.local
 
 cat ../.env.local > ../.env
 
+docker rm -f postgres backend | true
+
 docker network create $DOCKER_NETWORK | true
 
 docker run \
