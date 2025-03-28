@@ -1,5 +1,5 @@
 import { DiscoveryService, NestFactory } from '@nestjs/core'
-import { ApiDocsGenerator, ReceivedMetadata } from 'doke/packages/doke-nest'
+import { ApiDocsGenerator, ReceivedMetadata } from 'doke-nest'
 import { AppModule } from '../app.module'
 
 async function generateDocs() {

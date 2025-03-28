@@ -1,4 +1,4 @@
-import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke/packages/doke-nest'
+import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke-nest'
 
 export const DocsCreateCategory = () => {
   const metadata: EndpointDecoratorMetadata<{
@@ -15,7 +15,7 @@ export const DocsCreateCategory = () => {
         properties: {
           title: {
             type: 'string',
-            description: '카테고리 제목',
+            description: 'Title of Category',
             required: true
           }
         }

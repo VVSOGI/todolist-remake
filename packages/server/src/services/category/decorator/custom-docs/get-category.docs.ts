@@ -1,4 +1,4 @@
-import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke/packages/doke-nest'
+import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke-nest'
 
 export const DocsGetCategory = () => {
   const metadata: EndpointDecoratorMetadata<{
