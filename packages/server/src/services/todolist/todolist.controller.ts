@@ -33,7 +33,7 @@ import {
   DocsUpdateTodolistOrder
 } from './decorator/custom-docs'
 import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
-import { ApiDocsController } from 'doke'
+import { ApiDocsController } from 'doke/packages/doke-nest'
 
 @ApiTags('Todolist')
 @ApiDocsController({

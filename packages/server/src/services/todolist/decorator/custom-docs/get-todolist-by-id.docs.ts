@@ -1,4 +1,4 @@
-import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke'
+import { ApiDocsEndpoint, EndpointDecoratorMetadata } from 'doke/packages/doke-nest'
 
 export const DocsGetTodolistById = () => {
   const metadata: EndpointDecoratorMetadata<{
