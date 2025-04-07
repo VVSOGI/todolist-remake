@@ -5228,6 +5228,11 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+doke-nest@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/doke-nest/-/doke-nest-1.0.0.tgz#32fd7dcce050ef19b4b7b8abf9649add9cec42b8"
+  integrity sha512-EBjw1uK6IjTn09o6f/8Iri8/E/ceJQVU0ZDYZHzQ+rFjM4JJklPlTUalPl5i//wOMxRHmY7Cy6flhiA3szp11A==
+
 dom-accessibility-api@^0.5.9:
   version "0.5.16"
   resolved "https://registry.yarnpkg.com/dom-accessibility-api/-/dom-accessibility-api-0.5.16.tgz#5a7429e6066eb3664d911e33fb0e45de8eb08453"
