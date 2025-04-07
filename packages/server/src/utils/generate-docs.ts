@@ -12,7 +12,7 @@ async function generateDocs() {
   }
 
   const discoveryService = app.get(DiscoveryService)
-  await new ApiDocsGenerator(info, '/Users/benny/Desktop/projects/doke-ui/', discoveryService).generate()
+  await new ApiDocsGenerator(info, '/Users/benny/Desktop/projects/todolist/packages/server', discoveryService).generate()
   await app.close()
 }
 
