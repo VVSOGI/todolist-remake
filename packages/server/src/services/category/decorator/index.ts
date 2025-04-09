@@ -1,5 +1,4 @@
 export * from './custom-docs'
-export * from './swagger'
 
 export * from './createCategory.decorator'
 export * from './validator'

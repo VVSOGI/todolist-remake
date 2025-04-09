@@ -11,16 +11,7 @@ import {
   UpdateCategoryDto,
   UpdateCategoryResponseType
 } from './types'
-import {
-  ValidateCreateDTO,
-  ValidateDeletedCheckedDTO,
-  ValidateUpdateDTO,
-  SwaggerCreateCategory,
-  SwaggerGetCategory,
-  SwaggerGetCategoryById,
-  SwaggerUpdateCategory,
-  SwaggerDeleteCategory
-} from './decorator'
+import { ValidateCreateDTO, ValidateDeletedCheckedDTO, ValidateUpdateDTO } from './decorator'
 import { DocsCreateCategory, DocsGetCategory, DocsUpdateCategory, DocsGetCategoryById, DocsDeleteCategory } from './decorator/custom-docs'
 import { ValidateIdParamDTO } from '../common'
 
@@ -35,7 +26,6 @@ export class CategoryController {
 
   @Post()
   @DocsCreateCategory()
-  @SwaggerCreateCategory()
   async createCategory(@ValidateCreateDTO() createCategoryDto: CreateCategoryDto): Promise<DefaultCategoryResponseType> {
     const { title } = createCategoryDto
     return this.categoryService.createCategory(title)
@@ -43,14 +33,12 @@ export class CategoryController {
 
   @Get()
   @DocsGetCategory()
-  @SwaggerGetCategory()
   async getCategories(@ValidateDeletedCheckedDTO() categoryDeleteParamsDto: CategoryDeleteParamsDto): Promise<GetCategoriesResponseType> {
     return this.categoryService.getCategories(categoryDeleteParamsDto)
   }
 
   @Get(':categoryId')
   @DocsGetCategoryById()
-  @SwaggerGetCategoryById()
   async getCategoryById(@ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto): Promise<DefaultCategoryResponseType> {
     const { categoryId } = getCategoryDto
     return this.categoryService.getCategoryById(categoryId)
@@ -58,7 +46,6 @@ export class CategoryController {
 
   @Patch(':categoryId')
   @DocsUpdateCategory()
-  @SwaggerUpdateCategory()
   async updateCategory(
     @ValidateIdParamDTO() idParamsDto: CategoryIdParamsDto,
     @ValidateUpdateDTO() updateCategoryDto: UpdateCategoryDto
@@ -70,7 +57,6 @@ export class CategoryController {
 
   @Delete('/soft/:categoryId')
   @DocsDeleteCategory()
-  @SwaggerDeleteCategory()
   async softDeleteCategoryById(@ValidateIdParamDTO() deleteCategoryDto: CategoryIdParamsDto): Promise<DefaultCategoryResponseType> {
     const { categoryId } = deleteCategoryDto
     return this.categoryService.softDeleteCategoryById(categoryId)
