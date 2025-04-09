@@ -16,13 +16,7 @@ import {
   ValidateCreateTodolistDTO,
   ValidateGetTodolistCheckedDTO,
   ValidateUpdateTodolistDto,
-  ValidateUpdateTodolistOrderDTO,
-  SwaggerCreateTodolist,
-  SwaggerGetTodolist,
-  SwaggerGetTodolistById,
-  SwaggerGetTodolistByDate,
-  SwaggerUpdateTodolist,
-  SwaggerUpdateTodolistOrder
+  ValidateUpdateTodolistOrderDTO
 } from './decorator'
 import {
   DocsCreateTodolist,
@@ -46,21 +40,18 @@ export class TodolistController {
 
   @Post()
   @DocsCreateTodolist()
-  @SwaggerCreateTodolist()
   async createTodolist(@ValidateCreateTodolistDTO() createTodolistDto: CreateTodolistDto): Promise<TodolistResponseType> {
     return this.todolistService.createTodolist(createTodolistDto)
   }
 
   @Get()
   @DocsGetTodolist()
-  @SwaggerGetTodolist()
   async getTodolists(): Promise<GetTodolistsResponseType> {
     return this.todolistService.getTodolists()
   }
 
   @Get(':categoryId')
   @DocsGetTodolistById()
-  @SwaggerGetTodolistById()
   async getTodolistsByCategoryId(
     @ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto,
     @ValidateGetTodolistCheckedDTO() checked?: GetTodolistDto
@@ -77,7 +68,6 @@ export class TodolistController {
 
   @Get('/dates/:categoryId')
   @DocsGetTodolistByDate()
-  @SwaggerGetTodolistByDate()
   async getTodolistsByDate(
     @ValidateIdParamDTO() getCategoryDto: CategoryIdParamsDto,
     @Query('checked') checked: GetTodolistDatesDto = 'true'
@@ -87,14 +77,12 @@ export class TodolistController {
 
   @Patch()
   @DocsUpdateTodolist()
-  @SwaggerUpdateTodolist()
   async updateTodo(@ValidateUpdateTodolistDto() updateTodolistDto: UpdateTodolistDto): Promise<TodolistResponseType> {
     return this.todolistService.updateTodolist(updateTodolistDto)
   }
 
   @Patch('/order')
   @DocsUpdateTodolistOrder()
-  @SwaggerUpdateTodolistOrder()
   async updateTodoOrder(
     @ValidateUpdateTodolistOrderDTO() updateTodolistOrderDto: UpdateTodolistOrderDto[]
   ): Promise<UpdateTodolistsOrderResponseType> {
