@@ -1,5 +1,4 @@
 import { Controller, Delete, Get, Patch, Post } from '@nestjs/common'
-import { ApiTags } from '@nestjs/swagger'
 import { ApiDocsController } from 'doke-nest'
 import { CategoryService } from './category.service'
 import {
@@ -15,7 +14,6 @@ import { ValidateCreateDTO, ValidateDeletedCheckedDTO, ValidateUpdateDTO } from 
 import { DocsCreateCategory, DocsGetCategory, DocsUpdateCategory, DocsGetCategoryById, DocsDeleteCategory } from './decorator/custom-docs'
 import { ValidateIdParamDTO } from '../common'
 
-@ApiTags('Category')
 @ApiDocsController({
   description: 'Category management API endpoints',
   tags: ['Category']

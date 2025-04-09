@@ -1,5 +1,4 @@
 import { Controller, Get, Patch, Post, Query } from '@nestjs/common'
-import { ApiTags } from '@nestjs/swagger'
 import { TodolistService } from './todolist.service'
 import {
   CreateTodolistDto,
@@ -29,7 +28,6 @@ import {
 import { CategoryIdParamsDto, ValidateIdParamDTO } from '../common'
 import { ApiDocsController } from 'doke-nest'
 
-@ApiTags('Todolist')
 @ApiDocsController({
   description: 'Todolist management API endpoints',
   tags: ['Todolist']
