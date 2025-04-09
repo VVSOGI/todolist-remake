@@ -34,7 +34,7 @@
     "@nestjs/swagger": "^7.4.2",
     "@nestjs/typeorm": "^10.0.2",
     "@types/uuid": "^10.0.0",
-    "doke-nest": "^1.0.0",
+    "doke-nest": "^1.0.1",
     "dotenv": "^16.4.5",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
